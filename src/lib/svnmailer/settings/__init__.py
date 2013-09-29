@@ -151,6 +151,7 @@ group_members = {
         'apply_charset_property'     : 'humanbool',
         'show_applied_charset'       : ('token',
                                        {'allowed': SHOWENC.valid_tokens}),
+        'default_charsets'           : 'tokenlist',
 
         # deprecated
         'viewcvs_base_url'           : ('unicode',    {'map': True}),
