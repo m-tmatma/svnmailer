@@ -146,7 +146,7 @@ class SvnmailerOptionParser(optparse.OptionParser):
         args = self._transformSvnmailerOldStyle(args)
         if not args:
             raise CommandlineError(
-                "Type '%s --help' for usage" % self._get_prog_name()
+                "Type '%s --help' for usage" % self.get_prog_name()
             )
 
         options, fixed = optparse.OptionParser.parse_args(
@@ -181,6 +181,16 @@ class SvnmailerOptionParser(optparse.OptionParser):
         )
 
 
+    def get_prog_name(self):
+        """ Returns the program name """
+        try:
+            # python 2.4 changed the interface. argh.
+            return optparse.OptionParser.get_prog_name(self)
+        except AttributeError:
+            # python 2.3
+            return optparse.OptionParser._get_prog_name(self)
+
+
     def format_help(self, formatter = None):
         """ Adds a description of the old style options """
         import textwrap
@@ -204,7 +214,7 @@ class SvnmailerOptionParser(optparse.OptionParser):
             width = width,
         )
 
-        prog = self._get_prog_name()
+        prog = self.get_prog_name()
         indent = " " * (len(prog) + 1)
         clines = [
             "",
