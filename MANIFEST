@@ -43,7 +43,6 @@ docs/apidoc/public/svnmailer.main.NotifierError-class.html
 docs/apidoc/public/svnmailer.typedstruct.MemberDescriptor-class.html
 docs/apidoc/public/svnmailer.config.ConfigOptionUnknownError-class.html
 docs/apidoc/public/svnmailer-module.html
-docs/apidoc/public/ConfigParser.ConfigParser-class.html
 docs/apidoc/public/svnmailer.config.ConfigMappingSpecInvalidError-class.html
 docs/apidoc/public/toc-svnmailer.stream-module.html
 docs/apidoc/public/svnmailer.main.Error-class.html
@@ -65,7 +64,6 @@ docs/apidoc/public/toc-svnmailer-module.html
 docs/apidoc/public/email.Message.Message-class.html
 docs/apidoc/public/svnmailer.notifier.selector-module.html
 docs/apidoc/public/exceptions.StandardError-class.html
-docs/apidoc/public/ConfigParser.RawConfigParser-class.html
 docs/apidoc/public/svnmailer.util.ReadOnlyDict-class.html
 docs/apidoc/public/svnmailer.stream.BinaryOrUnicodeStream-class.html
 docs/apidoc/public/email.MIMENonMultipart.MIMENonMultipart-class.html
@@ -145,7 +143,6 @@ docs/apidoc/private/svnmailer.config.ConfigOptionUnknownError-class.html
 docs/apidoc/private/svnmailer-module.html
 docs/apidoc/private/svnmailer.typedstruct.StructMembersDescriptor-class.html
 docs/apidoc/private/svnmailer.notifier._multimail.URLTruncatingDecorator-class.html
-docs/apidoc/private/ConfigParser.ConfigParser-class.html
 docs/apidoc/private/svnmailer.config.ConfigMappingSpecInvalidError-class.html
 docs/apidoc/private/svnmailer.notifier._mail.MailNotifier-class.html
 docs/apidoc/private/toc-svnmailer.stream-module.html
@@ -193,7 +190,6 @@ docs/apidoc/private/svnmailer.notifier._mail-module.html
 docs/apidoc/private/svnmailer.struct_accessors._MailAction-class.html
 docs/apidoc/private/svnmailer.browser.InvalidBaseUrlError-class.html
 docs/apidoc/private/exceptions.StandardError-class.html
-docs/apidoc/private/ConfigParser.RawConfigParser-class.html
 docs/apidoc/private/svnmailer.notifier._multimail._SinglePart-class.html
 docs/apidoc/private/svnmailer.util.ReadOnlyDict-class.html
 docs/apidoc/private/svnmailer.stream.BinaryOrUnicodeStream-class.html
@@ -216,7 +212,6 @@ docs/apidoc/private/svnmailer.main-module.html
 docs/apidoc/private/epydoc.css
 docs/apidoc/private/svnmailer.util.SafeDict-class.html
 docs/apidoc/private/svnmailer.settings.GeneralSettingsContainer-class.html
-docs/apidoc/private/svnmailer.config.SvnmailerConfigParser-class.html
 docs/apidoc/private/svnmailer.cli.CommandlineError-class.html
 docs/apidoc/private/svnmailer.struct_accessors.RegexDescriptor-class.html
 docs/apidoc/private/svn.repos.RevisionChangeCollector-class.html

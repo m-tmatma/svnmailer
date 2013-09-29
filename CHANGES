@@ -1,3 +1,8 @@
+Changes with version 1.0.3
+
+ *) Fix annoying bug, which mangled hyphens in mapping table definitions.
+    Discovered by dAniel hAhler <daniel thequod.de>
+
 Changes with version 1.0.2
 
  *) Fix crash of the help output due to an incompatible change of

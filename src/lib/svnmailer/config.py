@@ -71,14 +71,6 @@ class ConfigOptionUnknownError(ConfigInvalidError):
     pass
 
 
-class SvnmailerConfigParser(ConfigParser.ConfigParser):
-    """ treats x-Y as x_y """
-
-    def optionxform(self, name):
-        """ lower() and replace - with _ """
-        return name.lower().replace('-', '_')
-
-
 class ConfigFileSettings(settings.Settings):
     """ Provide settings from config
 
@@ -87,7 +79,7 @@ class ConfigFileSettings(settings.Settings):
         @type MAPSECTION: C{str}
 
         @ivar _config: The config object
-        @type _config: C{SvnmailerConfigParser}
+        @type _config: C{ConfigParser.ConfigParser}
     """
     __implements__ = [settings.Settings]
 
@@ -231,7 +223,7 @@ class ConfigFileSettings(settings.Settings):
         try:
             for option in self._config.options(section):
                 # options starting with _ are for internal usage
-                if option[:1] == '_':
+                if option[:1] in ('_', '-'):
                     raise ConfigOptionUnknownError(
                         "Unknown option '%s' in section [%s]" %
                         (option, section)
@@ -239,7 +231,8 @@ class ConfigFileSettings(settings.Settings):
 
                 try:
                     container._set_(
-                        option, self._config.get(section, option, raw = True)
+                        option.replace('-', '_'),
+                        self._config.get(section, option, raw = True)
                     )
                 except AttributeError:
                     raise ConfigOptionUnknownError(
@@ -254,7 +247,7 @@ class ConfigFileSettings(settings.Settings):
         """ Parse config file
 
             @return: parsed config
-            @rtype: C{SvnmailerConfigParser}
+            @rtype: C{ConfigParser.ConfigParser}
 
             @exception ConfigNotFoundError: some configfile could not
                 be opened
@@ -263,7 +256,7 @@ class ConfigFileSettings(settings.Settings):
             @exception ConfigMappingSectionNotFoundError: see L{_getPlainMap}
         """
         config_fp = self._findConfig()
-        self._config = SvnmailerConfigParser()
+        self._config = self._createConfigParser()
         try:
             self._config.readfp(config_fp, config_fp.name)
             config_fp.close()
@@ -275,6 +268,15 @@ class ConfigFileSettings(settings.Settings):
             self._applyIncludes(config_fp.name)
 
         self._applyMaps()
+
+
+    def _createConfigParser(self):
+        """ Returns a ConfigParser instance
+
+            @return: The ConfigParser instance
+            @rtype: C{ConfigParser.ConfigParser}
+        """
+        return ConfigParser.ConfigParser()
 
 
     def _findConfig(self, _file = file):
@@ -333,7 +335,7 @@ class ConfigFileSettings(settings.Settings):
         self._maps_ = {}
         remove_sections = [section]
         for option in self._config.options(section):
-            if option[:1] == '_':
+            if option[:1] in ('_', '-'):
                 raise ConfigOptionUnknownError(
                     "Unknown option '%s' in section [%s]" %
                     (option, section)
@@ -342,7 +344,8 @@ class ConfigFileSettings(settings.Settings):
             value = self._config.get(section, option, raw = True)
             if value[:1] == '[' and value[-1:] == ']':
                 this_section = value[1:-1]
-                self._maps_[option] = self._getPlainMap(this_section)
+                self._maps_[option.replace('-', '_')] = \
+                    self._getPlainMap(this_section)
                 remove_sections.append(this_section)
             else:
                 raise ConfigMappingSpecInvalidError(
@@ -391,15 +394,18 @@ class ConfigFileSettings(settings.Settings):
 
             @exception ConfigNotFoundError: Error reading an included file
         """
+        opt = "include_config"
         try:
-            includes = self._config.get(
-                "general", "include_config", raw = True
-            ).strip()
+            try:
+                includes = self._config.get("general", opt, raw = True).strip()
+            except ConfigParser.NoOptionError:
+                opt = "include-config"
+                includes = self._config.get("general", opt, raw = True).strip()
         except ConfigParser.NoOptionError:
             """ don't even ignore """
             pass
         else:
-            self._config.remove_option("general", "include_config")
+            self._config.remove_option("general", opt)
             if not len(includes):
                 return
 
@@ -424,15 +430,18 @@ class ConfigFileSettings(settings.Settings):
 
     def _applyCharset(self):
         """ Applies the charset found in [general] """
+        opt = "config_charset"
         try:
-            charset = self._config.get(
-                "general", "config_charset", raw = True
-            ).strip()
+            try:
+                charset = self._config.get("general", opt, raw = True).strip()
+            except ConfigParser.NoOptionError:
+                opt = "config-charset"
+                charset = self._config.get("general", opt, raw = True).strip()
         except ConfigParser.NoOptionError:
             """ don't even ignore """
             pass
         else:
-            self._config.remove_option("general", "config_charset")
+            self._config.remove_option("general", opt)
             if charset:
                 self._charset_ = charset
 
