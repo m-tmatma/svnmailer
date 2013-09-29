@@ -219,12 +219,12 @@
       <code>*.sha1</code>), which you can use for this task.</p>
 
       <p>After unpacking the archive file change into the
-      <code>svnmailer-1.0.0</code> directory and follow the typical
+      <code>svnmailer-1.0.1</code> directory and follow the typical
       python procedure:</p>
 
       <div class="example"><p><code>
-        $ bzip2 -cd svnmailer-1.0.0.tar.bz2 | tar -xf -<br />
-        $ cd svnmailer-1.0.0<br />
+        $ bzip2 -cd svnmailer-1.0.1.tar.bz2 | tar -xf -<br />
+        $ cd svnmailer-1.0.1<br />
         $ python setup.py install
       </code></p></div>
 
@@ -716,7 +716,7 @@
         id="general-nntp-user-pass">nntp_user and nntp_pass</a></h3>
         <p>These two options are used if a news notification is submitted via
         an <a href="#general-nntp-host"><code>nntp_host</code></a>.
-        They define the credentials to be used in the SMTP
+        They define the credentials to be used in the NNTP
         session when attemting to post the article. If you supply
         <code>nntp_user</code>, you have to define <code>nntp_pass</code> as
         well.</p>
@@ -2429,10 +2429,10 @@ Modified: foo/somefile.html.ru<br />
           <td>Turns on the revpropchange mode</td></tr>
       <tr><td><code>--lock</code> (<code>-p</code>)</td>
           <td>flag</td>
-          <td>Turns on the lock mode</td></tr>
+          <td>Turns on the lock mode. <em>SVN 1.2 and later</em></td></tr>
       <tr><td><code>--unlock</code> (<code>-p</code>)</td>
           <td>flag</td>
-          <td>Turns on the unlock mode</td></tr>
+          <td>Turns on the unlock mode. <em>SVN 1.2 and later</em></td></tr>
       <tr><td><code>--author</code> (<code>-a</code>)</td>
           <td>string</td>
           <td>The author of the change (usually for revprop changes
@@ -2518,7 +2518,7 @@ Modified: foo/somefile.html.ru<br />
 
       <div class="example"><p><code>
         $ svn-mailer --version<br />
-        svnmailer-1.0.0<br />
+        svnmailer-1.0.1<br />
         with svn 1.1.3 (r12730)
       </code></p></div>
 
@@ -2547,7 +2547,7 @@ Modified: foo/somefile.html.ru<br />
         Content-Type: text/plain; charset="utf-8"<br />
         MIME-Version: 1.0<br />
         Content-Transfer-Encoding: quoted-printable<br />
-        X-Mailer: svnmailer-1.0.0<br />
+        X-Mailer: svnmailer-1.0.1<br />
         Date: Sat, 15 Jan 2005 21:03:58 -0000<br />
         Subject: r1 - foo<br />
         To: foo@example.org<br />

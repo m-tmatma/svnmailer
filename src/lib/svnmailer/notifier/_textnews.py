@@ -23,7 +23,7 @@ __all__       = ['TextNewsNotifier']
 __pylintver__ = "0.6.4"
 
 # global imports
-from svnmailer.notifier import _textmail
+from svnmailer.notifier import _textmail, _mail
 
 
 def getNotifier(cls, settings, groupset):
@@ -98,7 +98,7 @@ class TextNewsNotifier(_textmail.TextMailNotifier):
         sender, from_addrs, to_newsgroups, reply_to = \
             self.getNewsAddresses(groups)
         if not to_newsgroups:
-            raise _textmail.NoRecipientsError()
+            raise _mail.NoRecipientsError()
 
         headers = self.getBasicHeaders()
         headers['From'] = from_addrs[0]

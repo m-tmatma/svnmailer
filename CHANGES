@@ -1,3 +1,8 @@
+Changes with version 1.0.1
+
+ *) Fix crash of the news notifier, which happened if it found
+    a group without to_newsgroup defined
+
 Changes with version 1.0.0
 
  *) Evaluate svn:mime-type when looking for file encodings
