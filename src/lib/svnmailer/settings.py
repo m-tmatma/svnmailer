@@ -1,7 +1,8 @@
 # -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=W0142,R0921
+# pylint: disable-msg=W0142,R0201,R0921
+# pylint-version = 0.9.0
 #
-# Copyright 2004-2005 André Malo or his licensors, as applicable
+# Copyright 2004-2006 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -33,7 +34,6 @@ L{Settings} provides methods that return instances of these containers.
 __author__    = "André Malo"
 __docformat__ = "epytext en"
 __all__       = ['Settings', 'modes']
-__pylintver__ = "0.6.4"
 
 # global imports
 from svnmailer import typedstruct, struct_accessors

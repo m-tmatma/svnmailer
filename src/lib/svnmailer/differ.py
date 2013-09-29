@@ -1,6 +1,8 @@
 # -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=R0201
+# pylint-version = 0.9.0
 #
-# Copyright 2004-2005 André Malo or his licensors, as applicable
+# Copyright 2004-2006 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +21,6 @@ Differ classes
 __author__    = "André Malo"
 __docformat__ = "epytext en"
 __all__       = ["InternalDiffer", "ExternalDiffer"]
-__pylintver__ = "0.6.4"
 
 
 class InternalDiffer(object):

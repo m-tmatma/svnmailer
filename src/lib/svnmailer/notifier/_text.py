@@ -1,7 +1,8 @@
 # -*- coding: iso-8859-1 -*-
 # pylint: disable-msg=R0921
+# pylint-version = 0.9.0
 #
-# Copyright 2004-2005 André Malo or his licensors, as applicable
+# Copyright 2004-2006 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +21,6 @@ Plain text notifier base
 __author__    = "André Malo"
 __docformat__ = "epytext en"
 __all__       = ['TextNotifier']
-__pylintver__ = "0.6.4"
 
 # global imports
 from svnmailer.notifier import _base
@@ -166,26 +166,25 @@ class TextNotifier(_base.BaseNotifier):
 
     def writeDiffList(self):
         """ Writes the commit diffs """
-        diff_tokens, diff_tests = self.getDiffTokens(self.config)
-
         self.fp.write("\n")
 
-        set = self.changeset[:]
-        xset = self._groupset.xchanges
-        if xset:
-            set.extend(xset)
+        cset = self.changeset + (self._groupset.xchanges or [])
+        tokens, tests = self.getDiffTokens(self.config)
+        tokentests = zip(tokens, tests)
 
-        for change in set:
-            for test in diff_tests:
+        for change in cset:
+            diff_content, diff_prop = False, False
+            for token, test in tokentests:
                 if test(change):
-                    if change.hasContentChanges():
-                        self.writeContentDiff(change)
+                    if token == self.PROPCHANGE:
+                        diff_prop = True
+                    else:
+                        diff_content = True
 
-                    if change.hasPropertyChanges() and \
-                            self.PROPCHANGE in diff_tokens:
-                        self.writePropertyDiffs(diff_tokens, change)
-                    # one diff per change is enough
-                    break
+            if diff_content:
+                self.writeContentDiff(change)
+            if diff_prop:
+                self.writePropertyDiffs(tokens, change)
 
 
     def writePropertyDiffs(self, diff_tokens, change, raw = False):
@@ -463,16 +462,16 @@ class TextNotifier(_base.BaseNotifier):
                 )
 
 
-    def _doWritePathList(self, set):
+    def _doWritePathList(self, cset):
         """ Write the path list of a particular changeset
 
-            @param set: The changeset to process
-            @type set: C{list}
+            @param cset: The changeset to process
+            @type cset: C{list}
         """
         for title, changes in [(title, changes) for title, changes in (
-            ("Added",    [chg for chg in set if chg.wasAdded()]),
-            ("Removed",  [chg for chg in set if chg.wasDeleted()]),
-            ("Modified", [chg for chg in set if chg.wasModified()]),
+            ("Added",    [chg for chg in cset if chg.wasAdded()]),
+            ("Removed",  [chg for chg in cset if chg.wasDeleted()]),
+            ("Modified", [chg for chg in cset if chg.wasModified()]),
         ) if changes]:
             self.fp.write("%s:\n" % title)
             for change in changes:

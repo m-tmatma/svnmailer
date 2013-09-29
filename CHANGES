@@ -1,3 +1,9 @@
+Changes with version 1.0.6
+
+ *) No longer post the full diff if only generate_diffs = propchange
+    Discovered by: Ling Li <ling caltech.edu> and
+                   Daniel Berlin <dberlin dberlin.org>
+
 Changes with version 1.0.5
 
  *) Fix a nasty typo introduced with 1.0.4, which made multipart mails
