@@ -1,3 +1,8 @@
+Changes with version 1.0.7
+
+ *) Fix unicode error, which crashed the mailer if the common prefix of the
+    files in the subject line contained non-ascii characters
+
 Changes with version 1.0.6
 
  *) No longer post the full diff if only generate_diffs = propchange

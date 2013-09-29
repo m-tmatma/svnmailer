@@ -29,11 +29,11 @@ the svn-mailer command line script.
 __author__    = "André Malo"
 __docformat__ = "epytext en"
 
-version = "1.0.6"
+version = "1.0.7"
 is_dev = False
 
 if is_dev:
-    if "1.0.6".find("@VERSION@") == -1: # dev release
-        version = "1.0.6"
+    if "1.0.7".find("@VERSION@") == -1: # dev release
+        version = "1.0.7"
     else:
         version = "%s-dev" % version

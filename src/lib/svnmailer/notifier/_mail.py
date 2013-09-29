@@ -387,5 +387,5 @@ class MailNotifier(_text.TextNotifier):
         ])
 
         return (prefix and
-            u"in /%s: %s" % (prefix, paths) or paths
+            u"in /%s: %s" % (prefix.decode("utf-8"), paths) or paths
         )
