@@ -1,8 +1,6 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=W0142,R0201
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
 #
-# Copyright 2005-2006 André Malo or his licensors, as applicable
+# Copyright 2005-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -41,7 +39,7 @@ The notifier runs only in the post-commit hook. For activation you need
 to supply the C{cia_rpc_server} option in C{[general]} and at least a
 C{cia_project_name} in the group that should be tracked by CIA.
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"
 __all__       = ['getNotifier']
 
@@ -61,8 +59,8 @@ def getNotifier(config, groupset):
         @return: The list of notifiers (containing 0 or 1 member)
         @rtype: C{list}
     """
-    if config.general.cia_rpc_server and \
-            [group for group in groupset.groups if group.cia_project_name]:
+    if [group for group in groupset.groups
+            if group.cia_rpc_server and group.cia_project_name]:
         return [CIAXMLRPCNotifier(config, groupset)]
 
     return []
@@ -105,24 +103,29 @@ class CIAXMLRPCNotifier(_base.BaseNotifier):
         xset = self._groupset.xchanges
         if xset:
             self.changeset.extend(xset)
-        for group in [group for group in groups if group.cia_project_name]:
+        for group in [group for group in groups
+                if group.cia_rpc_server and group.cia_project_name]:
             self.config = group
             doc = self.composeCIAXMLMessage()
 
             if self._settings.runtime.debug:
                 sys.stdout.write(doc.toprettyxml(' ' * 4, encoding = 'utf-8'))
             else:
-                self.deliverRPCMessage(doc)
+                self.deliverRPCMessage(group.cia_rpc_server, doc)
 
 
-    def deliverRPCMessage(self, doc):
+    def deliverRPCMessage(self, rpc_server, doc):
         """ Delivers the supplied message via XML-RPC
+
+            @param rpc_server: The server to deliver to
+            @type rpc_server: C{unicode}
 
             @param doc: The message document
             @type doc: DOM object
         """
         import xmlrpclib
-        server = xmlrpclib.ServerProxy(self._settings.general.cia_rpc_server)
+
+        server = xmlrpclib.ServerProxy(rpc_server)
         server.hub.deliver(doc.toxml(encoding = 'utf-8'))
 
 

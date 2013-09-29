@@ -1,8 +1,6 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=W0142,R0201,R0921
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
 #
-# Copyright 2004-2006 André Malo or his licensors, as applicable
+# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,7 +29,7 @@ L{GroupSettingsContainer}, L{GeneralSettingsContainer} and
 L{RuntimeSettingsContainer}, but you should not instantiate them directly --
 L{Settings} provides methods that return instances of these containers.
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"
 __all__       = ['Settings', 'modes']
 
@@ -84,6 +82,8 @@ def groupMembers(space):
             - C{max_subject_length}: Maximum subject length
             - C{from_addr}: C{From:} address format string
             - C{to_addr}: C{To:} address format string
+            - C{to_fake}: C{To:} non-address format string
+            - C{bcc_addr}: C{Bcc:} address format string
             - C{reply_to_addr}: C{Reply-To:} address format string
             - C{diff_command}: The diff command to use
             - C{generate_diffs}: List of actions for which diffs are generated
@@ -152,6 +152,10 @@ def groupMembers(space):
                                            {'subst': True, 'map': True}),
             'to_addr'                    : ('tokenlist',
                                            {'subst': True, 'map': True}),
+            'to_fake'                    : ('unicode',
+                                           {'subst': True, 'map': True}),
+            'bcc_addr'                   : ('tokenlist',
+                                           {'subst': True, 'map': True}),
             'reply_to_addr'              : ('unicode',
                                            {'subst': True, 'map': True}),
             'to_newsgroup'               : ('tokenlist',
@@ -168,6 +172,7 @@ def groupMembers(space):
             'custom_header'              : ('unicode',
                                            {'subst': True, 'map': True}),
             'extract_x509_author'        : 'humanbool',
+            'cia_rpc_server'             : ('unicode',    {'map': True}),
             'cia_project_name'           : ('unicode',
                                            {'subst': True, 'map': True}),
             'cia_project_module'         : ('unicode',
@@ -236,10 +241,10 @@ def generalMembers(space):
             'nntp_user'         : ('quotedstr',  {'map': True}),
             'nntp_pass'         : ('quotedstr',  {'map': True}),
             'debug_all_mails_to': ('tokenlist',  {'map': True}),
-            'cia_rpc_server'    : ('unicode',    {'map': True}),
             'tempdir'           : ('filename',   {'map': True}),
 
             # deprecated
+            'cia_rpc_server'    : ('unicode',    {'map': True}),
             'diff_command'      : ('unicommand', {'map': True}),
         },
         'aliases'    : {
@@ -348,8 +353,8 @@ class GroupSettingsContainer(typedstruct.Struct):
             '_name', '_def_for_repos', '_def_for_paths',
             'for_repos', 'for_paths', 'exclude_paths',
             'ignore_if_other_matches', 'to_addr', 'from_addr',
-            'to_newsgroup', 'custom_header', 'cia_project_name',
-            'cia_project_module', 'cia_project_branch',
+            'to_newsgroup', 'custom_header', 'cia_rpc_server',
+            'cia_project_name', 'cia_project_module', 'cia_project_branch',
             'cia_project_submodule', 'cia_project_path',
         ]
 

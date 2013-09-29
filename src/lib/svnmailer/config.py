@@ -1,8 +1,7 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=W0142,R0201,W0201
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
+# pylint: disable-msg = W0201
 #
-# Copyright 2004-2006 André Malo or his licensors, as applicable
+# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +17,7 @@
 """
 Configfile parsing
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"
 __all__       = [
     'ConfigFileSettings',
@@ -161,12 +160,14 @@ class ConfigFileSettings(settings.Settings):
             @rtype: C{svnmailer.settings.GroupSettingsContainer}
         """
         defaults = self.getDefaultGroupContainer(
-            _name = "defaults", diff_command = self.general.diff_command,
+            _name = "defaults",
+            diff_command = self.general.diff_command,
+            cia_rpc_server = self.general.cia_rpc_server,
         )
         try:
             self._passConfig(defaults, "defaults")
         except ConfigSectionNotFoundError:
-            """ [defaults] is optional """
+            # [defaults] is optional
             pass
         else:
             self._config.remove_section('defaults')
@@ -402,7 +403,7 @@ class ConfigFileSettings(settings.Settings):
                 opt = "include-config"
                 includes = self._config.get("general", opt, raw = True).strip()
         except ConfigParser.NoOptionError:
-            """ don't even ignore """
+            # don't even ignore
             pass
         else:
             self._config.remove_option("general", opt)
@@ -438,7 +439,7 @@ class ConfigFileSettings(settings.Settings):
                 opt = "config-charset"
                 charset = self._config.get("general", opt, raw = True).strip()
         except ConfigParser.NoOptionError:
-            """ don't even ignore """
+            # don't even ignore
             pass
         else:
             self._config.remove_option("general", opt)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.3
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 
 def check_versions():
@@ -24,9 +24,9 @@ def setup():
 
     core.setup(
         name = "svnmailer",
-        version = "1.0.7",
+        version = "1.0.8",
         description = "Feature rich subversion commit notification tool",
-        author = "André Malo",
+        author = "AndrÃ© Malo",
         author_email = "nd@perlig.de",
         url = "http://opensource.perlig.de/svnmailer/",
         license = "Apache License 2.0",

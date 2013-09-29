@@ -1,8 +1,7 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=W0103
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
+# pylint: disable-msg = C0121
 #
-# Copyright 2004-2006 André Malo or his licensors, as applicable
+# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,5 +19,5 @@ Package svnmailer.notifier
 
 This package contains the different notifier classes
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"

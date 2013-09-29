@@ -1,8 +1,7 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=W0103
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
+# pylint: disable-msg = C0121
 #
-# Copyright 2004-2006 André Malo or his licensors, as applicable
+# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,14 +25,14 @@ the svn-mailer command line script.
 @var is_dev: is development version?
 @type is_dev: C{bool}
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"
 
-version = "1.0.7"
+version = "1.0.8"
 is_dev = False
 
 if is_dev:
-    if "1.0.7".find("@VERSION@") == -1: # dev release
-        version = "1.0.7"
+    if "1.0.8".find("@VERSION@") == -1: # dev release
+        version = "1.0.8"
     else:
         version = "%s-dev" % version

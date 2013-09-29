@@ -1,8 +1,7 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=E0611,W0142,W0201,R0901,C0103
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
+# pylint: disable-msg = C0103, R0901, W0201
 #
-# Copyright 2004-2006 André Malo or his licensors, as applicable
+# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +23,7 @@ Access to the subversion respository
 @var _SVN_INVALID_REVNUM: the invalid revision number
 @type _SVN_INVALID_REVNUM: C{int}
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"
 __all__       = [
     'version', 'Repository', 'Error', 'RepositoryError', 'isUnicodeProperty'

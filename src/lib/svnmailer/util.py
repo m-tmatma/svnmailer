@@ -1,8 +1,7 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=R0201,W0622
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
+# pylint: disable-msg = W0613, W0622, W0704
 #
-# Copyright 2004-2006 André Malo or his licensors, as applicable
+# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +22,7 @@ This module contains some utility functions and classes used in several
 places of the svnmailer. These functions have a quite general character
 and can be used easily outside of the svnmailer as well.
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"
 __all__       = [
     'TempFile',
@@ -97,14 +96,14 @@ class TempFile(object):
             try:
                 self.fp.close()
             except ValueError:
-                """ ok """
+                # ok
                 pass
 
         if self.name and self._unlink:
             try:
                 self._unlink(self.name)
             except OSError:
-                """ don't even ignore """
+                # don't even ignore
                 pass
 
 
@@ -176,8 +175,6 @@ class _DummyPopen3(object):
 
     def __init__(self, cmd, capturestderr = False, bufsize = -1):
         """ Initialization """
-        capturestderr # pylint ;)
-
         bufsize = -1 # otherwise error on win32
         capturestderr = False # we don't do this on win32
         self.tochild, self.fromchild = os.popen2(cmd, 'b', bufsize)
@@ -540,7 +537,7 @@ def modifyQuery(query, rem = None, add = None, set = None, delim = '&'):
         try:
             del query_dict[key]
         except KeyError:
-            """ don't even ignore """
+            # don't even ignore
             pass
 
     # apply add

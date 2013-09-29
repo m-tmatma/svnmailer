@@ -1,8 +1,7 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=R0201,R0921
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
+# pylint: disable-msg = W0613
 #
-# Copyright 2004-2006 André Malo or his licensors, as applicable
+# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +17,7 @@
 """
 Email notifier base module
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"
 __all__       = ["MailNotifier"]
 
@@ -165,8 +164,10 @@ class MailNotifier(_text.TextNotifier):
         """
         from email import Header
 
-        sender, from_addrs, to_addrs, reply_to = self.getMailAddresses(groups)
-        if not to_addrs:
+        sender, from_addrs, reply_to, to_addrs, to_fakes, bcc_addrs = \
+            self.getMailAddresses(groups)
+        recipients = to_addrs + bcc_addrs
+        if not recipients:
             raise NoRecipientsError()
 
         headers = self.getBasicHeaders()
@@ -174,9 +175,12 @@ class MailNotifier(_text.TextNotifier):
 
         if self._settings.general.debug_all_mails_to:
             headers['X-Supposed-Recipients'] = \
-                Header.Header(', '.join(to_addrs))
-            to_addrs = self._settings.general.debug_all_mails_to
-        headers['To'] = Header.Header(', '.join(to_addrs))
+                Header.Header(', '.join(recipients))
+            recipients = self._settings.general.debug_all_mails_to
+        if to_addrs:
+            headers['To'] = Header.Header(', '.join(to_addrs))
+        elif to_fakes:
+            headers['To'] = Header.Header(', '.join(to_fakes))
 
         if reply_to:
             headers['Reply-To'] = Header.Header(', '.join(reply_to))
@@ -193,7 +197,7 @@ class MailNotifier(_text.TextNotifier):
                 "[%s]" % group._name for group in groups
             ]), 'iso-8859-1')
 
-        return (sender, to_addrs, headers)
+        return (sender, recipients, headers)
 
 
     def getCustomHeaders(self, groups):
@@ -235,17 +239,22 @@ class MailNotifier(_text.TextNotifier):
             @param groups: The groups to process
             @type groups: C{list}
 
-            @return: The address lists (sender, from, to, reply-to)
+            @return: The address lists (sender, from, reply-to, to, to-fake,
+                     bcc)
             @rtype: C{tuple}
         """
         from_addrs = []
         to_addrs = []
+        to_fakes = []
+        bcc_addrs = []
         reply_to = []
 
         sender = None
         for group in groups:
             from_addrs.extend(group.from_addr or [])
             to_addrs.extend(group.to_addr or [])
+            bcc_addrs.extend(group.bcc_addr or [])
+            to_fakes.extend(group.to_fake and [group.to_fake] or [])
             reply_to.extend(
                 group.reply_to_addr and [group.reply_to_addr] or []
             )
@@ -255,9 +264,17 @@ class MailNotifier(_text.TextNotifier):
             or u'no_author'
         ]
         to_addrs = dict.fromkeys(to_addrs).keys()
+        bcc_addrs = dict.fromkeys(bcc_addrs).keys()
         reply_to = dict.fromkeys(reply_to).keys()
+        if to_addrs:
+            to_fakes = []
+        else:
+            to_fakes = dict.fromkeys(to_fakes).keys()
 
-        return (sender or from_addrs[0], from_addrs, to_addrs, reply_to)
+        return (
+            sender or from_addrs[0], from_addrs, reply_to,
+            to_addrs, to_fakes, bcc_addrs
+        )
 
 
     def getMailSubject(self, countprefix = None):

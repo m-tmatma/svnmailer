@@ -63,7 +63,8 @@
             <li><a
             href="#general-debug-all-mails-to"><code>debug_all_mails_to</code></a></li>
             <li><a
-            href="#general-cia-rpc-server"><code>cia_rpc_server</code></a></li>
+            href="#general-cia-rpc-server"><code>cia_rpc_server</code></a>
+            (deprecated)</li>
             <li><a href="#general-tempdir"><code>tempdir</code></a></li>
           </ul>
         </li>
@@ -86,7 +87,7 @@
             <li><a
             href="#groups-max-subject-length"><code>max_subject_length</code></a></li>
             <li><a href="#groups-addr"><code>from_addr</code>,
-            <code>to_addr</code> and <code>reply_to_addr</code></a></li>
+            <code>reply_to_addr</code>, <code>to_addr</code>, <code>to_fake</code> and <code>bcc_addr</code></a></li>
             <li><a
             href="#groups-to-newsgroup"><code>to_newsgroup</code></a></li>
             <li><a
@@ -107,6 +108,8 @@
             href="#groups-show-charset"><code>show_applied_charset</code></a></li>
             <li><a href="#groups-custom-header"><code>custom_header</code></a></li>
             <li><a href="#groups-extract-x509"><code>extract_x509_author</code></a></li>
+            <li><a
+            href="#groups-cia-rpc-server"><code>cia_rpc_server</code></a></li>
             <li><a
             href="#groups-cia-project-name"><code>cia_project_name</code></a></li>
             <li><a
@@ -219,12 +222,12 @@
       <code>*.sha1</code>), which you can use for this task.</p>
 
       <p>After unpacking the archive file change into the
-      <code>svnmailer-1.0.7</code> directory and follow the typical
+      <code>svnmailer-1.0.8</code> directory and follow the typical
       python procedure:</p>
 
       <div class="example"><p><code>
-        $ bzip2 -cd svnmailer-1.0.7.tar.bz2 | tar -xf -<br />
-        $ cd svnmailer-1.0.7<br />
+        $ bzip2 -cd svnmailer-1.0.8.tar.bz2 | tar -xf -<br />
+        $ cd svnmailer-1.0.8<br />
         $ python setup.py install
       </code></p></div>
 
@@ -472,7 +475,7 @@
       <tr><td><code>debug_all_mails_to</code></td>
           <td>mail addresses</td>
           <td>Mails should go only to these fixed addresses</td></tr>
-      <tr><td><code>cia_rpc_server</code></td>
+      <tr><td><code>cia_rpc_server</code> (deprecated)</td>
           <td>string</td>
           <td>CIA XML-RPC tracking server</td></tr>
       <tr><td><code>tempdir</code></td>
@@ -741,7 +744,8 @@
 
         <p>This one is a real debugging option. It specifies a fixed list of
         mail addresses, where all notification mails should be sent to --
-        regardless of the <a href="#groups-addr"><code>to_addr</code></a>
+        regardless of the <a href="#groups-addr"><code>to_addr</code> or
+        <code>bcc_addr</code></a>
         templates of the selected groups. The addresses of the overridden
         recipients are sent along with the mail using the
         <code>X-Supposed-Recipients</code> header.</p>
@@ -756,34 +760,10 @@
 <!-- general: cia_rpc_server -->
         <h3><a name="general-cia-rpc-server"
         id="general-cia-rpc-server">cia_rpc_server</a></h3>
-        <p>The <dfn><code>cia_rpc_server</code></dfn> option defines a <a
-        href="http://cia.navi.cx/">CIA</a> XML-RPC handler, where your commits 
-        or some of them) should be tracked in real time. If this option is
-        defined and not empty, the <code>cia_xmlrpc</code> notifier is
-        considered to be run, but it will be activated only if the <a
-        href="#config-selection">selected notification group</a> defines a <a
-        href="#groups-cia-project-name"><code>cia_project_name</code></a>
-        option. Note that it's possible for every group to run more than one
-        notifier (e.g., <code>mail</code> and <code>cia_xmlrpc</code>) per
-        commit.</p>
-
-        <p>The <code>cia_rpc_server</code> option takes a <code>http</code> or
-        <code>https</code> URL. Note that the trailing slash is
-        <em>important</em>. If there's no URL path given (i.e., just
-        <code>http://server</code>), the svnmailer (or better, the utilized <a
-        href="http://docs.python.org/lib/module-xmlrpclib.html">XML-RPC
-        library</a>) assumes it to be <code>/RPC2</code>.</p>
-
-        <p>The CIA notifier will not send any information if it runs in the
-        post-revprop-change hook. By default there's no RPC server defined.</p>
-
-        <div class="example"><p><code>
-          # Example<br />
-          # =======<br />
-          [general]<br />
-          # (note the missing trailing slash!)<br />
-          cia_rpc_server = http://cia.navi.cx
-        </code></p></div>
+        <p>The <dfn><code>cia_rpc_server</code></dfn> in <code>[general]</code>
+        if deprecated. <a href="#groups-cia-rpc-server"
+        ><code>cia_rpc_server</code> options defined in group sections</a> are
+        preferred to the ones defined in <code>[general]</code>.</p>
 
 <!-- general: tempdir -->
         <h3><a name="general-tempdir" id="general-tempdir">tempdir</a></h3>
@@ -913,6 +893,9 @@
           <td>boolean</td>
           <td>Treats the author as x509 subject string and tries to extract
               the author's real name and email address</td></tr>
+      <tr><td><code>cia_rpc_server</code></td>
+          <td>string</td>
+          <td>CIA XML-RPC tracking server</td></tr>
       <tr><td><code>cia_project_name</code></td>
           <td>template</td>
           <td>The project name submitted to the CIA tracker</td></tr>
@@ -1312,25 +1295,36 @@
 <!-- groups: from_addr -->
 <!-- groups: to_addr -->
 <!-- groups: reply_to_addr -->
-        <h3><a name="groups-addr" id="groups-addr">from_addr, to_addr and
-        reply_to_addr</a></h3>
-        <p><dfn><code>from_addr</code></dfn>, <dfn><code>to_addr</code></dfn>
-        and <dfn><code>reply_to_addr</code></dfn> define address templates for
-        the mails to be sent. Both <code>from_addr</code> and
-        <code>to_addr</code> accept space or tab separated lists of address
+        <h3><a name="groups-addr" id="groups-addr">from_addr, reply_to_addr,
+        to_addr, to_fake and bcc_addr</a></h3>
+        <p><dfn><code>from_addr</code></dfn>,
+        <dfn><code>reply_to_addr</code></dfn>, <dfn><code>to_addr</code></dfn>
+        and <dfn><code>bcc_addr</code></dfn> define address templates for
+        the mails to be sent. <code>from_addr</code>, <code>to_addr</code> and
+        <code>bcc_addr</code> accept space or tab separated lists of address
         templates, while <code>reply_to_addr</code> takes just one address. The
-        semantics should be quite clear: <code>from_addr</code> defines the sender
-        addresses (but usually just one), <code>to_addr</code> the recipient
-        addresses and <code>reply_to_addr</code> the address, where answers to
+        basic semantics should be quite clear: <code>from_addr</code> defines
+        the sender addresses (but usually just one), <code>to_addr</code> the
+        recipient addresses which should show up in the <code>To</code> header,
+        <code>bcc_addr</code> the undisclosed recipients and
+        <code>reply_to_addr</code> the address, where answers to
         the commit mail should be sent to. If groups are merged during the
         selection process, there can be any number of senders, receivers and
         even reply-to addresses in the mail (which conforms to <a
-        href="http://ftp.rfc-editor.org/in-notes/rfc2822.txt">RFC 2822</a>, if you
-        care about such things). Duplicates in the address lists are filtered
-        away. In the case of more than one final sender address, the svnmailer
-        generates an additional <code>Sender:</code> header with the first
-        item of the sender address list (which is more or less random, but
-        they should be all valid, right?).</p>
+        href="http://ftp.rfc-editor.org/in-notes/rfc2822.txt">RFC 2822</a>,
+        if you care about such things). Duplicates in the address lists are
+        filtered away. In the case of more than one final sender address, the
+        svnmailer generates an additional <code>Sender:</code> header with the
+        first item of the sender address list (which is more or less random,
+        but they should be all valid, right?).</p>
+
+        <p>The <dfn><code>to_fake</code></dfn> option comes into play if you
+        have <code>bcc_addr</code> defined but no <code>to_addr</code>. By
+        default, the svnmailer would just omit the <code>To</code> header
+        and send the mail to the bcc recipients without this header. You
+        might want to fill the header with a dummy address in this case.
+        <code>to_fake</code> will be just written into the header but
+        not treated as valid recipient address.</p>
 
         <p>If there are no sender addresses given, it uses the string
         <code>no_author</code> (as the original script does). That may lead to
@@ -1342,7 +1336,7 @@
         XML-RPC active). If this is not, what you want, you have to
         supply functioning <code>to_addr</code> options.</p>
 
-        <p>All those addresses may contain <a
+        <p>All those options may contain <a
         href="#groups-subst">substitution</a> patterns in the form
         <code>%(<var>name</var>)s</code>. The list of values to substitute is
         determined for each notification group dynamically using the
@@ -1358,6 +1352,9 @@
         <p>All address templates described here are empty by default. For
         compatibility reasons the <code>reply_to_addr</code> option can also
         be written as <code>reply_to</code>.</p>
+
+        <p><code>bcc_addr</code> and <code>to_fake</code> are available in
+        version 1.0.8 and later.</p>
 
         <div class="example"><p><code>
           # Example<br />
@@ -2055,6 +2052,41 @@ Modified: foo/somefile.html.ru<br />
           from_addr = %(x509_address)s
         </code></p></div>
 
+<!-- groups: cia_rpc_server -->
+        <h3><a name="groups-cia-rpc-server"
+        id="groups-cia-rpc-server">cia_rpc_server</a></h3>
+        <p>The <dfn><code>cia_rpc_server</code></dfn> option defines a <a
+        href="http://cia.navi.cx/">CIA</a> XML-RPC handler, where your commits 
+        or some of them) should be tracked in real time. If this option is
+        defined and not empty, the <code>cia_xmlrpc</code> notifier is
+        considered to be run, but it will be activated only if the <a
+        href="#config-selection">selected notification group</a> defines a <a
+        href="#groups-cia-project-name"><code>cia_project_name</code></a>
+        option. Note that it's possible for every group to run more than one
+        notifier (e.g., <code>mail</code> and <code>cia_xmlrpc</code>) per
+        commit.</p>
+
+        <p>The <code>cia_rpc_server</code> option takes a <code>http</code> or
+        <code>https</code> URL. Note that the trailing slash is
+        <em>important</em>. If there's no URL path given (i.e., just
+        <code>http://server</code>), the svnmailer (or better, the utilized <a
+        href="http://docs.python.org/lib/module-xmlrpclib.html">XML-RPC
+        library</a>) assumes it to be <code>/RPC2</code>.</p>
+
+        <p>The CIA notifier will not send any information if it runs in the
+        post-revprop-change hook. By default there's no RPC server defined.</p>
+
+        <p>The <code>cia_rpc_server</code> option is allowed in group
+        section in version 1.0.8 and later.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          # (note the missing trailing slash!)<br />
+          cia_rpc_server = http://cia.navi.cx
+        </code></p></div>
+
 <!-- groups: cia_project_name -->
         <h3><a name="groups-cia-project-name"
         id="groups-cia-project-name">cia_project_name</a></h3>
@@ -2062,7 +2094,7 @@ Modified: foo/somefile.html.ru<br />
         name under which the changes are tracked in a <a
         href="http://cia.navi.cx/">CIA real time tracker</a>. In order to track
         your projects using CIA notifiations you need to define the <a
-        href="#general-cia-rpc-server"><code>cia_rpc_server</code></a> option
+        href="#groups-cia-rpc-server"><code>cia_rpc_server</code></a> option
         properly at least and a <code>cia_project_name</code> for the
         notification groups that should be tracked. However, you should
         consider to set <a
@@ -2077,7 +2109,7 @@ Modified: foo/somefile.html.ru<br />
         <div class="example"><p><code>
           # Example<br />
           # =======<br />
-          [general]<br />
+          [defaults]<br />
           cia_rpc_server = http://cia.example.org<br />
           <br />
           [some group]<br />
@@ -2103,11 +2135,9 @@ Modified: foo/somefile.html.ru<br />
         <div class="example"><p><code>
           # Example<br />
           # =======<br />
-          [general]<br />
-          cia_rpc_server = http://cia.example.org<br />
-          <br />
           [defaults]<br />
           for_paths = [^/]+/(?P&lt;MOD&gt;[^/]+)/(?:branches/(?P&lt;BRA&gt;[^/]+)/)?<br />
+          cia_rpc_server = http://cia.example.org<br />
           cia_project_module = %(MOD)s<br />
           cia_project_branch = %(BRA)s<br />
           <br />
@@ -2138,11 +2168,9 @@ Modified: foo/somefile.html.ru<br />
         <div class="example"><p><code>
           # Example<br />
           # =======<br />
-          [general]<br />
-          cia_rpc_server = http://cia.example.org<br />
-          <br />
           [defaults]<br />
           for_paths = (?P&lt;PATH&gt;[^/]+)/(?P&lt;MOD&gt;[^/]+)/(?:branches/(?P&lt;BRA&gt;[^/]+)/)?<br />
+          cia_rpc_server = http://cia.example.org<br />
           cia_project_module = %(MOD)s<br />
           cia_project_branch = %(BRA)s<br />
           cia_project_path   = %(PATH)s<br />
@@ -2543,7 +2571,7 @@ Modified: foo/somefile.html.ru<br />
 
       <div class="example"><p><code>
         $ svn-mailer --version<br />
-        svnmailer-1.0.7<br />
+        svnmailer-1.0.8<br />
         with svn 1.1.3 (r12730)
       </code></p></div>
 
@@ -2572,7 +2600,7 @@ Modified: foo/somefile.html.ru<br />
         Content-Type: text/plain; charset="utf-8"<br />
         MIME-Version: 1.0<br />
         Content-Transfer-Encoding: quoted-printable<br />
-        X-Mailer: svnmailer-1.0.7<br />
+        X-Mailer: svnmailer-1.0.8<br />
         Date: Sat, 15 Jan 2005 21:03:58 -0000<br />
         Subject: r1 - foo<br />
         To: foo@example.org<br />

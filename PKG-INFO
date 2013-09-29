@@ -1,9 +1,9 @@
 Metadata-Version: 1.0
 Name: svnmailer
-Version: 1.0.7
+Version: 1.0.8
 Summary: Feature rich subversion commit notification tool
 Home-page: http://opensource.perlig.de/svnmailer/
-Author: André Malo
+Author: AndrÃ© Malo
 Author-email: nd@perlig.de
 License: Apache License 2.0
 Description: UNKNOWN

@@ -1,8 +1,7 @@
-# -*- coding: iso-8859-1 -*-
-# pylint: disable-msg=W0613,R0201,R0921
-# pylint-version = 0.9.0
+# -*- coding: utf-8 -*-
+# pylint: disable-msg = W0613, W0704
 #
-# Copyright 2004-2006 André Malo or his licensors, as applicable
+# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +23,7 @@ Base notifier class
 @var CTRL_CHARS: provides a list of control chars (< ascii 32)
 @type CTRL_CHARS: C{str}
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "epytext en"
 __all__       = ['BaseNotifier']
 
@@ -355,7 +354,7 @@ class BaseNotifier(object):
                     change.getBasePath(), change.getBaseRevision()
                 )
             except exceptions.LookupError:
-                """ fall back """
+                # fall back
                 pass
 
         if change.wasDeleted():
@@ -366,7 +365,7 @@ class BaseNotifier(object):
                     change.path, change.revision
                 )
             except exceptions.LookupError:
-                """ fall back """
+                # fall back
                 pass
 
         if change.wasAdded() and not change.wasCopied():
