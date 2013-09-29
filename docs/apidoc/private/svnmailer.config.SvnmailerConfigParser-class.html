@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.config.SvnmailerConfigParser</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.config-module.html">Module&nbsp;config</a> ::
+        Class&nbsp;SvnmailerConfigParser
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/svnmailer.config.SvnmailerConfigParser-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class SvnmailerConfigParser</h2>
+
+<pre class="base-tree">
+<a href="ConfigParser.RawConfigParser-class.html"><code>RawConfigParser</code></a> --+    
+                  |    
+       <a href="ConfigParser.ConfigParser-class.html"><code>ConfigParser</code></a> --+
+                      |
+                     <b>SvnmailerConfigParser</b>
+</pre><br />
+
+<hr/>
+
+treats x-Y as x_y
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.SvnmailerConfigParser-class.html#optionxform" class="summary-sig-name"><code>optionxform</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>)</span></code>
+<br />
+lower() and replace - with _</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from ConfigParser</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.ConfigParser-class.html#get" class="summary-sig-name"><code>get</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>,
+          <span class=summary-sig-arg>raw</span>,
+          <span class=summary-sig-arg>vars</span>)</span></code>
+<br />
+Get an option value for a given section.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.ConfigParser-class.html#items" class="summary-sig-name"><code>items</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>raw</span>,
+          <span class=summary-sig-arg>vars</span>)</span></code>
+<br />
+Return a list of tuples with (name, value) for each option
+in the section.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/ConfigParser.ConfigParser-class.html#_interpolate" class="summary-sig-name"><code>_interpolate</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>,
+          <span class=summary-sig-arg>rawval</span>,
+          <span class=summary-sig-arg>vars</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/ConfigParser.ConfigParser-class.html#_interpolation_replace" class="summary-sig-name"><code>_interpolation_replace</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>match</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from RawConfigParser</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>defaults</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#add_section" class="summary-sig-name"><code>add_section</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>)</span></code>
+<br />
+Create a new section in the configuration.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#defaults" class="summary-sig-name"><code>defaults</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#getboolean" class="summary-sig-name"><code>getboolean</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#getfloat" class="summary-sig-name"><code>getfloat</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#getint" class="summary-sig-name"><code>getint</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#has_option" class="summary-sig-name"><code>has_option</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+<br />
+Check for the existence of a given option in a given section.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#has_section" class="summary-sig-name"><code>has_section</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>)</span></code>
+<br />
+Indicate whether the named section is present in the configuration.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#options" class="summary-sig-name"><code>options</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>)</span></code>
+<br />
+Return a list of option names for the given section name.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#read" class="summary-sig-name"><code>read</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>filenames</span>)</span></code>
+<br />
+Read and parse a filename or a list of filenames.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#readfp" class="summary-sig-name"><code>readfp</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>fp</span>,
+          <span class=summary-sig-arg>filename</span>)</span></code>
+<br />
+Like read() but the argument must be a file-like object.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#remove_option" class="summary-sig-name"><code>remove_option</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+<br />
+Remove an option.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#remove_section" class="summary-sig-name"><code>remove_section</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>)</span></code>
+<br />
+Remove a file section.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#sections" class="summary-sig-name"><code>sections</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Return a list of section names, excluding [DEFAULT]...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#set" class="summary-sig-name"><code>set</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>,
+          <span class=summary-sig-arg>value</span>)</span></code>
+<br />
+Set an option.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="ConfigParser.RawConfigParser-class.html#write" class="summary-sig-name"><code>write</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>fp</span>)</span></code>
+<br />
+Write an .ini-format representation of the configuration state.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/ConfigParser.RawConfigParser-class.html#_get" class="summary-sig-name"><code>_get</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>conv</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/ConfigParser.RawConfigParser-class.html#_read" class="summary-sig-name"><code>_read</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>fp</span>,
+          <span class=summary-sig-arg>fpname</span>)</span></code>
+<br />
+Parse a sectioned setup file.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from ConfigParser</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>SRE_Pattern</code></font></td>
+<td><b><a href="../private/ConfigParser.ConfigParser-class.html#_KEYCRE"><code>_KEYCRE</code></a></b> = <span title="&lt;_sre.SRE_Pattern object at 0xb7b3c020&gt;"><code><span class="re">%<span class="re-char">\(</span><span class="re-group">(</span><span class="re-group">[^</span><span class="re-char">\)</span><span class="re-group">]</span><span class="re-op">*</span><span class="re-group">)</span><span class="re-char">\)</span>s<span class="re-op">|</span><span class="re-char">.</span></span>                               </code>
+</span></td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from RawConfigParser</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>SRE_Pattern</code></font></td>
+<td><b><a href="ConfigParser.RawConfigParser-class.html#OPTCRE"><code>OPTCRE</code></a></b> = <span title="&lt;_sre.SRE_Pattern object at 0x80f7748&gt;"><code><span class="re"><span class="re-group">(</span><span class="re-group">[</span><span class="re-group">^</span>:=<span class="re-char">\s</span><span class="re-group">]</span><span class="re-group">[</span><span class="re-group">^</span>:=<span class="re-group">]</span><span class="re-op">*</span><span class="re-group">)</span><span class="re-char">\s</span><span class="re-op">*</span><span class="re-group">(</span><span class="re-group">[</span>:=<span class="re-group">]</span><span class="re-group">)</span><span class="re-char">\s</span><span class="re-op">*</span><span class="re-group">(</span><span class="re-char">.</span><span class="re-op">*</span><span class="re-group">)</span><span class="re-char">$</span></span>                </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>SRE_Pattern</code></font></td>
+<td><b><a href="ConfigParser.RawConfigParser-class.html#SECTCRE"><code>SECTCRE</code></a></b> = <span title="&lt;_sre.SRE_Pattern object at 0xb7b83260&gt;"><code><span class="re"><span class="re-char">\[</span><span class="re-group">(</span><span class="re-group">[^</span><span class="re-char">\]</span><span class="re-group">]</span><span class="re-op">+</span><span class="re-group">)</span><span class="re-char">\]</span></span>                                   </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="../private/ConfigParser.RawConfigParser-class.html#_boolean_states"><code>_boolean_states</code></a></b> = <span title="{'on': True, 'false': False, 'no': False, '1': True, '0': False, 'off': False, 'yes': True, 'true': True}"><code>{'on':&nbsp;True,&nbsp;'false':&nbsp;False,&nbsp;'no':&nbsp;Fal<span class="variable-ellipsis">...</span></code>
+</span></td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="optionxform"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">optionxform</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>name</span>)</span>
+  </h3>
+  lower() and replace - with _
+  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="ConfigParser.RawConfigParser-class.html#optionxform"><code>ConfigParser.RawConfigParser.optionxform</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:06 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

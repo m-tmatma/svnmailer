@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.typedstruct</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        Module&nbsp;typedstruct
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<a href="../private/svnmailer.typedstruct-module.html">show&nbsp;private</a>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer.typedstruct-module.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF MODULE DESCRIPTION =========== -->
+<h2 class="module">Module svnmailer.typedstruct</h2>
+
+<h1 class="heading">Typed Data Structures</h1>
+  This module provides helpers for creating typed data structures.
+  <h2 class="heading">Basic Usage</h2>
+    In order to create a new data structure, you inherit from 
+    <code>Struct</code> and define the members like so (the booleans are 
+    explained later):
+<pre class="literalblock">
+   class MyStruct(typedstruct.Struct):
+       __slots__ = typedstruct.members(locals(), {
+           'name1': None,
+           # ... and/or ...
+           'name2': &lt;type&gt;,
+           # ... and/or ...
+           'name3': (&lt;type&gt;, &lt;param&gt;),
+       })
+</pre>
+    If there are no fixed types at all (always <code>None</code>, you 
+    can still benefit from the features of the <a 
+    href="svnmailer.typedstruct.Struct-class.html" 
+    class="link"><code>Struct</code></a> class and further write it a bit 
+    simpler:
+<pre class="literalblock">
+   class MyStruct(typedstruct.Struct):
+       __slots__ = typedstruct.members(locals(), (
+           'name1', 'name2', ...
+       ))
+</pre>
+    Well, the main reason for using the Struct class is to get some 
+    level of type safety and automatic conversion without a complex 
+    written definition of <code>property</code> for each and every member 
+    (it uses some property like descriptors internally, however). This 
+    encapsulates a lot of ugly logic and error handling (more or less) 
+    into a single piece of code and makes the member definitions 
+    <i>much</i> easier to read and maintain. For example, you can create 
+    a struct member of type <code>regex</code>. Now you assign a string 
+    to this member and it is automatically compiled to a regex, which you 
+    get, if you retrieve the value later. As you'll see, the 
+    <code>regex</code> type needs to be defined as a class which should 
+    be inherited from the <a 
+    href="svnmailer.typedstruct.MemberDescriptor-class.html" 
+    class="link"><code>MemberDescriptor</code></a> class and assigned to 
+    the <code>regex</code> type name via a type mapping dict:
+<pre class="literalblock">
+   class RegexMember(typedstruct.MemberDescriptor):
+       def transform(self, value, arg):
+           import re
+           return re.compile(value)
+   # ...
+   typemap = {'regex': RegexMember}
+   # ...
+   class MyStruct(typedstruct.Struct):
+       __slots__ = typedstruct.members(locals(), {
+           'checker': 'regex',
+       }, typemap = typemap)
+   # ...
+   store = MyStruct()
+   store.checker = r'[a-zA-Z]$'
+   # ...
+   if store.checker.match(stringtocheck):
+       # do something
+</pre>
+  <h2 class="heading">Constraints</h2>
+    Member names must be valid python identifiers. Further all names 
+    starting <i>and</i> ending with underscores are reserved for <a 
+    href="svnmailer.typedstruct.Struct-class.html" 
+    class="link"><code>Struct</code></a>'s or python's own purposes.
+<hr/>
+
+<!-- =========== START OF CLASSES =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Classes</th></tr>
+<tr><td width="15%">
+  <b><a href="svnmailer.typedstruct.MemberDescriptor-class.html"><code>MemberDescriptor</code></a></b></td>
+  <td>Base class for members descriptors</td></tr>
+<tr><td width="15%">
+  <b><a href="svnmailer.typedstruct.Struct-class.html"><code>Struct</code></a></b></td>
+  <td>General structure stub</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Function Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.typedstruct-module.html#members" class="summary-sig-name"><code>members</code></a>(<span class=summary-sig-arg>space</span>,
+          <span class=summary-sig-arg>the_members</span>,
+          <span class=summary-sig-arg>aliases</span>,
+          <span class=summary-sig-arg>typemap</span>)</span></code>
+<br />
+supply the member and slot entries</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Function Details</th></tr>
+</table>
+
+<a name="members"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">members</span>(<span class=sig-arg>space</span>,
+          <span class=sig-arg>the_members</span>,
+          <span class=sig-arg>aliases</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>typemap</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  supply the member and slot entries
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>space</b></code> -
+         The namespace to pollute
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      <dd><code><b>the_members</b></code> -
+         The member list / description
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>tuple</code> or <code>dict</code>)</i>
+      <dd><code><b>aliases</b></code> -
+         The member name aliases
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      <dd><code><b>typemap</b></code> -
+         The type mapping table
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The list of __slots__ to use.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>list</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:06 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

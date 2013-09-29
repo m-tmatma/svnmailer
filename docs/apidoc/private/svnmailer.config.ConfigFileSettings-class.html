@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.config.ConfigFileSettings</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.config-module.html">Module&nbsp;config</a> ::
+        Class&nbsp;ConfigFileSettings
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/svnmailer.config.ConfigFileSettings-class.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer.config.ConfigFileSettings-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Type ConfigFileSettings</h2>
+
+<pre class="base-tree">
+<a href="__builtin__.object-class.html"><code>object</code></a> --+    
+         |    
+  <a href="svnmailer.settings.Settings-class.html"><code>Settings</code></a> --+
+             |
+            <b>ConfigFileSettings</b>
+</pre><br />
+
+<hr/>
+
+Provide settings from config
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.config.ConfigFileSettings-class.html#init" class="summary-sig-name"><code>init</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Implements the <code>init</code> method of <a 
+href="svnmailer.settings.Settings-class.html" 
+class="link"><code>settings.Settings</code></a></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_applyCharset" class="summary-sig-name"><code>_applyCharset</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Applies the charset found in [general]</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_applyIncludes" class="summary-sig-name"><code>_applyIncludes</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>origfile</span>,
+          <span class=summary-sig-arg>_file</span>)</span></code>
+<br />
+Applies the includes found in [general]</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_applyMaps" class="summary-sig-name"><code>_applyMaps</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Resolves all map definitions</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        file like object
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_findConfig" class="summary-sig-name"><code>_findConfig</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>_file</span>)</span></code>
+<br />
+Finds and opens the main config file</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_getDefaultConfigFiles" class="summary-sig-name"><code>_getDefaultConfigFiles</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>_os</span>,
+          <span class=summary-sig-arg>_sys</span>)</span></code>
+<br />
+Returns the default config files</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_getDefaultGroupDict" class="summary-sig-name"><code>_getDefaultGroupDict</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>container</span>)</span></code>
+<br />
+Returns the default group dict</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.settings.GroupSettingsContainer</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_getGroupDefaults" class="summary-sig-name"><code>_getGroupDefaults</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the default groups container</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>callable</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_getPlainMap" class="summary-sig-name"><code>_getPlainMap</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>)</span></code>
+<br />
+Returns a plain map for a particular section</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_init" class="summary-sig-name"><code>_init</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>options</span>)</span></code>
+<br />
+Actual implementation of <code>self.init()</code></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_initGeneral" class="summary-sig-name"><code>_initGeneral</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Initializes the general config</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_initGroups" class="summary-sig-name"><code>_initGroups</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Initializes the Group config</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_initRuntime" class="summary-sig-name"><code>_initRuntime</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>options</span>)</span></code>
+<br />
+Initializes the runtime from options</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>SvnmailerConfigParser</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_loadConfig" class="summary-sig-name"><code>_loadConfig</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Parse config file</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_passConfig" class="summary-sig-name"><code>_passConfig</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>container</span>,
+          <span class=summary-sig-arg>section</span>)</span></code>
+<br />
+Passes the options to the specified container</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from Settings</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Settings-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Constructor</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>GroupSettingsContainer</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Settings-class.html#getDefaultGroupContainer" class="summary-sig-name"><code>getDefaultGroupContainer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Returns an initialized default group settings container</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>GeneralSettingsContainer</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Settings-class.html#getGeneralContainer" class="summary-sig-name"><code>getGeneralContainer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Returns an initialized general settings container</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>GroupSettingsContainer</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Settings-class.html#getGroupContainer" class="summary-sig-name"><code>getGroupContainer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Returns an initialized group settings container</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>RuntimeSettingsContainer</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Settings-class.html#getRuntimeContainer" class="summary-sig-name"><code>getRuntimeContainer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Returns an initialized runtime settings container</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.Settings-class.html#_checkInitialization" class="summary-sig-name"><code>_checkInitialization</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Checks if all containers are filled</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.Settings-class.html#_getArgs" class="summary-sig-name"><code>_getArgs</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the basic arguments for container initialization</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>SvnmailerConfigParser</code></font></td>
+<td><b><a href="../private/svnmailer.config.ConfigFileSettings-class.html#_config"><code>_config</code></a></b>: The config object</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from Settings</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="svnmailer.settings.Settings-class.html#_charset_"><code>_charset_</code></a></b>: The charset used for settings recoding</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="svnmailer.settings.Settings-class.html#_maps_"><code>_maps_</code></a></b>: The value mappers to use or <code>None</code></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>bool</code></font></td>
+<td><b><a href="svnmailer.settings.Settings-class.html#debug"><code>debug</code></a></b>: Debug state</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>GeneralSettingsContainer</code></font></td>
+<td><b><a href="svnmailer.settings.Settings-class.html#general"><code>general</code></a></b>: General settings</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code> of <code>GroupSettingsContainer</code></font></td>
+<td><b><a href="svnmailer.settings.Settings-class.html#groups"><code>groups</code></a></b>: group settings list</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>RuntimeSettingsContainer</code></font></td>
+<td><b><a href="svnmailer.settings.Settings-class.html#runtime"><code>runtime</code></a></b>: Runtime settigs</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="svnmailer.config.ConfigFileSettings-class.html#__implements__"><code>__implements__</code></a></b> = <span title="[&lt;class 'svnmailer.settings.Settings'&gt;]"><code>[&lt;class&nbsp;'svnmailer.settings.Settings'&gt;] </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="svnmailer.config.ConfigFileSettings-class.html#MAPSECTION"><code>MAPSECTION</code></a></b>: The mapping section name; if <code>None</code>, mapping is effectively 
+disabled</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="init"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">init</span>(<span class=sig-arg>self</span>,
+          <span class="sig-vararg">*args</span>,
+          <span class="sig-kwarg">**kwargs</span>)</span>
+  </h3>
+  Implements the <code>init</code> method of <a 
+  href="svnmailer.settings.Settings-class.html" 
+  class="link"><code>settings.Settings</code></a>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigInvalidError</b></code> -
+        invalid config options
+      <dd><code><b>ConfigMissingError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_loadConfig" 
+        class="link"><code>_loadConfig</code></a>
+      <dd><code><b>ConfigNotFoundError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_loadConfig" 
+        class="link"><code>_loadConfig</code></a>
+      <dd><code><b>ConfigSectionNotFoundError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_passConfig" 
+        class="link"><code>_passConfig</code></a>
+      <dd><code><b>ConfigOptionUnkownError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_passConfig" 
+        class="link"><code>_passConfig</code></a>
+      <dd><code><b>ConfigMappingSpecInvalidError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_applyMaps" 
+        class="link"><code>_applyMaps</code></a>
+      <dd><code><b>ConfigMappingSectionNotFoundError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_getPlainMap" 
+        class="link"><code>_getPlainMap</code></a>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="svnmailer.settings.Settings-class.html#init"><code>svnmailer.settings.Settings.init</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_applyCharset"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_applyCharset</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Applies the charset found in [general]
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_applyIncludes"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_applyIncludes</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>origfile</span>,
+          <span class=sig-arg>_file</span>=<span class=sig-default>&lt;type&nbsp;'file'&gt;</span>)</span>
+  </h3>
+  Applies the includes found in [general]
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>origfile</b></code> -
+         original filename
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      <dd><code><b>_file</b></code> -
+         The function to open the file
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>callable</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigNotFoundError</b></code> -
+        Error reading an included file
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_applyMaps"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_applyMaps</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Resolves all map definitions
+  <dl><dt></dt><dd>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigMappingSpecInvalidError</b></code> -
+        The mapping spec was invalid
+      <dd><code><b>ConfigMappingSectionNotFoundError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_getPlainMap" 
+        class="link"><code>_getPlainMap</code></a>
+    </dl>
+<p><b>To Do:</b> raise an error on unknown options
+</p>
+
+  </dd></dl>
+</td></tr></table>
+
+<a name="_findConfig"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_findConfig</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>_file</span>=<span class=sig-default>&lt;type&nbsp;'file'&gt;</span>)</span>
+  </h3>
+  Finds and opens the main config file
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>_file</b></code> -
+         The function to open the file
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>callable</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The open descriptor
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=file like object)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigMissingError</b></code> -
+        config neither specified nor on default locations found. 
+        Default locations are (tried in that order):
+        <ul>
+          <li>
+            &lt;repos&gt;/conf/mailer.conf
+          </li>
+          <li>
+            &lt;scriptdir&gt;/mailer.conf
+          </li>
+          <li>
+            /etc/svn-mailer.conf
+          </li>
+        </ul>
+      <dd><code><b>ConfigNotFoundError</b></code> -
+        specified configfile could not be opened
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getDefaultConfigFiles"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getDefaultConfigFiles</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>_os</span>=<span class=sig-default>&lt;module&nbsp;'os'&nbsp;from&nbsp;'/usr/lib/python2.4/os.pyc'&gt;</span>,
+          <span class=sig-arg>_sys</span>=<span class=sig-default>&lt;module&nbsp;'sys'&nbsp;(built-in)&gt;</span>)</span>
+  </h3>
+  Returns the default config files
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The list
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>list</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getDefaultGroupDict"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getDefaultGroupDict</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>container</span>)</span>
+  </h3>
+  Returns the default group dict
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>container</b></code> -
+         The default container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.settings.GroupSettingsContainer</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The default dict
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getGroupDefaults"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getGroupDefaults</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the default groups container
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The defaults (groupcontainer without maps)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>svnmailer.settings.GroupSettingsContainer</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getPlainMap"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getPlainMap</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>section</span>)</span>
+  </h3>
+  Returns a plain map for a particular section
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>section</b></code> -
+         The mapping section
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The mapping function
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>callable</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigMappingSectionNotFoundError</b></code> -
+        The specified section was not found
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_init"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_init</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>options</span>)</span>
+  </h3>
+  Actual implementation of <code>self.init()</code>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+         runtime options
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>optparse.OptionParser</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigMissingError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_loadConfig" 
+        class="link"><code>_loadConfig</code></a>
+      <dd><code><b>ConfigNotFoundError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_loadConfig" 
+        class="link"><code>_loadConfig</code></a>
+      <dd><code><b>ConfigSectionNotFoundError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_passConfig" 
+        class="link"><code>_passConfig</code></a>
+      <dd><code><b>ConfigOptionUnkownError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_passConfig" 
+        class="link"><code>_passConfig</code></a>
+      <dd><code><b>ConfigMappingSpecInvalidError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_applyMaps" 
+        class="link"><code>_applyMaps</code></a>
+      <dd><code><b>ConfigMappingSectionNotFoundError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_getPlainMap" 
+        class="link"><code>_getPlainMap</code></a>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_initGeneral"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_initGeneral</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Initializes the general config
+  <dl><dt></dt><dd>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigSectionNotFoundError</b></code> -
+        [general] not found
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_initGroups"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_initGroups</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Initializes the Group config
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_initRuntime"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_initRuntime</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>options</span>)</span>
+  </h3>
+  Initializes the runtime from options
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+         runtime options
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>optparse.OptionParser</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_loadConfig"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_loadConfig</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Parse config file
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        parsed config
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>SvnmailerConfigParser</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigNotFoundError</b></code> -
+        some configfile could not be opened
+      <dd><code><b>ConfigMissingError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_findConfig" 
+        class="link"><code>_findConfig</code></a>
+      <dd><code><b>ConfigMappingSpecInvalidError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_applyMaps" 
+        class="link"><code>_applyMaps</code></a>
+      <dd><code><b>ConfigMappingSectionNotFoundError</b></code> -
+        see <a 
+        href="../private/svnmailer.config.ConfigFileSettings-class.html#_getPlainMap" 
+        class="link"><code>_getPlainMap</code></a>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_passConfig"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_passConfig</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>container</span>,
+          <span class=sig-arg>section</span>)</span>
+  </h3>
+  Passes the options to the specified container
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>container</b></code> -
+         The container object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>svnmailer.util.Struct</code>)</i>
+      <dd><code><b>section</b></code> -
+         The config section name
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigSectionNotFoundError</b></code> -
+        The specified section was not found in the config file
+      <dd><code><b>ConfigOptionUnkownError</b></code> -
+        There was an unknown config option in the config file.
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_config"></a>
+<h3>_config</h3>
+The config object
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>SvnmailerConfigParser</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="__implements__"></a>
+<h3>__implements__</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>list</code>
+
+      </dd>
+<span title="[&lt;class 'svnmailer.settings.Settings'&gt;]">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+[&lt;class 'svnmailer.settings.Settings'&gt;]                                </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="MAPSECTION"></a>
+<h3>MAPSECTION</h3>
+The mapping section name; if <code>None</code>, mapping is effectively 
+disabled
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>str</code>
+
+      </dd>
+<span title="'maps'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>maps<span class="variable-quote">'</span>                                                                 </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:07 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

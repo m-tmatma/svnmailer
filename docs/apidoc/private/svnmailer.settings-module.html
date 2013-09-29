@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.settings</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        Module&nbsp;settings
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/svnmailer.settings-module.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer.settings-module.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF MODULE DESCRIPTION =========== -->
+<h2 class="module">Module svnmailer.settings</h2>
+
+<h1 class="heading">Runtime settings for the svnmailer</h1>
+  <p>This module defines one public class, called <a 
+  href="svnmailer.settings.Settings-class.html" 
+  class="link"><code>Settings</code></a>. This class is the storage 
+  container for all settings used by the svnmailer. <a 
+  href="svnmailer.settings.Settings-class.html" 
+  class="link"><code>Settings</code></a> is an abstract class. There is 
+  just one method that must be implemented -- <a 
+  href="svnmailer.settings.Settings-class.html#init" 
+  class="link"><code>Settings.init</code></a>. This method is responsible 
+  for filling the container properly. An implementor of the <a 
+  href="svnmailer.settings.Settings-class.html" 
+  class="link"><code>Settings</code></a> class can be found in the <a 
+  href="svnmailer.config-module.html" 
+  class="link"><code>svnmailer.config</code></a> module.</p>
+  This module further defines the Settings subcontainers <a 
+  href="../private/svnmailer.settings.GroupSettingsContainer-class.html" 
+  class="link"><code>GroupSettingsContainer</code></a>, <a 
+  href="../private/svnmailer.settings.GeneralSettingsContainer-class.html" 
+  class="link"><code>GeneralSettingsContainer</code></a> and <a 
+  href="../private/svnmailer.settings.RuntimeSettingsContainer-class.html" 
+  class="link"><code>RuntimeSettingsContainer</code></a>, but you should 
+  not instantiate them directly -- <a 
+  href="svnmailer.settings.Settings-class.html" 
+  class="link"><code>Settings</code></a> provides methods that return 
+  instances of these containers.
+<hr/>
+
+<!-- =========== START OF CLASSES =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Classes</th></tr>
+<tr><td width="15%">
+  <b><a href="svnmailer.settings.Settings-class.html"><code>Settings</code></a></b></td>
+  <td>Settings management</td></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer.settings._Tokens-class.html"><code>_Tokens</code></a></b></td>
+  <td>Generic token container</td></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer.settings.GeneralSettingsContainer-class.html"><code>GeneralSettingsContainer</code></a></b></td>
+  <td>Container for general settings</td></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer.settings.GroupSettingsContainer-class.html"><code>GroupSettingsContainer</code></a></b></td>
+  <td>Container for group settings</td></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer.settings.RuntimeSettingsContainer-class.html"><code>RuntimeSettingsContainer</code></a></b></td>
+  <td>Container for runtime settings</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Function Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings-module.html#generalMembers" class="summary-sig-name"><code>generalMembers</code></a>(<span class=summary-sig-arg>space</span>)</span></code>
+<br />
+Define the members of the general settings</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings-module.html#groupMembers" class="summary-sig-name"><code>groupMembers</code></a>(<span class=summary-sig-arg>space</span>)</span></code>
+<br />
+Define the members of the group settings</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings-module.html#runtimeMembers" class="summary-sig-name"><code>runtimeMembers</code></a>(<span class=summary-sig-arg>space</span>)</span></code>
+<br />
+Define the members of the runtime settings</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Function Details</th></tr>
+</table>
+
+<a name="generalMembers"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">generalMembers</span>(<span class=sig-arg>space</span>)</span>
+  </h3>
+  <p>Define the members of the general settings</p>
+  The following members are defined:
+  <ul>
+    <li>
+      <code>diff_command</code>: The diff command
+    </li>
+    <li>
+      <code>sendmail_command</code>: The sendmail compatible 
+      command
+    </li>
+    <li>
+      <code>smtp_host</code>: The smtp host 
+      (<code>host[:port]</code>)
+    </li>
+    <li>
+      <code>smtp_user</code>: The smtp auth. user
+    </li>
+    <li>
+      <code>smtp_pass</code>: The smtp auth. password
+    </li>
+    <li>
+      <code>debug_all_mails_to</code>: All mails are sent to these 
+      addresses (for debugging purposes)
+    </li>
+    <li>
+      <code>cia_rpc_server</code>: The XML-RPC server running the CIA 
+      tracker
+    </li>
+    <li>
+      <code>tempdir</code>: The directory to use for temporary 
+      files
+    </li>
+  </ul>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>space</b></code> -
+         The namespace to pollute
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The members definition
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="groupMembers"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">groupMembers</span>(<span class=sig-arg>space</span>)</span>
+  </h3>
+  <p>Define the members of the group settings</p>
+  The following members are defined:
+  <ul>
+    <li>
+      <code>_name</code>: Name of the group
+    </li>
+    <li>
+      <code>_def_for_repos</code>: default for_repos regex
+    </li>
+    <li>
+      <code>_def_for_paths</code>: default for_paths regex
+    </li>
+    <li>
+      <code>for_repos</code>: Repository regex
+    </li>
+    <li>
+      <code>for_paths</code>: Path regex (inside the repos)
+    </li>
+    <li>
+      <code>exclude_paths</code>: Exclude path regex to prevent 
+      for_paths from being applied
+    </li>
+    <li>
+      <code>ignore_if_other_matches</code>: this group will be ignored 
+      if there are any other groups selected for a particular path
+    </li>
+    <li>
+      <code>show_nonmatching_paths</code>: How to deal with paths that 
+      are not matched by the group
+    </li>
+    <li>
+      <code>commit_subject_template</code>: Subject template for 
+      commit mail
+    </li>
+    <li>
+      <code>propchange_subject_template</code>: Subject template for 
+      revpropchanges
+    </li>
+    <li>
+      <code>lock_subject_template</code>: Subject template for 
+      locks
+    </li>
+    <li>
+      <code>unlock_subject_template</code>: Subject template for 
+      unlocks
+    </li>
+    <li>
+      <code>commit_subject_prefix</code>: Subject prefix for commit 
+      mail
+    </li>
+    <li>
+      <code>propchange_subject_prefix</code>: Subject prefix for 
+      revpropchanges
+    </li>
+    <li>
+      <code>lock_subject_prefix</code>: Subject prefix for locks
+    </li>
+    <li>
+      <code>unlock_subject_prefix</code>: Subject prefix for 
+      unlocks
+    </li>
+    <li>
+      <code>max_subject_length</code>: Maximum subject length
+    </li>
+    <li>
+      <code>from_addr</code>: <code>From:</code> address format 
+      string
+    </li>
+    <li>
+      <code>to_addr</code>: <code>To:</code> address format string
+    </li>
+    <li>
+      <code>reply_to_addr</code>: <code>Reply-To:</code> address 
+      format string
+    </li>
+    <li>
+      <code>diff_command</code>: The diff command to use
+    </li>
+    <li>
+      <code>generate_diffs</code>: List of actions for which diffs are 
+      generated
+    </li>
+    <li>
+      <code>browser_base_url</code>: type and format string of the 
+      repository browser base url
+    </li>
+    <li>
+      <code>custom_header</code>: custom header name and format 
+      template
+    </li>
+    <li>
+      <code>to_newsgroup</code>: The newsgroup where the notification 
+      should be posted to
+    </li>
+    <li>
+      <code>long_news_action</code>: The action to take on huge commit 
+      postings
+    </li>
+    <li>
+      <code>long_mail_action</code>: The action to take on huge commit 
+      mails
+    </li>
+    <li>
+      <code>mail_transfer_encoding</code>: Content-Transfer-Encoding 
+      for mails
+    </li>
+    <li>
+      <code>news_transfer_encoding</code>: Content-Transfer-Encoding 
+      for news
+    </li>
+    <li>
+      <code>mail_type</code>: The mail construction type
+    </li>
+    <li>
+      <code>extract_x509_author</code>: Treat author as x509 subject 
+      and try to extract author's real name and email address
+    </li>
+    <li>
+      <code>cia_project_name</code>: The project name used for CIA 
+      notifications
+    </li>
+    <li>
+      <code>cia_project_module</code>: The project module used for CIA 
+      notifications
+    </li>
+    <li>
+      <code>cia_project_branch</code>: The project branch used for CIA 
+      notifications
+    </li>
+    <li>
+      <code>cia_project_submodule</code>: The project submodule used 
+      for CIA notifications
+    </li>
+    <li>
+      <code>cia_project_path</code>: The project path, which will be 
+      stripped from the absolute node path
+    </li>
+    <li>
+      <code>apply_charset_property</code>: Should 
+      svnmailer:content-charset properties be recognized?
+    </li>
+    <li>
+      <code>show_applied_charset</code>: Show the encoding of the 
+      files in the diff?
+    </li>
+    <li>
+      <code>viewcvs_base_url</code>: (<i>deprecated</i>, use 
+      <code>browser_base_url</code> instead) format string for the 
+      viewcvs URL
+    </li>
+  </ul>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>space</b></code> -
+         The namespace to pollute
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The members definition
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="runtimeMembers"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">runtimeMembers</span>(<span class=sig-arg>space</span>)</span>
+  </h3>
+  <p>Define the members of the runtime settings</p>
+  The following members are defined:
+  <ul>
+    <li>
+      <code>_repos</code>: The repository object
+    </li>
+    <li>
+      <code>stdin</code>: The stdin, read once
+    </li>
+    <li>
+      <code>path_encoding</code>: The path-encoding parameter
+    </li>
+    <li>
+      <code>debug</code>: debug mode (True/False)
+    </li>
+    <li>
+      <code>revision</code>: committed revision number
+    </li>
+    <li>
+      <code>repository</code>: path to the repository
+    </li>
+    <li>
+      <code>config</code>: supplied config file name
+    </li>
+    <li>
+      <code>mode</code>: running mode (see <a 
+      href="svnmailer.settings-module.html#modes" 
+      class="link"><code>modes</code></a>)
+    </li>
+    <li>
+      <code>author</code>: Author of the commit or revpropchange
+    </li>
+    <li>
+      <code>propname</code>: Property changed (in revpropchange)
+    </li>
+    <li>
+      <code>action</code>: The revprop action (M, A, D)
+    </li>
+  </ul>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>space</b></code> -
+         The namespace to pollute
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The members definition
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:08 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th bgcolor="#70b0f0" class="navselect">&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        Package&nbsp;svnmailer
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/svnmailer-module.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer-module.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF PACKAGE DESCRIPTION =========== -->
+<h2 class="package">Package svnmailer</h2>
+
+This is the core svnmailer package. It contains all logic to send 
+subversion commit mails. The package is intended to be used by the 
+svn-mailer command line script.
+<hr/>
+
+<!-- =========== START OF SUBMODULES =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Submodules</th></tr>
+  <tr><td><ul>
+<li> <b><a href="svnmailer.browser-module.html"><code>browser</code></a></b>: <i>Respository Browser URL construction</i>
+<li> <b><a href="svnmailer.cli-module.html"><code>cli</code></a></b>: <i>The svnmailer provides two different command line interfaces.</i>
+<li> <b><a href="svnmailer.config-module.html"><code>config</code></a></b>: <i>Configfile parsing</i>
+<li> <b><a href="svnmailer.differ-module.html"><code>differ</code></a></b>: <i>Differ classes</i>
+<li> <b><a href="svnmailer.main-module.html"><code>main</code></a></b>: <i>This module is the central core of the svnmailer.</i>
+<li> <b><a href="svnmailer.notifier-module.html"><code>notifier</code></a></b>: <i>Package svnmailer.notifier</i>
+  <ul>
+    <li> <b><a href="svnmailer.notifier.cia_xmlrpc-module.html"><code>cia_xmlrpc</code></a></b>: <i>This notifier delivers a notification message in XML format to a <a 
+href="http://cia.navi.cx/">CIA server</a>.</i>
+    <li> <b><a href="svnmailer.notifier.mail-module.html"><code>mail</code></a></b>: <i>Text based email notifiers (either piped to a program or via SMTP)</i>
+    <li> <b><a href="svnmailer.notifier.news-module.html"><code>news</code></a></b>: <i>Text based news notifier (via NNTP)</i>
+    <li> <b><a href="svnmailer.notifier.selector-module.html"><code>selector</code></a></b>: <i>notifier selector module</i>
+    <li> <b><a href="svnmailer.notifier.stdout-module.html"><code>stdout</code></a></b>: <i>Stdout notifier - mostly for debugging purposes</i>
+    <li> <b><a href="../private/svnmailer.notifier._base-module.html"><code>_base</code></a></b>: <i>Base notifier class</i>
+    <li> <b><a href="../private/svnmailer.notifier._mail-module.html"><code>_mail</code></a></b>: <i>Email notifier base module</i>
+    <li> <b><a href="../private/svnmailer.notifier._multimail-module.html"><code>_multimail</code></a></b>: <i>email notifier</i>
+    <li> <b><a href="../private/svnmailer.notifier._text-module.html"><code>_text</code></a></b>: <i>Plain text notifier base</i>
+    <li> <b><a href="../private/svnmailer.notifier._textmail-module.html"><code>_textmail</code></a></b>: <i>text based email notifier</i>
+    <li> <b><a href="../private/svnmailer.notifier._textnews-module.html"><code>_textnews</code></a></b>: <i>Text based news notifier</i>
+  </ul>
+<li> <b><a href="svnmailer.settings-module.html"><code>settings</code></a></b>: <i>This module defines one public class, called <a 
+href="svnmailer.settings.Settings-class.html" 
+class="link"><code>Settings</code></a>.</i>
+<li> <b><a href="svnmailer.stream-module.html"><code>stream</code></a></b>: <i>svnmailer stream objects</i>
+<li> <b><a href="svnmailer.struct_accessors-module.html"><code>struct_accessors</code></a></b>: <i>This module exactly describes the struct member definitions used by 
+the svnmailer.</i>
+<li> <b><a href="svnmailer.subversion-module.html"><code>subversion</code></a></b>: <i>Access to the subversion respository</i>
+<li> <b><a href="svnmailer.typedstruct-module.html"><code>typedstruct</code></a></b>: <i>This module provides helpers for creating typed data structures.</i>
+<li> <b><a href="svnmailer.util-module.html"><code>util</code></a></b>: <i>This module contains some utility functions and classes used in 
+several places of the svnmailer.</i>
+  </ul></td></tr>
+</table><br />
+
+
+<!-- =========== START OF VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>bool</code></font></td>
+<td><b><a href="svnmailer-module.html#is_dev"><code>is_dev</code></a></b>: is development version?</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="svnmailer-module.html#version"><code>version</code></a></b>: Version of the svnmailer package</td></tr>
+</table><br />
+
+
+<!-- =========== START OF VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="is_dev"></a>
+<h3>is_dev</h3>
+is development version?
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>bool</code>
+
+      </dd>
+<span title="False">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+False                                                                  </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="version"></a>
+<h3>version</h3>
+Version of the svnmailer package
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>str</code>
+
+      </dd>
+<span title="'1.0.0'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>1.0.0<span class="variable-quote">'</span>                                                                </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th bgcolor="#70b0f0" class="navselect">&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:07 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

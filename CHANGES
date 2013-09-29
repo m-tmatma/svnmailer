@@ -1,0 +1,202 @@
+Changes with version 1.0.0
+
+ *) Evaluate svn:mime-type when looking for file encodings
+
+ *) Add configuration option to define whether the content charset
+    should be shown in the diff header (show_applied_charset)
+
+ *) Provide configurable handling of paths that do not belong to
+    the matched group (show_nonmatching_paths option)
+
+ *) Make subjects more flexible by providing configurable templates
+
+ *) Add revision and property general substitution keywords
+
+ *) Fix common path prefix computation, which didn't work correctly in
+    certain cases
+
+ *) Subversion 1.2 is fully supported now (python bindings and locking)
+
+ *) The command line interface now only accepts the options suitable
+    for the svn version used
+
+ *) svn-mailer --version now puts also the svn version it uses
+
+ *) Cleanup L10N code. The unicode support (especially for file names)
+    should work much better now. This introduces some differences to
+    the semantics of non-7bit command lines
+
+ *) Allow included config file names to contain spaces by using
+    the same rules as the command line parser
+
+ *) Allow mapping sections to be used for more than one option
+
+ *) [default] config entries are no longer (pre-mapped) twice
+
+ *) Add the revision number to development releases
+
+ *) Separate svnmailer._test from svnmailer
+
+ *) Update suppressed pylint messages to pylint 0.6.4 and modify
+    some code parts to not crash pylint
+
+ *) Fix memory leak on subversion access
+
+ *) Add support for old-style propchange2 subcommand CLI
+
+ *) Refactor the svnmailer.struct code in order to make it better
+    extensible, maintainable and reusable for other projects.
+
+ *) Display the original charset of files, when they are recoded to UTF-8
+
+ *) Add the possibility to limit the number of mails sent (on splitted
+    notifications)
+
+ *) Fix typo, which lead to a crash, when extract_x509_author was active
+
+ *) Add the possibility to configure websvn as repository browser
+
+ *) Add infrastructure to configure repository browsers different from
+    viewcvs. The viewcvs_base_url option is now deprecated in favour of
+    browser_base_url.
+
+ *) CIA notifier: add trailing slash to directories, so they are not
+    counted twice. Further update to the latest features: 'action' and
+    'type' attributes for files (the latter currently just types
+    directories as 'x-directory/normal' and leaves real files untouched).
+
+ *) Apply clear semantics for overlong revprop change notifications by
+    extending the long_mail_action and long_news_action options
+
+ *) Allow notification mails to be constructed as multipart mails using
+    binary transfer encoding for the diffs
+
+ *) Prefix repository absolute paths with slashes in the subject
+
+ *) Support the svn 1.2 features of being able to generate diffs on
+    revprop changes.
+
+ *) The split long mail action no longer clobbers the propchange output.
+
+ *) Recognize if a property is a translated one (unicode) or not.
+
+ *) generate_diffs: Configuring explicitly empty is now the same as
+    generate_diffs = none
+
+ *) Allow the diff_command option to be placed in group configuration
+    sections. diff_command in [general] is now deprecated.
+
+ *) Allow configured viewcvs URLs to contain parameters (like the project
+    root)
+
+ *) Suppress viewcvs diff urls on directories (which are not supported by
+    viewcvs)
+
+ *) Hyphens in option names now are replaced with underscores before
+    being processed. That allow a more lenient behaviour of the config
+    parser.
+
+ *) The content transfer encoding is now configurable
+
+ *) Add ability to map certain config values
+
+ *) The maximum subject length is now configurable
+
+ *) Allow for config file inclusion
+
+ *) Allow the config file name to be '-', meaning STDIN.
+
+ *) Deleted files now get the proper viewcvs URL
+
+ *) Add the ability to configure the content charset of files via
+    properties (apply_charset_property option)
+
+ *) If the log entry doesn't end with a newline, append one
+
+ *) Introduce much better performance for huge mails in conclusion
+    with quoted-printable encoding (by using the binascii C module)
+
+ *) Add news notifier (submitting via NNTP)
+
+ *) The directory used for temporary files is now configurable
+ 
+ *) Add the group name to the substitution dict
+
+ *) Add overlong mail handling. (long_mail_action configuration option)
+
+ *) Win32 is now fully supported.
+
+ *) Add XML-RPC notifier for the CIA project (http://cia.navi.cx/)
+
+ *) Add the ability to treat the author string as x509 subject and extract
+    real name and mail address from it.
+
+ *) Add the ability to supply a custom header for better filtering
+
+Changes with version 0.9.9
+
+ *) Fix reply_to_addr, which didn't work at all.
+
+Changes with version 0.9.8
+
+ *) Initialize the substitution dict with the named groups of the
+    default for_repos and for_paths options.
+
+ *) No longer hide a traceback in non-dev versions
+
+Changes with version 0.9.7
+
+ *) Fix bug in path label selection, which led to a crash
+
+Changes with version 0.9.6
+
+ *) Add debug_all_mails_to option to send the mail not to the
+    selected recipients, but some fixed folks
+
+Changes with version 0.9.5
+
+ *) Add user documentation
+
+Changes with version 0.9.4
+
+ *) Use the base path for the 'from' file on copy diffs
+
+ *) Use "no_author" in substitution dict if no author could be determined
+
+ *) Improve error handling
+
+ *) If there are no groups, use the defaults as the one and only
+
+ *) Accept old style command lines as well
+
+ *) No longer choke on empty recipient address lists
+
+Changes with version 0.9.3
+
+ *) Write determined config errors to stderr instead of falling
+    through to the "crashed" message
+
+ *) Fix NameError in the svn-mailer script, which happened, when
+    the mailer crashed
+
+ *) make sure that test/tmp is packed into the tarball
+
+ *) Add missing entries of previous versions in the CHANGES file
+
+Changes with version 0.9.2
+
+ *) Include svnmailer._test.suite.notifier in the list of packages
+    in setup.py
+
+Changes with version 0.9.1
+
+ *) Remove the __init__.py from the test directory, which
+    was copied there by accident
+
+ *) Fix generation of the MANIFEST file, which listed the test
+    directory contents in one line
+
+Changes with version 0.9.0
+
+ *) First beta release
+    It should have all features of the original mailer.py

@@ -1,0 +1,324 @@
+/* global settings */
+body {
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: normal;
+  font-size: 1em;
+  background: #ffffff;
+  color: #2A3167;
+  padding: 1em 15px 10px 15px;
+  line-height: 1.2em;
+} 
+a { 
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: normal;
+  font-size: 1em;
+  text-decoration: underline;
+  background-color: #FFFFFF;
+  color: #9398B5;
+}
+code {
+  font-size: 1em;
+  font-family: monospace;
+}
+hr {
+  display: none;
+}
+table {
+  background: #ffffff;
+  color: #2A3167;
+  border: 0 none;
+  margin: 0;
+}
+table th {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: #ffffff;
+  color: #2A3167;
+  border: 0 none;
+  text-align: left;
+}
+table.summary td {
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: normal;
+  font-size: 1em;
+  background: #ffffff;
+  color: #2A3167;
+}
+/* not the worsed thing at all: <font size="-1> and <font size="-2>"
+   override that shit */
+table font {
+  font-size: smaller;
+}
+/* toc files */
+font[size="-2"] {
+  font-size: smaller;
+}
+body>center>font>b {
+  border-bottom: 1px solid #9398B5;
+  line-height: 3em;
+}
+
+/* navbar  */
+table.navbar {
+  border: 1px solid #9398B5;
+}
+table.navbar th {
+  background-color: #F5F6F9;
+  color: #2A3167;
+  font-size: 1em;
+}
+table.navbar th a {
+  font-weight: bold;
+  text-decoration: none;
+}
+table.navbar th a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+b.breadcrumbs {
+  font-weight: normal;
+  line-height: 1.5em;
+}
+
+/* package description -> page title (h1) and text (inherited from body) */
+/* class description -> page title (h1) */
+h2.package, h2.class, h2.module {
+  color: #2A3167;
+  border-bottom: 1px solid #9398B5;
+  padding: 0.8em 0 0 0;
+  margin: 0 0 1em 0;
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1em;
+}
+
+/* main description */
+h1.heading {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: #ffffff;
+  color: #2A3167;
+  text-align: left;
+}
+/* external links */
+a[href^="http://"] {
+  color: #B55C39;
+}
+
+/* class description (subclasses) -> h2 and  &%$)@z§ ... hm, some links */
+dt b {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: #ffffff;
+  color: #2A3167;
+  text-align: left;
+}
+dd a {
+  margin-left: 0.5em;
+}
+
+/* class description */
+pre.literalblock {
+  border-left: 3px double #9398B5;
+  border-right: 3px double #9398B5;
+  background-color: #F5F6F9;
+  color: #2A3167;
+  padding: 0.5em 1em;
+  font-family: monospace;
+  font-weight: normal;
+  font-size: 1em;
+  line-height: 1.2em;
+}
+
+
+/* submodules -> h2 */
+/* variable details -> h2 */
+/* variable summary -> h2 */
+table.details {
+  margin-top: 1em;
+}
+table.details th, table.summary th {
+  padding: 0 0 0.5em 0;;
+}
+
+/* submodules -> unordered list */
+table.details td {
+  border: 0 none;
+  padding: 0;
+}
+table.details td ul {
+  padding: 0;
+  margin: 0;
+}
+table.details td li {
+  list-style-type: none;
+  line-height: 1.2em;
+}
+table.details td ul ul {
+  padding: 0 0 0 1.8em;
+}
+table.details td li li {
+  list-style-type: disc;
+}
+table.details td li i {
+  font-style: normal;
+}
+
+/* variable summary -> variable list (table) */
+table.summary {
+  border-collapse: collapse;
+  margin-top: 1em;
+  width: 100%;
+}
+table.summary td {
+  border: 1px solid #9398B5;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  vertical-align: baseline;
+}
+table.summary td font {
+  font-size: smaller;
+}
+table.summary td font code{
+  font-size: 1.1em;
+}
+table.summary span[title] {
+  font-family: monospace;
+}
+
+/* method summary */
+span.summary-sig {
+  font-family: monospace;
+  display: block;
+  margin-bottom: -0.8em;
+}
+/* method summary and method details: parameters */
+span.summary-sig-arg,
+span.summary-sig-vararg,
+span.summary-sig-kwarg, 
+span.sig-arg,
+span.sig-vararg, 
+span.sig-kwarg {
+  color: #B55C39;
+}
+/* default values */
+span.sig-default {
+  color: #008C46;
+}
+tr.group th {                /* group -> h3 */
+  font-size: 1em;
+  padding-top: 1em;
+  text-indent: -1em;
+}
+
+/* parameter summary */
+table.summary td b code {
+  font-weight: normal;
+}
+/* variable details -> h3, text and definition list  */
+/* method details -> definition list  */
+table.var-details td {
+  border: 0 none;
+  padding: 0;
+}
+table.var-details td h3 {
+  font-family: monospace;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 0 0 0.3em 0;
+}
+table.var-details td dt,
+table.func-details td dt {
+  font-size: 0.83em;         /* base is 1.2em, we ant to get 1em */
+}
+table.var-details td dd dd code {
+    padding-left: 0.15em;
+}
+table.var-details td pre {
+  margin: 0;
+  padding: 0;
+}
+
+/* method details -> h3 with annotation, text and definition list */ 
+table.func-details td h3 {
+  font-weight: normal;
+  font-size: 1em;
+  margin: 0 0 0.3em 0;
+}
+table.func-details td h3 .sig
+{
+  font-family: monospace;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+table.func-details td br {
+  display: none;
+}
+table.func-details td pre.literalblock {
+  font-family: Arial,Helvetica,sans-serif;
+  border: 0 none;
+  background-color: #FFFFFF;
+  color: #2A3167;
+  margin: 0;
+  padding: 0;
+}
+table.func-details td dd pre.literalblock {
+  font-family: monospace;
+}
+table.func-details td dd code b {
+  font-weight: normal;
+}
+table.func-details td dd br {
+  display: inline;
+  text-align: right;
+}
+table.func-details td dd i code {
+  font-style: normal;
+}
+
+/* property details (yes, we have to name them all explicitely) */
+table.func-details a[name="_dict_"] + h3 {
+  font-family: monospace;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* help page */
+center {
+  text-align: left;
+}
+center h2 {
+  color: #2A3167;
+  border-bottom: 1px solid #9398B5;
+  padding: 0.8em 0 0 0;
+  margin: 0 0 1em 0;
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1em;
+}
+table.summary  tr.summary {
+  border: 1px solid #FFFFFF;
+}
+table.summary th {
+  border-left: 1px solid #FFFFFF;
+}
+
+/* index page */
+table.index {
+  border-collapse: collapse;
+}
+table.index th {
+  padding: 0 0 0.5em 0;;
+}
+table.index td {
+  border: 1px solid #9398B5;
+}
+
+

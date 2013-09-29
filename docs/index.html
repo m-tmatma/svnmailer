@@ -1,0 +1,2725 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>svnmailer - documentation</title>
+    <link type="text/css" href="perlig.css" rel="stylesheet"
+    media="all" />
+    <link type="text/css" href="perlig_docs.css" rel="stylesheet"
+    media="all" />
+    <link type="text/css" href="perlig_offline.css" rel="stylesheet"
+    media="all" />
+  </head>
+  <body>
+    <h1>svnmailer - documentation</h1>
+    <div>
+      <img id="logo" src="perlig.jpg" width="200" height="77" alt="" />
+    </div>
+    <div id="menu">
+      <ul>
+        <li class="back"><img src="right.gif" alt="->"
+        title="online" width="13"
+        height="10" /> <a
+        href="http://opensource.perlig.de/svnmailer/">Visit svnmailer online</a></li>
+      </ul>
+      <ul>
+        <li class="newgroup">
+          <a href="apidoc/index.html">Code Documentation</a>
+        </li>
+      </ul>
+    </div>      
+    <div id="content">
+      <div class="toc">
+      <h2><a name="toc" id="toc">Table Of Contents</a></h2>
+      <ol>
+        <li><a href="#comments">General Comments</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#config">Config File Design</a>
+          <ul>
+            <li><a href="#config-syntax">Syntactical Elements</a></li>
+            <li><a href="#config-semantics">Semantics</a></li>
+            <li><a href="#config-selection">Group Selection</a></li>
+          </ul>
+        </li>
+        <li><a href="#maps">[maps] Configuration Section</a>
+          <ul>
+            <li><a href="#maps-config">Plain Config Maps</a></li>
+          </ul>
+        </li>
+        <li><a href="#general">[general] Configuration Section</a>
+          <ul>
+            <li><a href="#general-config-charset"><code>config_charset</code></a></li>
+            <li><a
+            href="#general-include-config"><code>include_config</code></a></li>
+            <li><a href="#general-diff-command"><code>diff_command</code></a>
+            (deprecated)</li>
+            <li><a href="#general-sendmail-command"><code>sendmail_command</code></a></li>
+            <li><a href="#general-smtp-host"><code>smtp_host</code></a></li>
+            <li><a href="#general-smtp-user-pass"><code>smtp_user</code> and
+            <code>smtp_pass</code></a></li>
+            <li><a href="#general-nntp-host"><code>nntp_host</code></a></li>
+            <li><a href="#general-nntp-user-pass"><code>nntp_user</code> and
+            <code>nntp_pass</code></a></li>
+            <li><a
+            href="#general-debug-all-mails-to"><code>debug_all_mails_to</code></a></li>
+            <li><a
+            href="#general-cia-rpc-server"><code>cia_rpc_server</code></a></li>
+            <li><a href="#general-tempdir"><code>tempdir</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#groups">Group Configuration Sections</a>
+          <ul>
+            <li><a href="#groups-for-repos"><code>for_repos</code></a></li>
+            <li><a href="#groups-for-paths"><code>for_paths</code></a></li>
+            <li><a href="#groups-exclude-paths"><code>exclude_paths</code></a></li>
+            <li><a href="#groups-ignore"><code>ignore_if_other_matches</code></a></li>
+            <li><a href="#groups-xpath"><code>show_nonmatching_paths</code></a></li>
+            <li><a
+            href="#groups-subject-template"><code>commit_subject_template</code>,
+            <code>propchange_subject_template</code>,
+            <code>lock_subject_template</code> and
+            <code>unlock_subject_template</code></a></li>
+            <li><a href="#groups-prefix"><code>commit_subject_prefix</code>, 
+            <code>propchange_subject_prefix</code>,
+            <code>lock_subject_prefix</code> and
+            <code>unlock_subject_prefix</code></a></li>
+            <li><a
+            href="#groups-max-subject-length"><code>max_subject_length</code></a></li>
+            <li><a href="#groups-addr"><code>from_addr</code>,
+            <code>to_addr</code> and <code>reply_to_addr</code></a></li>
+            <li><a
+            href="#groups-to-newsgroup"><code>to_newsgroup</code></a></li>
+            <li><a
+            href="#groups-diff-command"><code>diff_command</code></a></li>
+            <li><a href="#groups-generate-diffs"><code>generate_diffs</code></a></li>
+            <li><a href="#groups-browser-base"><code>browser_base_url</code></a></li>
+            <li><a href="#groups-viewcvs-base"><code>viewcvs_base_url</code></a></li>
+            <li><a
+            href="#groups-long-mail-action"><code>long_mail_action</code></a></li>
+            <li><a
+            href="#groups-long-news-action"><code>long_news_action</code></a></li>
+            <li><a href="#groups-mail-xfer"><code>mail_transfer_encoding</code></a></li>
+            <li><a href="#groups-news-xfer"><code>news_transfer_encoding</code></a></li>
+            <li><a href="#groups-mail-type"><code>mail_type</code></a></li>
+            <li><a
+            href="#groups-charset-property"><code>apply_charset_property</code></a></li>
+            <li><a
+            href="#groups-show-charset"><code>show_applied_charset</code></a></li>
+            <li><a href="#groups-custom-header"><code>custom_header</code></a></li>
+            <li><a href="#groups-extract-x509"><code>extract_x509_author</code></a></li>
+            <li><a
+            href="#groups-cia-project-name"><code>cia_project_name</code></a></li>
+            <li><a
+            href="#groups-cia-project-desc"><code>cia_project_module</code>,
+            <code>cia_project_branch</code> and
+            <code>cia_project_submodule</code></a></li>
+            <li><a
+            href="#groups-cia-project-path"><code>cia_project_path</code></a></li>
+            <li><a href="#groups-subst">Substitutions</a></li>
+          </ul>
+        </li>
+        <li><a href="#repository">Configuring the Repository</a>
+          <ul>
+            <li><a href="#repos-commit">Configuring For Commit Messages</a></li>
+            <li><a href="#repos-propchange">Configuring For Revision Property
+            Changes</a></li>
+            <li><a href="#repos-locking">Configuring For Lock
+            Notifications</a></li>
+          </ul>
+        </li>
+        <li><a href="#commandline">The svnmailer Command Line</a>
+          <ul>
+            <li><a href="#cmd-version"><code>--version</code></a></li>
+            <li><a href="#cmd-help"><code>--help</code></a></li>
+            <li><a href="#cmd-debug"><code>--debug</code></a></li>
+            <li><a
+            href="#cmd-path-encoding"><code>--path-encoding</code>
+            (<code>-e</code>)</a></li>
+            <li><a href="#cmd-config"><code>--config</code> (<code>-f</code>)</a></li>
+            <li><a href="#cmd-revision"><code>--revision</code>
+            (<code>-r</code>)</a></li>
+            <li><a href="#cmd-repository"><code>--repository</code>
+            (<code>-d</code>)</a></li>
+            <li><a href="#cmd-commit-propchange"><code>--commit</code>
+            (<code>-c</code>), <code>--propchange</code> (<code>-p</code>),
+            <code>--lock</code> (<code>-l</code>) and <code>--unlock</code>
+            (<code>-u</code>)</a></li>
+            <li><a href="#cmd-author"><code>--author</code> (<code>-a</code>)</a></li>
+            <li><a href="#cmd-propname"><code>--propname</code>
+            (<code>-n</code>)</a></li>
+            <li><a href="#cmd-action"><code>--action</code>
+            (<code>-o</code>)</a></li>
+          </ul>
+        </li>
+      </ol>
+      </div>
+
+<!-- General Comments -->
+      <h2><a name="comments" id="comments">General Comments</a></h2>
+      <p>The svnmailer is an extensible <a href="http://subversion.tigris.org/"
+      >subversion</a> commit notification tool. Its purpose in the
+      first place is to create <em>human readable</em> commit mails and
+      correctly encoded other notifications. In order to accomplish this,
+      the content may be recoded to fit the requirements of the supported
+      standards like <a
+      href="http://ftp.rfc-editor.org/in-notes/rfc2045.txt">MIME</a> or <a
+      href="http://www.w3.org/TR/2004/REC-xml-20040204/">XML 1.0</a>. Note that
+      this does <em>not change the meaning</em> of the actual content. It's
+      more like encoding a <code>&lt;</code> character as <code>&amp;lt;</code>
+      in an HTML or XML document.</p>
+
+      <p>That means that you <em>always</em> get valid and readable mails,
+      but you <a
+      href="http://ftp.rfc-editor.org/in-notes/rfc2119.txt">SHOULD NOT</a>
+      expect to be able to simply copy the diffs from the generated mails and
+      apply them with the <code>patch</code> program. Use <code>svn diff</code>
+      or <a href="http://viewcvs.sourceforge.net/">ViewCVS</a> diffs for
+      such tasks. The svnmailer is able to generate the proper ViewCVS urls
+      and place them quite handy near the diffs in the notification mails.</p>
+
+      <p>Nevertheless, there are always people doing weird things, so the
+      svnmailer provides the possibility to generate <a
+      href="#groups-mail-type">multipart mails</a>, which contain the opaque
+      diff data. Note however, that the using the diffs directly from the
+      multipart tracking mails has a number of disadvantages, including the
+      following:</p>
+
+      <ol>
+        <li>The mails may be badly modified by gateways, because they are not
+        protected by a proper transfer encoding</li>
+        <li>The mails may not contain the <em>whole</em> change. There are
+        options to omit diffs for special actions (often diffs for deletions are
+        turned off). Further diffs of binary files are always omitted.</li>
+        <li>Keyword and newline expansion in subversion happens
+        <em>client side</em>, so the mail diff may be another one than the stuff
+        <code>svn diff</code> generates.</li>
+        <li>Last but not least <em>email is an unreliable medium</em>. The
+        typical case to lose tracking mails is that the mailing list rejects
+        mails that are greater than a certain limit. So how would you apply a
+        diff, which you don't even have received? Sure, one could truncate the
+        mails properly, but then issue 2 applies...</li>
+      </ol>
+
+      <!-- Installation -->
+      <h2><a name="installation" id="installation">Installation</a></h2>
+      <p>Before installing the svnmailer package make sure, that you meet the
+      following requirements:</p>
+      <ul>
+        <li>Python 2.3 or later</li>
+        <li>A POSIX compatible platform or Win32</li>
+        <li>The subversion bindings for python</li>
+      </ul>
+
+      <p>The svnmailer is a pure python package, which is packed using
+      distutils. So the installation on your system is fairly simple.
+      First <a href="http://opensource.perlig.de/svnmailer/#download"
+      >download</a> the package and make sure you've checked the
+      integrity of the downloaded file. There are a detached GPG signature
+      (<code>*.asc</code>) and signed hash files (<code>*.md5</code> and
+      <code>*.sha1</code>), which you can use for this task.</p>
+
+      <p>After unpacking the archive file change into the
+      <code>svnmailer-1.0.0</code> directory and follow the typical
+      python procedure:</p>
+
+      <div class="example"><p><code>
+        $ bzip2 -cd svnmailer-1.0.0.tar.bz2 | tar -xf -<br />
+        $ cd svnmailer-1.0.0<br />
+        $ python setup.py install
+      </code></p></div>
+
+      <p>Now there should be two things installed, the <code>svn-mailer</code>
+      command line script and svnmailer package itself. The package
+      is copied to the "proper" location, where python finds it by
+      default. The location of the script depends on the OS and the
+      python installation. For example, on linux it typically installs into
+      <code>/usr/bin</code> or <code>/usr/local/bin</code>. For
+      customizations please refer to <a
+      href="http://docs.python.org/inst/inst.html">the related python
+      documentation</a>.</p>
+
+      <p>The next step is to create a <a href="#config">configuration file</a>.
+      After you've done that, you can <a href="#repository">configure your
+      repository</a> to let the svnmailer do its work.</p>
+
+<!-- Config File Design -->
+      <h2><a name="config" id="config">Config File Design</a></h2>
+      <p>In short: the configuration file controls, who gets the
+      notifications for which path in which repository. Further it defines
+      the basic script parameters like how to send the notification mail, which
+      diff program to use (if any) and so on. It is supposed to be compatible
+      to the config of the original mailer.py script.</p>
+
+<!-- config: Syntactical Elements -->
+        <h3><a name="config-syntax" id="config-syntax">Syntactical
+        Elements</a></h3>
+        <p>The file is a plain text file in an INI like format as defined by
+        the standard python <a
+        href="http://docs.python.org/lib/module-ConfigParser.html"
+        >ConfigParser</a> module. Basically it consists of several sections,
+        that are started with a line containing:</p>
+
+        <div class="example"><p><code>
+          [section name]
+        </code></p></div>
+
+        <p>and finished at the next <code>[section]</code> or the end of the
+        file. Values are defined that way:</p>
+        <div class="example"><p><code>
+          name = value<br />
+          # or<br />
+          name: value
+        </code></p></div>
+
+        <p>As you might have guessed, comments are preceded by the hash character
+        (<code>#</code>). Empty lines (or lines containing only whitespaces) are
+        ignored. Note that section headings, comments and value definitions have
+        to start at the first column, because the configuration parser treats
+        (non-empty) lines starting with spaces or tabs as continuations of the
+        previous line (like in mail headers).</p>
+
+<!-- config: Semantics -->
+        <h3><a name="config-semantics" id="config-semantics">Semantics</a></h3>
+        <p>The sections in your config file are processed by the svnmailer as
+        follows: The <a href="#general"><code>[general]</code></a> section
+        contains the basic script parameters. The <code>[defaults]</code>
+        section contains default values for the group sections. All values
+        that are not defined in a selected notification group are taken from
+        the defaults. <code>[defaults]</code> is optional. Further you can
+        have a <a href="#maps"><code>[maps]</code></a> section, which
+        specifies value mapping tables (which may define further sections,
+        too). <a href="#groups">All sections not recognized otherwise</a>
+        define notification groups. The names of these sections don't care
+        (except for debugging purposes). They just have to be unique within
+        the config and may not be named <code>defaults</code>,
+        <code>general</code> or <code>maps</code>, of course. If there
+        is no separate group configuration, the defaults will be applied.
+        So a minimal config is:</p>
+
+        <div class="example"><p><code>
+          [general]
+        </code></p></div>
+
+        <p>If you call the svnmailer with this config, it will generate diffs
+        for every possible action at any path for any supplied repository and
+        write a notification message to <code>stdout</code>.</p>
+
+<!-- config: Group selection -->
+        <h3><a name="config-selection" id="config-selection">Group
+        Selection</a></h3>
+        <p>When the svnmailer is called, it reads the config file and selects
+        all groups, which should be notified of that particular event (commit
+        or revprop change). Which groups are selected, is determined by the <a
+        href="#groups-for-repos"><code>for_repos</code></a>, <a
+        href="#groups-for-paths"><code>for_paths</code></a>, <a
+        href="#groups-exclude-paths"><code>exclude_paths</code></a> and <a
+        href="#groups-ignore"><code>ignore_if_other_matches</code></a>
+        options. Since the svnmailer tries to minimize the number of
+        notification mails, each of these selected groups gets one mail at
+        maximum per event (except they are configured for huge mail splitting).
+        Furthermore, if the notifications generated for
+        different selected groups are detected to be equal, these groups are
+        merged and just one mail is sent to all of those groups. Currently
+        this detection compares the list of modified paths (that were matched
+        by each group) and several configuration options, which are in
+        particular: <a
+        href="#groups-xpath"><code>show_nonmatching_paths</code></a>, <a
+        href="#groups-subject-template"><code>commit_subject_template</code></a>, <a
+        href="#groups-subject-template"><code>propchange_subject_template</code></a>, <a
+        href="#groups-subject-template"><code>lock_subject_template</code></a>, <a
+        href="#groups-subject-template"><code>unlock_subject_template</code></a>, <a
+        href="#groups-prefix"><code>commit_subject_prefix</code></a>, <a
+        href="#groups-prefix"><code>propchange_subject_prefix</code></a>, <a
+        href="#groups-prefix"><code>lock_subject_prefix</code></a>, <a
+        href="#groups-prefix"><code>unlock_subject_prefix</code></a>, <a
+        href="#groups-max-subject-length"><code>max_subject_length</code></a>, <a
+        href="#groups-addr"><code>reply_to_addr</code></a>, <a
+        href="#groups-diff-command"><code>diff_command</code></a>, <a
+        href="#groups-generate-diffs"><code>generate_diffs</code></a>, <a
+        href="#groups-browser-base"><code>browser_base_url</code></a>, <a
+        href="#groups-viewcvs-base"><code>viewcvs_base_url</code></a>, <a
+        href="#groups-extract-x509"><code>extract_x509_author</code></a>, <a
+        href="#groups-long-mail-action"><code>long_mail_action</code></a>, <a
+        href="#groups-long-news-action"><code>long_news_action</code></a>, <a
+        href="#groups-mail-xfer"><code>mail_transfer_encoding</code></a>, <a
+        href="#groups-news-xfer"><code>news_transfer_encoding</code></a>, <a
+        href="#groups-mail-type"><code>mail_type</code></a>, <a
+        href="#groups-charset-property"><code>apply_charset_property</code></a>, <a
+        href="#groups-show-charset"><code>show_applied_charset</code></a>.</p>
+
+        <p>Note that there's a subtle difference to the original mailer
+        script. If there are group configurations defined, the svnmailer will
+        never consider the <code>[defaults]</code> section as an additional
+        group to be notified.</p>
+
+<!-- [maps] Configuration Section -->
+      <h2><a name="maps" id="maps">[maps] Configuration Section</a></h2>
+      <p>The <dfn><code>[maps]</code></dfn> section allows you to specify
+      mapping tables for values that you can't create directly by <a
+      href="#groups-subst">substitutions</a> or just want to abbreviate via a
+      nick name. For example, a typical configuration of <a
+      href="#groups-addr"><code>from_addr</code></a> is:</p>
+
+      <div class="example"><p><code>
+        [defaults]<br />
+        from_addr = %(author)s@example.org
+      </code></p></div>
+
+      <p>This is fine as long all authors really do have a mail address at
+      example.org, which local part matches the authentication user. However,
+      a more complex mapping from author to mail address is not possible with
+      this method. In this case, maps can provide a solution. Different map
+      types are planned; for now, the svnmailer only supports plain
+      config maps, which are described in the next section.</p>
+
+      <p>Note that not all options are mappable. The exceptions are all
+      options that specify boolean or integer options in addition to the
+      following list: <a
+      href="#groups-generate-diffs"><code>generate_diffs</code></a>, <a
+      href="#groups-mail-xfer"><code>mail_transfer_encoding</code></a>, <a
+      href="#groups-news-xfer"><code>news_transfer_encoding</code></a>, <a
+      href="#general-config-charset"><code>config_charset</code></a>, <a
+      href="#general-include-config"><code>include_config</code></a>.</p>
+
+<!-- maps: config -->
+      <h3><a name="maps-config" id="maps-config">Plain Config Maps</a></h3>
+        <p>All you need is a translation table, which maps the authenticated
+        author to his real address. Something like this:</p>
+
+        <div class="example"><p><code>
+          [author table]<br />
+          john = doe@example.org<br />
+          foo  = bar@otherserver.example.com
+        </code></p></div>
+
+        <p>Further you need to associate the <code>[author table]</code> with
+        the revision author and the <code>from_addr</code> option:</p>
+
+        <div class="example"><p><code>
+          [maps]<br />
+          from_addr = [author table]<br />
+          <br />
+          [defaults]<br />
+          from_addr = %(author)s
+        </code></p></div>
+
+        <p>In the above config the <code>[maps]</code> section defines, that
+        the resulting values of <code>from_addr</code> should be mapped using
+        the <code>[author table]</code> section. Now the svnmailer takes the
+        specified <code>from_addr</code> (<code>%(author)s</code>),
+        substitutes the author with, say, <code>john</code> and maps
+        <code>john</code> to <code>doe@example.org</code>. If it doesn't
+        find the value (<code>john</code>) in the mapping table, it is passed
+        through unchanged.</p>
+
+        <p>On list options like <code>to_addr</code>, every item is mapped
+        separately. For example:</p>
+
+        <div class="example"><p><code>
+          [maps]<br />
+          from_addr = [author table]<br />
+          to_addr = [author table]<br />
+          <br />
+          [defaults]<br />
+          from_addr = %(author)s<br />
+          to_addr = %(author)s archive@svn.example.org
+        </code></p></div>
+
+        <p>This excerpt sends all commits to the author itself and an archive
+        account.</p>
+
+<!-- [general] Configuration Section -->
+      <h2><a name="general" id="general">[general] Configuration Section</a></h2>
+      <table summary="A short description of the possible general configuration options"
+         class="options">
+      <caption>The possible configuration options in
+      <code>[general]</code></caption>
+      <tr><th class="option-name">Option Name</th>
+          <th class="option-type">Type</th>
+          <th class="option-desc">Description</th></tr>
+      <tr><td><code>config_charset</code></td>
+          <td>string</td>
+          <td>The character encoding of the config file</td></tr>
+      <tr><td><code>include_config</code></td>
+          <td>List</td>
+          <td>A list of config files to include</td></tr>
+      <tr><td><code>diff_command</code> (deprecated)</td>
+          <td>command line</td>
+          <td>The external diff program to use.</td></tr>
+      <tr><td><code>sendmail_command</code></td>
+          <td>command line</td>
+          <td>The sendmail compatible command line template</td></tr>
+      <tr><td><code>smtp_host</code></td>
+          <td>string</td>
+          <td>The SMTP <code><var>host</var>[:<var>port</var>]</code> to
+              use</td></tr>
+      <tr><td><code>smtp_user</code></td>
+          <td>quoted literal</td>
+          <td>The user used for SMTP authentication</td></tr>
+      <tr><td><code>smtp_pass</code></td>
+          <td>quoted literal</td>
+          <td>The password used for SMTP authentication</td></tr>
+      <tr><td><code>nntp_host</code></td>
+          <td>string</td>
+          <td>The NNTP <code><var>host</var>[:<var>port</var>]</code> to
+              use</td></tr>
+      <tr><td><code>nntp_user</code></td>
+          <td>quoted literal</td>
+          <td>The user used for NNTP authentication</td></tr>
+      <tr><td><code>nntp_pass</code></td>
+          <td>quoted literal</td>
+          <td>The password used for NNTP authentication</td></tr>
+      <tr><td><code>debug_all_mails_to</code></td>
+          <td>mail addresses</td>
+          <td>Mails should go only to these fixed addresses</td></tr>
+      <tr><td><code>cia_rpc_server</code></td>
+          <td>string</td>
+          <td>CIA XML-RPC tracking server</td></tr>
+      <tr><td><code>tempdir</code></td>
+          <td>string</td>
+          <td>The directory to use for temporary files</td></tr>
+      </table>
+
+      <p>Though the <code>[general]</code> section defines such basic
+      parameters, it may be finally empty, because there are more or less
+      useful defaults given for each option. In order to make sure, that
+      you didn't forget it, the svnmailer requires at least the section
+      heading to be present in the config.</p>
+
+      <p>The different options play together as follows:</p>
+      <ul>
+        <li>If the <code>diff_command</code> option is given and not empty,
+        it is used to generate the diff output. Otherwise an internal differ
+        is used. The internal differ always generates the unified diff
+        format.</li>
+
+        <li>If the <code>sendmail_command</code> option is given, it is used
+        to send the mail.</li>
+
+        <li>If the <code>smtp_host</code> option is given and
+        <code>sendmail_command</code> is not given or empty, the former is
+        used to open an smtp session to the specified host and deliver the
+        mail via <a href="http://ftp.rfc-editor.org/in-notes/rfc2821.txt"
+        >SMTP</a>. If the server requires authentication, you have to
+        supply both <code>smtp_user</code> and <code>smtp_pass</code>.
+        If the server doesn't support authentication, you may
+        not supply the <code>smtp_user</code> option (alternatively
+        just leave it empty).</li>
+
+        <li>If neither <code>sendmail_command</code> nor <code>smtp_host</code>
+        is specified, the notification message is written to stdout (with a
+        small header, which configuration groups were selected). This can be
+        used for debugging purposes.</li>
+      </ul>
+
+<!-- general: config_charset -->
+        <h3><a name="general-config-charset"
+        id="general-config-charset">config_charset</a></h3>
+        <p>The <dfn><code>config_charset</code></dfn> option defines, how
+        the svnmailer should interpret the (bytes read as) option values in
+        your config files. It defaults to <code>us-ascii</code>, which means,
+        normally you can leave it just out. But note that there are
+        exceptions. The options of type "quoted literal" are not
+        charset decoded, but taken literally (though possibly unquoted).
+        Furthermore the first item of command line option values (the command
+        itself) <em>may</em> be interpreted literally, too. This depends on
+        the OS and the <a
+        href="#cmd-path-encoding"><code>--path-encoding</code></a> option. See
+        there for details.</p>
+
+        <p>There's a subtle limitation: <code>config_charset</code>
+        should be an <code>US-ASCII</code> based encoding (for example,
+        <code>UTF-16</code> is a bad choice).</p>
+
+        <div class="example"><p><code>
+        # Example<br />
+        # =======<br />
+        [general]<br />
+        config_charset = iso-8859-1
+        </code></p></div>
+
+<!-- general: include_config -->
+        <h3><a name="general-include-config"
+        id="general-include-config">include_config</a></h3>
+        <p>The <dfn><code>include_config</code></dfn> option specifies further
+        config files to append to the current one. The config files can be
+        defined using either relative or absolute paths in the filesystem.
+        Relative paths are taken relative to the config file which includes
+        them. The option value is parsed like a command line -- it is split
+        on whitespaces, except when they are quoted. Have a look at the
+        description of <a
+        href="#groups-diff-command"><code>diff_command</code></a> for a
+        detailed explanation of the rules.</p>
+        
+        <p>One typical use of <code>include_config</code> is to exclude
+        mappings from the main config for maintenance and/or security
+        reasons.</p>
+
+        <p>Note that it is not possible (yet?) to override a section by
+        including another file. Each and every section still can only be
+        defined <em>once</em>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          include_config = passwords.txt<br />
+          <br />
+          smtp_user = smtpuser<br />
+          smtp_pass = smtppass<br />
+          <br />
+          [maps]<br />
+          smtp_user = [smtp]<br />
+          smtp_pass = [smtp]<br />
+        </code></p></div>
+
+        <p>And the following could be the <code>passwords.txt</code> file:</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [smtp]<br />
+          smtpuser = "someuser"<br />
+          smtppass = "secret password"
+        </code></p></div>
+
+<!-- general: diff_command -->
+        <h3><a name="general-diff-command"
+        id="general-diff-command">diff_command</a></h3>
+        <p>The <dfn><code>diff_command</code></dfn> option in
+        <code>[general]</code> is deprecated. <a
+        href="#groups-diff-command"><code>diff_command</code> options defined
+        in group sections</a> are taken in preference of the one defined in
+        <code>[general]</code>.</p>
+
+<!-- general: sendmail_command -->
+        <h3><a name="general-sendmail-command"
+        id="general-sendmail-command">sendmail_command</a></h3>
+        <p>The <dfn><code>sendmail_command</code></dfn> option defines the
+        command line template of the program that should be called for sending
+        a mail. The program should expect the mail body on <code>stdin</code>.
+        The <code>stdout</code> channel of the program is closed by the
+        svnmailer, but <code>stderr</code> is passed through the caller of
+        the svnmailer.</p>
+
+        <p>In contrast to <a href="#general-diff-command">
+        <code>diff_command</code></a> there are no substitutions made on the
+        arguments. Instead the final command line is constructed as follows:</p>
+
+        <ol>
+          <li>The command template is split into its arguments following the
+          rules described at <code>diff_command</code>.</li>
+          <li>To specifiy the mail sender the arguments <code>-f</code> and the
+          sender address is attached to the argument list</li>
+          <li>The argument list is further extended with all recipient
+          addresses.</li>
+        </ol>
+
+        <p>This calling convention is compatible to, for example, sendmail
+        or qmail's sendmail wrapper, hence the name
+        <em>sendmail</em>_command.</p>
+
+        <p>As with <code>diff_command</code> no shell metacharacters are
+        interpreted.</p>
+
+        <p>For compatibility reasons the <code>sendmail_command</code> option
+        can also be written as <code>mail_command</code>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          sendmail_command = /usr/sbin/sendmail<br />
+        </code></p></div>
+
+<!-- general: smtp_host -->
+        <h3><a name="general-smtp-host"
+        id="general-smtp-host">smtp_host</a></h3>
+        <p>The <dfn><code>smtp_host</code></dfn> option defines the SMTP
+        server to connect in order to send a mail. This option is ignored if
+        <a href="#general-sendmail-command"><code>sendmail_command</code></a>
+        is defined and not empty. The option value is a hostname, optionally
+        followed by a colon and a port. If the server supports
+        authentication, you can supply the required credentials via the <a
+        href="#general-smtp-user-pass"><code>smtp_user</code> and
+        <code>smtp_pass</code></a> options.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          smtp_host = mail.example.org<br />
+          # or with port<br />
+          smtp_host = mail.example.org:25
+        </code></p></div>
+
+<!-- general: smtp_user -->
+<!-- general: smtp_pass -->
+        <h3><a name="general-smtp-user-pass"
+        id="general-smtp-user-pass">smtp_user and smtp_pass</a></h3>
+        <p>These two options are only used if the <a
+        href="#general-smtp-host"><code>smtp_host</code></a> is used by the
+        svnmailer. They define the credentials to be used in the SMTP
+        session when attemting to send mail. If you supply
+        <code>smtp_user</code>, you have to define <code>smtp_pass</code> as
+        well. However, svnmailer just checks for the presence of
+        <code>smtp_user</code> to know, if any credentials should be used.</p>
+
+        <p>The utilized <a
+        href="http://docs.python.org/lib/module-smtplib.html">smtp library</a>
+        supports the <code>CRAM-MD5</code>, <code>PLAIN</code> and
+        <code>LOGIN</code> authentication mechanisms.</p>
+
+        <p>Because of the nature of those two options, the values are not
+        considered to be charset encoded. They are sent literally to the
+        SMTP server. In order to make sure, that spaces and other possibly
+        weird characters are taken literally, you can enclose the actual
+        string in double quotes (<code>"</code>). For double quotes and
+        backslashes <em>inside the quoted string</em> apply the same
+        rules as for command line arguments. Have a look at the description
+        of <a href="#general-diff-command"><code>diff_command</code></a> for
+        details. Of course, the surrounding quotes and backslash escape
+        characters are stripped before submitting the string to the SMTP
+        server.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          smtp_host = mail.example.org<br />
+          smtp_user = <var>mysmtpuser</var><br />
+          smtp_pass = <var>mysmtppass</var>
+        </code></p></div>
+
+<!-- general: nntp_host -->
+        <h3><a name="general-nntp-host"
+        id="general-nntp-host">nntp_host</a></h3>
+        <p>The <dfn><code>nntp_host</code></dfn> option defines the NNTP
+        server to connect in order to post the notification as a news article.
+        The option value is a hostname, optionally followed by a colon and a
+        port. If the server requires authentication, you can supply the
+        credentials via the <a href="#general-nntp-user-pass"><code>nntp_user</code> and
+        <code>nntp_pass</code></a> options.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          nntp_host = news.example.org<br />
+          # or with port<br />
+          nntp_host = news.example.org:119
+        </code></p></div>
+
+<!-- general: nntp_user -->
+<!-- general: nntp_pass -->
+        <h3><a name="general-nntp-user-pass"
+        id="general-nntp-user-pass">nntp_user and nntp_pass</a></h3>
+        <p>These two options are used if a news notification is submitted via
+        an <a href="#general-nntp-host"><code>nntp_host</code></a>.
+        They define the credentials to be used in the SMTP
+        session when attemting to post the article. If you supply
+        <code>nntp_user</code>, you have to define <code>nntp_pass</code> as
+        well.</p>
+
+        <p>Similar to <a href="#general-smtp-user-pass"><code>smtp_user</code>
+        and <code>smtp_pass</code></a> the values are not considered to be
+        charset encoded. They are sent literally to the NNTP server. See there
+        for a further explanation of the argument format.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          nntp_host = news.example.org<br />
+          nntp_user = <var>mynntpuser</var><br />
+          nntp_pass = <var>mynntppass</var>
+        </code></p></div>
+
+<!-- general: debug_all_mails_to -->
+        <h3><a name="general-debug-all-mails-to"
+        id="general-debug-all-mails-to">debug_all_mails_to</a></h3>
+
+        <p>This one is a real debugging option. It specifies a fixed list of
+        mail addresses, where all notification mails should be sent to --
+        regardless of the <a href="#groups-addr"><code>to_addr</code></a>
+        templates of the selected groups. The addresses of the overridden
+        recipients are sent along with the mail using the
+        <code>X-Supposed-Recipients</code> header.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          debug_all_mails_to = svnadmin@example.org
+        </code></p></div>
+
+<!-- general: cia_rpc_server -->
+        <h3><a name="general-cia-rpc-server"
+        id="general-cia-rpc-server">cia_rpc_server</a></h3>
+        <p>The <dfn><code>cia_rpc_server</code></dfn> option defines a <a
+        href="http://cia.navi.cx/">CIA</a> XML-RPC handler, where your commits 
+        or some of them) should be tracked in real time. If this option is
+        defined and not empty, the <code>cia_xmlrpc</code> notifier is
+        considered to be run, but it will be activated only if the <a
+        href="#config-selection">selected notification group</a> defines a <a
+        href="#groups-cia-project-name"><code>cia_project_name</code></a>
+        option. Note that it's possible for every group to run more than one
+        notifier (e.g., <code>mail</code> and <code>cia_xmlrpc</code>) per
+        commit.</p>
+
+        <p>The <code>cia_rpc_server</code> option takes a <code>http</code> or
+        <code>https</code> URL. Note that the trailing slash is
+        <em>important</em>. If there's no URL path given (i.e., just
+        <code>http://server</code>), the svnmailer (or better, the utilized <a
+        href="http://docs.python.org/lib/module-xmlrpclib.html">XML-RPC
+        library</a>) assumes it to be <code>/RPC2</code>.</p>
+
+        <p>The CIA notifier will not send any information if it runs in the
+        post-revprop-change hook. By default there's no RPC server defined.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          # (note the missing trailing slash!)<br />
+          cia_rpc_server = http://cia.navi.cx
+        </code></p></div>
+
+<!-- general: tempdir -->
+        <h3><a name="general-tempdir" id="general-tempdir">tempdir</a></h3>
+        <p>The <dfn><code>tempdir</code></dfn> option defines a directory to
+        use for temporary files. By default or if the specified directory is
+        empty this temp directory is chosen by <a
+        href="http://docs.python.org/lib/module-tempfile.html">python's
+        tempfile module</a>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          tempdir = /space/svnmailer-tmp
+        </code></p></div>
+
+<!-- groups -->
+      <h2><a name="groups" id="groups">Group Configuration Sections</a></h2>
+      <table summary="A short description of the possible general configuration options"
+        class="options">
+      <caption>The possible configuration options in group sections
+      and <code>[defaults]</code></caption>
+      <tr><th class="option-name">Option Name</th>
+          <th class="option-type">Type</th>
+          <th class="option-desc">Description</th></tr>
+      <tr><td><code>for_repos</code></td>
+          <td>regex</td>
+          <td>Matches the repository file path</td></tr>
+      <tr><td><code>for_paths</code></td>
+          <td>regex</td>
+          <td>Matches the virtual path inside a/the repository</td></tr>
+      <tr><td><code>exclude_paths</code></td>
+          <td>regex</td>
+          <td>Excludes paths that might be matched with
+              <code>for_paths</code></td></tr>
+      <tr><td><code>ignore_if_other_matches</code></td>
+          <td>boolean</td>
+          <td>Determines, whether the group should be ignored,
+              if any other group matches this path</td></tr>
+      <tr><td><code>show_nonmatching_paths</code></td>
+          <td>token</td>
+          <td>Defines how to deal with changed paths that don't belong to the
+              group</td></tr>
+      <tr><td><code>commit_subject_template</code></td>
+          <td>template</td>
+          <td>The mail subject template for normal commits</td></tr>
+      <tr><td><code>propchange_subject_template</code></td>
+          <td>template</td>
+          <td>The mail subject template for revprop change
+              notifications</td></tr>
+      <tr><td><code>lock_subject_template</code></td>
+          <td>template</td>
+          <td>The mail subject template for lock notifications</td></tr>
+      <tr><td><code>unlock_subject_template</code></td>
+          <td>template</td>
+          <td>The mail subject template for unlock notifications</td></tr>
+      <tr><td><code>commit_subject_prefix</code></td>
+          <td>string</td>
+          <td>The mail subject prefix for normal commits</td></tr>
+      <tr><td><code>propchange_subject_prefix</code></td>
+          <td>string</td>
+          <td>The mail subject prefix for revision property
+              notifications</td></tr>
+      <tr><td><code>lock_subject_prefix</code></td>
+          <td>string</td>
+          <td>The mail subject prefix for lock notifications</td></tr>
+      <tr><td><code>unlock_subject_prefix</code></td>
+          <td>string</td>
+          <td>The mail subject prefix for unlock notifications</td></tr>
+      <tr><td><code>max_subject_length</code></td>
+          <td>number</td>
+          <td>The maximum subject length</td></tr>
+      <tr><td><code>from_addr</code></td>
+          <td>template</td>
+          <td>The sender addresses</td></tr>
+      <tr><td><code>to_addr</code></td>
+          <td>template</td>
+          <td>The receiver addresses</td></tr>
+      <tr><td><code>reply_to_addr</code></td>
+          <td>template</td>
+          <td>The reply-to address</td></tr>
+      <tr><td><code>to_newsgroup</code></td>
+          <td>template</td>
+          <td>The newsgroups to post to</td></tr>
+      <tr><td><code>diff_command</code></td>
+          <td>command line</td>
+          <td>The diff command to use</td></tr>
+      <tr><td><code>generate_diffs</code></td>
+          <td>token list</td>
+          <td>The list of actions, which generate diffs</td></tr>
+      <tr><td><code>browser_base_url</code></td>
+          <td>string</td>
+          <td>Base URL and type of the repository browser
+              installation</td></tr>
+      <tr><td><code>viewcvs_base_url</code></td>
+          <td>string</td>
+          <td>(<em>DEPRECATED</em>) Base URL of the ViewCVS
+              installation</td></tr>
+      <tr><td><code>long_mail_action</code></td>
+          <td>tuple</td>
+          <td>Action to take on overlong notification mails</td></tr>
+      <tr><td><code>long_news_action</code></td>
+          <td>tuple</td>
+          <td>Action to take on overlong notification news postings</td></tr>
+      <tr><td><code>mail_transfer_encoding</code></td>
+          <td>token</td>
+          <td>The content transfer encoding used for mails</td></tr>
+      <tr><td><code>news_transfer_encoding</code></td>
+          <td>token</td>
+          <td>The content transfer encoding used for news postings</td></tr>
+      <tr><td><code>mail_type</code></td>
+          <td>token</td>
+          <td>How to construct the mail (multipart/single)</td></tr>
+      <tr><td><code>apply_charset_property</code></td>
+          <td>boolean</td>
+          <td>Resolves the content charsets from
+              <code>svnmailer:content-charset</code> properties.</td></tr>
+      <tr><td><code>show_applied_charset</code></td>
+          <td>token</td>
+          <td>Specifies whether the content charset (configured or default)
+              of the should be written into the diff header.</td></tr>
+      <tr><td><code>custom_header</code></td>
+          <td>tuple</td>
+          <td>Name and Value format string for a custom header, which is
+              included in the mail</td></tr>
+      <tr><td><code>extract_x509_author</code></td>
+          <td>boolean</td>
+          <td>Treats the author as x509 subject string and tries to extract
+              the author's real name and email address</td></tr>
+      <tr><td><code>cia_project_name</code></td>
+          <td>template</td>
+          <td>The project name submitted to the CIA tracker</td></tr>
+      <tr><td><code>cia_project_module</code></td>
+          <td>template</td>
+          <td>The project module submitted to the CIA tracker</td></tr>
+      <tr><td><code>cia_project_branch</code></td>
+          <td>template</td>
+          <td>The project branch submitted to the CIA tracker</td></tr>
+      <tr><td><code>cia_project_submodule</code></td>
+          <td>template</td>
+          <td>The project submodule submitted to the CIA tracker</td></tr>
+      <tr><td><code>cia_project_path</code></td>
+          <td>template</td>
+          <td>The project path stripped from the absolute file paths before
+              submitting to the CIA tracker</td></tr>
+      </table>
+
+      <p>The options described here are all valid both in group configurations
+      and in the <code>[defaults]</code> section. If a option in a normal group
+      configuration is missing, its value is taken from <code>[defaults]</code>.
+      If there is nothing defined, a hardcoded default is applied.</p>
+
+<!-- groups: for_repos -->
+        <h3><a name="groups-for-repos" id="groups-for-repos">for_repos</a></h3>
+        <p>The <dfn><code>for_repos</code></dfn> option defines a <a
+        href="http://docs.python.org/lib/re-syntax.html">regular expression</a>,
+        which is used to match against the file path of repository, for
+        example <code>/var/svn/my-repository</code>. The file-path, which is
+        matched against is guaranteed to <em>not</em> have a directory
+        separator at the end (slash or backslash). Note that the regular
+        expression always matches from the beginning of the path, so your regex
+        typically will begin with <code>.*</code>. This is, because the
+        svnmailer uses the <code>re.match</code> function - see <a
+        href="http://docs.python.org/lib/matching-searching.html">the python
+        docs</a> for further information.</p>
+
+        <p>If the <code>for_repos</code> option is not defined or empty, the
+        particular group matches for any repository (which is the default).
+        Named matches of this group are stored for later <a
+        href="#groups-subst">substitutions</a>.</p>
+
+        <p>In the following example the group "sample group" will be selected
+        only if the script is called for the "public" repository (e.g.
+        <code>/var/svn/repositories/public</code>):</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [sample group]<br />
+          for_repos = .*/public$
+        </code></p></div>
+
+<!-- groups: for_paths -->
+        <h3><a name="groups-for-paths" id="groups-for-paths">for_paths</a></h3>
+        <p>The <dfn><code>for_paths</code></dfn> option defines a <a
+        href="http://docs.python.org/lib/re-syntax.html">regular expression</a>,
+        which is used to match against one of the modified paths stored in the
+        repository, but only if the group was preselected by repository (see <a
+        href="#groups-for-repos"><code>for_repos</code></a>). If the
+        path matched against is a directory, it is guaranteed to end with a
+        slash, so that matching by directory paths results in more simple
+        regular expressions. As with <code>for_repos</code>, the match always
+        starts at the beginning of the path, but without a leading slash.</p>
+
+        <p>If the <code>for_paths</code> option is not defined or empty, the
+        particular  group matches for any path inside the repository (which
+        is the default). Named matches of this group are stored for later <a
+        href="#groups-subst">substitutions</a>.</p>
+
+        <p>In the following example the group "sample group" will be selected
+        only if the script is called for the "public" repository (e.g.
+        <code>/var/svn/repositories/public</code>) and everything under the
+        <code>/site/</code> directory (e.g. <code>/site/images/foo.gif</code>,
+        but <em>not</em> for <code>/site-tools/buildsite.sh</code>):</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [sample group]<br />
+          for_repos = .*/public$<br />
+          for_paths = site/
+        </code></p></div>
+
+<!-- groups: exclude_paths -->
+        <h3><a name="groups-exclude-paths"
+        id="groups-exclude-paths">exclude_paths</a></h3>
+        <p>Since regular expressions usually match positive, it's from time to
+        time helpful (and better readable) to exclude substrings with a
+        separate match. The <dfn><code>exclude_paths</code></dfn> option
+        exists for that purpose. It matches exactly like
+        <code>for_paths</code>, but the group is selected only if the supplied
+        regex does <em>not</em> match (and has been preselected by <a
+        href="#groups-for-repos"><code>for_repos</code></a> and
+        <a href="#groups-for-paths"><code>for_paths</code></a>).</p>
+
+        <p>If the <code>exclude_paths</code> option is not defined or empty,
+        nothing will be excluded (which is the default). Of course, named
+        groups of the match will not be stored for substitution, because
+        the group is not selected, if there is a match of
+        <code>exclude_paths</code>.</p>
+
+        <p>In the following example the group "sample group 1" will be selected
+        only if the script is called for the "public" repository (e.g.
+        <code>/var/svn/repositories/public</code>) and everything under the
+        <code>/site/</code> directory (e.g. <code>/site/images/foo.gif</code>),
+        but <em>not</em> for stuff under <code>/site/tools/</code>. For every
+        change under the <code>site/tools/</code> directory the group
+        "sample group 2" will be notified:</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          for_repos = .*/public$<br />
+          <br />
+          [sample group 1]<br />
+          for_paths = site/<br />
+          exclude_paths = site/tools/<br />
+          <br />
+          [sample group 2]<br />
+          for_paths = site/tools/<br />
+        </code></p></div>
+
+        <p>Note that if the <code>exclude_paths</code> option was not given,
+        every change under <code>site/tools/</code> would generate a
+        notification for both groups.</p>
+
+<!-- groups: ignore_if_other_matches -->
+        <h3><a name="groups-ignore"
+        id="groups-ignore">ignore_if_other_matches</a></h3>
+        <p>Consider a main project, which consists of several subprojects. Every
+        subproject has its own notification group:</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          for_repos = .*/public$<br />
+          <br />
+          [main project]<br />
+          # consists of main1/ .. mainn/ and sub1/ ... subn/<br />
+          # sub1 ... n get their own notification, the main project should<br />
+          # be notified only for stuff other than sub?/<br />
+          for_paths = project/<br />
+          exclude_paths = project/(sub1|sub2|...|subn)/<br />
+          <br />
+          [sub 1]<br />
+          for_paths = project/sub1/<br />
+          # : <br />
+          [sub 10]<br />
+          for_paths = project/sub10/<br />
+        </code></p></div>
+
+        <p>The <code>exclude_paths</code> option could be matched easier, if the
+        sub projects <em>really</em> would be named
+        <code>sub<var>digit</var></code>. But usually this is not the case. As
+        you see, maintaining the <code>exclude_paths</code> regex grows to a
+        nightmare the more projects are added. The
+        <dfn><code>ignore_if_other_matches</code></dfn> option is supposed to
+        help out of this ugly situation. If set to a positive value (e.g.
+        <code>yes</code>), the group will not be selected for the matched path
+        if there are any other groups that match the same path / repository.
+        The above config could be rewritten as:</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          for_repos = .*/public$<br />
+          <br />
+          [main project]<br />
+          for_paths = project/<br />
+          ignore_if_other_matches = yes<br />
+          <br />
+          [sub 1]<br />
+          for_paths = project/sub1/<br />
+          # : <br />
+          [sub 10]<br />
+          for_paths = project/sub10/
+        </code></p></div>
+
+        <p>Note that there is a border case. If you use this feature for more
+        than one group, it can happen, that finally the list
+        of selected groups per path consists <em>only</em> of more than one
+        ignorable groups. Theoretically these would unselect each other.
+        Practically all those groups are selected, so that the notification is
+        not lost.</p>
+    
+        <p>The "boolean" values accepted by this option are <code>yes</code>,
+        <code>on</code>, <code>true</code> and <code>1</code> for the "true"
+        case and <code>no</code>, <code>off</code>, <code>false</code>,
+        <code>0</code>, <code>none</code> and the empty string for the
+        "false" case. The default is false.</p>
+
+        <p>For compatibility reasons, convenience and better readability
+        this option can also be written as <code>suppress_if_match</code>
+        or <code>fallback</code>.</p>
+
+<!-- groups: show_nonmatching_paths -->
+        <h3><a name="groups-xpath"
+        id="groups-xpath">show_nonmatching_paths</a></h3>
+        <p>The <dfn><code>show_nonmatching_paths</code></dfn> option specifies
+        how the svnmailer should deal with situations where the paths matched by
+        <a href="#groups-for-paths"><code>for_paths</code></a> are only a subset
+        of all paths affected by the commit. For instance, consider the following
+        changeset:</p>
+
+        <div class="example"><p><code>
+          foo/<br />
+          foo/bar<br />
+          spam/eggs
+        </code></p></div>
+
+        <p>Further consider a notification group that matches for all paths
+        beginning with <code>foo/</code>:</p>
+
+        <div class="example"><p><code>
+          [some group]<br />
+          for_paths = foo/
+        </code></p></div>
+
+        <p>The <code>show_nonmatching_paths</code> option provides for three
+        values, which solve the conflict differently:</p>
+
+        <dl>
+          <dt><code>yes</code></dt>
+          <dd>The additional changes are included in the notification (but
+          after the ones belonging to the group). CIA notices for this
+          group also include all changed paths then. If you have different
+          customers that may not see each other's projects, be careful with
+          this solution.</dd>
+
+          <dt><code>no</code></dt>
+          <dd>It will be stated in the notification, that there are additional
+          changes (after the path list), but neither the paths nor their
+          diffs are included</dd>
+
+          <dt><code>ignore</code></dt>
+          <dd>The additional paths will be just ignored. In the notification
+          there will be no sign of changes not belonging to the group.</dd>
+        </dl>
+
+        <p>If <code>show_nonmatching_paths</code> is unset or empty, it defaults
+        to <code>no</code>. Note that this default differs from the less safe
+        <code>yes</code> default used in the subversion 1.2
+        <code>mailer.py</code> script.</p>
+
+        <p>For convenience reasons and better readability this option can also
+        be written as <code>nonmatching_paths</code>,
+        <code>nongroup_paths</code> and <code>show_nongroup_paths</code>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [some group]<br />
+          show_nonmatching_paths = yes
+        </code></p></div>
+
+<!-- groups: commit_subject_template -->
+<!-- groups: propchange_subject_template -->
+<!-- groups: lock_subject_template -->
+<!-- groups: unlock_subject_template -->
+        <h3><a name="groups-subject-template"
+        id="groups-subject-template">commit_subject_template,
+        propchange_subject_template, lock_subject_template and
+        unlock_subject_template</a></h3>
+        <p>These options define the subject templates to be used for the
+        particular notification type (commit, revprop change, lock, unlock).
+        In addition to the <a href="#groups-subst">normal substitution
+        record</a> the following substitutions are available:</p>
+
+        <table summary="A description of the additional substitutions available in subject templates"
+            class="options">
+        <caption>Additional subject template substitutions</caption>
+        <tr><th>Name</th>
+            <th>Value Description</th></tr>
+        <tr><td><code>prefix</code></td>
+            <td>This is the subject prefix <a href="#groups-prefix">as
+                configured</a>.</td></tr>
+        <tr><td><code>part</code></td>
+            <td>If mails are split, this contains the description of the
+                current part (<code>[x/y]</code>)</td></tr>
+        <tr><td><code>files</code>*</td>
+            <td>This contains the paths affected by the event. Despite the name
+                <code>files</code> this also contains affected directories
+                (consider them as special files).</td></tr>
+        <tr><td><code>dirs</code>*</td>
+            <td>Well, this only contains the directories affected by the
+                event (in contrast to <code>file</code>).</td></tr>
+        <tr><td><code>files/dirs</code>*</td>
+            <td>The content of <code>files/dirs</code> is determined
+                dynamically. It chooses the value of <code>files</code> by
+                default. If the subject gets too long then, it takes
+                <code>dirs</code>. The length parameter is <a
+                href="#groups-max-subject-length"><code>max_subject_length</code></a>
+                or <code>255</code> if <code>max_subject_length</code> is
+                unset.</td></tr>
+        </table>
+
+        <p>* All items are space separated. Further if the path items have a
+        common prefix, it is extracted and the paths shortened respectively. It
+        looks about "<code>in /prefix: foo bar/baz</code>" then.</p>
+
+        <p>After the template was filled in, all whitespaces are normalized,
+        that is, leading and trailing spaces are stripped and multiple
+        adjacent whitespaces of any favor are compressed to one space. So you
+        don't have to worry about strange-looking subjects, because one of the
+        substitutions is empty (<code>part</code> is a good candidate).</p>
+
+        <p>The svnmailer defines the following default templates in case of
+        unset or empty options:</p>
+
+        <table summary="The default subject templates" class="options list">
+        <caption>The default subject templates</caption>
+        <tr><th>commit</th>
+            <td><code>%(prefix)s r%(revision)s %(part)s -
+                %(files/dirs)s</code></td></tr>
+        <tr><th>revprop change</th>
+            <td><code>%(prefix)s r%(revision)s - %(property)s</code></td></tr>
+        <tr><th>lock</th>
+            <td><code>%(prefix)s %(files/dirs)s</code></td></tr>
+        <tr><th>unlock</th>
+            <td><code>%(prefix)s %(files/dirs)s</code></td></tr>
+        </table>
+
+        <p>A typical use case of a customized subject template is a mailing
+        list, where the svn authors are not allowed to post, but just one
+        mail address, which represents the notification mailer itself. Or you
+        don't want to expose the mail addresses of the committers. However, it
+        would be <em>still</em> desirable to get the author of the commit
+        in the mail client overview. Just put into the subject:</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          commit_subject_template = %(author)s: %(revision)s - %(files)s<br />
+        </code></p></div>
+
+<!-- groups: commit_subject_prefix -->
+<!-- groups: propchange_subject_prefix -->
+<!-- groups: lock_subject_prefix -->
+<!-- groups: unlock_subject_prefix -->
+        <h3><a name="groups-prefix" id="groups-prefix">commit_subject_prefix,
+        propchange_subject_prefix, lock_subject_prefix and
+        unlock_subject_prefix</a></h3>
+        <p>These options define the subject prefix of the generated mails
+        depending on the described event. If a string is supplied, it's
+        provided as <code>prefix</code> substitution in the <a
+        href="#groups-subject-template">subject template</a>.
+        <dfn><code>commit_subject_prefix</code></dfn> defines the prefix
+        for normal subversion commits (files, directories and <a
+        href="http://svnbook.red-bean.com/en/1.0/ch07s02.html">versioned
+        properties</a>). <dfn><code>propchange_subject_prefix</code></dfn>
+        defines the subject prefix for <a
+        href="http://svnbook.red-bean.com/en/1.0/ch05.html#svn-ch-5-sect-1.2"
+        >unversioned property</a> change notifications.
+        <dfn><code>lock_subject_prefix</code></dfn> defines the subject prefix
+        for lock notifications (SVN 1.2 and later) and
+        <dfn><code>unlock_subject_prefix</code></dfn> for unlock
+        notifications (you knew that, huh?).</p>
+        
+        <p>The default prefixes are empty.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          commit_subject_prefix = svn commit:<br />
+          propchange_subject_prefix = svn revpropchange:<br />
+          lock_subject_prefix = svn lock:<br />
+          unlock_subject_prefix = svn unlock:
+        </code></p></div>
+
+<!-- groups: max_subject_length -->
+        <h3><a name="groups-max-subject-length"
+        id="groups-max-subject-length">max_subject_length</a></h3>
+        <p>The <dfn><code>max_subject_length</code></dfn> option specifies the
+        maximum length of the generated mail or news subject line. If the
+        generated subject is longer than the defined limit, it is cut and three
+        dots are appended (hence the minimum subject length is
+        <code>3</code>). If the <code>max_subject_length</code> option is not
+        specified, empty or defines <code>0</code>, no limit is applied.</p>
+
+        <p>For compatibility reasons and convenience the
+        <code>max_subject_length</code> option can also be written as
+        <code>truncate_subject</code> or <code>subject_length</code>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          max_subject_length = 127
+        </code></p></div>
+
+<!-- groups: from_addr -->
+<!-- groups: to_addr -->
+<!-- groups: reply_to_addr -->
+        <h3><a name="groups-addr" id="groups-addr">from_addr, to_addr and
+        reply_to_addr</a></h3>
+        <p><dfn><code>from_addr</code></dfn>, <dfn><code>to_addr</code></dfn>
+        and <dfn><code>reply_to_addr</code></dfn> define address templates for
+        the mails to be sent. Both <code>from_addr</code> and
+        <code>to_addr</code> accept space or tab separated lists of address
+        templates, while <code>reply_to_addr</code> takes just one address. The
+        semantics should be quite clear: <code>from_addr</code> defines the sender
+        addresses (but usually just one), <code>to_addr</code> the recipient
+        addresses and <code>reply_to_addr</code> the address, where answers to
+        the commit mail should be sent to. If groups are merged during the
+        selection process, there can be any number of senders, receivers and
+        even reply-to addresses in the mail (which conforms to <a
+        href="http://ftp.rfc-editor.org/in-notes/rfc2822.txt">RFC 2822</a>, if you
+        care about such things). Duplicates in the address lists are filtered
+        away. In the case of more than one final sender address, the svnmailer
+        generates an additional <code>Sender:</code> header with the first
+        item of the sender address list (which is more or less random, but
+        they should be all valid, right?).</p>
+
+        <p>If there are no sender addresses given, it uses the string
+        <code>no_author</code> (as the original script does). That may lead to
+        an error while mail sending, so the best is to supply a valid
+        <code>from_addr</code> in the <code>[defaults]</code> section.</p>
+
+        <p>If there are no recipients, the svnmailer simply doesn't send the
+        mail (this is useful, if there are more notifier types like news or
+        XML-RPC active). If this is not, what you want, you have to
+        supply functioning <code>to_addr</code> options.</p>
+
+        <p>All those addresses may contain <a
+        href="#groups-subst">substitution</a> patterns in the form
+        <code>%(<var>name</var>)s</code>. The list of values to substitute is
+        determined for each notification group dynamically using the
+        <code>for_repos</code> and <code>for_paths</code> regular expressions.
+        The substitution names <code>author</code> and <code>group</code> are
+        always defined. If not overridden by one of the regular expressions,
+        <code>author</code> contains the author of the change (or the string
+        <code>no_author</code> if
+        <a href="http://svnbook.red-bean.com/en/1.0/apb.html#svn-ap-b-sect-1.2.12"
+        >no author could be determined</a>) and <code>group</code> the name of
+        the notification group (the section heading without the braces).</p>
+
+        <p>All address templates described here are empty by default. For
+        compatibility reasons the <code>reply_to_addr</code> option can also
+        be written as <code>reply_to</code>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          for_repos = .*/public$<br />
+          from_addr = %(author)s@example.org<br />
+          <br />
+          [projects]<br />
+          for_paths = projects/(?P&lt;PROJECT&gt;[^/]+)/<br />
+          to_addr = commits@%(PROJECT)s.example.org<br />
+          reply_to_addr = dev@%(PROJECT)s.example.org<br />
+          <br />
+          [home repositories]<br />
+          for_paths = home/(?P&lt;OWNER&gt;[^/]+)/<br />
+          to_addr = %(OWNER)s@example.org<br />
+          <br />
+          [everything else]<br />
+          for_paths =<br />
+          fallback = yes<br />
+          to_addr = svnadmin@example.org
+        </code></p></div>
+
+<!-- groups: to_newsgroup -->
+        <h3><a name="groups-to-newsgroup"
+        id="groups-to-newsgroup">to_newsgroup</a></h3>
+        <p>The <dfn><code>to_newsgroup</code></dfn> option specifies a space
+        or tab separated list of newsgroups where the notification should be
+        posted to. This parameter is a <a href="#groups-subst">substitution</a>
+        template, so you can extract information from the commit
+        information.</p>
+
+        <p>Note that you need to define the <a
+        href="#general-nntp-host"><code>nntp_host</code></a> option (in
+        <code>[general]</code>) in order to submit news postings.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          nntp_host = news.example.org<br />
+          <br />
+          [defaults]<br />
+          to_newsgroup = org.example.commits
+        </code></p></div>
+
+<!-- groups: diff_command -->
+        <h3><a name="groups-diff-command"
+        id="groups-diff-command">diff_command</a></h3>
+        <p>The <dfn><code>diff_command</code></dfn> option defines, that
+        you want to use an external diff program (instead of python's <a
+        href="http://docs.python.org/lib/module-difflib.html">difflib</a>
+        module), where to find and how to call it. The option value is
+        a template for the command line to call. The program has to write
+        the diff information to <code>stdout</code>. <code>Stdout</code> and
+        <code>stderr</code> are caught by the svnmailer and dumped into
+        the mail.</p>
+
+        <p>As said, the value describes a template. There is a fixed number of
+        substitutions defined for the <code>diff_command</code> option, in
+        particular: <code>label_from</code>, <code>label_to</code>,
+        <code>from</code> and <code>to</code>. <code>from</code> and
+        <code>to</code> define the actual files to process (typically some
+        scrambled temporary file names). <code>label_from</code> and
+        <code>label_to</code> define, how the files should be labeled by
+        the diff program. These substitutions are written as
+        <code>%(<var>name</var>)s</code> and replaced by the svnmailer script.
+        If you want a literal percent character somewhere in the command line,
+        you have to duplicate it (i.e., write <code>%%</code> instead).</p>
+
+        <p>The command line template is split on spaces or tabs to separate the
+        different arguments. If you want to have an argument contain such space
+        characters, you have to enclose it in double quotes (<code>"</code>).
+        Further if you want such a quoted argument to contain a double quote
+        character, you have to escape it with a backslash (i.e., write
+        <code>\"</code> instead). To complete the escaping mechanism, you have
+        to duplicate backslashes <em>inside a quoted argument</em>. The
+        surrounding quotes and the backslash escape characters are stripped
+        by the svnmailer to get the final argument string.</p>
+
+        <p>Note that on POSIX systems no shell is called to execute the
+        program, so shell metacharacters are not interpreted. However, on
+        Win32 the shell (<code>cmd.exe</code> &amp; Co.) <em>is</em> called,
+        but the arguments are properly escaped.</p>
+
+        <p>For compatibility and convenience the <code>diff_command</code>
+        option can also be written as <code>diff</code>.</p>
+
+        <div class="example"><p><code>
+        # Example for GNU diff<br />
+        # ====================<br />
+        [defaults]<br />
+        # (note that the following is all on one line)<br />
+        diff_command = /usr/bin/diff -u -L %(label_from)s -L %(label_to)s %(from)s %(to)s
+        </code></p></div>
+
+<!-- groups: generate_diffs -->
+        <h3><a name="groups-generate-diffs"
+        id="groups-generate-diffs">generate_diffs</a></h3>
+        <p>The <dfn><code>generate_diffs</code></dfn> option defines which
+        actions diffs are generated for. It takes a space or tab separated list
+        of one or more of the following tokens: <code>add</code>, <code>modify</code>,
+        <code>copy</code>, <code>delete</code>, <code>propchange</code> and
+        <code>none</code>.</p>
+
+        <p>If the <code>add</code> token is given and a new file is added to
+        the repository, the svnmailer generates a diff between an empty file and
+        the newly added one. If the <code>modify</code> token is given and the
+        content of an already existing file is changed, a diff between the old
+        revision and the new revision of that file is generated. The
+        <code>copy</code> token only worries about files, that are copied
+        <em>and</em> modified during one commit. The <code>delete</code> token
+        generates a diff between the previous revision of the file and an
+        empty file, if a file was deleted.</p>
+
+        <p>If the <code>propchange</code> token is given, the svnmailer also
+        takes care of changes in versioned properties. Whether it should
+        actually generate diffs for the property change action depends on the
+        other tokens of the <code>generate_diffs</code> list. The same rules as
+        for files apply, except that the svnmailer never generates property
+        diffs for deleted files. For example:</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          generate_diffs = add copy modify propchange
+        </code></p></div>
+
+        <p>Now svnmailer generates diffs, if:</p>
+        <ul>
+          <li>A file is added, modified or copied (and modified)</li>
+          <li>A property is added or modified (properties cannot be copied)</li>
+        </ul>
+        <p>If a file or property is deleted, it's written as action information
+        into the mail, but no content diff is generated. The default value for
+        <code>generate_diffs</code> contains all possible actions. Mistyped
+        tokens are ignored. If the resulting token list is empty, svnmailer
+        falls back to the default. If you really don't want diffs to be
+        generated, configure explicitly an empty <code>generate_diff</code>
+        option or use:</p>
+
+        <div class="example"><p><code>
+          [some group]<br />
+          generate_diffs = none
+        </code></p></div>
+
+<!-- groups: browser_base_url -->
+        <h3><a name="groups-browser-base"
+        id="groups-browser-base">browser_base_url</a></h3>
+        <p>If the <dfn><code>browser_base_url</code></dfn> option is defined and
+        not empty, the svnmailer generates URLs for the specified repository
+        browser. One URL for the whole revision is placed on top and for every
+        generated file diff a conrete URL is written before the actual diff
+        output. The default value is empty and no urls are generated.</p>
+
+        <p>The option takes two parameters. The first one specifies the browser
+        type. The second parameter determines the base url of the browser
+        installation. The base url is interpreted by the semantics specified by
+        the type, which can be one of:</p>
+
+        <dl>
+          <dt><code>viewcvs</code></dt>
+          <dd>The base url specifies the root URL of the <a
+          href="http://viewcvs.sourceforge.net/">ViewCVS</a> installation.
+          The svnmailer tries to keep most query parameters you provide (such
+          as <code>root</code>). The following query parameters are always
+          overridden: <code>view</code>, <code>rev</code>, <code>p1</code>,
+          <code>p2</code>, <code>r1</code> and <code>r2</code>.</dd>
+
+          <dt><code>websvn</code></dt>
+          <dd>The base url specifies the repository's <a
+          href="http://websvn.tigris.org/">WebSVN</a> root listing URL.
+          Depending on the WebSVN  configuration this looks different (see the
+          examples below) and produces different resulting URLs. The svnmailer
+          tries to autodetect the installation type on the basis of the
+          supplied URL. <em>If</em> it contains a query parameter called
+          <code>repname</code>, a non-<code>PATH_INFO</code> installation is
+          assumed. In this case the svnmailer may choke if the last path element
+          ends with a slash (i.e. does not represent a file). This is just a
+          sanity check, because the file will be replaced by the svnmailer,
+          when constructing the final URLs.
+          <p>As you might have
+          guessed, if the URL doesn't  contain this <code>repname</code> query
+          parameter, a <code>PATH_INFO</code> installation is assumed.
+          However, the best way to get the proper base URL is to open the
+          repository root directory in your browser and just copy the URL
+          and paste it into the svnmailer config.</p></dd>
+        </dl>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          # simple base url:<br />
+          browser_base_url = viewcvs http://example.org/browse/<var>repos</var><br />
+          <br />
+          # base url with parameters:<br />
+          browser_base_url = viewcvs http://example.org/browse?root=<var>repos</var><br />
+          <br />
+          [some group using websvn]<br />
+          browser_base_url = websvn http://example.org/svn/listing.php?repname=<var>repos</var><br />
+          <br />
+          # or websvn is configured using PATH_INFO<br />
+          # (it's called multiviews in their docs)<br />
+          browser_base_url = websvn http://example.org/svn/<var>repos/</var>
+        </code></p></div>
+
+        <p>And here is an output of a change in a sample repository
+        (revision 5):</p>
+
+        <div class="example"><p><code>
+          Author: nd<br />
+          Date: Thu Jan  6 00:10:04 2005<br />
+          New Revision: 5<br />
+          <br />
+          URL: http://svn.example.org/browse?view=rev&amp;rev=5<br />
+          Log:<br />
+          copied a file<br />
+          <br />
+          Added:<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;foo/eggs&nbsp;&nbsp;&nbsp;(contents, props changed)<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copied, changed from r4, foo/spam<br />
+          <br />
+          Copied: foo/eggs (from r4, foo/spam)<br />
+          URL:&nbsp;http://svn.example.org/browse/foo/eggs?view=diff&amp;rev=5&amp;p1=foo/spam&amp;r1=4&amp;p2=foo/eggs&amp;r2=5<br />
+          ==============================================================================<br />
+          --- foo/spam (original)<br />
+          +++ foo/eggs Thu Jan  6 00:10:04 2005<br />
+          @@ -1,1 +1,1 @@<br />
+          -This is spam.<br />
+          +These are eggs.<br />
+          <br />
+          Propchange: foo/eggs<br />
+          ------------------------------------------------------------------------------<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;color = white
+        </code></p></div>
+
+<!-- groups: viewcvs_base_url -->
+        <h3><a name="groups-viewcvs-base"
+        id="groups-viewcvs-base">viewcvs_base_url</a></h3>
+        <p>The <code>viewcvs_base_url</code> option is deprecated. Use the <a
+        href="#groups-browser-base"><code>browser_base_url</code></a> option
+        instead.</p>
+
+<!-- groups: long_mail_action -->
+        <h3><a name="groups-long-mail-action"
+        id="groups-long-mail-action">long_mail_action</a></h3>
+        <p>From time to time it happens, that commits are <em>huge</em>
+        and so are the accompanying notification mails. They may hit
+        limits of mailing lists or mailboxes they are sent to or simply
+        crash some mail client. The <dfn><code>long_mail_action</code></dfn>
+        option specifies, what "huge" means (in number of bytes) and what
+        action the svnmailer should take to prevent such mails.</p>
+
+        <p><code>long_mail_action</code> takes at least two space or tab
+        separated parameters. The first one defines the number of bytes,
+        one notification mail body should contain at maximum. Note that
+        this number is applied, <em>before</em> the content is MIME
+        encoded, so the actual mail may be slightly greater than the
+        number of bytes specified here. The second parameter defines the
+        action to take. It can be one of the following tokens:</p>
+
+        <dl>
+          <dt><code>truncate</code></dt>
+          <dd>This advises the svnmailer to truncate the notification mail
+          starting with the first line reaching the limit. It will add a note
+          about the number of lines truncated.</dd>
+
+          <dt><code>showurls</code></dt>
+          <dd>If you have a <a
+          href="#groups-browser-base"><code>browser_base_url</code></a>
+          configured and you hit the limit, the svnmailer will just leave out
+          all the diffs and supply the browser URLs only. If you have no
+          <code>browser_base_url</code> configured, you will get neither
+          diffs nor the URLs. If the final mail still gets too long, the
+          <code>showurls</code> action doesn't care about, but
+          <code>showurls/truncate</code> does.</dd>
+
+          <dt><code>showurls/truncate</code></dt>
+          <dd>This action token behaves mostly like <code>showurls</code>, except
+          that if the single mail still gets too long, it is truncated
+          after reaching the limit. A note about the number of truncated lines
+          is appended then.</dd>
+
+          <dt><code>split[/<var>number</var>]</code></dt>
+          <dd>This action splits the notification mails into several ones.
+          The mail subject will contain an enumeration string
+          (<code>[1/3]</code>, <code>[2/3]</code> etc) so you can read the
+          mails in the proper order later and know if one is missing. In
+          order to keep the mails readable the svnmailer never splits in
+          the middle of a particular diff, but between whole diff blocks
+          (including their meta information). That means, certain mails of
+          the generated sequence may be still too long (containing one single
+          huge diff). The <code>split</code> action doesn't care about this.
+          If you want to truncate such huge single mails, use the
+          <code>split/truncate</code> token instead.
+          <p>Experience shows, that if the number of mails grows (huge
+          imports easily lead to 30, 40 or more mails), less people
+          actually read those mails. In order to not waste bandwidth and
+          people's good humor, you may want to limit the number of mails per
+          commit. This is done by extending the token by a slash and the
+          maximum number of mails. If this limit is exceeded then, only
+          <em>one</em> mail will be sent, containg just a short summary and
+          an explanation.</p></dd>
+
+          <dt><code>split/truncate[/<var>number</var>]</code></dt>
+          <dd>This action token behaves mostly like <code>split</code>, except
+          that overlong single mails (containing one huge diff) are truncated
+          after reaching the limit. A note about the number of truncated lines
+          is appended then.</dd>
+        </dl>
+
+        <p>The optional final parameters determine, whether the configured
+        behaviour should be applied to revision property changes and/or locks,
+        too. The possible tokens are <code>revprop-changes</code> and
+        <code>locks</code>. Now if the second parameter specifies a
+        truncating action, the speecified notifications are
+        truncated if they would execeed the limit, otherwise they are not
+        touched (They are <em>never</em> split). However, overlong
+        revision property change or lock notifications should happen
+        <em>very</em> rarely.</p>
+
+        <p>By default no special action is taken to prevent huge mails. But it
+        is highly recommended to configure one.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          long_mail_action = 100000 split/truncate<br />
+          <br />
+          [some group]<br />
+          # truncate revprop changes as well<br />
+          long_mail_action = 100000 split/truncate revprop-changes<br />
+          <br />
+          [second group]<br />
+          # truncate revprop changes and locks as well<br />
+          long_mail_action = 100000 split/truncate revprop-changes locks<br />
+          <br />
+          [other group]<br />
+          # limit to 3 mails per commit at max<br />
+          long_mail_action = 100000 split/truncate/3
+        </code></p></div>
+
+<!-- groups: long_news_action -->
+        <h3><a name="groups-long-news-action"
+        id="groups-long-news-action">long_news_action</a></h3>
+        <p>The <dfn><code>long_news_action</code></dfn> option defines, how
+        the svnmailer should deal with huge commit notification news articles.
+        It takes exactly the same parameters like the <a
+        href="#groups-long-mail-action"><code>long_mail_action</code></a>
+        option. Please have a look there for detailed information.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          long_news_action = 100000 showurls/truncate
+        </code></p></div>
+
+<!-- groups: mail_transfer_encoding -->
+        <h3><a name="groups-mail-xfer"
+        id="groups-mail-xfer">mail_transfer_encoding</a></h3>
+        <p>The <dfn><code>mail_transfer_encoding</code></dfn> option specifies,
+        which transfer encoding should be used when sending mails. It takes one
+        of the following tokens:</p>
+
+        <dl>
+          <dt><code>quoted-printable</code> (default)</dt>
+          <dd>The mail will be encoded using quoted-printable. This has the
+          advantage, that no physical line will be longer than 76 bytes
+          (some mail servers cut or reject lines with more than 1000
+          byte). Disadvantage: The final size depends on the content.</dd>
+
+          <dt><code>base64</code></dt>
+          <dd>The mail will be encoded using base64. Lines are also broken after 76
+          bytes and the final size is always 4/3 of the original size.
+          Disadvantage: The encoded content is not human readable.</dd>
+
+          <dt><code>8bit</code></dt>
+          <dd>The mail won't be transfer encoded. This means, that huge lines
+          may be cut or mails containing weird bytes (e.g. <code>\0</code>) may
+          be misinterpreted or rejected.</dd>
+        </dl>
+
+        <p>Note that the <code>mail_transfer_encoding</code> is not applied to
+        <a href="#groups-mail-type">multipart mails</a>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          mail_transfer_encoding = base64
+        </code></p></div>
+
+<!-- groups: news_transfer_encoding -->
+        <h3><a name="groups-news-xfer"
+        id="groups-news-xfer">news_transfer_encoding</a></h3>
+        <p>The <dfn><code>news_transfer_encoding</code></dfn> option defines the
+        transfer encoding to use for news postings. It takes the value as <a
+        href="#groups-mail-xfer"><code>mail_transfer_encoding</code></a>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          news_transfer_encoding = 8bit
+        </code></p></div>
+
+<!-- groups: mail_type -->
+        <h3><a name="groups-mail-type" id="groups-mail-type">mail_type</a></h3>
+        <p>The <dfn><code>mail_type</code></dfn> option defines how the
+        notification mail should be constructed. If you set it to
+        <code>multipart</code>, the mail will be of type
+        <code>multipart/mixed</code>, otherwise it's a single text mail.</p>
+
+        <p>The generation of multipart mails is discouraged, because is has
+        unclear semantics (the diffs are more or less opaque data) and the
+        client support is not as well as it could be. Further the <a
+        href="#groups-mail-xfer"><code>mail_transfer_encoding</code></a> option
+        is not applied to multipart mails. The diff parts are designated as
+        <code>Content-Transfer-Encoding: binary</code>. Further note, that
+        regardless of the charset, paths are <em>always</em> encoded as
+        UTF-8.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          mail_type = single<br />
+          <br />
+          [some group requested multipart mails]<br />
+          mail_type = multipart
+        </code></p></div>
+
+<!-- groups: apply_charset_property -->
+        <h3><a name="groups-charset-property"
+        id="groups-charset-property">apply_charset_property</a></h3>
+        <p>The <dfn><code>apply_charset_property</code></dfn> option determines,
+        whether the svnmailer should retrieve the content charset of the
+        modified files from <code>svn:mime-type</code> and
+        <code>svnmailer:content-charset</code> properties.
+        This charset is used to recode the files, when generating the diff,
+        so you get readable notifications, even if you change files with
+        different charsets during one commit.</p>
+
+        <p>At first the <code>svn:mime-type</code> property of the particular
+        file (in the particular revision) is evaluated. If it's set and contains
+        a <code>charset</code> attribute (like <code>text/plain;
+        charset=iso-8859-2</code>), the attribute value
+        (<code>iso-8859-2</code>) is chosen as file encoding. Otherwise the
+        svnmailer continues the encoding lookup by evaluating
+        <code>svnmailer:content-charset</code> properties.</p>
+
+        <p>The <code>svnmailer:content-charset</code> property can be set
+        either for the file itself or for one or more of its parent
+        directories (while more specific definitions override less specific
+        ones). If set for a particular file, the property just contains the
+        charset name:</p>
+
+        <div class="example"><p><code>
+          # Example: setting a specific file charset<br />
+          $ svn pset svnmailer:content-charset koi8-r file.html.ru
+        </code></p></div>
+
+        <p>If the svnmailer doesn't find the property set for the changed file,
+        it looks for the <code>svnmailer:content-charset</code> property in the
+        parent directories up to <code>/</code>. These directory properties are
+        the way to specify file charsets in a more general manner. If specified,
+        they are expected to contain shell-style glob/charset definitions, one
+        per line. Such a line looks like:</p>
+
+        <div class="example"><p><code>
+          <var>glob</var> = <var>charset</var>
+        </code></p></div>
+
+        <p>Leading and trailing spaces, empty lines, lines starting with
+        <code>#</code> and lines without a <code>=</code> character are
+        ignored. Those directory properties can be easily set using the
+        <code>svn propedit</code> command:</p>
+
+        <div class="example"><p><code>
+          # (note the trailing dot)<br />
+          $ svn pedit svnmailer:content-charset .
+        </code></p></div>
+
+        <p>Now an editor should be opened and you can add the desired
+        definitions. A sample property could look like:</p>
+
+        <div class="example"><p><code>
+          # German files<br />
+          *.xml.de = iso-8859-1<br />
+          *.html.de = iso-8859-1<br />
+          <br />
+          # Russian files<br />
+          *.xml.ru = koi8-r<br />
+          *.html.ru.koi8-r = koi8-r
+        </code></p></div>
+
+        <p>Note that the globs apply to the whole file path including
+        the leading slash. They are interpreted case sensitive by <a
+        href="http://docs.python.org/lib/module-fnmatch.html">python's
+        fnmatch module</a>. The content of the property is expected to be UTF-8
+        encoded.</p>
+
+        <p>If <code>apply_charset_property</code> is false or there's no
+        <code>svnmailer:content-charset</code> property defined or the
+        charset cannot be found in python's codec collection, the svnmailer
+        falls back to <code>iso-8859-1</code>, which translates
+        literally to unicode and so just represents the byte stream in
+        character form. If the file content is miscoded (according to the
+        chosen charset), uninterpretable byte sequences are represented by the
+        replace character (<code>U+FFFD</code>). Note that asian encodings are
+        not present in python 2.3. If you want to use such encodings, you
+        need to install the <a href="http://cjkpython.i18n.org/">CJKCodecs</a>
+        (which are included in python 2.4 and later).</p>
+
+        <p>The "boolean" values accepted by this option are <code>yes</code>,
+        <code>on</code>, <code>true</code> and <code>1</code> for the "true"
+        case and <code>no</code>, <code>off</code>, <code>false</code>,
+        <code>0</code>, <code>none</code> and the empty string for the
+        "false" case. The default is false.</p>
+
+        <p>For convenience the <code>apply_charset_property</code> option can
+        also be written as <code>charset_property</code>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          apply_charset_property = yes
+        </code></p></div>
+
+<!-- groups: show_applied_charset -->
+        <h3><a name="groups-show-charset"
+        id="groups-show-charset">show_applied_charset</a></h3>
+        <p>The <dfn><code>apply_charset_property</code></dfn> option specifies
+        whether the svnmailer should write the (either assumed or configured)
+        charset of a file into the diff header. This looks like this:</p>
+
+        <div class="example"><p><code>
+Modified: foo/somefile.html.ru<br />
+=============================================<br />
+--- foo/somefile.html.ru [koi8-r] (original)<br />
++++ foo/somefile.html.ru [koi8-r] Sat May 21 18:16:10 2005<br />
+@@ -1,4 +1,5 @@<br />
+...
+        </code></p></div>
+
+        <p>The value in the square brackets represents the content charset
+        before it is recoded to UTF-8. That way you have all information to
+        recode it back if you need to. The following configurations are
+        possible:</p>
+
+        <dl>
+          <dt><code>yes</code></dt>
+          <dd>Always show the applied charset</dd>
+
+          <dt><code>no</code></dt>
+          <dd>Never show the applied charset</dd>
+
+          <dt><code>nondefault</code></dt>
+          <dd>Show the applied charset only if it was <a
+          href="#groups-charset-property">explicitly configured</a></dd>
+        </dl>
+
+        <p>If the option is unset or empty the svnmailer picks
+        <code>nondefault</code> as default ;-).</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          show_applied_charset = yes
+        </code></p></div>
+
+<!-- groups: custom_header -->
+        <h3><a name="groups-custom-header"
+        id="groups-custom-header">custom_header</a></h3>
+        <p>The <dfn><code>custom_header</code></dfn> option defines a custom
+        header line that is attached to each mail sent for the particular group
+        (or all groups, if you make it default). This allows for better
+        filtering of the mails than just by subject. If the mails are sent to a
+        mailing list, you probably don't need a custom header, because most
+        mailing list software defines its own (and probably better) headers.</p>
+
+        <p>The supplied option value consists of two space or tab separated
+        parts -- the header name and the header value template. The header name
+        is always prepended with <code>X-</code> and invalid characters
+        (according to <a href="http://ftp.rfc-editor.org/in-notes/rfc2822.txt"
+        >RFC 2822</a>) are stripped. The header value is a <a
+        href="#groups-subst">substitution</a> template. Note that if the final
+        header value contains characters, that are not contained by the
+        <code>us-ascii</code> character set, it is encoded according to <a
+        href="http://ftp.rfc-editor.org/in-notes/rfc2047.txt">RFC 2047</a>. If
+        you supply the header name only, the header will be attached empty.</p>
+
+        <p>If groups are merged during <a href="#config-selection">the
+        selection process</a> and multiple custom headers are found, they are
+        all attached to the mail. If multiple values for the same header name
+        are found, they are merged with a comma and a space between. By
+        default <code>custom_header</code> is empty.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          for_repos = .*/(?P&lt;REPOS&gt;[^/]+)$<br />
+          custom_header = SVN-Repository %(REPOS)s<br />
+          <br />
+          [some group]<br />
+          for_repos = .*/public$<br />
+          # ...<br />
+          <br />
+          [group without custom header]<br />
+          custom_header =
+        </code></p></div>
+
+        <p>In the above example the svnmailer sends all mails for the group
+        <code>some group</code> with an additional header named
+        <code>X-SVN-Repository</code> containing the value
+        <code>public</code>.</p>
+
+<!-- groups: extract_x509_author -->
+        <h3><a name="groups-extract-x509"
+        id="groups-extract-x509">extract_x509_author</a></h3>
+
+        <p>The <dfn><code>extract_x509_author</code></dfn> option is useful, if
+        you're using SSL client certificates in conjunction with <a
+        href="http://httpd.apache.org/docs-2.0/mod/mod_ssl.html#ssloptions"><code>SSL
+        Options +FakeBasicAuth</code></a> for repository authentication. If
+        set to a positive value (e.g. <code>yes</code>), the svnmailer tries to
+        extract the author's real name and email address from the supplied
+        x509 Subject Distinguished Name (DN). In case of successful extraction
+        it adds the following values to the <a
+        href="#groups-subst">substitution</a> parameters:</p>
+
+        <dl>
+          <dt><code>x509_CN</code></dt>
+          <dd>The contents of the Common Name field (which is assumed to be
+          UTF-8 encoded). This value also will be taken by the message generator
+          for the meta data on top of the message.</dd>
+
+          <dt><code>x509_emailAddress</code></dt>
+          <dd>The contents of the email address field</dd>
+
+          <dt><code>x509_address</code></dt>
+          <dd>A string consisting of CN and email address usable as full email
+          address. It has the form <code>Common Name &lt;email
+          address&gt;</code>, where the Common Name is encoded according to <a
+          href="http://ftp.rfc-editor.org/in-notes/rfc2047.txt">RFC
+          2047</a>.</dd>
+        </dl>
+
+        <p>The "boolean" values accepted by this option are <code>yes</code>,
+        <code>on</code>, <code>true</code> and <code>1</code> for the "true"
+        case and <code>no</code>, <code>off</code>, <code>false</code>,
+        <code>0</code>, <code>none</code> and the empty string for the
+        "false" case. The default is false.</p>
+
+        <p>For convenience the <code>extract_x509_author</code> option can also
+        be written as <code>x509_author</code>.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [defaults]<br />
+          extract_x509_author = yes<br />
+          from_addr = %(x509_address)s
+        </code></p></div>
+
+<!-- groups: cia_project_name -->
+        <h3><a name="groups-cia-project-name"
+        id="groups-cia-project-name">cia_project_name</a></h3>
+        <p>The <dfn><code>cia_project_name</code></dfn> specifies the project
+        name under which the changes are tracked in a <a
+        href="http://cia.navi.cx/">CIA real time tracker</a>. In order to track
+        your projects using CIA notifiations you need to define the <a
+        href="#general-cia-rpc-server"><code>cia_rpc_server</code></a> option
+        properly at least and a <code>cia_project_name</code> for the
+        notification groups that should be tracked. However, you should
+        consider to set <a
+        href="#groups-cia-project-path"><code>cia_project_path</code></a> to a
+        reasonable value.</p>
+        
+        <p>The <code>cia_project_name</code> option value is a <a
+        href="#groups-subst">substitution template</a>, so it is possible to
+        extract the project name from the path or the like. By default there's
+        no project name defined.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          cia_rpc_server = http://cia.example.org<br />
+          <br />
+          [some group]<br />
+          cia_project_name = Example Project
+        </code></p></div>
+
+<!-- groups: cia_project_module -->
+<!-- groups: cia_project_branch -->
+<!-- groups: cia_project_submodule -->
+        <h3><a name="groups-cia-project-desc"
+        id="groups-cia-project-desc">cia_project_module, cia_project_branch and
+        cia_project_submodule</a></h3>
+        <p>These options further refine the project description submitted to the
+        CIA tracker. Note that you still need to specify a <a
+        href="#groups-cia-project-name">project name</a> to submit the
+        notification to the CIA server at all.</p>
+
+        <p>Like <code>cia_project_name</code> the option values are <a
+        href="#groups-subst">substitution templates</a>, so it is possible to
+        extract some information from the path. By default all of the
+        descriptions are empty.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          cia_rpc_server = http://cia.example.org<br />
+          <br />
+          [defaults]<br />
+          for_paths = [^/]+/(?P&lt;MOD&gt;[^/]+)/(?:branches/(?P&lt;BRA&gt;[^/]+)/)?<br />
+          cia_project_module = %(MOD)s<br />
+          cia_project_branch = %(BRA)s<br />
+          <br />
+          [some group]<br />
+          cia_project_name = Example Project
+        </code></p></div>
+
+<!-- groups: cia_project_path -->
+        <h3><a name="groups-cia-project-path"
+        id="groups-cia-project-path">cia_project_path</a></h3>
+        <p>The <dfn><code>cia_project_path</code></dfn> option defines the path
+        in the repository that should be stripped from the beginning of the
+        paths changed when submitting the file list to the CIA tracker. This
+        lets tracked projects look more self containing. A real life example is
+        the <a href="http://httpd.apache.org/">Apache HTTP Server</a>. Its
+        position in the ASF repository is <a
+        href="http://svn.apache.org/repos/asf/httpd/httpd/"><code>/httpd/httpd/{trunk,branches,tags}</code></a>.
+        A reasonable <code>cia_project_path</code> value would be
+        <code>httpd/httpd/</code>. Note that the specified path is normalized
+        before being stripped. That means, any leading slash is removed and a
+        trailing slash is appended if needed.</p>
+
+        <p>Like <code>cia_project_name</code> the option value is a <a
+        href="#groups-subst">substitution template</a>, so it is possible to
+        extract this information from the path. By default no path is
+        stripped.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          cia_rpc_server = http://cia.example.org<br />
+          <br />
+          [defaults]<br />
+          for_paths = (?P&lt;PATH&gt;[^/]+)/(?P&lt;MOD&gt;[^/]+)/(?:branches/(?P&lt;BRA&gt;[^/]+)/)?<br />
+          cia_project_module = %(MOD)s<br />
+          cia_project_branch = %(BRA)s<br />
+          cia_project_path   = %(PATH)s<br />
+          <br />
+          [Example Project]<br />
+          cia_project_name = %(group)s
+        </code></p></div>
+
+<!-- groups: Substitutions -->
+        <h3><a name="groups-subst" id="groups-subst">Substitutions</a></h3>
+        <p>Substitutions are a powerful feature that can simplify some
+        configurations very much. They base on named <a
+        href="http://docs.python.org/lib/typesseq-strings.html">python format
+        strings</a>. The format strings are similar to the ones you may
+        already know from the <code>printf()</code> function of C or perl,
+        except that the particular formats are not determined by order, but
+        <em>by name</em>. To give a particular format a name, you just
+        write <code>%(<var>name</var>)s</code> instead of <code>%s</code> (for a
+        string). The <var>name</var> can be any sequence of characters.</p>
+
+        <p>As usual, when dealing with such format strings, if you want to
+        express a literal <code>%</code>, you need to duplicate it
+        (<code>%%</code>). Note that you should limit your formats to
+        strings (i.e. the <code>s</code> format), because that's what the
+        svnmailer always supplies. Here is a real life example:</p>
+
+        <div class="example"><p><code>
+          [defaults]<br />
+          from_addr = %(author)s@example.org
+        </code></p></div>
+
+        <p>Well, where are the format names and values taken from? Depending on
+        the option they are either fixed or determined dynamically. The former
+        -- simpler -- variant is used by the <a
+        href="#groups-diff-command"><code>diff_command</code></a> option. For
+        this option <em>the svnmailer</em> defines, which format names and
+        values are used (<code>label_from</code>, <code>label_to</code>,
+        <code>from</code> and <code>to</code>). For the actual meaning of these
+        format names have a look at <a href="#general-diff-command">the
+        <code>diff_command</code> description</a>.</p>
+
+        <p>The dynamic definition of format names and values is a bit more
+        complex. This is used by <a href="#groups-addr">the address
+        templates</a>, the <a href="#groups-subject-template">the subject
+        templates</a>, the <a href="#groups-cia-project-name">CIA project
+        descriptions</a> and the <a
+        href="#groups-custom-header"><code>custom_header</code></a> option.
+        There the list of format names (and values) is taken from
+        previously matched <a href="http://docs.python.org/lib/re-syntax.html"
+        >regular expressions</a> (default <code>for_repos</code>, default
+        <code>for_paths</code>, group <code>for_repos</code> and group
+        <code>for_paths</code> -- in that order, later definitions override
+        earlier ones). This relies on another python feature: named matching
+        groups. These are like normal storing parentheses, but you can give
+        them a name. Instead of <code>(to-match)</code>, you write
+        <code>(?P&lt;<var>name</var>&gt;to-match)</code> in your regular
+        expression. Such a <var>name</var> has to look like a <a
+        href="http://docs.python.org/ref/identifiers.html">valid python
+        identifier</a>. After a matching regular expression is
+        executed, the svnmailer stores such named groups for later use
+        separatly for each notification group. A typical use case of
+        this feature is:</p>
+
+        <div class="example"><p><code>
+          [some group]<br />
+          for_paths = projects/(?P&lt;PROJECT&gt;[^/]+)/<br />
+          to_addr = %(PROJECT)s-commits@example.org
+        </code></p></div>
+
+        <p>Besides the regular expression matches the substitution value
+        record initially contains some fixed values: <code>revision</code>,
+        <code>property</code>, <code>author</code> and
+        <code>group</code>. <code>revision</code> contains the revision number
+        if there is one available (e.g. locks are not tied to a particular
+        revision). In the case of revision property change notifications
+        <code>property</code> contains the name of the propery modified.
+        <code>author</code> contains the author of the particular event
+        (or <code>no_author</code> if no author could be determined).
+        <code>group</code> contains the name of the notification group
+        (that is the section heading without the braces). Further the
+        record may contain the values described at the <a
+        href="#groups-extract-x509"><code>extract_x509_author</code></a>
+        option. All initial values can be overridden by one of the regular
+        expressions described above. Additionally the <a
+        href="#groups-subject-template">subject templates</a> provide more
+        predefined values, but have a look there for details.</p>
+
+<!-- Configuring the Repository -->
+      <h2><a name="repository" id="repository">Configuring the Repository</a></h2>
+      <p>Now, after you've created a config file, you can hook the svnmailer into
+      the repository. Subversion uses so called <a
+      href="http://svnbook.red-bean.com/en/1.0/ch05s02.html#svn-ch-5-sect-2.1">hook
+      scripts</a> to perform customized actions at certain stages of a change
+      event. (Note that the following descriptions don't apply directly to
+      Windows.)</p>
+
+<!-- repos: Configuring For Commit Messages -->
+      <h3><a name="repos-commit" id="repos-commit">Configuring For Commit
+      Messages</a></h3>
+      <p>In order to run the svnmailer for normal commits you need to call
+      it at the post-commit stage. If your post-commit hook isn't customized
+      already, change into the <code><var>repository</var>/hooks</code>
+      directory and copy the <code>post-commit.tmpl</code> template to
+      <code>post-commit</code> It's generally a good idea, to keep the template
+      file for later reference.</p>
+
+      <div class="example"><p><code>
+        # change into the hooks directory<br />
+        # (/var/svn/public is the repository in question)<br />
+        $ cd /var/svn/public/hooks<br />
+        <br />
+        # create the actual hook script from template<br />
+        $ cp post-commit.tmpl post-commit<br />
+        <br />
+        # edit the file<br />
+        $ vi post-commit<br />
+        <br />
+        # make it executable<br />
+        $ chmod 755 post-commit
+      </code></p></div>
+
+      <p>After you've copied the template open the newly created hook script
+      with your favorite editor. You will see a lot of comments describing the
+      purpose of the hook and giving some hints about file system permissions
+      etc. After you've read these comments, there follows a small shell
+      script. Typcially there are sample scripts <em>activated</em>, you
+      may not want to run. If so, comment them out or delete the entries.
+      Finally to activate the svnmailer, add the following:</p>
+
+      <div class="example"><p><code>
+        # the location of svn-mailer may be customized,<br />
+        # use the real location.<br />
+        /usr/bin/svn-mailer --commit --config /path/to/your/config \<br />
+        <span class="indent">--repository "${REPOS}" --revision "${REV}" &amp;</span>
+      </code></p></div>
+
+      <p>Of course, the <code>REPOS</code> and <code>REV</code> variables are
+      only available if you left the definitions below the comments. Anyway,
+      that's it. After you saved the file and closed your editor, you only have
+      to make it executable and subversion will execute it after every
+      commit. It is, however, a good idea to test the hook script as the user
+      who runs it, before doing the next commit (That is only possible, if there
+      are already revision stored in the repository):</p>
+
+      <div class="example"><p><code>
+        # in this example wwwrun is the user the httpd runs as<br />
+        $ sudo -u wwwrun ./post-commit /var/svn/public 1
+      </code></p></div>
+
+      <p>Now you should receive a notification. If not, you should get a
+      descriptive error message, what went wrong. By the way: a typical error
+      is a non-readable configuration file.</p>
+
+<!-- repos: Configuring For Revision Property Changes -->
+      <h3><a name="repos-propchange" id="repos-propchange">Configuring For
+      Revision Property Changes</a></h3>
+      <p>Configuring for a revprop change message is mostly equal to commit
+      messages. If you do not allow to modify revision properties, you don't
+      need to care and can stop here. If you <em>want</em> to allow for revision
+      property changes, you should read <a
+      href="http://svnbook.red-bean.com/en/1.0/ch05s02.html#svn-ch-5-sect-2.1"
+      >the related subversion documentation</a> regarding the
+      <code>pre-revprop-change</code> and <code>post-revprop-change</code>
+      hooks first.</p>
+
+      <p>You need to hook the svnmailer into <code>post-revprop-change</code>
+      to get a notification containing the new property value.</p>
+
+      <div class="example"><p><code>
+        # change into the hooks directory<br />
+        # (/var/svn/public is the repository in question)<br />
+        $ cd /var/svn/public/hooks<br />
+        <br />
+        # create the actual hook script from template<br />
+        $ cp post-revprop-change.tmpl post-revprop-change<br />
+        <br />
+        # edit the file<br />
+        $ vi post-revprop-change<br />
+        <br />
+        # make it executable<br />
+        $ chmod 755 post-revprop-change
+      </code></p></div>
+
+      <p>After opening the hook script the same warnings as for post-commits
+      apply: remove all stuff, you don't want there. After that you can add
+      the svnmailer command to the script. Depending on the subversion release,
+      the command line may differ. Starting with subversion 1.2, the action
+      taken on the property <em>and the old property value</em> (via
+      <code>STDIN</code>) are supplied to the hook script.</p>
+
+      <div class="example"><p><code>
+        # the location of svn-mailer may be customized,<br />
+        # use the real location.<br />
+        <br />
+        # command line for SVN &lt; 1.2<br />
+        /usr/bin/svn-mailer --propchange --config /path/to/your/config \<br />
+        <span class="indent">--repository "${REPOS}" --revision "${REV}" \<br /></span>
+        <span class="indent">--author "${USER}" --propname "${PROPNAME}" &amp;</span>
+        <br />
+        # command line for SVN &gt;= 1.2<br />
+        /usr/bin/svn-mailer --propchange --config /path/to/your/config \<br />
+        <span class="indent">--repository "${REPOS}" --revision "${REV}" \<br /></span>
+        <span class="indent">--author "${USER}" --propname "${PROPNAME}" \<br /></span>
+        <span class="indent">--action "${ACTION}" &amp;</span>
+      </code></p></div>
+
+      <p>The <code>REPOS</code>, <code>REV</code>, <code>USER</code>,
+      <code>PROPNAME</code> and <code>ACTION</code> variables should be still
+      defined, of course. Close the file, make it executable and test it:</p>
+
+      <div class="example"><p><code>
+        # in this example wwwrun is the user the httpd runs as<br />
+        # SVN &lt; 1.2<br />
+        $ sudo -u wwwrun ./post-revprop-change /var/svn/public 1 nd svn:log<br />
+        <br />
+        # SVN &gt;= 1.2<br />
+        $ echo -n | sudo -u wwwrun \<br />
+        <span class="indent">./post-revprop-change /var/svn/public 1 nd svn:log A</span>
+      </code></p></div>
+
+<!-- repos: Configuring For Lock Notifications -->
+      <h3><a name="repos-locking" id="repos-locking">Configuring For
+      Lock Notifications</a></h3>
+      <p>Locking notifications can be sent out when paths are either locked or
+      unlocked. Locking is a new feature of subversion 1.2. In order to
+      activate those notifications you need to hook the svnmailer into the
+      <code>post-lock</code> hook and the <code>post-unlock</code> hook
+      respectively. Similar to the other hooks there should be templates in
+      your <code>hooks/</code> directory. However, if you've just upgraded
+      your subversion installation to 1.2, they may be not there, because the
+      templates are generated only when you're creating a new repository. So if
+      you don't find them, just create files in your hook directory named
+      <code>post-lock</code> and <code>post-unlock</code>.</p>
+
+      <p>Well, when you're editing the template copies, make sure there's
+      nothing called you do not want. And that's what you have to put into the
+      hook scripts to let the svnmailer do its work:</p>
+
+      <div class="example"><p><code>
+        # the location of svn-mailer may be customized,<br />
+        # use the real location.<br />
+        <br />
+        # post-lock hook:<br />
+        /usr/bin/svn-mailer --lock --config /path/to/your/config \<br />
+        <span class="indent">--repository "${REPOS}" --author "${USER}" &amp;</span>
+        <br />
+        # post-unlock hook:<br />
+        /usr/bin/svn-mailer --unlock --config /path/to/your/config \<br />
+        <span class="indent">--repository "${REPOS}" --author "${USER}"</span>
+      </code></p></div>
+
+      <p>The <code>REPOS</code> and <code>USER</code> variables should be still
+      defined. If you've created the files from the scratch, the variable
+      definitions are as follows:</p>
+
+      <div class="example"><p><code>
+        REPOS="$1"<br />
+        USER="$2"
+      </code></p></div>
+
+      <p>When you're done, close the file, make it exectuable and test it:</p>
+
+      <div class="example"><p><code>
+        # in this example wwwrun is the user the httpd runs as<br />
+        $ echo "/some/existing/file/in/your/repos" | \<br />
+        <span class="indent">sudo -u wwwrun ./post-lock /var/svn/public nd<br /></span>
+        <br />
+        $ echo "/some/existing/file/in/your/repos" | \<br />
+        <span class="indent">sudo -u wwwrun ./post-unlock /var/svn/public nd</span>
+      </code></p></div>
+
+      <p>Congratulations, you're done. Happy Hacking!</p>
+
+<!-- The svnmailer Command Line -->
+    <h2><a name="commandline" id="commandline">The svnmailer Command
+    Line</a></h2>
+      <table summary="A short description of the possible command line parameters"
+        class="options">
+      <caption>The command line parameters</caption>
+      <tr><th class="option-name">Parameter Name</th>
+          <th class="option-type">Type</th>
+          <th class="option-desc">Description</th></tr>
+      <tr><td><code>--version</code></td>
+          <td>action</td>
+          <td>Shows the version and exits</td></tr>
+      <tr><td><code>--help</code></td>
+          <td>action</td>
+          <td>Shows a short help and exits</td></tr>
+      <tr><td><code>--debug</code></td>
+          <td>flag</td>
+          <td>Turns on debugging mode</td></tr>
+      <tr><td><code>--path-encoding</code> (<code>-e</code>)</td>
+          <td>string</td>
+          <td>The encoding used for file and path names</td></tr>
+      <tr><td><code>--config</code> (<code>-f</code>)</td>
+          <td>filepath</td>
+          <td>The location of the main config file</td></tr>
+      <tr><td><code>--revision</code> (<code>-r</code>)</td>
+          <td>int</td>
+          <td>The revision number to process</td></tr>
+      <tr><td><code>--repository</code> (<code>-d</code>)</td>
+          <td>filepath</td>
+          <td>The repository to process</td></tr>
+      <tr><td><code>--commit</code> (<code>-c</code>)</td>
+          <td>flag</td>
+          <td>Turns on the commit mode</td></tr>
+      <tr><td><code>--propchange</code> (<code>-p</code>)</td>
+          <td>flag</td>
+          <td>Turns on the revpropchange mode</td></tr>
+      <tr><td><code>--lock</code> (<code>-p</code>)</td>
+          <td>flag</td>
+          <td>Turns on the lock mode</td></tr>
+      <tr><td><code>--unlock</code> (<code>-p</code>)</td>
+          <td>flag</td>
+          <td>Turns on the unlock mode</td></tr>
+      <tr><td><code>--author</code> (<code>-a</code>)</td>
+          <td>string</td>
+          <td>The author of the change (usually for revprop changes
+              only)</td></tr>
+      <tr><td><code>--propname</code> (<code>-n</code>)</td>
+          <td>string</td>
+          <td>The name of the modified property (for revprop changes
+              only)</td></tr>
+      <tr><td><code>--action</code> (<code>-o</code>)</td>
+          <td>character</td>
+          <td>The revprop change action (<code>A</code>, <code>D</code> or
+              <code>M</code>). <em>SVN 1.2 and later</em></td></tr>
+      </table>
+
+      <p>The svnmailer is usually invoked via a small script called
+      <code>svn-mailer</code>. It's located, whereever python installs it (have
+      a look at <a href="#installation">the installation procedure</a> for
+      details). On my box it was installed to
+      <code>/usr/bin/svn-mailer</code>. The script needs a number of command
+      line parameters, which control its behaviour.</p>
+
+      <p><code>svn-mailer</code> supports two command line styles: the
+      "old-style" command line, which is compatible to the original mailer.py
+      script and its own "new-style" command line, which takes named parameters
+      only. The latter is recommended, however.</p>
+
+      <p>The "old-style" variant is derived from svn itself. It starts with
+      a subcommand (either <code>commit</code> or <code>propchange</code>) and
+      continues with the necessary parameters. Further it is <em>fixed</em>. No
+      further options are allowed. Here are the old-style variants (optional
+      parameters are enclosed in square brackets):</p>
+
+      <div class="example"><p><code>
+        svn-mailer commit <var>repos</var> <var>revision</var> [<var>config</var>]<br />
+        svn-mailer propchange <var>repos</var> <var>revision</var> <var>author</var> <var>propname</var>
+            [<var>config</var>]<br />
+        # (optionally) for SVN &gt;= 1.2:<br />
+        svn-mailer propchange2 <var>repos</var> <var>revision</var> <var>author</var> <var>propname</var>
+            <var>action</var> [<var>config</var>]<br />
+        svn-mailer lock <var>repos</var> <var>author</var> [<var>config</var>]<br />
+        svn-mailer unlock <var>repos</var> <var>author</var> [<var>config</var>]
+      </code></p></div>
+
+      <p>These lines, translated into the new style, look about:</p>
+
+      <div class="example"><p><code>
+        svn-mailer [--commit] [--config=<var>config</var>] \<br />
+        <span class="indent">--repository=<var>repos</var>
+            --revision=<var>revision</var><br /></span>
+        <br />
+        svn-mailer --propchange [--config=<var>config</var>] \<br />
+            <span class="indent">--repository=<var>repos</var>
+                --revision=<var>revision</var> \<br /></span>
+            <span class="indent">--author=<var>author</var>
+                --propname=<var>propname</var><br /></span>
+        <br />
+        # (optionally) for SVN &gt;= 1.2:<br />
+        svn-mailer --propchange [--config=<var>config</var>] \<br />
+            <span class="indent">--repository=<var>repos</var>
+                --revision=<var>revision</var> \<br /></span>
+            <span class="indent">--author=<var>author</var>
+                --propname=<var>propname</var> \<br /></span>
+            <span class="indent">--action=<var>action</var><br /></span>
+        <br />
+        svn-mailer --lock [--config=<var>config</var>] \<br />
+            <span class="indent">--repository=<var>repos</var>
+                --author=<var>author</var><br /></span>
+        <br />
+        svn-mailer --unlock [--config=<var>config</var>] \<br />
+            <span class="indent">--repository=<var>repos</var>
+                --author=<var>author</var></span>
+      </code></p></div>
+
+      <p>The following sections describe all available "new-style" command
+      line parameters in detail.</p>
+
+<!-- cmd: version -->
+      <h3><a name="cmd-version" id="cmd-version">--version</a></h3>
+      <p>If you supply the <dfn><code>--version</code></dfn> parameter, the
+      svnmailer writes its own name and version plus the version of the
+      subversion bindings it uses to <code>stdout</code> and exits
+      immediately.</p>
+
+      <div class="example"><p><code>
+        $ svn-mailer --version<br />
+        svnmailer-1.0.0<br />
+        with svn 1.1.3 (r12730)
+      </code></p></div>
+
+<!-- cmd: help -->
+      <h3><a name="cmd-help" id="cmd-help">--help</a></h3>
+      <p>If you supply the <dfn><code>--help</code></dfn> parameter, the
+      svnmailer writes a short usage information to <code>stdout</code> and
+      exits immediately.</p>
+
+      <div class="example"><p><code>
+        $ svn-mailer --help<br />
+        usage: svn-mailer options<br />
+        <var>... description of the parameters ...</var>
+      </code></p></div>
+
+<!-- cmd: debug -->
+      <h3><a name="cmd-debug" id="cmd-debug">--debug</a></h3>
+      <p>The <dfn><code>--debug</code></dfn> option turns the svnmailer into
+      debug mode. This means, that no mails are sent, but written to
+      <code>stdout</code>, so you can test your installation. Additionally a
+      header called <code>X-Config-Groups</code> is attached, which
+      contains the selected notification groups.</p>
+
+      <div class="example"><p><code>
+        $ svn-mailer --debug --repository=testrepos --revision=1<br />
+        Content-Type: text/plain; charset="utf-8"<br />
+        MIME-Version: 1.0<br />
+        Content-Transfer-Encoding: quoted-printable<br />
+        X-Mailer: svnmailer-1.0.0<br />
+        Date: Sat, 15 Jan 2005 21:03:58 -0000<br />
+        Subject: r1 - foo<br />
+        To: foo@example.org<br />
+        From: nd@example.org<br />
+        X-Config-Groups: [defaults]<br />
+        <br />
+        Author: nd<br />
+        Date: Wed Jan&nbsp; 5 00:23:43 2005<br />
+        New Revision: 1<br />
+        <br />
+        Log:<br />
+        added directory foo<br />
+        <br />
+        Added:<br />
+        &nbsp; &nbsp; foo/
+      </code></p></div>
+
+<!-- cmd: path-encoding -->
+      <h3><a name="cmd-path-encoding" id="cmd-path-encoding">--path-encoding
+      (-e)</a></h3>
+      <p>The <dfn><code>--path-encoding</code></dfn> option can be used to
+      override the assumptions regarding the path name encodings the
+      svnmailer makes based on the locale environment. This affects
+      the paths given both via command line and config. If you're using
+      file and path names consisting of ASCII characters only, you can
+      (and probably should) safely skip the following paragraphs.</p>
+
+      <p>Normally this option should not be necessary.
+      However, the POSIX filesystem doesn't know anything about
+      encodings at all, so it can easily happen, that the bytes
+      that happen to represent the file name are not interpretable as
+      characters in the locale used. <code>--path-encoding</code> provides
+      a workaround for this kind of problem (at least it tries to). You can
+      specify the encoding of filenames independet from the locale. It just
+      should be one of the codecs recognized by python.</p>
+
+      <p>Unfortunately there may be <em>still</em> a problem. The function
+      to open the repository of underlying subversion bindings expects an
+      unicode path and recodes it back to the locale representation (possibly
+      using a slightly different algortithm than python). That way, the
+      svnmailer has to recognize the encoding of the path given in the
+      command line. The conversion back to the locale (inside svn) is not
+      influencable by the <code>--path-encoding</code> option. If
+      you get a crash caused by the subversion library, that describes
+      a recoding error, you can try setting the <code>LC_CTYPE</code>
+      environment variable to some <code>ISO-8859-1</code> locale (like
+      <code>en_US.iso-8859-1</code>), and just treat the octets of the
+      file names as characters (the reason for this is, that the
+      codepoints of <code>ISO-8859-1</code> are compatible to unicode, so
+      it should be all recoded smoothly) -- or use
+      <code>--path-encoding</code> to supply it in a readable form to the
+      svnmailer.</p>
+
+      <p>Anyway, the best solution is either to use just ASCII names or
+      to use consistent encodings for file names and locales.
+      <code>UTF-8</code> is a good choice.</p>
+
+<!-- cmd: config -->
+      <h3><a name="cmd-config" id="cmd-config">--config (-f)</a></h3>
+      <p>The <dfn><code>--config</code></dfn> option is used to pass the path
+      and name of a <a href="#config">configuration file</a> to the svnmailer.
+      If you omit this option, the svnmailer looks at some default locations for
+      a config, which are in order: <code><a
+      href="#cmd-repository"><var>repos</var></a>/conf/mailer.conf</code>, a
+      file called <code>mailer.conf</code> in the same directory the
+      <code>svn-mailer</code> script is located in and
+      <code>/etc/svn-mailer.conf</code>. The file found first wins. If you
+      didn't supply a <code>--config</code> option and no file is found at
+      the default locations, the svnmailer exits with an error. It is
+      recommended, to supply always the full path to the config file, so
+      that no misunderstandings can happen.</p>
+
+      <p>If the supplied config file is a single dash (<code>-</code>), the
+      config is read from <code>STDIN</code>. Note that this interferes with the
+      property value supplied via stdin on revision property changes in
+      subversion 1.2 and later.</p>
+
+      <p>For convenience the <code>--config</code> option can also be written as
+      <code>-f</code>.</p>
+
+<!-- cmd: revision -->
+      <h3><a name="cmd-revision" id="cmd-revision">--revision (-r)</a></h3>
+      <p>The <dfn><code>--revision</code></dfn> parameter defines the revision
+      to process. It has to be a number and a valid revision of the supplied <a
+      href="#cmd-repository">repository</a>, otherwise the svnmailer will exit
+      with an error. Typically you don't need to worry about this, since the
+      proper revision number is passed to the hook script by subversion
+      itself.</p>
+
+      <p>For convenience the <code>--revision</code> parameter can also be
+      written as <code>-r</code>.</p>
+
+<!-- cmd: repository -->
+      <h3><a name="cmd-repository" id="cmd-repository">--repository (-d)</a></h3>
+      <p>The <dfn><code>--repository</code></dfn> parameter specifies the full
+      <em>filesystem</em> location of the repository. This is the path matched
+      against by the <a href="#groups-for-repos"><code>for_repos</code></a>
+      configuration option. If it does not point to a subversion repository,
+      the svnmailer will exit with an error. Typically you don't need to
+      worry about this, since the proper repository path is passed to the
+      hook script by subversion itself.</p>
+
+      <p>For convenience the <code>--repository</code> parameter can also be
+      written as <code>-d</code>.</p>
+
+<!-- cmd: commit-propchange-lock-unlock -->
+      <h3><a name="cmd-commit-propchange" id="cmd-commit-propchange">--commit
+      (-c), --propchange (-p), --lock (-l) and --unlock (-u)</a></h3>
+      <p>These options tell the svnmailer whether it is running in the
+      post-<em>commit</em>, the post-<em>revprop-change</em>, the
+      post-<em>lock</em> or the post-<em>unlock</em> hook. They
+      are mutually exclusive (in fact, if you supply more of one, the most
+      right option wins). The <code>--commit</code> option is default and can
+      be omitted. The <code>--lock</code> and <code>--unlock</code> switches
+      are only available if you're using subversion 1.2 or later. Have a
+      look at the <a href="#repository">repository configuration</a> section
+      for further information.</p>
+
+      <p>The options also can be abbreviated, of course. <code>--commit</code>
+      can be written as <code>-c</code>, <code>--propchange</code> as
+      <code>-p</code>. <code>--lock</code> as <code>-l</code> and
+      <code>--unlock</code> as <code>-u</code>.</p>
+
+<!-- cmd: author -->
+      <h3><a name="cmd-author" id="cmd-author">--author (-a)</a></h3>
+      <p>The <dfn><code>--author</code></dfn> option defines the author of the
+      change. This is typically used in the post-revprop-change hook, where the
+      author maybe different from the original revision author. The change
+      author is passed to the hook script by subversion.</p>
+
+      <p>It is also possible to pass the <code>--author</code> option from
+      within the post-commit hook. In that case it overrides the revision
+      author noted in the repository. This is useful, if there is <a
+      href="http://svnbook.red-bean.com/en/1.0/apb.html#svn-ap-b-sect-1.2.12">no
+      revision author stored</a>.</p>
+
+      <p>For convenience the <code>--author</code> parameter can also be written
+      as <code>-a</code>.</p>
+
+<!-- cmd: propname -->
+      <h3><a name="cmd-propname" id="cmd-propname">--propname (-p)</a></h3>
+      <p>The <dfn><code>--propname</code></dfn> parameter is only used for
+      revprop-change notifications. It specifies the name of the property
+      being modified. The name is passed to the hook script by subversion.</p>
+
+      <p>For convenience the <code>--propname</code> parameter can also be
+      written as <code>-n</code>.</p>
+
+<!-- cmd: action -->
+      <h3><a name="cmd-action" id="cmd-action">--action (-o)</a></h3>
+      <p>The <dfn><code>--action</code></dfn> parameter is only used for
+      revprop-change notifications. It specifies the action that was taken on
+      the specified property. It contains one of the letters <code>A</code> (for
+      "added"), <code>M</code> (for "modified") or <code>D</code> (for
+      "deleted"). The proper value is passed to the hook script by subversion
+      1.2 and later. If the svnmailer is in propchange mode and this parameter
+      is specified and valid, the svnmailer reads the old property value from
+      <code>STDIN</code> and generates a diff between the old and the new
+      value.</p>
+
+      <p>For convenience the <code>--action</code> parameter can also be
+      written as <code>-o</code> (shortcut for "operation" :-).</p>
+    </div>
+    <div id="footer">
+      <p>Copyright 2004-2005 Andr&eacute; Malo or his licensors,
+      as applicable.</p>
+      <div class="arrowup">
+        <a href="#logo" title="top">
+          <img src="up.gif" width="31" height="17" alt="top" />
+        </a>
+      </div>
+      <p id="lastline">Licensed under the Apache License, Version 2.0</p>
+    </div>
+  </body>
+</html>

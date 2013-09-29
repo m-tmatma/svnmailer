@@ -1,0 +1,68 @@
+#!python
+# -*- coding: iso-8859-1 -*-
+
+# Copyright 2004-2005 André Malo or his licensors, as applicable.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+"""
+This is the svnmailer command line script
+"""
+import os, sys
+
+try:
+    import locale, traceback
+    locale.setlocale(locale.LC_CTYPE, "") # needed for proper svn behaviour
+
+    from svnmailer import cli, main, subversion
+
+    try:
+        main.Main(cli.getOptions()).run()
+
+    except cli.CommandlineError, exc:
+        print >> sys.stderr, str(exc)
+        sys.exit(1)
+
+    except main.ConfigError, exc:
+        print >> sys.stderr, "Configuration Error: %s\n" % str(exc)
+        print >> sys.stderr, '-' * 78
+        traceback.print_exc(file = sys.stderr)
+        sys.exit(1)
+
+    except main.NotifierError, exc:
+        print >> sys.stderr, "One or more notifiers crashed. You may want " \
+            "to send the following traceback(s) to the author:\n"
+        for backtrace in exc.args:
+            print >> sys.stderr, '-' * 78
+            print >> sys.stderr, backtrace
+        sys.exit(1)
+
+    except subversion.RepositoryError, exc:
+        print >> sys.stderr, "Something bad happened while accessing the " \
+            "repository:\n%s (%s)\n%s\n" % (
+                exc.svn_err_name, exc.svn_err_code, exc.svn_err_str
+            )
+        print >> sys.stderr, '-' * 78
+        traceback.print_exc(file = sys.stderr)
+
+except KeyboardInterrupt:
+    print >> sys.stderr, "Aborted by user request"
+    sys.exit(0)
+
+except SystemExit:
+    raise
+
+except:
+    print >> sys.stderr, \
+        "Oops, %s crashed. You may want to send the traceback " \
+        "to the author:\n" % os.path.basename(sys.argv[0])
+    raise

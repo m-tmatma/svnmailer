@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.subversion.VersionedPathDescriptor</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.subversion-module.html">Module&nbsp;subversion</a> ::
+        Class&nbsp;VersionedPathDescriptor
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Type VersionedPathDescriptor</h2>
+
+<pre class="base-tree">
+    <a href="__builtin__.object-class.html"><code>object</code></a> --+    
+             |    
+<a href="../private/svnmailer.subversion.PathDescriptor-class.html"><code>PathDescriptor</code></a> --+
+                 |
+                <b>VersionedPathDescriptor</b>
+</pre><br />
+
+<hr/>
+
+<p>Describes the changes of a particular path</p>
+This is a wrapper around svn_repos.ChangedPath instances. outside of 
+this module one shouldn't need to deal with these.
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#_init" class="summary-sig-name"><code>_init</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>revision</span>,
+          <span class=summary-sig-arg>change</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#getBasePath" class="summary-sig-name"><code>getBasePath</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the original path</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#getBaseRevision" class="summary-sig-name"><code>getBaseRevision</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the revision number of the original path</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#getModifiedProperties" class="summary-sig-name"><code>getModifiedProperties</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the dict of modified properties</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#hasContentChanges" class="summary-sig-name"><code>hasContentChanges</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns whether the path has content changes</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#hasPropertyChanges" class="summary-sig-name"><code>hasPropertyChanges</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns whether the path has property changes</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#init" class="summary-sig-name"><code>init</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Custom initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#isBinary" class="summary-sig-name"><code>isBinary</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns whether one of the revisions is a binary file</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#isDirectory" class="summary-sig-name"><code>isDirectory</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns whether the path is a directory</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#wasAdded" class="summary-sig-name"><code>wasAdded</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns whether the path was added</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#wasCopied" class="summary-sig-name"><code>wasCopied</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns whether the path was copied</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#wasDeleted" class="summary-sig-name"><code>wasDeleted</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns whether the path was deleted</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#wasModified" class="summary-sig-name"><code>wasModified</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns whether the path was just modified</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from PathDescriptor</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.PathDescriptor-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>repos</span>,
+          <span class=summary-sig-arg>path</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.PathDescriptor-class.html#__cmp__" class="summary-sig-name"><code>__cmp__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>other</span>)</span></code>
+<br />
+Compares two change objects by path</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svn_repos.ChangedPath</code></font></td>
+<td><b><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#_change"><code>_change</code></a></b>: The change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<td><b><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html#revision"><code>revision</code></a></b>: The revision number</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from PathDescriptor</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="../private/svnmailer.subversion.PathDescriptor-class.html#path"><code>path</code></a></b>: The path, we're talking about</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>Repository</code></font></td>
+<td><b><a href="../private/svnmailer.subversion.PathDescriptor-class.html#repos"><code>repos</code></a></b>: The repository this change belongs to</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="_init"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_init</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>revision</span>,
+          <span class=sig-arg>change</span>)</span>
+  </h3>
+  Initialization
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>revision</b></code> -
+         The revision number
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>int</code>)</i>
+      <dd><code><b>change</b></code> -
+         The change specification
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>svn_repos.ChangedPath</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getBasePath"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getBasePath</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the original path
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The path
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getBaseRevision"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getBaseRevision</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the revision number of the original path
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The revision number
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>int</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getModifiedProperties"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getModifiedProperties</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Returns the dict of modified properties</p>
+  The dict contains the property names as keys and a 2-tuple as value 
+  where the first element contains the old property value and second 
+  element the new one.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The dict of changed properties
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="hasContentChanges"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">hasContentChanges</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns whether the path has content changes
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        has content changes?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="hasPropertyChanges"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">hasPropertyChanges</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns whether the path has property changes
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        has property changes?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="init"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">init</span>(<span class=sig-arg>self</span>,
+          <span class="sig-vararg">*args</span>,
+          <span class="sig-kwarg">**kwargs</span>)</span>
+  </h3>
+  Custom initialization
+  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.subversion.PathDescriptor-class.html#init"><code>svnmailer.subversion.PathDescriptor.init</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="isBinary"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">isBinary</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns whether one of the revisions is a binary file
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        is binary?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="isDirectory"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">isDirectory</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns whether the path is a directory
+  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.subversion.PathDescriptor-class.html#isDirectory"><code>svnmailer.subversion.PathDescriptor.isDirectory</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="wasAdded"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">wasAdded</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns whether the path was added
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        was added?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="wasCopied"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">wasCopied</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns whether the path was copied
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        was copied?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="wasDeleted"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">wasDeleted</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns whether the path was deleted
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        was deleted?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="wasModified"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">wasModified</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns whether the path was just modified
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        was modified?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_change"></a>
+<h3>_change</h3>
+The change
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>svn_repos.ChangedPath</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="revision"></a>
+<h3>revision</h3>
+The revision number
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>int</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:06 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

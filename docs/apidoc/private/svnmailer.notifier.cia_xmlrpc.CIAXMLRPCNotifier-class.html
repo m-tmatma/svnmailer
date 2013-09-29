@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.notifier-module.html">Package&nbsp;notifier</a> ::
+        <a href="svnmailer.notifier.cia_xmlrpc-module.html">Module&nbsp;cia_xmlrpc</a> ::
+        Class&nbsp;CIAXMLRPCNotifier
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Type CIAXMLRPCNotifier</h2>
+
+<pre class="base-tree">
+  <a href="__builtin__.object-class.html"><code>object</code></a> --+    
+           |    
+<a href="../private/svnmailer.notifier._base.BaseNotifier-class.html"><code>BaseNotifier</code></a> --+
+               |
+              <b>CIAXMLRPCNotifier</b>
+</pre><br />
+
+<hr/>
+
+The CIA XML-RPC Notifier class
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>,
+          <span class=summary-sig-arg>groupset</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_addBody" class="summary-sig-name"><code>_addBody</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>doc</span>)</span></code>
+<br />
+Adds the actual commit info to the message</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_addGenerator" class="summary-sig-name"><code>_addGenerator</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>doc</span>)</span></code>
+<br />
+Adds the generator info to the message</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_addSource" class="summary-sig-name"><code>_addSource</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>doc</span>)</span></code>
+<br />
+Adds the source info to the message</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_addTextElements" class="summary-sig-name"><code>_addTextElements</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>parent</span>,
+          <span class="summary-sig-vararg">*elems</span>)</span></code>
+<br />
+Add multiple text elements</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_addTimeStamp" class="summary-sig-name"><code>_addTimeStamp</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>doc</span>)</span></code>
+<br />
+Adds revision timestamp to the message</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_getAuthorName" class="summary-sig-name"><code>_getAuthorName</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the name of the author</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_getDiffLineCount" class="summary-sig-name"><code>_getDiffLineCount</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the number of changed lines</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_getFileAction" class="summary-sig-name"><code>_getFileAction</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>)</span></code>
+<br />
+Returns the action applied to the changed file</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_getFileType" class="summary-sig-name"><code>_getFileType</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>)</span></code>
+<br />
+Returns the type of the modified file</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_getFileUri" class="summary-sig-name"><code>_getFileUri</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>)</span></code>
+<br />
+Returns an URL associated with the changed file</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_getMinusPlusCount" class="summary-sig-name"><code>_getMinusPlusCount</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>diff_out</span>)</span></code>
+<br />
+Returns the number of changed lines for a diff</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_getTextElement" class="summary-sig-name"><code>_getTextElement</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>doc</span>,
+          <span class=summary-sig-arg>name</span>,
+          <span class=summary-sig-arg>value</span>,
+          <span class=summary-sig-arg>attr</span>)</span></code>
+<br />
+Returns a new element containing text to the message</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#_stripPath" class="summary-sig-name"><code>_stripPath</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>path</span>)</span></code>
+<br />
+Returns the stripped path of a change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        DOM object
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#composeCIAXMLMessage" class="summary-sig-name"><code>composeCIAXMLMessage</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Composes the XML message to send</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#deliverRPCMessage" class="summary-sig-name"><code>deliverRPCMessage</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>doc</span>)</span></code>
+<br />
+Delivers the supplied message via XML-RPC</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#run" class="summary-sig-name"><code>run</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Submits notification via XMLRPC to a CIA server</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from BaseNotifier</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_getContentEncoding" class="summary-sig-name"><code>_getContentEncoding</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>path</span>,
+          <span class=summary-sig-arg>revision</span>)</span></code>
+<br />
+Returns the encoding for the specified path and revision</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#dumpContent" class="summary-sig-name"><code>dumpContent</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>,
+          <span class=summary-sig-arg>enc</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Dump the two revisions of a particular change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getAuthor" class="summary-sig-name"><code>getAuthor</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the author of the revision</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentDiffAction" class="summary-sig-name"><code>getContentDiffAction</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>)</span></code>
+<br />
+Returns the content diff action for a particular change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentDiffUrl" class="summary-sig-name"><code>getContentDiffUrl</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>,
+          <span class=summary-sig-arg>change</span>)</span></code>
+<br />
+Returns the content diff url for a particular change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentEncodingProperty" class="summary-sig-name"><code>getContentEncodingProperty</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>path</span>,
+          <span class=summary-sig-arg>revision</span>)</span></code>
+<br />
+Returns the content encoding property for a path/rev</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code> of <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentEncodings" class="summary-sig-name"><code>getContentEncodings</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Returns the encodings of the change content (base and current rev)</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.differ.*</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getDiffer" class="summary-sig-name"><code>getDiffer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>command</span>)</span></code>
+<br />
+Returns the initialized differ</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getDiffTokens" class="summary-sig-name"><code>getDiffTokens</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>)</span></code>
+<br />
+Returns valid diff tokens and tests</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getEncodingFromMimeType" class="summary-sig-name"><code>getEncodingFromMimeType</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>path</span>,
+          <span class=summary-sig-arg>revision</span>)</span></code>
+<br />
+Returns the encoding extracted from svn:mime-type</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getLog" class="summary-sig-name"><code>getLog</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the log entry of the revision</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getPropertyDiffAction" class="summary-sig-name"><code>getPropertyDiffAction</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>values</span>)</span></code>
+<br />
+Returns the property diff action for a particular change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code> or {str}
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTempDir" class="summary-sig-name"><code>getTempDir</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the temporary directory</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.util.TempFile</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTempFile" class="summary-sig-name"><code>getTempFile</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns an open temporary file container object</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTime" class="summary-sig-name"><code>getTime</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the time of the revision in seconds since epoch</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getUrl" class="summary-sig-name"><code>getUrl</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>)</span></code>
+<br />
+Returns the revision URL</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isBinaryProperty" class="summary-sig-name"><code>isBinaryProperty</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>values</span>)</span></code>
+<br />
+Returns if the supplied property seems to be binary</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isOneLineProperty" class="summary-sig-name"><code>isOneLineProperty</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>,
+          <span class=summary-sig-arg>value</span>)</span></code>
+<br />
+Returns if the supplied property value takes just one line</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isUTF8Property" class="summary-sig-name"><code>isUTF8Property</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>)</span></code>
+<br />
+Returns if the supplied property name represents an UTF-8 property</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#changeset"><code>changeset</code></a></b>: The changeset to process</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svnmailer.settings.GroupSettingsContainer</code></font></td>
+<td><b><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#config"><code>config</code></a></b>: The current group configuration</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svnmailer.differ.*</code></font></td>
+<td><b><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#differ"><code>differ</code></a></b>: The differ object</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from BaseNotifier</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_groupset"><code>_groupset</code></a></b>: The groupset to process</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_penc_cache"><code>_penc_cache</code></a></b>: The (path, rev) -&gt; property encoding cache</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svnmailer.settings.Settings</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_settings"><code>_settings</code></a></b>: The settings to use</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html#__implements__"><code>__implements__</code></a></b> = <span title="[&lt;class 'svnmailer.notifier._base.BaseNotifier'&gt;]"><code>[&lt;class&nbsp;'svnmailer.notifier._base.BaseN<span class="variable-ellipsis">...</span></code>
+</span></td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from BaseNotifier</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>tuple</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_diffable_tests"><code>_diffable_tests</code></a></b>: Map <code>generate_diffs</code> list entrys to change methods</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ADD"><code>ADD</code></a></b>: &quot;add&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#COPY"><code>COPY</code></a></b>: &quot;copy&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#DELETE"><code>DELETE</code></a></b>: &quot;delete&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_CONFIG"><code>ENC_CONFIG</code></a></b>: magic value, meaning that the content encoding should be retrieved 
+from the config</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_DEFAULT"><code>ENC_DEFAULT</code></a></b> = <span title="'show default encoding'"><code><span class="variable-quote">'</span>show&nbsp;default&nbsp;encoding<span class="variable-quote">'</span>                    </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_PROPERTY"><code>ENC_PROPERTY</code></a></b>: The property name, where encodings could be stored</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#MODIFY"><code>MODIFY</code></a></b>: &quot;modify&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#NONE"><code>NONE</code></a></b>: &quot;none&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#PROPCHANGE"><code>PROPCHANGE</code></a></b>: &quot;propchange&quot; token</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>config</span>,
+          <span class=sig-arg>groupset</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+  Initialization
+  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#__init__"><code>svnmailer.notifier._base.BaseNotifier.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addBody"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addBody</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>doc</span>)</span>
+  </h3>
+  Adds the actual commit info to the message
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>doc</b></code> -
+         The message document
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=DOM object)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addGenerator"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addGenerator</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>doc</span>)</span>
+  </h3>
+  Adds the generator info to the message
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>doc</b></code> -
+         The message document
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=DOM object)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addSource"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addSource</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>doc</span>)</span>
+  </h3>
+  Adds the source info to the message
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>doc</b></code> -
+         The message document
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=DOM object)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addTextElements"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addTextElements</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>parent</span>,
+          <span class="sig-vararg">*elems</span>)</span>
+  </h3>
+  Add multiple text elements
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>parent</b></code> -
+         The parent element
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=Element Node)</i>
+      <dd><code><b>elems</b></code> -
+         The elements to add (name, value)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>list</code> of <code>tuple</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addTimeStamp"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addTimeStamp</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>doc</span>)</span>
+  </h3>
+  Adds revision timestamp to the message
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>doc</b></code> -
+         The message document
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=DOM object)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getAuthorName"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getAuthorName</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the name of the author
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The name
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getDiffLineCount"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getDiffLineCount</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Returns the number of changed lines</p>
+  It counts the number of minus lines and the number of plus lines and 
+  returns the greater value.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The diff line count or <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getFileAction"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getFileAction</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>change</span>)</span>
+  </h3>
+  Returns the action applied to the changed file
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>change</b></code> -
+         The change to process
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.subversion.VersionedPathDescriptor</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The action
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      </dd>
+    </dl>
+<p><b>To Do:</b> file renaming?
+</p>
+
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getFileType"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getFileType</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>change</span>)</span>
+  </h3>
+  Returns the type of the modified file
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>change</b></code> -
+         The change to process
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.subversion.VersionedPathDescriptor</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The type or <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      </dd>
+    </dl>
+<p><b>Notes:</b>
+<ul>
+  <li>currently it only marks directories as x-directory/normal
+</li>
+  <li>This is currently not implemented yet on server side
+</li>
+  <li>What do we do with different types (changed in the revision)?
+
+  </li>
+</ul></p>
+
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getFileUri"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getFileUri</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>change</span>)</span>
+  </h3>
+  Returns an URL associated with the changed file
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>change</b></code> -
+         The change to process
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.subversion.VersionedPathDescriptor</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The URI or <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      </dd>
+    </dl>
+<p><b>To Do:</b> add the ability to use raw subversion urls?
+</p>
+
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getMinusPlusCount"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getMinusPlusCount</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>diff_out</span>)</span>
+  </h3>
+  Returns the number of changed lines for a diff
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>diff_out</b></code> -
+         The diff output (one diff line per item)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=iterable)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        Number of changed lines
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>int</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getTextElement"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getTextElement</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>doc</span>,
+          <span class=sig-arg>name</span>,
+          <span class=sig-arg>value</span>,
+          <span class=sig-arg>attr</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  Returns a new element containing text to the message
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>doc</b></code> -
+         The message document
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=DOM object)</i>
+      <dd><code><b>name</b></code> -
+         The name of the element
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      <dd><code><b>value</b></code> -
+         The content of the element
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      <dd><code><b>attr</b></code> -
+         Attributes
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>dict</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_stripPath"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_stripPath</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>path</span>)</span>
+  </h3>
+  Returns the stripped path of a change
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>path</b></code> -
+         The path to strip
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The stripped path
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="composeCIAXMLMessage"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">composeCIAXMLMessage</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Composes the XML message to send</p>
+  (a commit message according to <a 
+  href="http://navi.cx/svn/misc/trunk/cia/xml/schema.xsd">http://navi.cx/svn/misc/trunk/cia/xml/schema.xsd</a>)
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The message
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=DOM object)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="deliverRPCMessage"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">deliverRPCMessage</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>doc</span>)</span>
+  </h3>
+  Delivers the supplied message via XML-RPC
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>doc</b></code> -
+         The message document
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=DOM object)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="run"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">run</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Submits notification via XMLRPC to a CIA server
+  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#run"><code>svnmailer.notifier._base.BaseNotifier.run</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="changeset"></a>
+<h3>changeset</h3>
+The changeset to process
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>list</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="config"></a>
+<h3>config</h3>
+The current group configuration
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>svnmailer.settings.GroupSettingsContainer</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="differ"></a>
+<h3>differ</h3>
+The differ object
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>svnmailer.differ.*</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="__implements__"></a>
+<h3>__implements__</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>list</code>
+
+      </dd>
+<span title="[&lt;class 'svnmailer.notifier._base.BaseNotifier'&gt;]">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+[&lt;class 'svnmailer.notifier._base.BaseNotifier'&gt;]                      </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:07 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.cli</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        Module&nbsp;cli
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/svnmailer.cli-module.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer.cli-module.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF MODULE DESCRIPTION =========== -->
+<h2 class="module">Module svnmailer.cli</h2>
+
+<h1 class="heading">Command line interface</h1>
+  <p>The svnmailer provides two different command line interfaces. On the 
+  one hand there's the compatibility command line to the mailer.py 
+  script, which has some limitations and problems because of its 
+  unflexibility. On the other hand you'll find the new-style command 
+  line, which contains no subcommands and fixed parameters at all.</p>
+  The CLI simply transforms old-style command lines to the new format 
+  internally and processes these further using the optparse module:
+<pre class="literalblock">
+   svn-mailer commit &lt;rep&gt; &lt;rev&gt; [&lt;config&gt;]
+-&gt; svn-mailer --commit --repository &lt;rep&gt; --revision &lt;rev&gt;
+             [--config &lt;config&gt;]
+
+   svn-mailer propchange &lt;rep&gt; &lt;rev&gt; &lt;author&gt; &lt;prop&gt; [&lt;conf&gt;]
+-&gt; svn-mailer --propchange --repository &lt;rep&gt; --revision &lt;rev&gt;
+              --author &lt;author&gt; --propname &lt;prop&gt;
+             [--config &lt;conf&gt;]
+
+   # (useful with svn 1.2 and later)
+   svn-mailer propchange2 &lt;rep&gt; &lt;rev&gt; &lt;author&gt; &lt;prop&gt; &lt;action&gt; [&lt;conf&gt;]
+-&gt; svn-mailer --propchange --repository &lt;rep&gt; --revision &lt;rev&gt;
+              --author &lt;author&gt; --propname &lt;prop&gt; --action &lt;action&gt;
+             [--config &lt;conf&gt;]
+
+   svn-mailer lock &lt;rep&gt; &lt;author&gt; [&lt;conf&gt;]
+-&gt; svn-mailer --lock --repository &lt;rep&gt; --author &lt;author&gt;
+             [--config &lt;conf&gt;]
+
+   svn-mailer unlock &lt;rep&gt; &lt;author&gt; [&lt;conf&gt;]
+-&gt; svn-mailer --unlock --repository &lt;rep&gt; --author &lt;author&gt;
+             [--config &lt;conf&gt;]
+</pre>
+<hr/>
+
+<!-- =========== START OF CLASSES =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Classes</th></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer.cli.SvnmailerOptionParser-class.html"><code>SvnmailerOptionParser</code></a></b></td>
+  <td>Fully initialized option parser</td></tr>
+</table><br />
+
+
+<!-- =========== START OF EXCEPTIONS =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Exceptions</th></tr>
+<tr><td width="15%">
+  <b><a href="svnmailer.cli.CommandlineError-class.html"><code>CommandlineError</code></a></b></td>
+  <td>Error in commandline</td></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer.cli.Error-class.html"><code>Error</code></a></b></td>
+  <td>Base exception for this module</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Function Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>optparse.OptionParser</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli-module.html#getOptions" class="summary-sig-name"><code>getOptions</code></a>(<span class=summary-sig-arg>argv</span>)</span></code>
+<br />
+Parse commandline options</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Function Details</th></tr>
+</table>
+
+<a name="getOptions"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getOptions</span>(<span class=sig-arg>argv</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  Parse commandline options
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>argv</b></code> -
+         Command line list. If argv is None, sys.argv[1:] is evaluated 
+        instead
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>list</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        option object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>optparse.OptionParser</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+        Error in command line options
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:07 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

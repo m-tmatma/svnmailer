@@ -1,0 +1,260 @@
+/* general */
+body {
+  background-color: #FFFFFF;
+  color: #2A3167;
+  padding: 1em 15px 10px 15px;
+}
+
+/* page header */
+h1 {
+  color: #2A3167;
+  border-bottom: 1px solid #9398B5;
+  padding: 40px 0 0 0;
+  margin: 0 201px 0 0;
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+#logo {
+  padding: 0;
+  display: block;
+  margin: -77px 0 0 0;
+  right: 15px;
+  position: absolute;
+}
+
+#location {
+  margin: 0;
+  padding: 1px 0 0 0;
+}
+#location a {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: smaller;
+  font-weight: normal;
+  background-color: #FFFFFF;
+  color: #9398B5;
+  text-decoration: none;
+}
+#location a.here {
+  background-color: #FFFFFF;
+  color: #2A3167;
+  text-decoration: none;
+}
+
+/* language links */
+#languages {
+  margin-top: 0.8em;
+}
+#languages p {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: smaller;
+  font-weight: normal;
+  background-color: #FFFFFF;
+  color: #2A3167;
+  line-height: 1.2em;
+  text-align: right;
+  margin: 0;
+}
+#languages p a {
+  background-color: inherit;
+  color: #9398B5;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+/* right navigation */
+#menu {
+  position: absolute;
+  right: 15px;
+  width: 200px;
+  padding: 10px 0 5px 0;
+  background-color: #F5F6F9;
+  color: #2A3167;
+  border-left: 1px solid #9398B5;
+}
+
+#menu ul {
+  padding: 0 10px 0 10px;
+  margin: 0;
+  list-style-type: none;
+}
+
+#menu li {
+  padding-bottom: 5px;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: smaller;
+  font-weight: normal;
+  background-color: transparent;
+}
+
+#menu li.newgroup {
+  border-top: 1px dotted #2A3167;
+  width: 180px;
+  padding-top: 5px;
+}
+
+#menu a {
+  background-color: inherit;
+  color: #9398B5;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+/* page content */
+#content {
+  margin: -1em 210px 2em 0;
+  padding: 0;
+}
+
+#content h2 {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: #FFFFFF;
+  color: #2A3167;
+}
+
+#content h2 a,
+#content h2 a:hover,
+#content h2 a:active {
+  color: #2A3167;
+  background-color: inherit;
+  text-decoration: none;
+}
+
+#content h3 {
+  margin: 1.3em 0 0.4em 0;
+  padding: 0;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #FFFFFF;
+  color: #2A3167;
+}
+
+#content h3 + ul {
+  margin-top: 0;
+}
+
+#content p,dt,dd,li {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  background-color: #FFFFFF;
+  color: #2A3167;
+  line-height: 1.2em;
+}
+#content dt {
+  margin-top: 0.3em;
+}
+
+#content a {
+  text-decoration: underline;
+  background-color: #FFFFFF;
+  color: #9398B5;
+}
+
+#content .example p {
+  font-size: 1em;
+  line-height: 1.15em;
+  font-family: monospace;
+}
+
+#content p span.indent {
+  display: block;
+  padding-left: 1.2em;
+}
+
+#content a.hiddennote { 
+  font-size: smaller;
+  text-decoration: none;
+}
+#content a.hiddennote:hover {
+  font-weight: bold;
+}
+#content a.hiddennote span {
+  visibility: hidden;
+  background-color: inherit;
+  color: #2A3167;
+}
+#content a.hiddennote:hover span {
+  visibility: visible;
+  font-weight: normal;
+}
+
+
+/* footer */
+#footer {
+  margin: 0 201px 0 0;
+}
+#footer p {
+  background-color: #FFFFFF;
+  color: #2A3167;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: smaller;
+  font-weight: normal;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+}
+p#lastline {
+  clear: both;
+  border-top: 1px solid #9398B5;
+  padding: 2px 0 0 0;
+}
+
+#footer a {
+  color: #9398B5;
+  text-decoration: none;
+}
+
+#footer a.here {
+  background-color: transparent;
+  color: #2A3167;
+  text-decoration: none;
+}
+
+.arrowup {
+  float:right;
+  margin: -1em 0 0 0;
+  padding: 0;
+}
+.arrowup a {
+  display: block;
+  font-size: 1em;                      /* font-size is used for alt= */
+}
+.arrowup img {
+  vertical-align:bottom;
+  border:0 none;
+}
+      /* hover effect: arrow will move up some pixels                */
+                                       /*  set for IE                */
+.arrowup a:link, .arrowup a:visited {
+  margin-top: 3px;
+  padding-bottom:0;
+}
+.arrowup a:hover, .arrowup a:active {
+  margin-top:0;
+  padding-bottom:3px;
+}
+                                       /* set for other than IE      */
+div[class="arrowup"] a:link,
+div[class="arrowup"] a:visited,
+div[class="arrowup"] a:hover,
+div[class="arrowup"] a:active {
+  margin-top:0;
+  padding-bottom:0;
+}
+div[class="arrowup"] a:link img,
+div[class="arrowup"] a:visited img {
+  margin-top:3px;
+  padding-bottom:0;
+}
+div[class="arrowup"] a:hover img,
+div[class="arrowup"] a:active img {
+  margin-top:0;
+  padding-bottom:3px;
+}
+

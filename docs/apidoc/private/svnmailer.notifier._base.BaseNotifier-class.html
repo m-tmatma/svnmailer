@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.notifier._base.BaseNotifier</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.notifier-module.html">Package&nbsp;notifier</a> ::
+        <a href="../private/svnmailer.notifier._base-module.html">Module&nbsp;_base</a> ::
+        Class&nbsp;BaseNotifier
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/svnmailer.notifier._base.BaseNotifier-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Type BaseNotifier</h2>
+
+<pre class="base-tree">
+<a href="__builtin__.object-class.html"><code>object</code></a> --+
+         |
+        <b>BaseNotifier</b>
+</pre><br />
+
+<dl><dt><b>Known Subclasses:</b></dt>
+<dd>
+    <a href="../private/svnmailer.notifier.cia_xmlrpc.CIAXMLRPCNotifier-class.html"><code>CIAXMLRPCNotifier</code></a>,
+    <a href="../private/svnmailer.notifier._text.TextNotifier-class.html"><code>TextNotifier</code></a></dd></dl>
+
+<hr/>
+
+<p>Base class for notifiers</p>
+<p>Custom notifiers must implement this interface (that is just the run 
+method, however).</p>
+Additionally it contains some useful utility methods, which can be 
+used.
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>settings</span>,
+          <span class=summary-sig-arg>groupset</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_getContentEncoding" class="summary-sig-name"><code>_getContentEncoding</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>path</span>,
+          <span class=summary-sig-arg>revision</span>)</span></code>
+<br />
+Returns the encoding for the specified path and revision</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#dumpContent" class="summary-sig-name"><code>dumpContent</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>,
+          <span class=summary-sig-arg>enc</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Dump the two revisions of a particular change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getAuthor" class="summary-sig-name"><code>getAuthor</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the author of the revision</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentDiffAction" class="summary-sig-name"><code>getContentDiffAction</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>)</span></code>
+<br />
+Returns the content diff action for a particular change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentDiffUrl" class="summary-sig-name"><code>getContentDiffUrl</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>,
+          <span class=summary-sig-arg>change</span>)</span></code>
+<br />
+Returns the content diff url for a particular change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentEncodingProperty" class="summary-sig-name"><code>getContentEncodingProperty</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>path</span>,
+          <span class=summary-sig-arg>revision</span>)</span></code>
+<br />
+Returns the content encoding property for a path/rev</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code> of <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentEncodings" class="summary-sig-name"><code>getContentEncodings</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>change</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Returns the encodings of the change content (base and current rev)</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.differ.*</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getDiffer" class="summary-sig-name"><code>getDiffer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>command</span>)</span></code>
+<br />
+Returns the initialized differ</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getDiffTokens" class="summary-sig-name"><code>getDiffTokens</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>)</span></code>
+<br />
+Returns valid diff tokens and tests</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getEncodingFromMimeType" class="summary-sig-name"><code>getEncodingFromMimeType</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>path</span>,
+          <span class=summary-sig-arg>revision</span>)</span></code>
+<br />
+Returns the encoding extracted from svn:mime-type</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getLog" class="summary-sig-name"><code>getLog</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the log entry of the revision</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getPropertyDiffAction" class="summary-sig-name"><code>getPropertyDiffAction</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>values</span>)</span></code>
+<br />
+Returns the property diff action for a particular change</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code> or {str}
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTempDir" class="summary-sig-name"><code>getTempDir</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the temporary directory</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.util.TempFile</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTempFile" class="summary-sig-name"><code>getTempFile</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns an open temporary file container object</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTime" class="summary-sig-name"><code>getTime</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the time of the revision in seconds since epoch</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getUrl" class="summary-sig-name"><code>getUrl</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>)</span></code>
+<br />
+Returns the revision URL</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isBinaryProperty" class="summary-sig-name"><code>isBinaryProperty</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>values</span>)</span></code>
+<br />
+Returns if the supplied property seems to be binary</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isOneLineProperty" class="summary-sig-name"><code>isOneLineProperty</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>,
+          <span class=summary-sig-arg>value</span>)</span></code>
+<br />
+Returns if the supplied property value takes just one line</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isUTF8Property" class="summary-sig-name"><code>isUTF8Property</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>)</span></code>
+<br />
+Returns if the supplied property name represents an UTF-8 property</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#run" class="summary-sig-name"><code>run</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Runs the notifier</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_groupset"><code>_groupset</code></a></b>: The groupset to process</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_penc_cache"><code>_penc_cache</code></a></b>: The (path, rev) -&gt; property encoding cache</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svnmailer.settings.Settings</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_settings"><code>_settings</code></a></b>: The settings to use</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>tuple</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_diffable_tests"><code>_diffable_tests</code></a></b>: Map <code>generate_diffs</code> list entrys to change methods</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ADD"><code>ADD</code></a></b>: &quot;add&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#COPY"><code>COPY</code></a></b>: &quot;copy&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#DELETE"><code>DELETE</code></a></b>: &quot;delete&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_CONFIG"><code>ENC_CONFIG</code></a></b>: magic value, meaning that the content encoding should be retrieved 
+from the config</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_DEFAULT"><code>ENC_DEFAULT</code></a></b> = <span title="'show default encoding'"><code><span class="variable-quote">'</span>show&nbsp;default&nbsp;encoding<span class="variable-quote">'</span>                    </code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_PROPERTY"><code>ENC_PROPERTY</code></a></b>: The property name, where encodings could be stored</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#MODIFY"><code>MODIFY</code></a></b>: &quot;modify&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#NONE"><code>NONE</code></a></b>: &quot;none&quot; token</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#PROPCHANGE"><code>PROPCHANGE</code></a></b>: &quot;propchange&quot; token</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>settings</span>,
+          <span class=sig-arg>groupset</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+  Initialization
+  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getContentEncoding"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getContentEncoding</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>path</span>,
+          <span class=sig-arg>revision</span>)</span>
+  </h3>
+  Returns the encoding for the specified path and revision
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>path</b></code> -
+         The path
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      <dd><code><b>revision</b></code> -
+         The revision number
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>int</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The encoding
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>encodings.exception.LookupError</b></code> -
+        The specified encoding is not implemented or no encoding was 
+        specified
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="dumpContent"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">dumpContent</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>change</span>,
+          <span class=sig-arg>enc</span>=<span class=sig-default>'utf-8'</span>,
+          <span class=sig-arg>default</span>=<span class=sig-default>False</span>)</span>
+  </h3>
+  <p>Dump the two revisions of a particular change</p>
+  (This dumps the files, not the properties)
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>change</b></code> -
+         The particular change to process
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.subversion.VersionedPathDescriptor</code>)</i>
+      <dd><code><b>enc</b></code> -
+         The file data encoding (The data will be recoded to UTF-8; but 
+        by default it isn't recoded, because utf-8 is assumed)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      <dd><code><b>default</b></code> -
+         Return the default encoding (iso-8859-1) if the determined is 
+        <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        Two file container objects plus their recoding state (file1, 
+        file2, rec1, rec2), where rec? is either the accompanying 
+        original encoding or <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>tuple</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getAuthor"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getAuthor</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the author of the revision
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The author or <code>None</code> if there's no author
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getContentDiffAction"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getContentDiffAction</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>change</span>)</span>
+  </h3>
+  Returns the content diff action for a particular change
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>change</b></code> -
+         The particular change to process
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.subversion.VersionedPathDescriptor</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The diff token or <code>None</code> if there nothing
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getContentDiffUrl"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getContentDiffUrl</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>config</span>,
+          <span class=sig-arg>change</span>)</span>
+  </h3>
+  Returns the content diff url for a particular change
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>config</b></code> -
+         group config
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.settings.GroupSettingsContainer</code>)</i>
+      <dd><code><b>change</b></code> -
+         The particular change to process
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.subversion.VersionedPathDescriptor</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The URL or <code>None</code> if there's no base URL 
+        configured
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getContentEncodingProperty"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getContentEncodingProperty</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>path</span>,
+          <span class=sig-arg>revision</span>)</span>
+  </h3>
+  Returns the content encoding property for a path/rev
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>path</b></code> -
+         The path
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      <dd><code><b>revision</b></code> -
+         The revision number
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>int</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The encoding or <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getContentEncodings"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getContentEncodings</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>change</span>,
+          <span class=sig-arg>default</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  Returns the encodings of the change content (base and current 
+  rev)
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>change</b></code> -
+         The change to process
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.subversion.VersionedPathDescriptor</code>)</i>
+      <dd><code><b>default</b></code> -
+         The default encoding, if nothing is specified
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The two encodings
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>tuple</code> of <code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getDiffer"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getDiffer</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>command</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  Returns the initialized differ
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>command</b></code> -
+         The diff command to use (if any)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>tuple</code> or <code>None</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The differ type
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>svnmailer.differ.*</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getDiffTokens"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getDiffTokens</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>config</span>)</span>
+  </h3>
+  Returns valid diff tokens and tests
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>config</b></code> -
+         group config
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<p><code>svnmailer.settings.GroupSettingsContainer</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The diff tokens and diffable tests The first element of the 
+        tuple contains a list of diff tokens, the second element the diff 
+        tests
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>tuple</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getEncodingFromMimeType"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getEncodingFromMimeType</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>path</span>,
+          <span class=sig-arg>revision</span>)</span>
+  </h3>
+  Returns the encoding extracted from svn:mime-type
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>path</b></code> -
+         The path
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      <dd><code><b>revision</b></code> -
+         The revision number
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>int</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The encoding or <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getLog"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getLog</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the log entry of the revision
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The log entry
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getPropertyDiffAction"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getPropertyDiffAction</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>values</span>)</span>
+  </h3>
+  Returns the property diff action for a particular change
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>values</b></code> -
+         The two values of the property
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>tuple</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The diff token
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getTempDir"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getTempDir</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the temporary directory
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The directory or <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>unicode</code> or {str})</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getTempFile"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getTempFile</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns an open temporary file container object
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The filename and an descriptor
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>svnmailer.util.TempFile</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getTime"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getTime</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the time of the revision in seconds since epoch
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The time
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>int</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getUrl"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getUrl</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>config</span>)</span>
+  </h3>
+  Returns the revision URL
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The URL or <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="isBinaryProperty"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">isBinaryProperty</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>values</span>)</span>
+  </h3>
+  <p>Returns if the supplied property seems to be binary</p>
+  Note that is a very rudimentary check, just to not pollute diff 
+  output with garbage
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>values</b></code> -
+         The value tuple
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>tuple</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        binary property?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="isOneLineProperty"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">isOneLineProperty</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>name</span>,
+          <span class=sig-arg>value</span>)</span>
+  </h3>
+  Returns if the supplied property value takes just one line
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>name</b></code> -
+         Property name
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      <dd><code><b>value</b></code> -
+         The property value
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        one line property?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="isUTF8Property"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">isUTF8Property</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>name</span>)</span>
+  </h3>
+  Returns if the supplied property name represents an UTF-8 
+  property
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>name</b></code> -
+         The property name
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The decision
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>bool</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="run"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">run</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Runs the notifier
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_groupset"></a>
+<h3>_groupset</h3>
+The groupset to process
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>list</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_penc_cache"></a>
+<h3>_penc_cache</h3>
+The (path, rev) -&gt; property encoding cache
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>dict</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_settings"></a>
+<h3>_settings</h3>
+The settings to use
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>svnmailer.settings.Settings</code>
+
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_diffable_tests"></a>
+<h3>_diffable_tests</h3>
+Map <code>generate_diffs</code> list entrys to change methods
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>tuple</code>
+
+      </dd>
+<span title="((u'add', &lt;function addFunc at 0xb7b5c144&gt;), (u'delete', &lt;function delFunc at 0xb7b5c17c&gt;), (u'copy', &lt;function copyFunc at 0xb7b5c1b4&gt;), (u'modify', &lt;function modFunc at 0xb7b5c1ec&gt;), (u'propchange', &lt;function propFunc at 0xb7b5c224&gt;), (u'none', &lt;function noneFunc at 0xb7b5c25c&gt;))">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+((u'add', &lt;function addFunc at 0xb7b5c144&gt;),
+ (u'delete', &lt;function delFunc at 0xb7b5c17c&gt;),
+ (u'copy', &lt;function copyFunc at 0xb7b5c1b4&gt;),
+ (u'modify', &lt;function modFunc at 0xb7b5c1ec&gt;),
+ (u'propchange', &lt;function propFunc at 0xb7b5c224&gt;),
+ (u'none', &lt;function noneFunc at 0xb7b5c25c&gt;))                         </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="ADD"></a>
+<h3>ADD</h3>
+&quot;add&quot; token
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>unicode</code>
+
+      </dd>
+<span title="u'add'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+u'add'                                                                 </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="COPY"></a>
+<h3>COPY</h3>
+&quot;copy&quot; token
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>unicode</code>
+
+      </dd>
+<span title="u'copy'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+u'copy'                                                                </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="DELETE"></a>
+<h3>DELETE</h3>
+&quot;delete&quot; token
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>unicode</code>
+
+      </dd>
+<span title="u'delete'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+u'delete'                                                              </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="ENC_CONFIG"></a>
+<h3>ENC_CONFIG</h3>
+magic value, meaning that the content encoding should be retrieved 
+from the config
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>str</code>
+
+      </dd>
+<span title="'retrieve encoding from config'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>retrieve encoding from config<span class="variable-quote">'</span>                                        </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="ENC_DEFAULT"></a>
+<h3>ENC_DEFAULT</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>str</code>
+
+      </dd>
+<span title="'show default encoding'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>show default encoding<span class="variable-quote">'</span>                                                </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="ENC_PROPERTY"></a>
+<h3>ENC_PROPERTY</h3>
+The property name, where encodings could be stored
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>str</code>
+
+      </dd>
+<span title="'svnmailer:content-charset'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>svnmailer:content-charset<span class="variable-quote">'</span>                                            </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="MODIFY"></a>
+<h3>MODIFY</h3>
+&quot;modify&quot; token
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>unicode</code>
+
+      </dd>
+<span title="u'modify'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+u'modify'                                                              </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="NONE"></a>
+<h3>NONE</h3>
+&quot;none&quot; token
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>unicode</code>
+
+      </dd>
+<span title="u'none'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+u'none'                                                                </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="PROPCHANGE"></a>
+<h3>PROPCHANGE</h3>
+&quot;propchange&quot; token
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>unicode</code>
+
+      </dd>
+<span title="u'propchange'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+u'propchange'                                                          </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat May 13 22:20:07 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>
