@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = W0613, W0704
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=R0921,W0613
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,14 +18,16 @@
 """
 Base notifier class
 
-@var EMPTY_TABLE: provides an empty translation table
-@type EMPTY_TABLE: C{str}
+:Variables:
+ - `EMPTY_TABLE`: provides an empty translation table
+ - `CTRL_CHARS`: provides a list of control chars (< ascii 32)
 
-@var CTRL_CHARS: provides a list of control chars (< ascii 32)
-@type CTRL_CHARS: C{str}
+:Types:
+ - `EMPTY_TABLE`: ``str``
+ - `CTRL_CHARS`: ``str``
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['BaseNotifier']
 
 # global imports
@@ -74,43 +77,45 @@ class BaseNotifier(object):
         Additionally it contains some useful utility methods,
         which can be used.
 
-        @ivar _settings: The settings to use
-        @type _settings: C{svnmailer.settings.Settings}
+        :CVariables:
+         - `_diffable_tests`: Maps ``generate_diffs`` list entrys to change
+           methods
 
-        @ivar _groupset: The groupset to process
-        @type _groupset: C{list}
+         - `ADD`: "add" token
+         - `DELETE`: "delete" token
+         - `COPY`: "copy" token
+         - `MODIFY`: "modify" token
+         - `PROPCHANGE`: "propchange" token
+         - `NONE`: "none" token
 
-        @ivar _penc_cache: The (path, rev) -> property encoding cache
-        @type _penc_cache: C{dict}
+         - `ENC_CONFIG`: Magic value, meaning that the content encoding should
+           be retrieved from the config
 
-        @cvar _diffable_tests: Map C{generate_diffs} list entrys to change
-            methods
-        @type _diffable_tests: C{tuple}
+         - `ENC_DEFAULT`: Magic value to determine if the default encoding
+           should be displayed
 
-        @cvar ADD: "add" token
-        @type ADD: C{unicode}
+         - `ENC_PROPERTY`: The property name, where encodings could be stored
 
-        @cvar DELETE: "delete" token
-        @type DELETE: C{unicode}
+        :IVariables:
+         - `_settings`: The settings to use
+         - `_groupset`: The groupset to process
+         - `_penc_cache`: The (path, rev) -> property encoding cache
 
-        @cvar COPY: "copy" token
-        @type COPY: C{unicode}
+        :Types:
+         - `_diffable_tests`: ``tuple``
+         - `ADD`: ``unicode``
+         - `DELETE`: ``unicode``
+         - `COPY`: ``unicode``
+         - `MODIFY`: ``unicode``
+         - `PROPCHANGE`: ``unicode``
+         - `NONE`: ``unicode``
+         - `ENC_CONFIG`: ``str``
+         - `ENC_DEFAULT`: ``str``
+         - `ENC_PROPERTY`: ``str``
 
-        @cvar MODIFY: "modify" token
-        @type MODIFY: C{unicode}
-
-        @cvar PROPCHANGE: "propchange" token
-        @type PROPCHANGE: C{unicode}
-
-        @cvar NONE: "none" token
-        @type NONE: C{unicode}
-
-        @cvar ENC_CONFIG: magic value, meaning that the content encoding should
-            be retrieved from the config
-        @type ENC_CONFIG: C{str}
-
-        @cvar ENC_PROPERTY: The property name, where encodings could be stored
-        @type ENC_PROPERTY: C{str}
+         - `_settings`: `svnmailer.settings._base.BaseSettings`
+         - `_groupset`: `svnmailer.main.GroupSet`
+         - `_penc_cache`: ``dict``
     """
     ADD    = u"add"
     DELETE = u"delete"
@@ -134,7 +139,16 @@ class BaseNotifier(object):
 
 
     def __init__(self, settings, groupset):
-        """ Initialization """
+        """ Initialization
+
+            :Parameters:
+             - `settings`: The settings to use
+             - `groupset`: The groupset to process
+
+            :Types:
+             - `settings`: `svnmailer.settings._base.BaseSettings`
+             - `groupset`: `svnmailer.main.GroupSet`
+        """
         self._settings = settings
         self._groupset = groupset
         self._penc_cache = {}
@@ -148,8 +162,8 @@ class BaseNotifier(object):
     def getAuthor(self):
         """ Returns the author of the revision
 
-            @return: The author or C{None} if there's no author
-            @rtype: C{str}
+            :return: The author or ``None`` if there's no author
+            :rtype: ``str``
         """
         author = self._settings.runtime.author
         if not author:
@@ -163,8 +177,8 @@ class BaseNotifier(object):
     def getTime(self):
         """ Returns the time of the revision in seconds since epoch
 
-            @return: The time
-            @rtype: C{int}
+            :return: The time
+            :rtype: ``int``
         """
         return self._settings.runtime._repos.getRevisionTime(
             self._settings.runtime.revision
@@ -174,50 +188,62 @@ class BaseNotifier(object):
     def getLog(self):
         """ Returns the log entry of the revision
 
-            @return: The log entry
-            @rtype: C{str}
+            :return: The log entry
+            :rtype: ``str``
         """
         return self._settings.runtime._repos.getRevisionLog(
             self._settings.runtime.revision
         ) or ''
 
 
+    def getBrowserGenerator(self, config):
+        """ Returns the browser generator if any """
+        from svnmailer import browser
+
+        return browser.Manager().select(config)
+
+
     def getUrl(self, config):
         """ Returns the revision URL
 
-            @return: The URL or C{None}
-            @rtype: C{str}
+            :return: The URL or ``None``
+            :rtype: ``str``
         """
-        from svnmailer import browser
-        generator = browser.getBrowserUrlGenerator(config)
+        generator = self.getBrowserGenerator(config)
         if generator:
-            return generator.getRevisionUrl(self._settings.runtime.revision)
+            return generator.getRevisionUrl()
 
         return None
 
 
-    def getDiffer(self, command = None):
+    def getDiffer(self, command = None, tags = False):
         """ Returns the initialized differ
 
-            @param command: The diff command to use (if any)
-            @type command: C{tuple} or C{None}
+            :Parameters:
+             - `command`: The diff command to use (if any)
+             - `tags`: Should return diff opcodes? (Doesn't work for
+               external differ)
 
-            @return: The differ type
-            @rtype: C{svnmailer.differ.*}
+            :Types:
+             - `command`: ``tuple`` or ``None``
+             - `tags`: ``bool``
+
+            :return: The differ instance
+            :rtype: ``svnmailer.differ.*``
         """
         from svnmailer import differ
 
         if command:
             return differ.ExternalDiffer(command, self.getTempDir())
         else:
-            return differ.InternalDiffer()
+            return differ.InternalDiffer(tags = tags)
 
 
     def getTempFile(self):
         """ Returns an open temporary file container object
 
-            @return: The filename and an descriptor
-            @rtype: C{svnmailer.util.TempFile}
+            :return: The filename and an descriptor
+            :rtype: `svnmailer.util.TempFile`
         """
         return util.TempFile(tempdir = self.getTempDir(), text = False)
 
@@ -225,8 +251,8 @@ class BaseNotifier(object):
     def getTempDir(self):
         """ Returns the temporary directory
 
-            @return: The directory or C{None}
-            @rtype: C{unicode} or {str}
+            :return: The directory or ``None``
+            :rtype: ``unicode`` or ``str``
         """
         if not self._settings.general.tempdir:
             return None
@@ -237,13 +263,13 @@ class BaseNotifier(object):
     def getDiffTokens(self, config):
         """ Returns valid diff tokens and tests
 
-            @param config: group config
-            @type config: C{svnmailer.settings.GroupSettingsContainer}
+            :param `config`: group config
+            :type `config`: `svnmailer.settings._base.GroupSettingsContainer`
 
-            @return: The diff tokens and diffable tests
-                The first element of the tuple contains a list
-                of diff tokens, the second element the diff tests
-            @rtype: C{tuple}
+            :return: The diff tokens and diffable tests. The first element of
+                     the tuple contains a list of diff tokens, the second
+                     element the diff tests
+            :rtype: ``tuple``
         """
         diff_tokens = config.generate_diffs
         if not diff_tokens:
@@ -271,24 +297,27 @@ class BaseNotifier(object):
     def dumpContent(self, change, enc = 'utf-8', default = False):
         """ Dump the two revisions of a particular change
 
-            (This dumps the files, not the properties)
+            This dumps the files, not the properties
 
-            @param change: The particular change to process
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
+            :Parameters:
+             - `change`: The particular change to process
 
-            @param enc: The file data encoding (The data will be recoded
-                to UTF-8; but by default it isn't recoded, because utf-8
-                is assumed)
-            @type enc: C{str}
+             - `enc`: The file data encoding (The data will be recoded
+               to UTF-8; but by default it isn't recoded, because UTF-8
+               is assumed)
 
-            @param default: Return the default encoding (iso-8859-1) if the
-                determined is C{None}
-            @type default: C{bool}
+             - `default`: Return the default encoding (ISO-8859-1) if the
+               determined is ``None``
 
-            @return: Two file container objects plus their recoding state
-                (file1, file2, rec1, rec2), where rec? is either the
-                accompanying original encoding or C{None}
-            @rtype: C{tuple}
+            :Types:
+             - `change`: `svnmailer.subversion.VersionedPathDescriptor`
+             - `enc`: ``str``
+             - `default`: ``bool``
+
+            :return: Two file container objects plus their recoding state
+                     (file1, file2, rec1, rec2), where ``rec?`` is either the
+                     accompanying original encoding or ``None``
+            :rtype: ``tuple``
         """
         from svnmailer import stream
 
@@ -336,14 +365,16 @@ class BaseNotifier(object):
     def getContentEncodings(self, change, default = None):
         """ Returns the encodings of the change content (base and current rev)
 
-            @param change: The change to process
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
+            :Parameters:
+             - `change`: The change to process
+             - `default`: The default encoding, if nothing is specified
 
-            @param default: The default encoding, if nothing is specified
-            @type default: C{str}
+            :Types:
+             - `change`: `svnmailer.subversion.VersionedPathDescriptor`
+             - `default`: ``str``
 
-            @return: The two encodings
-            @rtype: C{tuple} of C{str}
+            :return: The two encodings (``('enc1', 'enc2')``)
+            :rtype: ``tuple``
         """
         from encodings import exceptions
 
@@ -354,7 +385,7 @@ class BaseNotifier(object):
                     change.getBasePath(), change.getBaseRevision()
                 )
             except exceptions.LookupError:
-                # fall back
+                """ fall back """
                 pass
 
         if change.wasDeleted():
@@ -365,7 +396,7 @@ class BaseNotifier(object):
                     change.path, change.revision
                 )
             except exceptions.LookupError:
-                # fall back
+                """ fall back """
                 pass
 
         if change.wasAdded() and not change.wasCopied():
@@ -377,17 +408,20 @@ class BaseNotifier(object):
     def _getContentEncoding(self, path, revision):
         """ Returns the encoding for the specified path and revision
 
-            @param path: The path
-            @type path: C{str}
+            :Parameters:
+             - `path`: The path
+             - `revision`: The revision number
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :Types:
+             - `path`: ``str``
+             - `revision`: ``int``
 
-            @return: The encoding
-            @rtype: C{str}
+            :return: The encoding
+            :rtype: ``str``
 
-            @exception encodings.exception.LookupError: The specified encoding
-                is not implemented or no encoding was specified
+            :exception encodings.exception.LookupError:
+                The specified encoding is not implemented or no encoding
+                was specified
         """
         from encodings import exceptions
 
@@ -433,14 +467,16 @@ class BaseNotifier(object):
     def getEncodingFromMimeType(self, path, revision):
         """ Returns the encoding extracted from svn:mime-type
 
-            @param path: The path
-            @type path: C{str}
+            :Parameters:
+             - `path`: The path
+             - `revision`: The revision number
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :Types:
+             - `path`: ``str``
+             - `revision`: ``int``
 
-            @return: The encoding or C{None}
-            @rtype: C{str}
+            :return: The encoding or ``None``
+            :rtype: ``str``
         """
         result = None
         repos = self._settings.runtime._repos
@@ -458,14 +494,16 @@ class BaseNotifier(object):
     def getContentEncodingProperty(self, path, revision):
         """ Returns the content encoding property for a path/rev
 
-            @param path: The path
-            @type path: C{str}
+            :Parameters:
+             - `path`: The path
+             - `revision`: The revision number
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :Types:
+             - `path`: ``str``
+             - `revision`: ``int``
 
-            @return: The encoding or C{None}
-            @rtype: C{str}
+            :return: The encoding or ``None``
+            :rtype: ``str``
         """
         try:
             result = self._penc_cache[(path, revision)]
@@ -488,18 +526,18 @@ class BaseNotifier(object):
     def getContentDiffUrl(self, config, change):
         """ Returns the content diff url for a particular change
 
-            @param config: group config
-            @type config: C{svnmailer.settings.GroupSettingsContainer}
+            :Parameters:
+             - `config`: group config
+             - `change`: The particular change to process
 
-            @param change: The particular change to process
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
+            :Types:
+             - `config`: `svnmailer.settings._base.GroupSettingsContainer`
+             - `change`: `svnmailer.subversion.VersionedPathDescriptor`
 
-            @return: The URL or C{None} if there's no base URL configured
-            @rtype: C{str}
+            :return: The URL or ``None`` if there's no base URL configured
+            :rtype: ``str``
         """
-        from svnmailer import browser
-
-        generator = browser.getBrowserUrlGenerator(config)
+        generator = self.getBrowserGenerator(config)
         if generator:
             return generator.getContentDiffUrl(change)
 
@@ -507,11 +545,11 @@ class BaseNotifier(object):
     def isUTF8Property(self, name):
         """ Returns if the supplied property name represents an UTF-8 property
 
-            @param name: The property name
-            @type name: C{str}
+            :param `name`: The property name
+            :type `name`: ``str``
 
-            @return: The decision
-            @rtype: C{bool}
+            :return: The decision
+            :rtype: ``bool``
         """
         from svnmailer import subversion
         return subversion.isUnicodeProperty(name)
@@ -523,11 +561,11 @@ class BaseNotifier(object):
             Note that is a very rudimentary check, just to not
             pollute diff output with garbage
 
-            @param values: The value tuple
-            @type values: C{tuple}
+            :param `values`: The value tuple
+            :type `values`: ``tuple``
 
-            @return: binary property?
-            @rtype: C{bool}
+            :return: binary property?
+            :rtype: ``bool``
         """
         for value in values:
             if value is None:
@@ -548,14 +586,16 @@ class BaseNotifier(object):
     def isOneLineProperty(self, name, value):
         """ Returns if the supplied property value takes just one line
 
-            @param value: The property value
-            @type value: C{str}
+            :Parameters:
+             - `name`: Property name
+             - `value`: The property value
 
-            @param name: Property name
-            @type name: C{str}
+            :Types:
+             - `name`: ``str``
+             - `value`: ``str``
 
-            @return: one line property?
-            @rtype: C{bool}
+            :return: one line property?
+            :rtype: ``bool``
         """
         # TODO: make one-line-property line length configurable?
         return bool(len(name + value) <= 75 and value.find("\n") == -1)
@@ -564,11 +604,11 @@ class BaseNotifier(object):
     def getContentDiffAction(self, change):
         """ Returns the content diff action for a particular change
 
-            @param change: The particular change to process
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
+            :param change: The particular change to process
+            :type change: `svnmailer.subversion.VersionedPathDescriptor`
 
-            @return: The diff token or C{None} if there nothing
-            @rtype: C{unicode}
+            :return: The diff token or `` None`` if there's nothing to diff
+            :rtype: ``unicode``
         """
         if change.wasDeleted():
             return self.DELETE
@@ -586,11 +626,11 @@ class BaseNotifier(object):
     def getPropertyDiffAction(self, values):
         """ Returns the property diff action for a particular change
 
-            @param values: The two values of the property
-            @type values: C{tuple}
+            :param `values`: The two values of the property
+            :type `values`: ``tuple``
 
-            @return: The diff token
-            @rtype: C{unicode}
+            :return: The diff token
+            :rtype: ``unicode``
         """
         if values[0] is None:
             return self.ADD

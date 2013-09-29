@@ -32,17 +32,26 @@
 <!-- =========== START OF MODULE HIERARCHY =========== -->
 <h2>Module Hierarchy</h2>
 <ul>
-<li> <b><a href="svnmailer-module.html"><code>svnmailer</code></a></b>: <i>This is the core svnmailer package.</i>
+<li> <b><a href="svnmailer-module.html"><code>svnmailer</code></a></b>: <i>This is the svnmailer package.</i>
   <ul>
-    <li> <b><a href="svnmailer.browser-module.html"><code>browser</code></a></b>: <i>Respository Browser URL construction</i>
+    <li> <b><a href="svnmailer.browser-module.html"><code>browser</code></a></b>: <i>This package contains the different browser URL generator classes.</i>
+      <ul>
+        <li> <b><a href="../private/svnmailer.browser._base-module.html"><code>_base</code></a></b>: <i>All browser generator classes should utilize the tools and base classes
+provides by this module.</i>
+        <li> <b><a href="../private/svnmailer.browser.chora-module.html"><code>chora</code></a></b>: <i><a class="reference" href="http://horde.org/chora/">Chora</a> repository browser URL construction</i>
+        <li> <b><a href="../private/svnmailer.browser.generic-module.html"><code>generic</code></a></b>: <i>Generic repository browser URL construction</i>
+        <li> <b><a href="../private/svnmailer.browser.svnweb-module.html"><code>svnweb</code></a></b>: <i><a class="reference" href="http://freshmeat.net/projects/svnweb/">SVN::Web</a> repository browser URL construction</i>
+        <li> <b><a href="../private/svnmailer.browser.trac-module.html"><code>trac</code></a></b>: <i><a class="reference" href="http://www.edgewall.com/trac/">Trac</a> repository browser URL construction</i>
+        <li> <b><a href="../private/svnmailer.browser.viewcvs-module.html"><code>viewcvs</code></a></b>: <i><a class="reference" href="http://viewcvs.sourceforge.net/">ViewCVS</a> repository browser URL construction</i>
+        <li> <b><a href="../private/svnmailer.browser.websvn-module.html"><code>websvn</code></a></b>: <i><a class="reference" href="http://websvn.tigris.org/">WebSVN</a> repository browser URL construction</i>
+      </ul>
     <li> <b><a href="svnmailer.cli-module.html"><code>cli</code></a></b>: <i>The svnmailer provides two different command line interfaces.</i>
-    <li> <b><a href="svnmailer.config-module.html"><code>config</code></a></b>: <i>Configfile parsing</i>
     <li> <b><a href="svnmailer.differ-module.html"><code>differ</code></a></b>: <i>Differ classes</i>
     <li> <b><a href="svnmailer.main-module.html"><code>main</code></a></b>: <i>This module is the central core of the svnmailer.</i>
     <li> <b><a href="svnmailer.notifier-module.html"><code>notifier</code></a></b>: <i>Package svnmailer.notifier</i>
       <ul>
-        <li> <b><a href="svnmailer.notifier.cia_xmlrpc-module.html"><code>cia_xmlrpc</code></a></b>: <i>This notifier delivers a notification message in XML format to a <a 
-href="http://cia.navi.cx/">CIA server</a>.</i>
+        <li> <b><a href="svnmailer.notifier.cia_xmlrpc-module.html"><code>cia_xmlrpc</code></a></b>: <i>This notifier delivers a notification message in XML format
+to a <a class="reference" href="http://cia.navi.cx/">CIA server</a>.</i>
         <li> <b><a href="svnmailer.notifier.mail-module.html"><code>mail</code></a></b>: <i>Text based email notifiers (either piped to a program or via SMTP)</i>
         <li> <b><a href="svnmailer.notifier.news-module.html"><code>news</code></a></b>: <i>Text based news notifier (via NNTP)</i>
         <li> <b><a href="svnmailer.notifier.selector-module.html"><code>selector</code></a></b>: <i>notifier selector module</i>
@@ -54,16 +63,25 @@ href="http://cia.navi.cx/">CIA server</a>.</i>
         <li> <b><a href="../private/svnmailer.notifier._textmail-module.html"><code>_textmail</code></a></b>: <i>text based email notifier</i>
         <li> <b><a href="../private/svnmailer.notifier._textnews-module.html"><code>_textnews</code></a></b>: <i>Text based news notifier</i>
       </ul>
-    <li> <b><a href="svnmailer.settings-module.html"><code>settings</code></a></b>: <i>This module defines one public class, called <a 
-href="svnmailer.settings.Settings-class.html" 
-class="link"><code>Settings</code></a>.</i>
+    <li> <b><a href="svnmailer.processes-module.html"><code>processes</code></a></b>: <i>This module contains a portable class (<a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a>) for process creation
+with pipes.</i>
+    <li> <b><a href="svnmailer.settings-module.html"><code>settings</code></a></b>: <i>This package is responsible for all settings logic.</i>
+      <ul>
+        <li> <b><a href="../private/svnmailer.settings._accessors-module.html"><code>_accessors</code></a></b>: <i>This module defines the settings member descriptors used by the svnmailer.</i>
+        <li> <b><a href="../private/svnmailer.settings._base-module.html"><code>_base</code></a></b>: <i>Base classes for setting loader implementations</i>
+        <li> <b><a href="../private/svnmailer.settings._fileparser-module.html"><code>_fileparser</code></a></b>: <i>This parser is derived from the <a class="reference" href="http://docs.python.org/lib/module-ConfigParser.html">ConfigParser module</a>, which
+unfortunately has some design and documentation flaws.</i>
+        <li> <b><a href="../private/svnmailer.settings._typedstruct-module.html"><code>_typedstruct</code></a></b>: <i>The classes defined in this module are responsible for the separation of
+the settings logic from the application logic.</i>
+        <li> <b><a href="../private/svnmailer.settings.configfile-module.html"><code>configfile</code></a></b>: <i>This module provides a settings loader, which pulls the config from an
+INI like text file.</i>
+        <li> <b><a href="../private/svnmailer.settings.mappers-module.html"><code>mappers</code></a></b>: <i>The mapper provided by the <a href="../private/svnmailer.settings.mappers.PlainMapper-class.html" class="link"><code>PlainMapper</code></a> class maps value according to
+configured mapping sections.</i>
+      </ul>
     <li> <b><a href="svnmailer.stream-module.html"><code>stream</code></a></b>: <i>svnmailer stream objects</i>
-    <li> <b><a href="svnmailer.struct_accessors-module.html"><code>struct_accessors</code></a></b>: <i>This module exactly describes the struct member definitions used by 
-the svnmailer.</i>
     <li> <b><a href="svnmailer.subversion-module.html"><code>subversion</code></a></b>: <i>Access to the subversion respository</i>
-    <li> <b><a href="svnmailer.typedstruct-module.html"><code>typedstruct</code></a></b>: <i>This module provides helpers for creating typed data structures.</i>
-    <li> <b><a href="svnmailer.util-module.html"><code>util</code></a></b>: <i>This module contains some utility functions and classes used in 
-several places of the svnmailer.</i>
+    <li> <b><a href="svnmailer.util-module.html"><code>util</code></a></b>: <i>This module contains some utility functions and classes used in several
+places of the svnmailer.</i>
   </ul>
 </ul>
 
@@ -81,7 +99,7 @@ str(object) -&gt; string
 
 Return a nice string representation of the object.</i>
     <ul>
-  <li> <b><a href="../private/svnmailer.struct_accessors._QuotedString-class.html"><code>svnmailer.struct_accessors._QuotedString</code></a></b>: <i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.QuotedString-class.html"><code>svnmailer.settings._accessors.QuotedString</code></a></b>: <i>
 Holds a quoted string</i>
     </ul>
     </ul>
@@ -98,73 +116,42 @@ Differ which calls an external program (e.g.</i>
   <li> <b><a href="svnmailer.differ.InternalDiffer-class.html"><code>svnmailer.differ.InternalDiffer</code></a></b>: <i>
 Differ without an external program call (uses difflib)</i>
   <li> <b><a href="svnmailer.main.Main-class.html"><code>svnmailer.main.Main</code></a></b>: <i>
-main svnmailer logic</i>
-  <li> <b><a href="svnmailer.typedstruct.MemberDescriptor-class.html"><code>svnmailer.typedstruct.MemberDescriptor</code></a></b>: <i>
-Base class for members descriptors</i>
-    <ul>
-  <li> <b><a href="../private/svnmailer.struct_accessors.BaseDescriptor-class.html"><code>svnmailer.struct_accessors.BaseDescriptor</code></a></b>: <i>
-Base class for svnmailer descriptors</i>
-    <ul>
-  <li> <b><a href="../private/svnmailer.struct_accessors.BasePostmapDescriptor-class.html"><code>svnmailer.struct_accessors.BasePostmapDescriptor</code></a></b>: <i>
-Base class for postmap only descriptors</i>
-    <ul>
-  <li> <b><a href="../private/svnmailer.struct_accessors.TokenlistDescriptor-class.html"><code>svnmailer.struct_accessors.TokenlistDescriptor</code></a></b>: <i>
-(Unicode) Tokenlist storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.UnicodeDescriptor-class.html"><code>svnmailer.struct_accessors.UnicodeDescriptor</code></a></b>: <i>
-Unicode object storage</i>
-    </ul>
-  <li> <b><a href="../private/svnmailer.struct_accessors.BasePremapDescriptor-class.html"><code>svnmailer.struct_accessors.BasePremapDescriptor</code></a></b>: <i>
-Base class for premap only descriptors</i>
-    <ul>
-  <li> <b><a href="../private/svnmailer.struct_accessors.CommandlineDescriptor-class.html"><code>svnmailer.struct_accessors.CommandlineDescriptor</code></a></b>: <i>
-Commandline storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.FilenameDescriptor-class.html"><code>svnmailer.struct_accessors.FilenameDescriptor</code></a></b>: <i>
-Filename storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.MailactionDescriptor-class.html"><code>svnmailer.struct_accessors.MailactionDescriptor</code></a></b>: <i>
-Mail action parsing and storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.QuotedstringDescriptor-class.html"><code>svnmailer.struct_accessors.QuotedstringDescriptor</code></a></b>: <i>
-Quoted string storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.RegexDescriptor-class.html"><code>svnmailer.struct_accessors.RegexDescriptor</code></a></b>: <i>
-Regex storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.TokenDescriptor-class.html"><code>svnmailer.struct_accessors.TokenDescriptor</code></a></b>: <i>
-Unicode token storage</i>
-    </ul>
-  <li> <b><a href="../private/svnmailer.struct_accessors.BooleanDescriptor-class.html"><code>svnmailer.struct_accessors.BooleanDescriptor</code></a></b>: <i>
-Boolean storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.HumanBooleanDescriptor-class.html"><code>svnmailer.struct_accessors.HumanBooleanDescriptor</code></a></b>: <i>
-Boolean storage with translater from human readable booleans</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.IntegerDescriptor-class.html"><code>svnmailer.struct_accessors.IntegerDescriptor</code></a></b>: <i>
-Integer storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.StdinDescriptor-class.html"><code>svnmailer.struct_accessors.StdinDescriptor</code></a></b>: <i>
-Stdin storage</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors.StringDescriptor-class.html"><code>svnmailer.struct_accessors.StringDescriptor</code></a></b>: <i>
-String storage</i>
-    </ul>
-    </ul>
+Main svnmailer logic</i>
+  <li> <b><a href="svnmailer.processes.Process-class.html"><code>svnmailer.processes.Process</code></a></b>: <i>
+Spawn a child with certain attributes</i>
   <li> <b><a href="svnmailer.subversion.Repository-class.html"><code>svnmailer.subversion.Repository</code></a></b>: <i>
 Access to the subversion repository</i>
   <li> <b><a href="svnmailer.notifier.selector.Selector-class.html"><code>svnmailer.notifier.selector.Selector</code></a></b>: <i>
 Notifier selector class</i>
-  <li> <b><a href="svnmailer.settings.Settings-class.html"><code>svnmailer.settings.Settings</code></a></b>: <i>
-Settings management</i>
+  <li> <b><a href="svnmailer.util.Singleton-class.html"><code>svnmailer.util.Singleton</code></a></b>: <i>
+Singleton base class</i>
     <ul>
-  <li> <b><a href="svnmailer.config.ConfigFileSettings-class.html"><code>svnmailer.config.ConfigFileSettings</code></a></b>: <i>
-Provide settings from config</i>
-    </ul>
-  <li> <b><a href="svnmailer.typedstruct.Struct-class.html"><code>svnmailer.typedstruct.Struct</code></a></b>: <i>
-General structure stub</i>
-    <ul>
-  <li> <b><a href="../private/svnmailer.settings.GeneralSettingsContainer-class.html"><code>svnmailer.settings.GeneralSettingsContainer</code></a></b>: <i>
-Container for general settings</i>
-  <li> <b><a href="../private/svnmailer.settings.GroupSettingsContainer-class.html"><code>svnmailer.settings.GroupSettingsContainer</code></a></b>: <i>
-Container for group settings</i>
-  <li> <b><a href="../private/svnmailer.settings.RuntimeSettingsContainer-class.html"><code>svnmailer.settings.RuntimeSettingsContainer</code></a></b>: <i>
-Container for runtime settings</i>
+  <li> <b><a href="svnmailer.browser.Manager-class.html"><code>svnmailer.browser.Manager</code></a></b>: <i>
+Repository browser manager</i>
+  <li> <b><a href="svnmailer.settings.Manager-class.html"><code>svnmailer.settings.Manager</code></a></b>: <i>
+Svnmailer settings manager</i>
     </ul>
   <li> <b><a href="svnmailer.util.TempFile-class.html"><code>svnmailer.util.TempFile</code></a></b>: <i>
 Tempfile container class</i>
+  <li> <b><a href="svnmailer.settings.Tokens-class.html"><code>svnmailer.settings.Tokens</code></a></b>: <i>
+Generic token container</i>
+  <li> <b><a href="__builtin__.tuple-class.html"><code>__builtin__.tuple</code></a></b>: <i>
+tuple() -&gt; an empty tuple
+tuple(sequence) -&gt; tuple initialized from sequence's items
+
+If the argument is a tuple, the return value is the same object.</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings._accessors.Commandline-class.html"><code>svnmailer.settings._accessors.Commandline</code></a></b>: <i>
+Represents a command line</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.TokenList-class.html"><code>svnmailer.settings._accessors.TokenList</code></a></b>: <i>
+represents a token list</i>
+    </ul>
   <li> <b><a href="__builtin__.type-class.html"><code>__builtin__.type</code></a></b>: <i>
 type(object) -&gt; the object's type...</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html"><code>svnmailer.settings._typedstruct.MetaClass</code></a></b>: <i>
+Metaclass for Struct</i>
+    </ul>
   <li> <b><a href="../private/svnmailer.stream._BaseStream-class.html"><code>svnmailer.stream._BaseStream</code></a></b>: <i>
 Base stream wrapper</i>
     <ul>
@@ -187,18 +174,42 @@ Truncating stream, which writes the truncating note on close</i>
   <li> <b><a href="svnmailer.stream.UnicodeStream-class.html"><code>svnmailer.stream.UnicodeStream</code></a></b>: <i>
 Stream wrapper, which accepts unicode and a specified charset</i>
     </ul>
-  <li> <b><a href="../private/svnmailer.util._DummyPopen3-class.html"><code>svnmailer.util._DummyPopen3</code></a></b>: <i>
-Dummy Popen3 class for platforms which don't provide one in popen2</i>
-  <li> <b><a href="../private/svnmailer.util._DummyPopen4-class.html"><code>svnmailer.util._DummyPopen4</code></a></b>: <i>
-Dummy Popen4 class for platforms which don't provide one in popen2</i>
   <li> <b><a href="../private/svnmailer.util._LocaleFile-class.html"><code>svnmailer.util._LocaleFile</code></a></b>: <i>
 Transform filenames according to locale</i>
-  <li> <b><a href="../private/svnmailer.struct_accessors._MailAction-class.html"><code>svnmailer.struct_accessors._MailAction</code></a></b>: <i>
-Mailaction container</i>
-  <li> <b><a href="../private/svnmailer.settings._Tokens-class.html"><code>svnmailer.settings._Tokens</code></a></b>: <i>
-Generic token container</i>
+  <li> <b><a href="../private/svnmailer.util._Terminal-class.html"><code>svnmailer.util._Terminal</code></a></b>: <i>
+Deal with terminal properties</i>
+  <li> <b><a href="../private/svnmailer._Version-class.html"><code>svnmailer._Version</code></a></b>: <i>
+Represents the svnmailer version</i>
   <li> <b><a href="../private/svnmailer.subversion._Version-class.html"><code>svnmailer.subversion._Version</code></a></b>: <i>
 SVN version container class</i>
+  <li> <b><a href="../private/svnmailer.settings._base.BaseConfig-class.html"><code>svnmailer.settings._base.BaseConfig</code></a></b>: <i>
+Representation of the loaded config</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings.configfile.FileConfig-class.html"><code>svnmailer.settings.configfile.FileConfig</code></a></b>: <i>
+Representation of the loaded config file</i>
+    </ul>
+  <li> <b><a href="../private/svnmailer.browser._base.BaseGenerator-class.html"><code>svnmailer.browser._base.BaseGenerator</code></a></b>: <i>
+Abstract base URL generator</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.browser.chora.Generator-class.html"><code>svnmailer.browser.chora.Generator</code></a></b>: <i>
+<a class="reference" href="http://horde.org/chora/">Chora</a> template generator</i>
+  <li> <b><a href="../private/svnmailer.browser.generic.Generator-class.html"><code>svnmailer.browser.generic.Generator</code></a></b>: <i>
+Generic URL generator</i>
+  <li> <b><a href="../private/svnmailer.browser.svnweb.Generator-class.html"><code>svnmailer.browser.svnweb.Generator</code></a></b>: <i>
+<a class="reference" href="http://freshmeat.net/projects/svnweb/">SVN::Web</a> template generator</i>
+  <li> <b><a href="../private/svnmailer.browser.trac.Generator-class.html"><code>svnmailer.browser.trac.Generator</code></a></b>: <i>
+<a class="reference" href="http://www.edgewall.com/trac/">Trac</a> template generator</i>
+  <li> <b><a href="../private/svnmailer.browser.viewcvs.Generator-class.html"><code>svnmailer.browser.viewcvs.Generator</code></a></b>: <i>
+<a class="reference" href="http://viewcvs.sourceforge.net/">ViewCVS</a> template generator</i>
+  <li> <b><a href="../private/svnmailer.browser.websvn.Generator-class.html"><code>svnmailer.browser.websvn.Generator</code></a></b>: <i>
+<a class="reference" href="http://websvn.tigris.org/">WebSVN</a> template generator</i>
+    </ul>
+  <li> <b><a href="../private/svnmailer.settings._base.BaseMapper-class.html"><code>svnmailer.settings._base.BaseMapper</code></a></b>: <i>
+Base class for mapper generators</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings.mappers.PlainMapper-class.html"><code>svnmailer.settings.mappers.PlainMapper</code></a></b>: <i>
+Plain Mapper Generator</i>
+    </ul>
   <li> <b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html"><code>svnmailer.notifier._base.BaseNotifier</code></a></b>: <i>
 Base class for notifiers</i>
     <ul>
@@ -223,19 +234,81 @@ Bases class for news notifiers</i>
 Writes all stuff to sys.stdout</i>
     </ul>
     </ul>
+  <li> <b><a href="../private/svnmailer.settings._base.BaseSettings-class.html"><code>svnmailer.settings._base.BaseSettings</code></a></b>: <i>
+Settings management</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings.configfile.ConfigFileSettings-class.html"><code>svnmailer.settings.configfile.ConfigFileSettings</code></a></b>: <i>
+Provide settings from config</i>
+    </ul>
   <li> <b><a href="../private/svnmailer.subversion.Collector-class.html"><code>svnmailer.subversion.Collector</code></a></b>: <i>
 svn 1.[01] collector</i>
     <ul>
   <li> <b><a href="../private/svnmailer.subversion._RevisionChangeCollector-class.html"><code>svnmailer.subversion._RevisionChangeCollector</code></a></b>: <i>
 Collect all changes between two particular revisions</i>
     </ul>
+  <li> <b><a href="../private/svnmailer.settings._typedstruct.Descriptor-class.html"><code>svnmailer.settings._typedstruct.Descriptor</code></a></b>: <i>
+Member descriptor class</i>
   <li> <b><a href="../private/svnmailer.notifier._multimail.DiffDescriptor-class.html"><code>svnmailer.notifier._multimail.DiffDescriptor</code></a></b>: <i>
 Container class to describe a dumped diff</i>
+  <li> <b><a href="../private/svnmailer.settings._fileparser.FileParser-class.html"><code>svnmailer.settings._fileparser.FileParser</code></a></b>: <i>
+Simplified config file parser</i>
   <li> <b><a href="../private/svnmailer.main.GroupSet-class.html"><code>svnmailer.main.GroupSet</code></a></b>: <i>
 Container object for a single groupset</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.MailAction-class.html"><code>svnmailer.settings._accessors.MailAction</code></a></b>: <i>
+Mailaction container</i>
+  <li> <b><a href="../private/svnmailer.settings._base.MapFinder-class.html"><code>svnmailer.settings._base.MapFinder</code></a></b>: <i>
+Logic to run the map finder classes</i>
+  <li> <b><a href="../private/svnmailer.settings._typedstruct.Member-class.html"><code>svnmailer.settings._typedstruct.Member</code></a></b>: <i>
+Base class for members descriptors</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings._base.BaseMember-class.html"><code>svnmailer.settings._base.BaseMember</code></a></b>: <i>
+Base class for svnmailer descriptors</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings._base.BasePostmapMember-class.html"><code>svnmailer.settings._base.BasePostmapMember</code></a></b>: <i>
+Base class for postmap only descriptors</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings._accessors.TokenlistMember-class.html"><code>svnmailer.settings._accessors.TokenlistMember</code></a></b>: <i>
+Unicode token list storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.UnicodeMember-class.html"><code>svnmailer.settings._accessors.UnicodeMember</code></a></b>: <i>
+Unicode object storage</i>
+    </ul>
+  <li> <b><a href="../private/svnmailer.settings._base.BasePremapMember-class.html"><code>svnmailer.settings._base.BasePremapMember</code></a></b>: <i>
+Base class for premap only descriptors</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings._accessors.CommandlineMember-class.html"><code>svnmailer.settings._accessors.CommandlineMember</code></a></b>: <i>
+Commandline storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.FilenameMember-class.html"><code>svnmailer.settings._accessors.FilenameMember</code></a></b>: <i>
+Filename storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.MailactionMember-class.html"><code>svnmailer.settings._accessors.MailactionMember</code></a></b>: <i>
+Mail action parsing and storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.QuotedstringMember-class.html"><code>svnmailer.settings._accessors.QuotedstringMember</code></a></b>: <i>
+Quoted string storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.RegexMember-class.html"><code>svnmailer.settings._accessors.RegexMember</code></a></b>: <i>
+Regex storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.TokenMember-class.html"><code>svnmailer.settings._accessors.TokenMember</code></a></b>: <i>
+Unicode token storage</i>
+    </ul>
+  <li> <b><a href="../private/svnmailer.settings._accessors.BooleanMember-class.html"><code>svnmailer.settings._accessors.BooleanMember</code></a></b>: <i>
+Boolean storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.HumanBooleanMember-class.html"><code>svnmailer.settings._accessors.HumanBooleanMember</code></a></b>: <i>
+Boolean storage with translater from human readable booleans</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.IntegerMember-class.html"><code>svnmailer.settings._accessors.IntegerMember</code></a></b>: <i>
+Integer storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.StdinMember-class.html"><code>svnmailer.settings._accessors.StdinMember</code></a></b>: <i>
+Stdin storage</i>
+  <li> <b><a href="../private/svnmailer.settings._accessors.StringMember-class.html"><code>svnmailer.settings._accessors.StringMember</code></a></b>: <i>
+String storage</i>
+    </ul>
+    </ul>
   <li> <b><a href="../private/svnmailer.notifier.news.NNTPSubmitter-class.html"><code>svnmailer.notifier.news.NNTPSubmitter</code></a></b>: <i>
 Use NNTP to submit the notification as news article</i>
-  <li> <b><a href="../private/svnmailer.browser.ParsedUrl-class.html"><code>svnmailer.browser.ParsedUrl</code></a></b>: <i>
+  <li> <b><a href="../private/svnmailer.settings._fileparser.Option-class.html"><code>svnmailer.settings._fileparser.Option</code></a></b>: <i>
+Represents a config option</i>
+  <li> <b><a href="../private/svnmailer.cli.OptionHelper-class.html"><code>svnmailer.cli.OptionHelper</code></a></b>: <i>
+Option parser helper class</i>
+  <li> <b><a href="../private/svnmailer.browser._base.ParsedQuery-class.html"><code>svnmailer.browser._base.ParsedQuery</code></a></b>: <i>
+Class for query string parsing and modification</i>
+  <li> <b><a href="../private/svnmailer.browser._base.ParsedUrl-class.html"><code>svnmailer.browser._base.ParsedUrl</code></a></b>: <i>
 Container for URL parsing and modification</i>
   <li> <b><a href="../private/svnmailer.subversion.PathDescriptor-class.html"><code>svnmailer.subversion.PathDescriptor</code></a></b>: <i>
 Describes the basic information of a particular path</i>
@@ -245,6 +318,10 @@ Describes the lock status of a particular path</i>
   <li> <b><a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html"><code>svnmailer.subversion.VersionedPathDescriptor</code></a></b>: <i>
 Describes the changes of a particular path</i>
     </ul>
+  <li> <b><a href="../private/svnmailer.settings._typedstruct.Private-class.html"><code>svnmailer.settings._typedstruct.Private</code></a></b>: <i>
+Private container class for Struct internals</i>
+  <li> <b><a href="../private/svnmailer.settings._fileparser.Section-class.html"><code>svnmailer.settings._fileparser.Section</code></a></b>: <i>
+Represents a config section</i>
   <li> <b><a href="../private/svnmailer.notifier.mail.SendmailSubmitter-class.html"><code>svnmailer.notifier.mail.SendmailSubmitter</code></a></b>: <i>
 Pipe all stuff to a mailer</i>
   <li> <b><a href="../private/svnmailer.notifier.mail.SMTPSubmitter-class.html"><code>svnmailer.notifier.mail.SMTPSubmitter</code></a></b>: <i>
@@ -255,20 +332,20 @@ Splits the content between diffs if it gets too long</i>
 Splits the content between diffs, if it gets loo long</i>
   <li> <b><a href="../private/svnmailer.notifier._multimail.SplittingTruncatingDecorator-class.html"><code>svnmailer.notifier._multimail.SplittingTruncatingDecorator</code></a></b>: <i>
 split/truncate decorator</i>
-  <li> <b><a href="../private/svnmailer.typedstruct.StructDescriptor-class.html"><code>svnmailer.typedstruct.StructDescriptor</code></a></b>: <i>
-Base class for struct descriptors</i>
+  <li> <b><a href="../private/svnmailer.settings._typedstruct.Struct-class.html"><code>svnmailer.settings._typedstruct.Struct</code></a></b>: <i>
+General structure stub</i>
     <ul>
-  <li> <b><a href="../private/svnmailer.typedstruct.StructDictDescriptor-class.html"><code>svnmailer.typedstruct.StructDictDescriptor</code></a></b>: <i>
-_dict_ descriptor</i>
-  <li> <b><a href="../private/svnmailer.typedstruct.StructMembersDescriptor-class.html"><code>svnmailer.typedstruct.StructMembersDescriptor</code></a></b>: <i>
-_members_ descriptor</i>
-  <li> <b><a href="../private/svnmailer.typedstruct.StructSetDescriptor-class.html"><code>svnmailer.typedstruct.StructSetDescriptor</code></a></b>: <i>
-_set_ descriptor</i>
-  <li> <b><a href="../private/svnmailer.typedstruct.StructSubDescriptor-class.html"><code>svnmailer.typedstruct.StructSubDescriptor</code></a></b>: <i>
-_sub_ descriptor</i>
+  <li> <b><a href="../private/svnmailer.settings._base.GeneralSettingsContainer-class.html"><code>svnmailer.settings._base.GeneralSettingsContainer</code></a></b>: <i>
+Container for general settings</i>
+  <li> <b><a href="../private/svnmailer.settings._base.GroupSettingsContainer-class.html"><code>svnmailer.settings._base.GroupSettingsContainer</code></a></b>: <i>
+Container for group settings</i>
+  <li> <b><a href="../private/svnmailer.settings._base.RuntimeSettingsContainer-class.html"><code>svnmailer.settings._base.RuntimeSettingsContainer</code></a></b>: <i>
+Container for runtime settings</i>
     </ul>
-  <li> <b><a href="../private/svnmailer.typedstruct.StructPrivate-class.html"><code>svnmailer.typedstruct.StructPrivate</code></a></b>: <i>
-Private container class for Struct internals</i>
+  <li> <b><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html"><code>svnmailer.settings._typedstruct.StructCreator</code></a></b>: <i>
+Struct creator class</i>
+  <li> <b><a href="../private/svnmailer.browser._base.Template-class.html"><code>svnmailer.browser._base.Template</code></a></b>: <i>
+Template storage, selector</i>
   <li> <b><a href="../private/svnmailer.notifier._multimail.TruncatingDecorator-class.html"><code>svnmailer.notifier._multimail.TruncatingDecorator</code></a></b>: <i>
 Truncates the mail body after n bytes</i>
   <li> <b><a href="../private/svnmailer.notifier._textmail.TruncatingDecorator-class.html"><code>svnmailer.notifier._textmail.TruncatingDecorator</code></a></b>: <i>
@@ -281,10 +358,6 @@ Shows only the urls, if the mail gets too long</i>
 Truncates url-only mails</i>
   <li> <b><a href="../private/svnmailer.notifier._textmail.URLTruncatingDecorator-class.html"><code>svnmailer.notifier._textmail.URLTruncatingDecorator</code></a></b>: <i>
 Truncates the mail body after n bytes</i>
-  <li> <b><a href="../private/svnmailer.browser.ViewcvsGenerator-class.html"><code>svnmailer.browser.ViewcvsGenerator</code></a></b>: <i>
-viewcvs generator</i>
-  <li> <b><a href="../private/svnmailer.browser.WebsvnGenerator-class.html"><code>svnmailer.browser.WebsvnGenerator</code></a></b>: <i>
-websvn generator</i>
     </ul>
   <li> <b><a href="email.Message.Message-class.html"><code>email.Message.Message</code></a></b>: <i>
 Basic message object.</i>
@@ -311,27 +384,19 @@ A text mail class (email.MIMEText produces undesired results)</i>
   <li> <b><a href="exceptions.Exception-class.html"><code>exceptions.Exception</code></a></b>: <i>
 Common base class for all exceptions.</i>
     <ul>
-  <li> <b><a href="svnmailer.config.Error-class.html"><code>svnmailer.config.Error</code></a></b>: <i>
+  <li> <b><a href="svnmailer.browser.Error-class.html"><code>svnmailer.browser.Error</code></a></b>: <i>
+Base exception for this package</i>
+    <ul>
+  <li> <b><a href="svnmailer.browser.InvalidGeneratorError-class.html"><code>svnmailer.browser.InvalidGeneratorError</code></a></b>: <i>
+The generator name was not recognized</i>
+  <li> <b><a href="../private/svnmailer.browser.websvn.MissingPHPFileError-class.html"><code>svnmailer.browser.websvn.MissingPHPFileError</code></a></b>: <i>
+The configured URL misses the php file as basename</i>
+    </ul>
+  <li> <b><a href="svnmailer.cli.Error-class.html"><code>svnmailer.cli.Error</code></a></b>: <i>
 Base exception for this module</i>
     <ul>
-  <li> <b><a href="svnmailer.config.ConfigInvalidError-class.html"><code>svnmailer.config.ConfigInvalidError</code></a></b>: <i>
-Config file has errors</i>
-    <ul>
-  <li> <b><a href="svnmailer.config.ConfigMappingSectionNotFoundError-class.html"><code>svnmailer.config.ConfigMappingSectionNotFoundError</code></a></b>: <i>
-Config mapping section was not found</i>
-  <li> <b><a href="svnmailer.config.ConfigMappingSpecInvalidError-class.html"><code>svnmailer.config.ConfigMappingSpecInvalidError</code></a></b>: <i>
-Config mapping spec was not recognized</i>
-  <li> <b><a href="svnmailer.config.ConfigOptionUnknownError-class.html"><code>svnmailer.config.ConfigOptionUnknownError</code></a></b>: <i>
-An unknown option was parsed</i>
-  <li> <b><a href="svnmailer.config.ConfigSectionNotFoundError-class.html"><code>svnmailer.config.ConfigSectionNotFoundError</code></a></b>: <i>
-Specified config section was not found</i>
-    </ul>
-  <li> <b><a href="svnmailer.config.ConfigNotFoundError-class.html"><code>svnmailer.config.ConfigNotFoundError</code></a></b>: <i>
-Config file not found</i>
-    <ul>
-  <li> <b><a href="svnmailer.config.ConfigMissingError-class.html"><code>svnmailer.config.ConfigMissingError</code></a></b>: <i>
-Config not specified and not found on default locations</i>
-    </ul>
+  <li> <b><a href="svnmailer.cli.CommandlineError-class.html"><code>svnmailer.cli.CommandlineError</code></a></b>: <i>
+Error in commandline</i>
     </ul>
   <li> <b><a href="svnmailer.main.Error-class.html"><code>svnmailer.main.Error</code></a></b>: <i>
 Base exception for this module</i>
@@ -340,35 +405,57 @@ Base exception for this module</i>
 Configuration error occurred</i>
   <li> <b><a href="svnmailer.main.NotifierError-class.html"><code>svnmailer.main.NotifierError</code></a></b>: <i>
 An Notifier error occured</i>
+  <li> <b><a href="../private/svnmailer.main.CommandlineError-class.html"><code>svnmailer.main.CommandlineError</code></a></b>: <i>
+Command line error occured</i>
     </ul>
-  <li> <b><a href="svnmailer.subversion.RepositoryError-class.html"><code>svnmailer.subversion.RepositoryError</code></a></b>: <i>
-A repository error occured</i>
-  <li> <b><a href="exceptions.StandardError-class.html"><code>exceptions.StandardError</code></a></b>: <i>
-Base class for all standard Python exceptions.</i>
+  <li> <b><a href="svnmailer.settings.Error-class.html"><code>svnmailer.settings.Error</code></a></b>: <i>
+Base exception for this package</i>
     <ul>
-  <li> <b><a href="exceptions.RuntimeError-class.html"><code>exceptions.RuntimeError</code></a></b>: <i>
-Unspecified run-time error.</i>
+  <li> <b><a href="../private/svnmailer.settings._base.Error-class.html"><code>svnmailer.settings._base.Error</code></a></b>: <i>
+Base exception for this module</i>
     <ul>
-  <li> <b><a href="exceptions.NotImplementedError-class.html"><code>exceptions.NotImplementedError</code></a></b>: <i>
-Method or function hasn't been implemented yet.</i>
+  <li> <b><a href="../private/svnmailer.settings._fileparser.Error-class.html"><code>svnmailer.settings._fileparser.Error</code></a></b>: <i>
+Base exception for this module</i>
     <ul>
-  <li> <b><a href="../private/svnmailer.struct_accessors.NotSupportedError-class.html"><code>svnmailer.struct_accessors.NotSupportedError</code></a></b>: <i>
+  <li> <b><a href="../private/svnmailer.settings._fileparser.ParseError-class.html"><code>svnmailer.settings._fileparser.ParseError</code></a></b>: <i>
+Parse error</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings._fileparser.ContinuationError-class.html"><code>svnmailer.settings._fileparser.ContinuationError</code></a></b>: <i>
+A line continuation without a previous option line occured</i>
+  <li> <b><a href="../private/svnmailer.settings._fileparser.OptionSyntaxError-class.html"><code>svnmailer.settings._fileparser.OptionSyntaxError</code></a></b>: <i>
+A option line could not be parsed</i>
+    </ul>
+    </ul>
+  <li> <b><a href="../private/svnmailer.settings.configfile.Error-class.html"><code>svnmailer.settings.configfile.Error</code></a></b>: <i>
+Base exception for this module</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings.configfile.ConfigInvalidError-class.html"><code>svnmailer.settings.configfile.ConfigInvalidError</code></a></b>: <i>
+Config file has errors</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings.configfile.ConfigMappingSpecInvalidError-class.html"><code>svnmailer.settings.configfile.ConfigMappingSpecInvalidError</code></a></b>: <i>
+Config mapping spec was not recognized</i>
+  <li> <b><a href="../private/svnmailer.settings.configfile.ConfigOptionUnknownError-class.html"><code>svnmailer.settings.configfile.ConfigOptionUnknownError</code></a></b>: <i>
+An unknown option was parsed</i>
+  <li> <b><a href="../private/svnmailer.settings.configfile.ConfigSectionNotFoundError-class.html"><code>svnmailer.settings.configfile.ConfigSectionNotFoundError</code></a></b>: <i>
+Specified config section was not found</i>
+    </ul>
+  <li> <b><a href="../private/svnmailer.settings.configfile.ConfigIOError-class.html"><code>svnmailer.settings.configfile.ConfigIOError</code></a></b>: <i>
+Config file could not be loaded</i>
+  <li> <b><a href="../private/svnmailer.settings.configfile.ConfigMissingError-class.html"><code>svnmailer.settings.configfile.ConfigMissingError</code></a></b>: <i>
+Config not specified and not found on default locations</i>
+    </ul>
+  <li> <b><a href="../private/svnmailer.settings.mappers.Error-class.html"><code>svnmailer.settings.mappers.Error</code></a></b>: <i>
+Base exception for this module</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.settings.mappers.ConfigMappingSectionNotFoundError-class.html"><code>svnmailer.settings.mappers.ConfigMappingSectionNotFoundError</code></a></b>: <i>
+Config mapping section was not found</i>
+    </ul>
+  <li> <b><a href="../private/svnmailer.settings._base.NotSupportedError-class.html"><code>svnmailer.settings._base.NotSupportedError</code></a></b>: <i>
 This method is not supported</i>
     </ul>
     </ul>
-    </ul>
-  <li> <b><a href="../private/svnmailer.browser.Error-class.html"><code>svnmailer.browser.Error</code></a></b>: <i>
-Base exception for this module</i>
-    <ul>
-  <li> <b><a href="../private/svnmailer.browser.InvalidBaseUrlError-class.html"><code>svnmailer.browser.InvalidBaseUrlError</code></a></b>: <i>
-Invalid URL was configured</i>
-    </ul>
-  <li> <b><a href="../private/svnmailer.cli.Error-class.html"><code>svnmailer.cli.Error</code></a></b>: <i>
-Base exception for this module</i>
-    <ul>
-  <li> <b><a href="svnmailer.cli.CommandlineError-class.html"><code>svnmailer.cli.CommandlineError</code></a></b>: <i>
-Error in commandline</i>
-    </ul>
+  <li> <b><a href="svnmailer.subversion.RepositoryError-class.html"><code>svnmailer.subversion.RepositoryError</code></a></b>: <i>
+A repository error occured</i>
   <li> <b><a href="../private/svnmailer.notifier._mail.Error-class.html"><code>svnmailer.notifier._mail.Error</code></a></b>: <i>
 Base exception for this module</i>
     <ul>
@@ -391,9 +478,15 @@ Class attributes:
     list of standard options that will be accepted by all instances
     of this parser class (intended to be overridden by subclasses).</i>
     <ul>
-  <li> <b><a href="../private/svnmailer.cli.SvnmailerOptionParser-class.html"><code>svnmailer.cli.SvnmailerOptionParser</code></a></b>: <i>
+  <li> <b><a href="svnmailer.cli.OptionParser-class.html"><code>svnmailer.cli.OptionParser</code></a></b>: <i>
 Fully initialized option parser</i>
     </ul>
+    </ul>
+  <li> <b><a href="popen2.Popen3-class.html"><code>popen2.Popen3</code></a></b>: <i>
+Class representing a child process.</i>
+    <ul>
+  <li> <b><a href="../private/svnmailer.processes.ProcessImpl-class.html"><code>svnmailer.processes.ProcessImpl</code></a></b>: <i>
+Spawn a child with certain attributes</i>
     </ul>
   <li> <b><a href="svn.repos.RevisionChangeCollector-class.html"><code>svn.repos.RevisionChangeCollector</code></a></b>
     <ul>
@@ -419,7 +512,7 @@ Collect all changes between two particular revisions</i>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:12 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:21 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

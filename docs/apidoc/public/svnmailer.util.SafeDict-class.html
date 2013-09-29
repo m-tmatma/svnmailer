@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type SafeDict</h2>
+<h2 class="class">Class SafeDict</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+    
@@ -47,8 +47,7 @@
 
 <hr/>
 
-A dict, which returns '' on unknown keys or false values
-<hr/>
+A dict, which returns '' on unknown keys or false values<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -72,10 +71,10 @@ x.__init__(...) initializes x; see x.__class__.__doc__ for signature...</td></tr
 <br />
 x.__cmp__(y) &lt;==&gt; cmp(x,y)...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.dict-class.html#__contains__" class="summary-sig-name"><code>__contains__</code></a>(<span class=summary-sig-arg>D</span>,
-          <span class=summary-sig-arg>k</span>)</span></code>
+  <td><code><span class="summary-sig"><a href="__builtin__.dict-class.html#__contains__" class="summary-sig-name"><code>__contains__</code></a>(<span class=summary-sig-arg>x</span>,
+          <span class=summary-sig-arg>y</span>)</span></code>
 <br />
-D.__contains__(k) -&gt; True if D has a key k, else False...</td></tr>
+x.__contains__(y) &lt;==&gt; y in x...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.dict-class.html#__delitem__" class="summary-sig-name"><code>__delitem__</code></a>(<span class=summary-sig-arg>x</span>,
           <span class=summary-sig-arg>y</span>)</span></code>
@@ -127,12 +126,6 @@ x.__lt__(y) &lt;==&gt; x&lt;y...</td></tr>
           <span class=summary-sig-arg>y</span>)</span></code>
 <br />
 x.__ne__(y) &lt;==&gt; x!=y...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.dict-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.dict-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
@@ -199,9 +192,10 @@ If key is not found, d is returned if given, otherwise KeyError is raised...</td
 <br />
 D.setdefault(k[,d]) -&gt; D.get(k,d), also set D[k]=d if k not in D...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.dict-class.html#update" class="summary-sig-name"><code>update</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+  <td><code><span class="summary-sig"><a href="__builtin__.dict-class.html#update" class="summary-sig-name"><code>update</code></a>(<span class=summary-sig-arg>D</span>,
+          <span class=summary-sig-arg>E</span>)</span></code>
 <br />
-D.update(E, **F) -&gt; None.</td></tr>
+D.update(E) -&gt; None.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.dict-class.html#values" class="summary-sig-name"><code>values</code></a>(<span class=summary-sig-arg>D</span>)</span></code>
 <br />
@@ -231,6 +225,12 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#fromkeys" class="summary-sig-name"><code>fromkeys</code></a>(<span class=summary-sig-arg>dict</span>,
           <span class=summary-sig-arg>S</span>,
           <span class=summary-sig-arg>v</span>)</span></code>
@@ -251,8 +251,7 @@ v defaults to None.</td></tr>
           <span class=sig-arg>key</span>)</span>
     <br /><i>(Indexing operator)</i>
   </h3>
-  Returns an empty string on false values or unknown keys
-  <dl><dt></dt><dd>
+Returns an empty string on false values or unknown keys  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="__builtin__.dict-class.html#__getitem__"><code>__builtin__.dict.__getitem__</code></a></dd>
     </dl>
@@ -274,7 +273,7 @@ v defaults to None.</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:15 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

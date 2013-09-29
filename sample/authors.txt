@@ -1,0 +1,6 @@
+# This file is included by advanced.conf
+# It contains some author mappings
+
+[authors]
+john@example.org = john@doe.example.com
+eggs@example.org = chicken@barn.example.com

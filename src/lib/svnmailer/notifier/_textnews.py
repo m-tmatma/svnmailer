@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = W0613
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=R0921
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +18,8 @@
 """
 Text based news notifier
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['TextNewsNotifier']
 
 # global imports
@@ -28,17 +29,18 @@ from svnmailer.notifier import _textmail, _mail
 def getNotifier(cls, settings, groupset):
     """ Returns an initialized notifier or nothing
 
-        @param cls: The notifier base class to use
-        @type cls: C{class}
+        :Parameters:
+         - `cls`: The notifier base class to use
+         - `settings`: The svnmailer settings
+         - `groupset`: The groupset to process
 
-        @param settings: The svnmailer settings
-        @type settings: C{svnmailer.settings.Settings}
+        :Types:
+         - `cls`: ``class``
+         - `settings`: `svnmailer.settings._base.BaseSettings`
+         - `groupset`: ``list``
 
-        @param groupset: The groupset to process
-        @type groupset: C{list}
-
-        @return: The list of notifiers (containing 0 or 1 member)
-        @rtype: C{list}
+        :return: The list of notifiers (containing 0 or 1 member)
+        :rtype: ``list``
     """
     from svnmailer import util
 
@@ -55,23 +57,25 @@ class TextNewsNotifier(_textmail.TextMailNotifier):
     def sendMail(self, sender, to_addr, mail):
         """ Sends the news
 
-            @param sender: The mail sender (envelope from)
-            @type sender: C{str}
+            :Parameters:
+             - `sender`: The mail sender (envelope from)
+             - `to_addr`: The receivers
+             - `mail`: The mail object
 
-            @param to_addr: The receivers
-            @type to_addr: C{list}
-
-            @param mail: The mail object
-            @type mail: C{_TextMail}
+            :Types:
+             - `sender`: ``str``
+             - `to_addr`: ``list``
+             - `mail`: ``_TextMail``
         """
+        (to_addr, sender) # pylint
         self.sendNews(mail)
 
 
     def sendNews(self, posting):
         """ Sends the news
 
-            @param posting: The posting object
-            @type posting: C{_textmail._TextMail}
+            :param posting: The posting object
+            :type posting: ``_textmail._TextMail``
         """
         raise NotImplementedError()
 
@@ -84,12 +88,12 @@ class TextNewsNotifier(_textmail.TextMailNotifier):
     def composeHeaders(self, groups):
         """ Compose the informational headers of the mail
 
-            @param groups: The groups to process
-            @type groups: C{list}
+            :param groups: The groups to process
+            :type groups: ``list``
 
-            @return: sender (C{unicode}), recipients (C{list}), headers
-                (C{dict})
-            @rtype: C{tuple}
+            :return: sender (``unicode``), recipients (``list``), headers
+                (``dict``)
+            :rtype: ``tuple``
         """
         from email import Header
 
@@ -121,11 +125,11 @@ class TextNewsNotifier(_textmail.TextMailNotifier):
     def getNewsAddresses(self, groups):
         """ Returns the substituted mail addresses (from/to/reply-to)
 
-            @param groups: The groups to process
-            @type groups: C{list}
+            :param groups: The groups to process
+            :type groups: ``list``
 
-            @return: The address lists (sender, from, to, reply-to)
-            @rtype: C{tuple}
+            :return: The address lists (sender, from, to, reply-to)
+            :rtype: ``tuple``
         """
         from_addrs = []
         to_newsgroups = []

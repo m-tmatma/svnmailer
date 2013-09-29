@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.cli.OptionHelper</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.cli-module.html">Module&nbsp;cli</a> ::
+        Class&nbsp;OptionHelper
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/svnmailer.cli.OptionHelper-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class OptionHelper</h2>
+
+<pre class="base-tree">
+<a href="__builtin__.object-class.html"><code>object</code></a> --+
+         |
+        <b>OptionHelper</b>
+</pre><br />
+
+<hr/>
+
+<p>Option parser helper class</p>
+<p>Additional operations are delegated to this class in order
+to not pollute the OptionParser namespace which changes all
+the time.</p>
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>parser</span>,
+          <span class=summary-sig-arg>background</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#_addBehaviorOptions" class="summary-sig-name"><code>_addBehaviorOptions</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Adds the behavior options group</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#_addCommonOptions" class="summary-sig-name"><code>_addCommonOptions</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Adds the common options group</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#_addOptions" class="summary-sig-name"><code>_addOptions</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Adds the possible options to the parser</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#_addSupplementalOptions" class="summary-sig-name"><code>_addSupplementalOptions</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Adds the supplemental options</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#_delocalize" class="summary-sig-name"><code>_delocalize</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>options</span>)</span></code>
+<br />
+Delocalizes the supplied paths</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#_ensureRequired" class="summary-sig-name"><code>_ensureRequired</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>options</span>)</span></code>
+<br />
+Ensures that all required options are present</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#_handleBackground" class="summary-sig-name"><code>_handleBackground</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>options</span>)</span></code>
+<br />
+Evaluates the <tt class="literal"><span class="pre">--background</span></tt> option</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#_transformArgs" class="summary-sig-name"><code>_transformArgs</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>args</span>)</span></code>
+<br />
+Parses the command line according to old style rules</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">optparse.OptionContainer</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#fixUp" class="summary-sig-name"><code>fixUp</code></a>(<span class=summary-sig-arg>self</span>,
+          (<span class=summary-sig-arg>options</span>,
+           <span class=summary-sig-arg>fixed</span>))</span></code>
+<br />
+Fixes up the parsed option to match the needs of the mailer</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionHelper-class.html#formatOldStyle" class="summary-sig-name"><code>formatOldStyle</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>width</span>)</span></code>
+<br />
+Returns the formatted old style help</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">bool</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_background"><code>_background</code></a></b>: Is daemonizing of the process allowed?</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.cli.OptionParser-class.html" class="link"><code>OptionParser</code></a></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_parser"><code>_parser</code></a></b>: The <a href="svnmailer.cli.OptionParser-class.html" class="link"><code>OptionParser</code></a> instance</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#args"><code>args</code></a></b>: The argument list to parse</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_WIN32_BG_ARG"><code>_WIN32_BG_ARG</code></a></b>: fixed argument which is appended to the command
+line of the background process on Win32</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Titles</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_BEHAVIOR_TITLE"><code>_BEHAVIOR_TITLE</code></a></b>: Title of the behavior option group</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_COMMON_TITLE"><code>_COMMON_TITLE</code></a></b>: Title of the common option group</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_SUPPLEMENTAL_TITLE"><code>_SUPPLEMENTAL_TITLE</code></a></b>: Title of the supplemental option group</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Constraints</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_PATH_OPTIONS"><code>_PATH_OPTIONS</code></a></b>: List of option attributes that need to be
+treated as localized paths.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_REQUIRED_OPTIONS"><code>_REQUIRED_OPTIONS</code></a></b>: List of option attributes that are required
+under certain circumstances.</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Mapping Tables</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_OLD_OPTIONS"><code>_OLD_OPTIONS</code></a></b>: Mapping table for old style command lines (&lt; svn
+1.2)</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionHelper-class.html#_OLD_OPTIONS_1_2"><code>_OLD_OPTIONS_1_2</code></a></b>: Mapping table for old style command lines (&gt;=
+svn 1.2 only)</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>parser</span>,
+          <span class=sig-arg>background</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+Initialization  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>parser</b></code> -
+ The <a href="svnmailer.cli.OptionParser-class.html" class="link"><code>OptionParser</code></a> instance
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.cli.OptionParser-class.html" class="link"><code>OptionParser</code></a>)</i>
+      <dd><code><b>background</b></code> -
+ Is daemonizing of the process allowed?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+The argument list is empty    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addBehaviorOptions"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addBehaviorOptions</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Adds the behavior options group  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addCommonOptions"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addCommonOptions</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Adds the common options group  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addOptions"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addOptions</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Adds the possible options to the parser  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_addSupplementalOptions"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_addSupplementalOptions</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Adds the supplemental options  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_delocalize"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_delocalize</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>options</span>)</span>
+  </h3>
+Delocalizes the supplied paths  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+ The options to consider
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+Something went wrong    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_ensureRequired"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_ensureRequired</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>options</span>)</span>
+  </h3>
+Ensures that all required options are present  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+ The options to consider
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+At least one option is missing    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_handleBackground"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_handleBackground</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>options</span>)</span>
+  </h3>
+<p>Evaluates the <tt class="literal"><span class="pre">--background</span></tt> option</p>
+<p>If daemonizing is not allowed, this method is a noop at all.</p>
+<p>Otherwise the behaviour depends on the platform:</p>
+<dl>
+<dt>POSIX systems</dt>
+<dd>The process just <tt class="literal"><span class="pre">fork</span></tt>s into the background and detaches
+from the controlling terminal (calls <tt class="literal"><span class="pre">setsid(2)</span></tt>). The
+parent process is exited immediately with return code <tt class="literal"><span class="pre">0</span></tt>.</dd>
+<dt>Win32/64 systems</dt>
+<dd>The process spawns itself again (flagged to be detached),
+using <tt class="literal"><span class="pre">sys.executable</span></tt> and <tt class="literal"><span class="pre">sys.argv</span></tt>. <a href="../private/svnmailer.cli.OptionHelper-class.html#_WIN32_BG_ARG" class="link"><code>_WIN32_BG_ARG</code></a>
+is added as a fixed parameter to let the spawned process
+know that is does not need to spawn again. If this worked,
+the parent process exits with <tt class="literal"><span class="pre">0</span></tt>. As I don't know if this
+works on all Windows systems as desired, this feature is
+marked experimental on these platforms.</dd>
+</dl>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+ option container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_transformArgs"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_transformArgs</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>args</span>)</span>
+  </h3>
+Parses the command line according to old style rules  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>args</b></code> -
+ The argument list (<tt class="literal"><span class="pre">['arg',</span> <span class="pre">'arg',</span> <span class="pre">...]</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The argument, possibly transformed to new style
+(<tt class="literal"><span class="pre">['arg',</span> <span class="pre">'arg',</span> <span class="pre">...]</span></tt>)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+The argument list is empty    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="fixUp"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">fixUp</span>(<span class=sig-arg>self</span>,
+          (<span class=sig-arg>options</span>,
+           <span class=sig-arg>fixed</span>))</span>
+  </h3>
+Fixes up the parsed option to match the needs of the mailer  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+ The <tt class="literal"><span class="pre">OptionContainer</span></tt> instance
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      <dd><code><b>fixed</b></code> -
+ The list of fixed arguments
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The final <tt class="literal"><span class="pre">OptionContainer</span></tt> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+The options are not suitable    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="formatOldStyle"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">formatOldStyle</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>width</span>)</span>
+  </h3>
+Returns the formatted old style help  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>width</b></code> -
+ Maximum width of the text
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The formatted help text        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_background"></a>
+<h3>_background</h3>
+Is daemonizing of the process allowed?<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">bool</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_parser"></a>
+<h3>_parser</h3>
+The <a href="svnmailer.cli.OptionParser-class.html" class="link"><code>OptionParser</code></a> instance<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<a href="svnmailer.cli.OptionParser-class.html" class="link"><code>OptionParser</code></a>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="args"></a>
+<h3>args</h3>
+The argument list to parse<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">list</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_BEHAVIOR_TITLE"></a>
+<h3>_BEHAVIOR_TITLE</h3>
+Title of the behavior option group<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+<span title="'BEHAVIOR OPTIONS'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>BEHAVIOR OPTIONS<span class="variable-quote">'</span>                                                     </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_COMMON_TITLE"></a>
+<h3>_COMMON_TITLE</h3>
+Title of the common option group<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+<span title="'COMMON PARAMETERS'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>COMMON PARAMETERS<span class="variable-quote">'</span>                                                    </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_OLD_OPTIONS"></a>
+<h3>_OLD_OPTIONS</h3>
+Mapping table for old style command lines (&lt; svn
+1.2)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">dict</span></tt>
+      </dd>
+<span title="{'commit': ('--commit', '--repository', '--revision', '--config'), 'propchange': ('--propchange', '--repository', '--revision', '--author', '--propname', '--config')}">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{'commit': ('--commit', '--repository', '--revision', '--config'),
+ 'propchange': ('--propchange',
+                '--repository',
+                '--revision',
+                '--author',
+                '--propname',
+                '--config')}                                           </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_OLD_OPTIONS_1_2"></a>
+<h3>_OLD_OPTIONS_1_2</h3>
+Mapping table for old style command lines (&gt;=
+svn 1.2 only)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">dict</span></tt>
+      </dd>
+<span title="{'propchange2': ('--propchange', '--repository', '--revision', '--author', '--propname', '--action', '--config'), 'lock': ('--lock', '--repository', '--author', '--config'), 'unlock': ('--unlock', '--repository', '--author', '--config')}">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{'lock': ('--lock', '--repository', '--author', '--config'),
+ 'propchange2': ('--propchange',
+                 '--repository',
+                 '--revision',
+                 '--author',
+                 '--propname',
+                 '--action',
+                 '--config'),
+<span class="variable-ellipsis">...</span>                                                                    </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_PATH_OPTIONS"></a>
+<h3>_PATH_OPTIONS</h3>
+List of option attributes that need to be
+treated as localized paths. Every entry is a tuple consisting of
+the option attribute name the option name for the error message.
+(<tt class="literal"><span class="pre">(('name',</span> <span class="pre">'option'),</span> <span class="pre">...)</span></tt>)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">tuple</span></tt>
+      </dd>
+<span title="(('repository', '--repository'), ('config', '--config'))">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+(('repository', '--repository'), ('config', '--config'))               </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_REQUIRED_OPTIONS"></a>
+<h3>_REQUIRED_OPTIONS</h3>
+List of option attributes that are required
+under certain circumstances. Every entry is a tuple consisting of
+the option attribute name, the list of mailer modes (or <tt class="literal"><span class="pre">None</span></tt>
+for all modes) and an error text hint.
+(<tt class="literal"><span class="pre">(('name',</span> <span class="pre">(mode,</span> <span class="pre">...),</span> <span class="pre">'text'),</span> <span class="pre">...)</span></tt>)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">tuple</span></tt>
+      </dd>
+<span title="(('repository', None, 'repository path'), ('revision', ('commit', 'propchange'), 'revision number'), ('author', ('propchange', 'lock', 'unlock'), 'author parameter'), ('propname', ('propchange',), 'property name parameter'))">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+(('repository', None, 'repository path'),
+ ('revision', ('commit', 'propchange'), 'revision number'),
+ ('author', ('propchange', 'lock', 'unlock'), 'author parameter'),
+ ('propname', ('propchange',), 'property name parameter'))             </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_SUPPLEMENTAL_TITLE"></a>
+<h3>_SUPPLEMENTAL_TITLE</h3>
+Title of the supplemental option group<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+<span title="'SUPPLEMENTAL PARAMETERS'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>SUPPLEMENTAL PARAMETERS<span class="variable-quote">'</span>                                              </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_WIN32_BG_ARG"></a>
+<h3>_WIN32_BG_ARG</h3>
+fixed argument which is appended to the command
+line of the background process on Win32<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+<span title="'bg-process'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>bg-process<span class="variable-quote">'</span>                                                           </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:06 2005</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

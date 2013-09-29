@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.settings._typedstruct.StructCreator</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.settings-module.html">Package&nbsp;settings</a> ::
+        <a href="../private/svnmailer.settings._typedstruct-module.html">Module&nbsp;_typedstruct</a> ::
+        Class&nbsp;StructCreator
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class StructCreator</h2>
+
+<pre class="base-tree">
+<a href="__builtin__.object-class.html"><code>object</code></a> --+
+         |
+        <b>StructCreator</b>
+</pre><br />
+
+<hr/>
+
+Struct creator class<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>members</span>,
+          <span class=summary-sig-arg>cls</span>,
+          <span class=summary-sig-arg>aliases</span>,
+          <span class=summary-sig-arg>typemap</span>,
+          <span class=summary-sig-arg>eqignore</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._typedstruct.Descriptor-class.html" class="link"><code>Descriptor</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_createDescriptor" class="summary-sig-name"><code>_createDescriptor</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>,
+          <span class=summary-sig-arg>private</span>,
+          <span class=summary-sig-arg>member</span>)</span></code>
+<br />
+Returns a new <a href="../private/svnmailer.settings._typedstruct.Descriptor-class.html" class="link"><code>Descriptor</code></a> instance</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html" class="link"><code>MetaClass</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_createMetaClass" class="summary-sig-name"><code>_createMetaClass</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>,
+          <span class=summary-sig-arg>bases</span>,
+          <span class=summary-sig-arg>cdict</span>)</span></code>
+<br />
+Returns a new <a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html" class="link"><code>MetaClass</code></a> instance</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_createPrivate" class="summary-sig-name"><code>_createPrivate</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns a new <a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a> instance</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">callable</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_generateCall" class="summary-sig-name"><code>_generateCall</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>private</span>)</span></code>
+<br />
+Returns the __call__ method</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">callable</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_generateEq" class="summary-sig-name"><code>_generateEq</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>private</span>,
+          <span class=summary-sig-arg>iseq</span>)</span></code>
+<br />
+Returns <tt class="literal"><span class="pre">__eq__</span></tt>/<tt class="literal"><span class="pre">__ne__</span></tt> descriptor</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">callable</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_generateGetItem" class="summary-sig-name"><code>_generateGetItem</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>private</span>)</span></code>
+<br />
+Returns the <tt class="literal"><span class="pre">__getitem__</span></tt> method</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_generateMembers" class="summary-sig-name"><code>_generateMembers</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>private</span>,
+          <span class=summary-sig-arg>maps</span>,
+          <span class=summary-sig-arg>arg</span>)</span></code>
+<br />
+Generates the members descriptors</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">callable</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_generateRepr" class="summary-sig-name"><code>_generateRepr</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>private</span>)</span></code>
+<br />
+Returns the <tt class="literal"><span class="pre">__repr__</span></tt> method</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">callable</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_generateSetItem" class="summary-sig-name"><code>_generateSetItem</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>private</span>)</span></code>
+<br />
+Returns the <tt class="literal"><span class="pre">__setitem__</span></tt> method</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_generateSpecials" class="summary-sig-name"><code>_generateSpecials</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>private</span>)</span></code>
+<br />
+Generates the special methods</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_prepareMembers" class="summary-sig-name"><code>_prepareMembers</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>members</span>,
+          <span class=summary-sig-arg>typemap</span>)</span></code>
+<br />
+Prepares the member specs for later processing</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._typedstruct.Struct-class.html" class="link"><code>Struct</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#create" class="summary-sig-name"><code>create</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>maps</span>,
+          <span class=summary-sig-arg>arg</span>,
+          <span class=summary-sig-arg>initkw</span>)</span></code>
+<br />
+Creates a new struct with extended properties</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_aliases"><code>_aliases</code></a></b>: The member aliases.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html" class="link"><code>MetaClass</code></a></font></td>
+<td><b><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_cls"><code>_cls</code></a></b>: The struct class to use</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_eqignore"><code>_eqignore</code></a></b>: Member names to be ignored in EQ comparisons
+(<tt class="literal"><span class="pre">dict</span></tt> for faster lookup)</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_members"><code>_members</code></a></b>: The prepared members
+(<tt class="literal"><span class="pre">{('name',</span> <span class="pre">'alias',</span> <span class="pre">'alias',</span> <span class="pre">...):</span> <span class="pre">(spec,</span> <span class="pre">param),</span> <span class="pre">...}</span></tt>)</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings._typedstruct.StructCreator-class.html#_names"><code>_names</code></a></b>: The member names as <tt class="literal"><span class="pre">tuple</span></tt> (without aliases)</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html" class="link"><code>MetaClass</code></a></font></td>
+  <td><a name="_BASESTRUCT"></a><b><code>_BASESTRUCT</code></b> = <a href="../private/svnmailer.settings._typedstruct.Struct-class.html"><code>svnmailer.settings._typedstruct.Struct</code></a></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._typedstruct.Member-class.html" class="link"><code>Member</code></a></font></td>
+  <td><a name="_DEFAULTMEMBER"></a><b><code>_DEFAULTMEMBER</code></b> = <a href="../private/svnmailer.settings._typedstruct.Member-class.html"><code>svnmailer.settings._typedstruct.Member</code></a></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._typedstruct.Struct-class.html" class="link"><code>Struct</code></a></font></td>
+  <td><a name="_DEFAULTSTRUCT"></a><b><code>_DEFAULTSTRUCT</code></b> = <a href="../private/svnmailer.settings._typedstruct.Struct-class.html"><code>svnmailer.settings._typedstruct.Struct</code></a></td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>members</span>,
+          <span class=sig-arg>cls</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>aliases</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>typemap</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>eqignore</span>=<span class=sig-default>None</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+Initialization  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>members</b></code> -
+ The list of members. This is either a list of
+strings (representing the name) or a dict, where each key
+is the member name and the value specifies the type of the
+member. Actually, a plain list a special case of the latter.
+It can also be written as a <tt class="literal"><span class="pre">dict</span></tt> with all values set to
+<tt class="literal"><span class="pre">None</span></tt>. (<tt class="literal"><span class="pre">{'name':</span> <span class="pre">any,</span> <span class="pre">...}</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=iterable or <tt class="literal"><span class="pre">dict</span></tt>)</i>
+      <dd><code><b>cls</b></code> -
+ The class to create. It should inherit from <a href="../private/svnmailer.settings._typedstruct.Struct-class.html" class="link"><code>Struct</code></a>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Struct-class.html" class="link"><code>Struct</code></a>)</i>
+      <dd><code><b>aliases</b></code> -
+ The member aliases. (<tt class="literal"><span class="pre">{'alias':</span> <span class="pre">'real',</span> <span class="pre">...}</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      <dd><code><b>typemap</b></code> -
+ The type map (<tt class="literal"><span class="pre">{'type':</span> <span class="pre">descriptor</span> <span class="pre">class}</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      <dd><code><b>eqignore</b></code> -
+ Member names to be ignored in EQ comparisons. If
+<tt class="literal"><span class="pre">None</span></tt>, different containers are always considered different.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=sequence)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_createDescriptor"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_createDescriptor</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>name</span>,
+          <span class=sig-arg>private</span>,
+          <span class=sig-arg>member</span>)</span>
+  </h3>
+Returns a new <a href="../private/svnmailer.settings._typedstruct.Descriptor-class.html" class="link"><code>Descriptor</code></a> instance  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>name</b></code> -
+ The name of the member
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      <dd><code><b>private</b></code> -
+ The private data container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      <dd><code><b>member</b></code> -
+ The actual member instance
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Member-class.html" class="link"><code>Member</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new <a href="../private/svnmailer.settings._typedstruct.Descriptor-class.html" class="link"><code>Descriptor</code></a> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Descriptor-class.html" class="link"><code>Descriptor</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_createMetaClass"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_createMetaClass</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>name</span>,
+          <span class=sig-arg>bases</span>,
+          <span class=sig-arg>cdict</span>)</span>
+  </h3>
+Returns a new <a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html" class="link"><code>MetaClass</code></a> instance  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>name</b></code> -
+ The name of the new class
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      <dd><code><b>bases</b></code> -
+ The base classes
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">tuple</span></tt>)</i>
+      <dd><code><b>cdict</b></code> -
+ The initial dictionary
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new <a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html" class="link"><code>MetaClass</code></a> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html" class="link"><code>MetaClass</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_createPrivate"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_createPrivate</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Returns a new <a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a> instance  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new <a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_generateCall"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_generateCall</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>private</span>)</span>
+  </h3>
+Returns the __call__ method  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>private</b></code> -
+ The private data container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The method function        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">callable</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_generateEq"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_generateEq</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>private</span>,
+          <span class=sig-arg>iseq</span>=<span class=sig-default>True</span>)</span>
+  </h3>
+Returns <tt class="literal"><span class="pre">__eq__</span></tt>/<tt class="literal"><span class="pre">__ne__</span></tt> descriptor  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>private</b></code> -
+ The private data container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The method function        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">callable</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_generateGetItem"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_generateGetItem</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>private</span>)</span>
+  </h3>
+Returns the <tt class="literal"><span class="pre">__getitem__</span></tt> method  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>private</b></code> -
+ The private data container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The method function        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">callable</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_generateMembers"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_generateMembers</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>private</span>,
+          <span class=sig-arg>maps</span>,
+          <span class=sig-arg>arg</span>)</span>
+  </h3>
+Generates the members descriptors  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>private</b></code> -
+ The private data container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      <dd><code><b>maps</b></code> -
+ The mappers to use (<tt class="literal"><span class="pre">{'membername':</span> <span class="pre">mapper,</span> <span class="pre">...}</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      <dd><code><b>arg</b></code> -
+ Initializer argument for the descriptors
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=any)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The member descriptors (<tt class="literal"><span class="pre">{'name':</span> <span class="pre">descriptor,</span> <span class="pre">...}</span></tt>)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>AssertionError</b></code> -
+Something was inconsistent or wrong    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_generateRepr"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_generateRepr</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>private</span>)</span>
+  </h3>
+Returns the <tt class="literal"><span class="pre">__repr__</span></tt> method  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>private</b></code> -
+ The private data container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The method function        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">callable</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_generateSetItem"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_generateSetItem</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>private</span>)</span>
+  </h3>
+Returns the <tt class="literal"><span class="pre">__setitem__</span></tt> method  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>private</b></code> -
+ The private data container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The method function        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">callable</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_generateSpecials"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_generateSpecials</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>private</span>)</span>
+  </h3>
+Generates the special methods  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>private</b></code> -
+ The private data container
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Private-class.html" class="link"><code>Private</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The special methods (<tt class="literal"><span class="pre">{'name':</span> <span class="pre">method,</span> <span class="pre">...}</span></tt>)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_prepareMembers"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_prepareMembers</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>members</span>,
+          <span class=sig-arg>typemap</span>)</span>
+  </h3>
+Prepares the member specs for later processing  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>members</b></code> -
+ The list of members. This is either a list of
+strings (representing the name) or a dict, where each key
+is the member name and the value specifies the type of the
+member. Actually, a plain list a special case of the latter.
+It can also be written as a dict with all values set to
+<tt class="literal"><span class="pre">None</span></tt>. (<tt class="literal"><span class="pre">{'name':</span> <span class="pre">any,</span> <span class="pre">...}</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=sequence or mapping)</i>
+      <dd><code><b>typemap</b></code> -
+ The type map (<tt class="literal"><span class="pre">{'type':</span> <span class="pre">descriptor</span> <span class="pre">class}</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The prepared members (<tt class="literal"><span class="pre">{('name',</span> <span class="pre">'alias',</span> <span class="pre">'alias',</span> <span class="pre">...):</span>
+<span class="pre">(spec,</span> <span class="pre">param),</span> <span class="pre">...}</span></tt>) and the member names as sequence
+(<tt class="literal"><span class="pre">('name',</span> <span class="pre">...)</span></tt>)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">tuple</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>AssertionError</b></code> -
+Something in the member or typemap
+spec is bogus    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="create"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">create</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>maps</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>arg</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>initkw</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+Creates a new struct with extended properties  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>maps</b></code> -
+ The mappers to use (<tt class="literal"><span class="pre">{'membername':</span> <span class="pre">mapper,</span> <span class="pre">...}</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      <dd><code><b>arg</b></code> -
+ Initializer argument for the descriptors
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=any)</i>
+      <dd><code><b>initkw</b></code> -
+ Initial values of members
+(<tt class="literal"><span class="pre">{'name',</span> <span class="pre">'value',</span> <span class="pre">...}</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new instance of the class        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._typedstruct.Struct-class.html" class="link"><code>Struct</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>AssertionError</b></code> -
+The parameter set was inconsistent    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_aliases"></a>
+<h3>_aliases</h3>
+The member aliases. (<tt class="literal"><span class="pre">{'alias':</span> <span class="pre">'real',</span> <span class="pre">...}</span></tt>)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">dict</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_cls"></a>
+<h3>_cls</h3>
+The struct class to use<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<a href="../private/svnmailer.settings._typedstruct.MetaClass-class.html" class="link"><code>MetaClass</code></a>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_eqignore"></a>
+<h3>_eqignore</h3>
+Member names to be ignored in EQ comparisons
+(<tt class="literal"><span class="pre">dict</span></tt> for faster lookup)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">dict</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_members"></a>
+<h3>_members</h3>
+The prepared members
+(<tt class="literal"><span class="pre">{('name',</span> <span class="pre">'alias',</span> <span class="pre">'alias',</span> <span class="pre">...):</span> <span class="pre">(spec,</span> <span class="pre">param),</span> <span class="pre">...}</span></tt>)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">dict</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_names"></a>
+<h3>_names</h3>
+The member names as <tt class="literal"><span class="pre">tuple</span></tt> (without aliases)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">tuple</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:13 2005</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

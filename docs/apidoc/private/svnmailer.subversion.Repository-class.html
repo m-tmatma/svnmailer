@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type Repository</h2>
+<h2 class="class">Class Repository</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+
@@ -45,8 +45,7 @@
 
 <hr/>
 
-Access to the subversion repository
-<hr/>
+Access to the subversion repository<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -69,67 +68,57 @@ Destroy the pool and release the shared lock</td></tr>
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Dump the contents of a particular path into a file</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.subversion.Repository-class.html#getChangesList" class="summary-sig-name"><code>getChangesList</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Return the list of changes of a revisions sorted by path</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.subversion.Repository-class.html#getPathMimeType" class="summary-sig-name"><code>getPathMimeType</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>path</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Get the MIME type of a particular path</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.subversion.Repository-class.html#getPathProperties" class="summary-sig-name"><code>getPathProperties</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>path</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Get a dict of properties for a particular path/revision</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.subversion.Repository-class.html#getPathProperty" class="summary-sig-name"><code>getPathProperty</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>name</span>,
           <span class=summary-sig-arg>path</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Get the value of a particular property</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.subversion.Repository-class.html#getRevisionAuthor" class="summary-sig-name"><code>getRevisionAuthor</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Returns the author of a particular revision</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.subversion.Repository-class.html#getRevisionLog" class="summary-sig-name"><code>getRevisionLog</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Returns the log entry of a particular revision</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.subversion.Repository-class.html#getRevisionProperty" class="summary-sig-name"><code>getRevisionProperty</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>revision</span>,
           <span class=summary-sig-arg>propname</span>)</span></code>
 <br />
 Returns the value of a revision property</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.subversion.Repository-class.html#getRevisionTime" class="summary-sig-name"><code>getRevisionTime</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Returns the time of a particular rev.</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>_RevisionChangeCollector</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.subversion._RevisionChangeCollector-class.html" class="link"><code>_RevisionChangeCollector</code></a></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.Repository-class.html#_getChangeCollector" class="summary-sig-name"><code>_getChangeCollector</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Return the RevisionChangeCollector instance</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        swig object
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1">swig object</font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.Repository-class.html#_getRevisionRoot" class="summary-sig-name"><code>_getRevisionRoot</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
@@ -148,12 +137,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
@@ -174,6 +157,14 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -181,39 +172,28 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Instance Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
 <td><b><a href="svnmailer.subversion.Repository-class.html#path"><code>path</code></a></b>: The path to the repository</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>bool</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">bool</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_apr_initialized"><code>_apr_initialized</code></a></b>: is APR initialized?</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">swig object</font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_fs"><code>_fs</code></a></b>: Reference to the repos filesystem</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_pathPropLists"><code>_pathPropLists</code></a></b>: Cached path propery lists</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_pathProps"><code>_pathProps</code></a></b>: Cached path properties</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">swig object</font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_pool"><code>_pool</code></a></b>: main APR pool</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">swig object</font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_repos"><code>_repos</code></a></b>: Reference to the open repository</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_revChanges"><code>_revChanges</code></a></b>: Cached revision change lists</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_revProps"><code>_revProps</code></a></b>: Cached revision properties</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_revRoots"><code>_revRoots</code></a></b>: Cached revision root objects</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion.Repository-class.html#_revTimes"><code>_revTimes</code></a></b>: Cached revision times</td></tr>
-</table><br />
-
-
-<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
-<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="summary">
-  <th colspan="2">Class Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-<td><b><a href="../private/svnmailer.subversion.Repository-class.html#_apr_initialized"><code>_apr_initialized</code></a></b>: <code>False</code></td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-<td><b><a href="../private/svnmailer.subversion.Repository-class.html#_pool"><code>_pool</code></a></b>: <code>None</code></td></tr>
 </table><br />
 
 
@@ -229,13 +209,12 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>repos_path</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Open the repository
-  <dl><dt></dt><dd>
+Open the repository  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>repos_path</b></code> -
-         The repository path as unicode
+ The repository path as unicode
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>unicode</code>)</i>
+        (type=<tt class="literal"><span class="pre">unicode</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Overrides:</b></dt>
@@ -248,8 +227,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">close</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Destroy the pool and release the shared lock
-  <dl><dt></dt><dd>
+Destroy the pool and release the shared lock  <dl><dt></dt><dd>
   </dd></dl>
 </td></tr></table>
 
@@ -260,21 +238,20 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>path</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Dump the contents of a particular path into a file
-  <dl><dt></dt><dd>
+Dump the contents of a particular path into a file  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>fp</b></code> -
-         The file descriptor
+ The file descriptor
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=file like object)</i>
+        (type=<tt class="literal"><span class="pre">file</span></tt>)</i>
       <dd><code><b>path</b></code> -
-         The path to process
+ The path to process
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -285,20 +262,18 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">getChangesList</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Return the list of changes of a revisions sorted by path
-  <dl><dt></dt><dd>
+Return the list of changes of a revisions sorted by path  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>revision</b></code> -
-         The revision
+ The revision
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The Changes list
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+The Changes list        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -310,24 +285,22 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>path</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Get the MIME type of a particular path
-  <dl><dt></dt><dd>
+Get the MIME type of a particular path  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>path</b></code> -
-         The path
+ The path
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The mime type or <code>None</code>
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+The mime type or <tt class="literal"><span class="pre">None</span></tt>        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -339,24 +312,22 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>path</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Get a dict of properties for a particular path/revision
-  <dl><dt></dt><dd>
+Get a dict of properties for a particular path/revision  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>path</b></code> -
-         The path
+ The path
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The dict of properties
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>dict</code>)</i>
+The dict of properties        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -369,29 +340,27 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>path</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Get the value of a particular property
-  <dl><dt></dt><dd>
+Get the value of a particular property  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>name</b></code> -
-         The name of the property
+ The name of the property
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       <dd><code><b>path</b></code> -
-         The path the property is attached to
+ The path the property is attached to
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The property value or <code>None</code> if the property 
-        doesn't exist.
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+The property value or <tt class="literal"><span class="pre">None</span></tt> if the property
+doesn't exist.        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -402,20 +371,18 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">getRevisionAuthor</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Returns the author of a particular revision
-  <dl><dt></dt><dd>
+Returns the author of a particular revision  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The author
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+The author        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -426,20 +393,18 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">getRevisionLog</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Returns the log entry of a particular revision
-  <dl><dt></dt><dd>
+Returns the log entry of a particular revision  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The log entry or <code>None</code>
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+The log entry or <tt class="literal"><span class="pre">None</span></tt>        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -451,24 +416,22 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>revision</span>,
           <span class=sig-arg>propname</span>)</span>
   </h3>
-  Returns the value of a revision property
-  <dl><dt></dt><dd>
+Returns the value of a revision property  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       <dd><code><b>propname</b></code> -
-         The property name
+ The property name
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The property value
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+The property value        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -479,20 +442,18 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">getRevisionTime</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Returns the time of a particular rev. in seconds since epoch
-  <dl><dt></dt><dd>
+Returns the time of a particular rev. in seconds since epoch  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The time
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+The time        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -503,20 +464,18 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">_getChangeCollector</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Return the RevisionChangeCollector instance
-  <dl><dt></dt><dd>
+Return the RevisionChangeCollector instance  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>revision</b></code> -
-         The revision
+ The revision
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The Collector instance
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>_RevisionChangeCollector</code>)</i>
+The Collector instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.subversion._RevisionChangeCollector-class.html" class="link"><code>_RevisionChangeCollector</code></a>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -527,24 +486,21 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">_getRevisionRoot</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>revision</span>)</span>
   </h3>
-  Return the root object of a particular revision
-  <dl><dt></dt><dd>
+Return the root object of a particular revision  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>revision</b></code> -
-         The revision number
+ The revision number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The revision root
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+The revision root        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         (type=swig object)</i>
       </dd>
     </dl>
-<p><b>Note:</b> The root objects are cached
-</p>
+<p><b>Note:</b> The root objects are cached</p>
 
   </dd></dl>
 </td></tr></table>
@@ -559,15 +515,13 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="path"></a>
 <h3>path</h3>
-The path to the repository
-<dl>
+The path to the repository<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>unicode</code>
-
+<tt class="literal"><span class="pre">unicode</span></tt>
       </dd>
     </dl>
   </dd>
@@ -575,15 +529,13 @@ The path to the repository
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_apr_initialized"></a>
 <h3>_apr_initialized</h3>
-is APR initialized?
-<dl>
+is APR initialized?<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>bool</code>
-
+<tt class="literal"><span class="pre">bool</span></tt>
       </dd>
 <span title="False">      <dt><b>Value:</b></dt>
       <dd><table><tr><td>
@@ -596,15 +548,13 @@ False                                                                  </pre>
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_fs"></a>
 <h3>_fs</h3>
-Reference to the repos filesystem
-<dl>
+Reference to the repos filesystem<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          swig object
-
+swig object
       </dd>
     </dl>
   </dd>
@@ -612,15 +562,13 @@ Reference to the repos filesystem
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_pathPropLists"></a>
 <h3>_pathPropLists</h3>
-Cached path propery lists
-<dl>
+Cached path propery lists<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>dict</code>
-
+<tt class="literal"><span class="pre">dict</span></tt>
       </dd>
     </dl>
   </dd>
@@ -628,15 +576,13 @@ Cached path propery lists
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_pathProps"></a>
 <h3>_pathProps</h3>
-Cached path properties
-<dl>
+Cached path properties<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>dict</code>
-
+<tt class="literal"><span class="pre">dict</span></tt>
       </dd>
     </dl>
   </dd>
@@ -644,15 +590,13 @@ Cached path properties
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_pool"></a>
 <h3>_pool</h3>
-main APR pool
-<dl>
+main APR pool<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          swig object
-
+swig object
       </dd>
 <span title="None">      <dt><b>Value:</b></dt>
       <dd><table><tr><td>
@@ -665,15 +609,13 @@ None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_repos"></a>
 <h3>_repos</h3>
-Reference to the open repository
-<dl>
+Reference to the open repository<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          swig object
-
+swig object
       </dd>
     </dl>
   </dd>
@@ -681,15 +623,13 @@ Reference to the open repository
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_revChanges"></a>
 <h3>_revChanges</h3>
-Cached revision change lists
-<dl>
+Cached revision change lists<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>dict</code>
-
+<tt class="literal"><span class="pre">dict</span></tt>
       </dd>
     </dl>
   </dd>
@@ -697,15 +637,13 @@ Cached revision change lists
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_revProps"></a>
 <h3>_revProps</h3>
-Cached revision properties
-<dl>
+Cached revision properties<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>dict</code>
-
+<tt class="literal"><span class="pre">dict</span></tt>
       </dd>
     </dl>
   </dd>
@@ -713,15 +651,13 @@ Cached revision properties
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_revRoots"></a>
 <h3>_revRoots</h3>
-Cached revision root objects
-<dl>
+Cached revision root objects<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>dict</code>
-
+<tt class="literal"><span class="pre">dict</span></tt>
       </dd>
     </dl>
   </dd>
@@ -729,37 +665,17 @@ Cached revision root objects
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_revTimes"></a>
 <h3>_revTimes</h3>
-Cached revision times
-<dl>
+Cached revision times<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>dict</code>
-
+<tt class="literal"><span class="pre">dict</span></tt>
       </dd>
     </dl>
   </dd>
 </dl></td></tr></table>
-<br />
-
-
-<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
-<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="details">
-  <th colspan="2">Class Variable Details</th></tr>
-</table>
-<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
-<a name="_apr_initialized"></a>
-<h3>_apr_initialized</h3>
-<code>False</code>
-</td></tr></table>
-<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
-<a name="_pool"></a>
-<h3>_pool</h3>
-<code>None</code>
-</td></tr></table>
 <br />
 
 
@@ -776,7 +692,7 @@ Cached revision times
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:19 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

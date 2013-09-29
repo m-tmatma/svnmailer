@@ -24,7 +24,7 @@
     <td width="100%">
       <font size="-1"><b class="breadcrumbs">
         <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
-        Module&nbsp;settings
+        Package&nbsp;settings
       </b></font></br>
     </td>
     <td><table cellpadding="0" cellspacing="0">
@@ -33,35 +33,14 @@
     </table></td>
 </tr></table>
 
-<!-- =========== START OF MODULE DESCRIPTION =========== -->
-<h2 class="module">Module svnmailer.settings</h2>
+<!-- =========== START OF PACKAGE DESCRIPTION =========== -->
+<h2 class="package">Package svnmailer.settings</h2>
 
-<h1 class="heading">Runtime settings for the svnmailer</h1>
-  <p>This module defines one public class, called <a 
-  href="svnmailer.settings.Settings-class.html" 
-  class="link"><code>Settings</code></a>. This class is the storage 
-  container for all settings used by the svnmailer. <a 
-  href="svnmailer.settings.Settings-class.html" 
-  class="link"><code>Settings</code></a> is an abstract class. There is 
-  just one method that must be implemented -- <a 
-  href="svnmailer.settings.Settings-class.html#init" 
-  class="link"><code>Settings.init</code></a>. This method is responsible 
-  for filling the container properly. An implementor of the <a 
-  href="svnmailer.settings.Settings-class.html" 
-  class="link"><code>Settings</code></a> class can be found in the <a 
-  href="svnmailer.config-module.html" 
-  class="link"><code>svnmailer.config</code></a> module.</p>
-  This module further defines the Settings subcontainers <a 
-  href="../private/svnmailer.settings.GroupSettingsContainer-class.html" 
-  class="link"><code>GroupSettingsContainer</code></a>, <a 
-  href="../private/svnmailer.settings.GeneralSettingsContainer-class.html" 
-  class="link"><code>GeneralSettingsContainer</code></a> and <a 
-  href="../private/svnmailer.settings.RuntimeSettingsContainer-class.html" 
-  class="link"><code>RuntimeSettingsContainer</code></a>, but you should 
-  not instantiate them directly -- <a 
-  href="svnmailer.settings.Settings-class.html" 
-  class="link"><code>Settings</code></a> provides methods that return 
-  instances of these containers.
+<p>This package is responsible for all settings logic. Here are all possible
+configuration specified in detail. The application code relies on proper
+type and constraints checking, which happens here.</p>
+<p>Extension modules can register new options by using the proper methods of
+the <a href="svnmailer.settings.Manager-class.html" class="link"><code>Manager</code></a> class.</p>
 <hr/>
 
 <!-- =========== START OF CLASSES =========== -->
@@ -69,9 +48,100 @@
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Classes</th></tr>
 <tr><td width="15%">
-  <b><a href="svnmailer.settings.Settings-class.html"><code>Settings</code></a></b></td>
-  <td>Settings management</td></tr>
+  <b><a href="svnmailer.settings.Manager-class.html"><code>Manager</code></a></b></td>
+  <td>Svnmailer settings manager</td></tr>
+<tr><td width="15%">
+  <b><a href="svnmailer.settings.Tokens-class.html"><code>Tokens</code></a></b></td>
+  <td>Generic token container</td></tr>
 </table><br />
+
+
+<!-- =========== START OF EXCEPTIONS =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Exceptions</th></tr>
+<tr><td width="15%">
+  <b><a href="svnmailer.settings.Error-class.html"><code>Error</code></a></b></td>
+  <td>Base exception for this package</td></tr>
+</table><br />
+
+
+<!-- =========== START OF VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.settings.Tokens-class.html" class="link"><code>Tokens</code></a></font></td>
+<td><b><a href="svnmailer.settings-module.html#MODES"><code>MODES</code></a></b>: The different behaviour modes</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.settings.Tokens-class.html" class="link"><code>Tokens</code></a></font></td>
+<td><b><a href="svnmailer.settings-module.html#SHOWENC"><code>SHOWENC</code></a></b>: The option values for the <tt class="literal"><span class="pre">show_applied_charset</span></tt> option</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.settings.Tokens-class.html" class="link"><code>Tokens</code></a></font></td>
+<td><b><a href="svnmailer.settings-module.html#XPATH"><code>XPATH</code></a></b>: The option values for the <tt class="literal"><span class="pre">show_nonmatching_paths</span></tt> option</td></tr>
+</table><br />
+
+
+<!-- =========== START OF VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="MODES"></a>
+<h3>MODES</h3>
+The different behaviour modes<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<a href="svnmailer.settings.Tokens-class.html" class="link"><code>Tokens</code></a>
+      </dd>
+<span title="Tokens('commit', 'propchange', 'lock', 'unlock')">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+Tokens('commit', 'propchange', 'lock', 'unlock')                       </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="SHOWENC"></a>
+<h3>SHOWENC</h3>
+The option values for the <tt class="literal"><span class="pre">show_applied_charset</span></tt> option<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<a href="svnmailer.settings.Tokens-class.html" class="link"><code>Tokens</code></a>
+      </dd>
+<span title="Tokens(u'yes', u'no', u'nondefault')">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+Tokens(u'yes', u'no', u'nondefault')                                   </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="XPATH"></a>
+<h3>XPATH</h3>
+The option values for the <tt class="literal"><span class="pre">show_nonmatching_paths</span></tt> option<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<a href="svnmailer.settings.Tokens-class.html" class="link"><code>Tokens</code></a>
+      </dd>
+<span title="Tokens(u'yes', u'no', u'ignore')">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+Tokens(u'yes', u'no', u'ignore')                                       </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
 
 
 <!-- =========== START OF NAVBAR =========== -->
@@ -87,7 +157,7 @@
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:12 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:05 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

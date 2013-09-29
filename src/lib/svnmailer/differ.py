@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-1 -*-
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,45 +17,74 @@
 """
 Differ classes
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ["InternalDiffer", "ExternalDiffer"]
 
 
 class InternalDiffer(object):
     """ Differ without an external program call (uses difflib) """
 
-    def __init__(self):
-        """ Initialization """
-        pass
+    def __init__(self, tags = False):
+        """ Initialization
+
+            :param tags: Return diff opcodes instead of unified format?
+            :type tags: ``bool``
+        """
+        self._want_tags = tags
+
+
+    def _tags(self, list1, list2):
+        """ Returns diff tags
+
+            :Parameters:
+             - `list1`: The first sequence
+             - `list2`: The second sequence
+
+            :Types:
+             - `list1`: ``list``
+             - `list2`: ``list``
+
+            :return: iterable of tags (``(code, a1, a2, b1, b2), ...``)
+            :rtype: generator
+        """
+        import difflib
+
+        codes = {
+            'equal':   'E',
+            'insert':  'A',
+            'delete':  'D',
+            'replace': 'M',
+        }
+        matcher = difflib.SequenceMatcher(a = list1, b = list2)
+        for tag, a1, a2, b1, b2 in matcher.get_opcodes():
+            yield (codes.get(tag, 'U'), a1, a2, b1, b2)
 
 
     def getStringDiff(self, string1, string2, label1, label2 = None,
                       date1 = "", date2 = ""):
         """ creates a diff of two line based strings
 
-            If a string is C{None}, it's treated as ""
+            If a string is ``None``, it's treated empty
 
-            @param string1: First string
-            @type string1: C{str}
+            :Parameters:
+             - `string1`: First string
+             - `string2`: Second string
+             - `label1`: Label for first data
+             - `label2`: Label for second data
+             - `date1`: Date description for first data
+             - `date2`: Date description for second data
 
-            @param string2: Second string
-            @type string2: C{str}
+            :Types:
+             - `string1`: ``str``
+             - `string2`: ``str``
+             - `label1`: ``str``
+             - `label2`: ``str``
+             - `date1`: ``str``
+             - `date2`: ``str``
 
-            @param label1: Label for first data
-            @type label1: C{str}
-
-            @param label2: Label for second data
-            @type label2: C{str}
-
-            @param date1: Date description for first data
-            @type date1: C{str}
-
-            @param date2: Date description for second data
-            @type date2: C{str}
-
-            @return: unified diff lines (maybe a generator)
-            @rtype: iterable
+            :return: unified diff lines (maybe a generator)
+            :rtype: iterable
         """
         import difflib
 
@@ -62,6 +92,9 @@ class InternalDiffer(object):
         list2 = (string2 or "").splitlines(True)
         if not (list1 or list2):
             list1 = list2 = [""]
+
+        if self._want_tags:
+            return self._tags(list1, list2)
 
         return difflib.unified_diff(
             list1, list2, label1, label2 or label1, date1, date2,
@@ -72,26 +105,24 @@ class InternalDiffer(object):
                     date1 = "", date2 = ""):
         """ creates a diff of two line based files
 
-            @param name1: First file name
-            @type name1: C{str}
+            :Parameters:
+             - `name1`: First file name
+             - `name2`: Second file name
+             - `label1`: Label for first data
+             - `label2`: Label for second data
+             - `date1`: Date description for first data
+             - `date2`: Date description for second data
 
-            @param name2: Second file name
-            @type name2: C{str}
+            :Types:
+             - `name1`: ``str``
+             - `name2`: ``str``
+             - `label1`: ``str``
+             - `label2`: ``str``
+             - `date1`: ``str``
+             - `date2`: ``str``
 
-            @param label1: Label for first data
-            @type label1: C{str}
-
-            @param label2: Label for second data
-            @type label2: C{str}
-
-            @param date1: Date description for first data
-            @type date1: C{str}
-
-            @param date2: Date description for second data
-            @type date2: C{str}
-
-            @return: unified diff lines (maybe a generator)
-            @rtype: iterable
+            :return: unified diff lines (maybe a generator)
+            :rtype: iterable
         """
         import difflib
 
@@ -99,6 +130,9 @@ class InternalDiffer(object):
         list2 = file(name2, "rb").readlines()
         if not (list1 or list2):
             list1 = list2 = [""]
+
+        if self._want_tags:
+            return self._tags(list1, list2)
 
         return difflib.unified_diff(
             list1, list2, label1, label2 or label1, date1, date2,
@@ -108,21 +142,25 @@ class InternalDiffer(object):
 class ExternalDiffer(object):
     """ Differ which calls an external program (e.g. diff)
 
-        @ivar _diff_command: The diff command line
-        @type _diff_command: C{list}
+        :IVariables:
+         - `_diff_command`: The diff command line
+         - `_tempdir`: The tempdir to use for string diffs
 
-        @ivar _tempdir: The tempdir to use for string diffs
-        @type _tempdir: C{str}
+        :Types:
+         - `_diff_command`: ``list``
+         - `_tempdir`: ``str``
     """
 
     def __init__(self, diff_command, tempdir = None):
         """ Initialization
 
-            @param diff_command: The diff command to call
-            @type diff_command: C{list}
+            :Parameters:
+             - `diff_command`: The diff command to call
+             - `tempdir`: The tempdir to use for string diffs
 
-            @param tempdir: The tempdir to use for string diffs
-            @type tempdir: C{str}
+            :Types:
+             - `diff_command`: ``list``
+             - `tempdir`: ``str``
         """
         self._diff_command = diff_command
         self._tempdir = tempdir
@@ -132,28 +170,26 @@ class ExternalDiffer(object):
                       date1 = "", date2 = ""):
         """ creates a diff of two line based strings
 
-            If a string is C{None}, it's treated as ""
+            If a string is ``None``, it's treated empty
 
-            @param string1: First string
-            @type string1: C{str}
+            :Parameters:
+             - `string1`: First string
+             - `string2`: Second string
+             - `label1`: Label for first data
+             - `label2`: Label for second data
+             - `date1`: Date description for first data
+             - `date2`: Date description for second data
 
-            @param string2: Second string
-            @type string2: C{str}
+            :Types:
+             - `string1`: ``str``
+             - `string2`: ``str``
+             - `label1`: ``str``
+             - `label2`: ``str``
+             - `date1`: ``str``
+             - `date2`: ``str``
 
-            @param label1: Label for first data
-            @type label1: C{str}
-
-            @param label2: Label for second data
-            @type label2: C{str}
-
-            @param date1: Date description for first data
-            @type date1: C{str}
-
-            @param date2: Date description for second data
-            @type date2: C{str}
-
-            @return: unified diff lines (maybe a generator)
-            @rtype: iterable
+            :return: unified diff lines (maybe a generator)
+            :rtype: iterable
         """
         from svnmailer import util
 
@@ -186,26 +222,24 @@ class ExternalDiffer(object):
                     date1 = "", date2 = ""):
         """ creates a diff of two line based files
 
-            @param name1: First file name
-            @type name1: C{str}
+            :Parameters:
+             - `name1`: First file name
+             - `name2`: Second file name
+             - `label1`: Label for first data
+             - `label2`: Label for second data
+             - `date1`: Date description for first data
+             - `date2`: Date description for second data
 
-            @param name2: Second file name
-            @type name2: C{str}
+            :Types:
+             - `name1`: ``str``
+             - `name2`: ``str``
+             - `label1`: ``str``
+             - `label2`: ``str``
+             - `date1`: ``str``
+             - `date2`: ``str``
 
-            @param label1: Label for first data
-            @type label1: C{str}
-
-            @param label2: Label for second data
-            @type label2: C{str}
-
-            @param date1: Date description for first data
-            @type date1: C{str}
-
-            @param date2: Date description for second data
-            @type date2: C{str}
-
-            @return: unified diff lines (maybe a generator)
-            @rtype: iterable
+            :return: unified diff lines (maybe a generator)
+            :rtype: iterable
         """
         pipe = self._getPipe(name1, name2, label1, label2, date1, date2)
 
@@ -222,28 +256,26 @@ class ExternalDiffer(object):
     def _getPipe(self, name1, name2, label1, label2, date1, date2):
         """ Returns a pipe from the diff program
 
-            @param name1: First file name
-            @type name1: C{str}
+            :Parameters:
+             - `name1`: First file name
+             - `name2`: Second file name
+             - `label1`: Label for first data
+             - `label2`: Label for second data
+             - `date1`: Date description for first data
+             - `date2`: Date description for second data
 
-            @param name2: Second file name
-            @type name2: C{str}
+            :Types:
+             - `name1`: ``str``
+             - `name2`: ``str``
+             - `label1`: ``str``
+             - `label2`: ``str``
+             - `date1`: ``str``
+             - `date2`: ``str``
 
-            @param label1: Label for first data
-            @type label1: C{str}
-
-            @param label2: Label for second data
-            @type label2: C{str}
-
-            @param date1: Date description for first data
-            @type date1: C{str}
-
-            @param date2: Date description for second data
-            @type date2: C{str}
-
-            @return: The pipe object
-            @rtype: see: C{util.getPipe4}
+            :return: The Process object
+            :rtype: `svnmailer.processes.Process`
         """
-        from svnmailer import util
+        from svnmailer import processes
 
         params = {
             "label_from": "%s %s" % (label1, date1 or ""),
@@ -262,7 +294,7 @@ class ExternalDiffer(object):
             [arg.encode("utf-8")] or [arg])[0] % params for arg in cmd[1:]
         ]
 
-        pipe = util.getPipe4(cmd)
+        pipe = processes.Process.pipe4(cmd)
         pipe.tochild.close()
 
         return pipe

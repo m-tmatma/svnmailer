@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.processes</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        Module&nbsp;processes
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/svnmailer.processes-module.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer.processes-module.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF MODULE DESCRIPTION =========== -->
+<h2 class="module">Module svnmailer.processes</h2>
+
+<p>This module contains a portable class (<a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a>) for process creation
+with pipes. It has a a quite general character and can be easily used
+outside of the svnmailer as well.</p>
+<p>The <a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a> class uses an implementation which depends on the runtime.
+Which implementation is chosen can be determined via the
+<a href="svnmailer.processes.Process-class.html#IMPLEMENTATION" class="link"><code>Process.IMPLEMENTATION</code></a> class variable. These are the possibilities (and
+they are tried in this order):</p>
+<dl>
+<dt><tt class="literal"><span class="pre">subprocess</span></tt></dt>
+<dd>The <tt class="literal"><span class="pre">subprocess</span></tt> module is used. This is available in python 2.4 and
+later by default.</dd>
+<dt><tt class="literal"><span class="pre">popen</span></tt></dt>
+<dd>The <tt class="literal"><span class="pre">popen2.Popen3</span></tt> class is used. This is available in python 2.3 on
+supported platforms (notably Win32 isn't one of them)</dd>
+<dt><tt class="literal"><span class="pre">win32api</span></tt></dt>
+<dd>Processes are created using the Win32 API (<tt class="literal"><span class="pre">CreateProcess</span></tt> etc). The
+utilized package is <a class="reference" href="http://pywin32.sourceforge.net/">PyWin32</a>, which is included in <em>ActivePython</em> by
+default.</dd>
+<dt><tt class="literal"><span class="pre">dumb</span></tt></dt>
+<dd>If none of the above possibilities is available, the <tt class="literal"><span class="pre">dumb</span></tt>
+implementation is chosen. This uses the <tt class="literal"><span class="pre">popen*</span></tt> functions from the
+<tt class="literal"><span class="pre">os</span></tt> module. Various combinations of pipe parameter combinations are
+not available in this implementation. <tt class="literal"><span class="pre">NotImplementedError</span></tt> is
+raised in this case.</dd>
+</dl>
+<hr/>
+
+<!-- =========== START OF CLASSES =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Classes</th></tr>
+<tr><td width="15%">
+  <b><a href="svnmailer.processes.Process-class.html"><code>Process</code></a></b></td>
+  <td>Spawn a child with certain attributes</td></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer.processes.ProcessImpl-class.html"><code>ProcessImpl</code></a></b></td>
+  <td>Spawn a child with certain attributes</td></tr>
+</table><br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:16 2005</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

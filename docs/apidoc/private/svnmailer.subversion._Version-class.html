@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type _Version</h2>
+<h2 class="class">Class _Version</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+
@@ -45,8 +45,7 @@
 
 <hr/>
 
-SVN version container class
-<hr/>
+SVN version container class<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -57,6 +56,10 @@ SVN version container class
   <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion._Version-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion._Version-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+String representation for debugging</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
@@ -72,12 +75,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
 helper for pickle...</td></tr>
@@ -86,10 +83,6 @@ helper for pickle...</td></tr>
 <br />
 helper for pickle...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
-<br />
-x.__repr__() &lt;==&gt; repr(x)...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
 x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
@@ -97,6 +90,14 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -104,17 +105,17 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Instance Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion._Version-class.html#major"><code>major</code></a></b>: Major version</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>bool</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">bool</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion._Version-class.html#min_1_2"><code>min_1_2</code></a></b>: SVN &gt;= 1.2?</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion._Version-class.html#minor"><code>minor</code></a></b>: Minor version</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion._Version-class.html#patch"><code>patch</code></a></b>: Patch level</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion._Version-class.html#revision"><code>revision</code></a></b>: Revision number</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion._Version-class.html#tag"><code>tag</code></a></b>: Additional tag</td></tr>
 </table><br />
 
@@ -130,10 +131,21 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__repr__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__repr__</span>(<span class=sig-arg>self</span>)</span>
+    <br /><i>(Representation operator)</i>
+  </h3>
+String representation for debugging  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="__builtin__.object-class.html#__repr__"><code>__builtin__.object.__repr__</code></a></dd>
     </dl>
   </dd></dl>
 </td></tr></table>
@@ -148,15 +160,13 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="major"></a>
 <h3>major</h3>
-Major version
-<dl>
+Major version<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>int</code>
-
+<tt class="literal"><span class="pre">int</span></tt>
       </dd>
     </dl>
   </dd>
@@ -164,15 +174,13 @@ Major version
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="min_1_2"></a>
 <h3>min_1_2</h3>
-SVN &gt;= 1.2?
-<dl>
+SVN &gt;= 1.2?<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>bool</code>
-
+<tt class="literal"><span class="pre">bool</span></tt>
       </dd>
     </dl>
   </dd>
@@ -180,15 +188,13 @@ SVN &gt;= 1.2?
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="minor"></a>
 <h3>minor</h3>
-Minor version
-<dl>
+Minor version<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>int</code>
-
+<tt class="literal"><span class="pre">int</span></tt>
       </dd>
     </dl>
   </dd>
@@ -196,15 +202,13 @@ Minor version
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="patch"></a>
 <h3>patch</h3>
-Patch level
-<dl>
+Patch level<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>int</code>
-
+<tt class="literal"><span class="pre">int</span></tt>
       </dd>
     </dl>
   </dd>
@@ -212,15 +216,13 @@ Patch level
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="revision"></a>
 <h3>revision</h3>
-Revision number
-<dl>
+Revision number<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>int</code>
-
+<tt class="literal"><span class="pre">int</span></tt>
       </dd>
     </dl>
   </dd>
@@ -228,15 +230,13 @@ Revision number
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="tag"></a>
 <h3>tag</h3>
-Additional tag
-<dl>
+Additional tag<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>str</code>
-
+<tt class="literal"><span class="pre">str</span></tt>
       </dd>
     </dl>
   </dd>
@@ -257,7 +257,7 @@ Additional tag
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:10 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

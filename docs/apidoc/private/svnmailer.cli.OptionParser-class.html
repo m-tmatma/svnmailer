@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.cli.OptionParser</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.cli-module.html">Module&nbsp;cli</a> ::
+        Class&nbsp;OptionParser
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/svnmailer.cli.OptionParser-class.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer.cli.OptionParser-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class OptionParser</h2>
+
+<pre class="base-tree">
+<a href="optparse.OptionContainer-class.html"><code>OptionContainer</code></a> --+    
+                  |    
+       <a href="optparse.OptionParser-class.html"><code>OptionParser</code></a> --+
+                      |
+                     <b>OptionParser</b>
+</pre><br />
+
+<hr/>
+
+Fully initialized option parser<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli.OptionParser-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>background</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli.OptionParser-class.html#get_prog_name" class="summary-sig-name"><code>_get_prog_name</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the program name</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli.OptionParser-class.html#error" class="summary-sig-name"><code>error</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>msg</span>)</span></code>
+<br />
+We raise an exception instead of calling <tt class="literal"><span class="pre">sys.exit</span></tt></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli.OptionParser-class.html#format_help" class="summary-sig-name"><code>format_help</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>formatter</span>)</span></code>
+<br />
+Returns the formatted help string</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli.OptionParser-class.html#get_prog_name" class="summary-sig-name"><code>get_prog_name</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the program name</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli.OptionParser-class.html#get_usage" class="summary-sig-name"><code>get_usage</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the usage string</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli.OptionParser-class.html#get_version" class="summary-sig-name"><code>get_version</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the version string</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">optparse.OptionContainer</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.cli.OptionParser-class.html#parseArgs" class="summary-sig-name"><code>parseArgs</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Parses the argument list</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">optparse.IndentedHelpFormatter</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionParser-class.html#_createHelpFormatter" class="summary-sig-name"><code>_createHelpFormatter</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Returns the option helper formatter</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.cli.OptionHelper-class.html" class="link"><code>OptionHelper</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.cli.OptionParser-class.html#_createSvnmailerOptionHelper" class="summary-sig-name"><code>_createSvnmailerOptionHelper</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>background</span>)</span></code>
+<br />
+Returns the option parser helper class</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from OptionParser</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#add_option_group" class="summary-sig-name"><code>add_option_group</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#check_values" class="summary-sig-name"><code>check_values</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>values</span>,
+          <span class=summary-sig-arg>args</span>)</span></code>
+<br />
+check_values(values : Values, args : [string])
+-&gt; (values : Values, args : [string])
+
+Check that the supplied option values and leftover arguments are
+valid.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#disable_interspersed_args" class="summary-sig-name"><code>disable_interspersed_args</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#enable_interspersed_args" class="summary-sig-name"><code>enable_interspersed_args</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#format_option_help" class="summary-sig-name"><code>format_option_help</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>formatter</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#get_default_values" class="summary-sig-name"><code>get_default_values</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#get_option_group" class="summary-sig-name"><code>get_option_group</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>opt_str</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#parse_args" class="summary-sig-name"><code>parse_args</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>args</span>,
+          <span class=summary-sig-arg>values</span>)</span></code>
+<br />
+parse_args(args : [string] = sys.argv[1:],
+           values : Values = None)
+-&gt; (values : Values, args : [string])
+
+Parse the command-line options found in 'args' (default:
+sys.argv[1:]).</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#print_help" class="summary-sig-name"><code>print_help</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>file</span>)</span></code>
+<br />
+print_help(file : file = stdout)
+
+Print an extended help message, listing all options and any
+help text provided with them, to 'file' (default stdout).</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#print_usage" class="summary-sig-name"><code>print_usage</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>file</span>)</span></code>
+<br />
+print_usage(file : file = stdout)
+
+Print the usage message for the current program (self.usage) to
+'file' (default stdout).</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#print_version" class="summary-sig-name"><code>print_version</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>file</span>)</span></code>
+<br />
+print_version(file : file = stdout)
+
+Print the version message for this program (self.version) to
+'file' (default stdout).</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#set_default" class="summary-sig-name"><code>set_default</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dest</span>,
+          <span class=summary-sig-arg>value</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#set_defaults" class="summary-sig-name"><code>set_defaults</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionParser-class.html#set_usage" class="summary-sig-name"><code>set_usage</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>usage</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionParser-class.html#_create_option_list" class="summary-sig-name"><code>_create_option_list</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionParser-class.html#_get_args" class="summary-sig-name"><code>_get_args</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>args</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionParser-class.html#_init_parsing_state" class="summary-sig-name"><code>_init_parsing_state</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionParser-class.html#_match_long_opt" class="summary-sig-name"><code>_match_long_opt</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>opt</span>)</span></code>
+<br />
+_match_long_opt(opt : string) -&gt; string
+
+Determine which long option string 'opt' matches, ie.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionParser-class.html#_populate_option_list" class="summary-sig-name"><code>_populate_option_list</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>option_list</span>,
+          <span class=summary-sig-arg>add_help</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionParser-class.html#_process_args" class="summary-sig-name"><code>_process_args</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>largs</span>,
+          <span class=summary-sig-arg>rargs</span>,
+          <span class=summary-sig-arg>values</span>)</span></code>
+<br />
+_process_args(largs : [string],
+                 rargs : [string],
+                 values : Values)
+
+Process command-line arguments and populate 'values', consuming
+options and arguments from 'rargs'.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionParser-class.html#_process_long_opt" class="summary-sig-name"><code>_process_long_opt</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>rargs</span>,
+          <span class=summary-sig-arg>values</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionParser-class.html#_process_short_opts" class="summary-sig-name"><code>_process_short_opts</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>rargs</span>,
+          <span class=summary-sig-arg>values</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from OptionContainer</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionContainer-class.html#add_option" class="summary-sig-name"><code>add_option</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+add_option(Option)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionContainer-class.html#add_options" class="summary-sig-name"><code>add_options</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>option_list</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionContainer-class.html#format_description" class="summary-sig-name"><code>format_description</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>formatter</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionContainer-class.html#get_option" class="summary-sig-name"><code>get_option</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>opt_str</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionContainer-class.html#has_option" class="summary-sig-name"><code>has_option</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>opt_str</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionContainer-class.html#remove_option" class="summary-sig-name"><code>remove_option</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>opt_str</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionContainer-class.html#set_conflict_handler" class="summary-sig-name"><code>set_conflict_handler</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>handler</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="optparse.OptionContainer-class.html#set_description" class="summary-sig-name"><code>set_description</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>description</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionContainer-class.html#_check_conflict" class="summary-sig-name"><code>_check_conflict</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionContainer-class.html#_create_option_mappings" class="summary-sig-name"><code>_create_option_mappings</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/optparse.OptionContainer-class.html#_share_option_mappings" class="summary-sig-name"><code>_share_option_mappings</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>parser</span>)</span></code>
+</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">OptionHelper</span></tt></font></td>
+<td><b><a href="../private/svnmailer.cli.OptionParser-class.html#_svnmailer_helper"><code>_svnmailer_helper</code></a></b>: The option parser helper instance</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from OptionParser</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="optparse.OptionParser-class.html#standard_option_list"><code>standard_option_list</code></a></b> = <span title="[]"><code>[]                                </code>
+</span></td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>background</span>=<span class=sig-default>True</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+<p>Initialization</p>
+<p>&#64;exception CommandlineError: The argument list was empty</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>background</b></code> -
+ Is daemonizing of the process allowed?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="optparse.OptionParser-class.html#__init__"><code>optparse.OptionParser.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="get_prog_name"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_get_prog_name</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Returns the program name  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The program name        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="error"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">error</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>msg</span>)</span>
+  </h3>
+We raise an exception instead of calling <tt class="literal"><span class="pre">sys.exit</span></tt>  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>msg</b></code> -
+ The error message
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+command line error    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="optparse.OptionParser-class.html#error"><code>optparse.OptionParser.error</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="format_help"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">format_help</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>formatter</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+<p>Returns the formatted help string</p>
+<p>The string consists of the normal option help generated by
+the optparse module and a short description of the old style
+options. All text is tried to be wrapped to fit into the
+current terminal width.</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>formatter</b></code> -
+ unused
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=any)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The formatted help string        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="optparse.OptionParser-class.html#format_help"><code>optparse.OptionParser.format_help</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="get_prog_name"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">get_prog_name</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Returns the program name  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The program name        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="get_usage"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">get_usage</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Returns the usage string  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The usage string        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="optparse.OptionParser-class.html#get_usage"><code>optparse.OptionParser.get_usage</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="get_version"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">get_version</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+<p>Returns the version string</p>
+<p>The string consists of two lines. The first line contains the
+svnmailer version (like <tt class="literal"><span class="pre">svnmailer-1.2.3</span></tt>) and the second line
+contains the svn version propagated by the bindings (like
+<tt class="literal"><span class="pre">with</span> <span class="pre">svn</span> <span class="pre">4.5.6</span> <span class="pre">(revision</span> <span class="pre">7)</span></tt>)</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The version string        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="optparse.OptionParser-class.html#get_version"><code>optparse.OptionParser.get_version</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="parseArgs"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">parseArgs</span>(<span class=sig-arg>self</span>,
+          <span class="sig-vararg">*args</span>,
+          <span class="sig-kwarg">**kwargs</span>)</span>
+  </h3>
+Parses the argument list  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>args</b></code> -
+ Additional arguments for the parser
+      <dd><code><b>kwargs</b></code> -
+ Additional arguments for the parser
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The <tt class="literal"><span class="pre">OptionContainer</span></tt> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+The argument list was invalid    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_createHelpFormatter"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_createHelpFormatter</span>(<span class=sig-arg>self</span>,
+          <span class="sig-vararg">*args</span>,
+          <span class="sig-kwarg">**kwargs</span>)</span>
+  </h3>
+Returns the option helper formatter  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>args</b></code> -
+ Arguments for the formatter
+      <dd><code><b>kwargs</b></code> -
+ Arguments for the formatter
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The formatter instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.IndentedHelpFormatter</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_createSvnmailerOptionHelper"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_createSvnmailerOptionHelper</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>background</span>)</span>
+  </h3>
+<p>Returns the option parser helper class</p>
+<p>We delegate additional operations to an extra class in order
+to not pollute the OptionParser namespace which changes all
+the time.</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>background</b></code> -
+ Is daemonizing of the process allowed?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new OptionHelper instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.cli.OptionHelper-class.html" class="link"><code>OptionHelper</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_svnmailer_helper"></a>
+<h3>_svnmailer_helper</h3>
+The option parser helper instance<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">OptionHelper</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:14 2005</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

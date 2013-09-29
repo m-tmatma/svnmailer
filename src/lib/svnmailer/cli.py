@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = C0103, W0221
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=C0103
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,14 +16,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """
-Command line interface
-======================
+========================
+ Command line interface
+========================
 
 The svnmailer provides two different command line interfaces. On the one hand
-there's the compatibility command line to the mailer.py script, which has some
-limitations and problems because of its unflexibility. On the other hand
+there's the compatibility command line to the `mailer.py script`_, which has
+some limitations and problems because of its unflexibility. On the other hand
 you'll find the new-style command line, which contains no subcommands and
 fixed parameters at all.
+
+.. _mailer.py script:
+   http://svn.collab.net/viewcvs/svn/trunk/tools/hook-scripts/mailer/mailer.py
 
 The CLI simply transforms old-style command lines to the new format internally
 and processes these further using the optparse module::
@@ -36,7 +41,7 @@ and processes these further using the optparse module::
                --author <author> --propname <prop>
               [--config <conf>]
 
-    # (useful with svn 1.2 and later)
+    # (available with svn 1.2 and later)
     svn-mailer propchange2 <rep> <rev> <author> <prop> <action> [<conf>]
  -> svn-mailer --propchange --repository <rep> --revision <rev>
                --author <author> --propname <prop> --action <action>
@@ -50,12 +55,13 @@ and processes these further using the optparse module::
  -> svn-mailer --unlock --repository <rep> --author <author>
               [--config <conf>]
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
-__all__       = ['getOptions', 'CommandlineError']
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
+__all__       = ['Error', 'CommandlineError', 'OptionParser']
 
 # global imports
-import optparse
+import optparse, os, sys, warnings
+from svnmailer import util, settings, subversion
 
 # Exceptions
 class Error(Exception):
@@ -67,169 +73,332 @@ class CommandlineError(Error):
     pass
 
 
-def getOptions(argv = None):
-    """ Parse commandline options
-
-        @param argv: Command line list. If argv is None,
-            sys.argv[1:] is evaluated instead
-        @type argv: C{list}
-
-        @return: option object
-        @rtype: C{optparse.OptionParser}
-
-        @exception CommandlineError: Error in command line options
-    """
-    from svnmailer import util
-    from svnmailer.settings import modes
-
-    usage = """%prog <options>"""
-    parser = SvnmailerOptionParser(usage = usage, version = True)
-    options, args = parser.parse_args(argv)
-
-    # Check parameter consistency
-    if args:
-        raise CommandlineError("Too much arguments")
-
-    if not options.repository:
-        raise CommandlineError("Missing repository path")
-
-    if not options.revision:
-        if options.mode in (modes.commit, modes.propchange):
-            raise CommandlineError("Missing revision number")
-
-    if not options.author:
-        if options.mode in (modes.propchange, modes.lock, modes.unlock):
-            raise CommandlineError("Missing author parameter")
-
-    if not options.propname:
-        if options.mode == modes.propchange:
-            raise CommandlineError("Missing property name parameter")
-
-    # de-localize the paths
-    try:
-        options.repository = util.filename.fromLocale(
-            options.repository, options.path_encoding
-        )
-    except UnicodeError, exc:
-        raise CommandlineError("--repository recode problem: %s" % str(exc))
-
-    if options.config:
-        try:
-            options.config = util.filename.fromLocale(
-                options.config, options.path_encoding
-            )
-        except UnicodeError, exc:
-            raise CommandlineError("--config recode problem: %s" % str(exc))
-
-    return options
-
-
-class SvnmailerOptionParser(optparse.OptionParser):
+class OptionParser(optparse.OptionParser): # old style
     """ Fully initialized option parser
 
-        @ivar _svn: The svn version
-        @type _svn: C{tuple}
+        :ivar `_svnmailer_helper`: The option parser helper instance
+        :type `_svnmailer_helper`: ``OptionHelper``
     """
 
-    def __init__(self, *args, **kwargs):
-        """ Initialization """
-        from svnmailer import subversion
+    def __init__(self, background = True):
+        """ Initialization
 
-        self._svn = subversion.version
-        optparse.OptionParser.__init__(self, *args, **kwargs)
-        self._initSvnmailer()
+            :param `background`: Is daemonizing of the process allowed?
+            :type `background`: ``bool``
 
-
-    def parse_args(self, args = None, *other_args, **kwargs):
-        """ Accepts also the old command line """
-        args = self._transformSvnmailerOldStyle(args)
-        if not args:
-            raise CommandlineError(
-                "Type '%s --help' for usage" % self.get_prog_name()
-            )
-
-        options, fixed = optparse.OptionParser.parse_args(
-            self, args, *other_args, **kwargs
+            @exception CommandlineError: The argument list was empty
+        """
+        optparse.OptionParser.__init__(self,
+            prog = "<prog>", usage = "1", version = "2"
         )
+        self._svnmailer_helper = self._createSvnmailerOptionHelper(background)
 
-        # fixup action attribute (expected later)
-        if not self._svn.min_1_2:
-            options.action = None
 
-        return (options, fixed)
+    def parseArgs(self, *args, **kwargs):
+        """ Parses the argument list
+
+            :param `args`: Additional arguments for the parser
+            :param `kwargs`: Additional arguments for the parser
+
+            :return: The ``OptionContainer`` instance
+            :rtype: ``optparse.OptionContainer``
+
+            :exception CommandlineError: The argument list was invalid
+        """
+        helper = self._svnmailer_helper
+
+        return helper.fixUp(optparse.OptionParser.parse_args(self,
+            helper.args, *args, **kwargs
+        ))
 
 
     def error(self, msg):
-        """ We raise an exception instead of exiting
+        """ We raise an exception instead of calling ``sys.exit``
 
-            @param msg: The error message
-            @type msg: C{str}
+            :param msg: The error message
+            :type msg: ``str``
 
-            @exception CommandlineError: command line error
+            :exception CommandlineError: command line error
         """
         raise CommandlineError(str(msg))
 
 
     def get_version(self):
-        """ Returns the version string """
+        """ Returns the version string
+
+            The string consists of two lines. The first line contains the
+            svnmailer version (like ``svnmailer-1.2.3``) and the second line
+            contains the svn version propagated by the bindings (like
+            ``with svn 4.5.6 (revision 7)``)
+
+            :return: The version string
+            :rtype: ``str``
+        """
         from svnmailer import version
 
+        svn = subversion.version
         return "svnmailer-%s\nwith svn %d.%d.%d%s" % (
-            version, self._svn.major, self._svn.minor, self._svn.patch,
-            self._svn.tag
+            version.string, svn.major, svn.minor, svn.patch, svn.tag
         )
 
 
+    def get_usage(self):
+        """ Returns the usage string
+
+            :return: The usage string
+            :rtype: ``str``
+        """
+        return "Usage: %s <options>\n" % self.get_prog_name()
+
+
     def get_prog_name(self):
-        """ Returns the program name """
-        try:
-            # >= python 2.4
-            return optparse.OptionParser.get_prog_name(self)
-        except AttributeError:
-            try:
-                # >= python 2.3.4
-                return optparse.OptionParser._get_prog_name(self)
-            except AttributeError:
-                # <= python 2.3.3
-                if self.prog:
-                    return self.prog
-                else:
-                    import os, sys
-                    return os.path.basename(sys.argv[0])
+        """ Returns the program name
+
+            :return: The program name
+            :rtype: ``str``
+        """
+        return self.prog
+
+    _get_prog_name = get_prog_name # 2.3.4 <= python < 2.4.0
 
 
     def format_help(self, formatter = None):
-        """ Adds a description of the old style options """
-        import textwrap
+        """ Returns the formatted help string
 
-        width = (self._getTerminalWidth() or 80) - 1
+            The string consists of the normal option help generated by
+            the optparse module and a short description of the old style
+            options. All text is tried to be wrapped to fit into the
+            current terminal width.
+
+            :param formatter: unused
+            :type formatter: any
+
+            :return: The formatted help string
+            :rtype: ``str``
+        """
+        formatter # pylint
+
+        # determine possible with
+        width = (util.terminal.getWidth() or 80) - 1
         optionhelp = None
         while optionhelp is None:
+            formatter = self._createHelpFormatter(width = width)
             try:
-                formatter = optparse.IndentedHelpFormatter(width = width)
                 optionhelp = optparse.OptionParser.format_help(self, formatter)
             except ValueError:
-                # terminal too small *sigh*
+                # terminal too small
                 if width < 79:
                     width = 79
                 else:
                     width += 10
 
-        oldstyle = textwrap.fill(
+        oldstyle = self._svnmailer_helper.formatOldStyle(width)
+        return "%s\n%s" % (optionhelp, oldstyle)
+
+
+    def _createSvnmailerOptionHelper(self, background):
+        """ Returns the option parser helper class
+
+            We delegate additional operations to an extra class in order
+            to not pollute the OptionParser namespace which changes all
+            the time.
+
+            :param background: Is daemonizing of the process allowed?
+            :type background: ``bool``
+
+            :return: A new OptionHelper instance
+            :rtype: `OptionHelper`
+        """
+        return OptionHelper(self, background)
+
+
+    def _createHelpFormatter(self, *args, **kwargs):
+        """ Returns the option helper formatter
+
+            :param args: Arguments for the formatter
+            :param kwargs: Arguments for the formatter
+
+            :return: The formatter instance
+            :rtype: ``optparse.IndentedHelpFormatter``
+        """
+        return optparse.IndentedHelpFormatter(*args, **kwargs)
+
+
+class OptionHelper(object):
+    """ Option parser helper class
+
+        Additional operations are delegated to this class in order
+        to not pollute the OptionParser namespace which changes all
+        the time.
+
+        :Groups:
+         - `Titles`: `_COMMON_TITLE`, `_BEHAVIOR_TITLE`, `_SUPPLEMENTAL_TITLE`
+         - `Constraints`: `_PATH_OPTIONS`, `_REQUIRED_OPTIONS`
+         - `Mapping Tables`: `_OLD_OPTIONS`, `_OLD_OPTIONS_1_2`
+
+        :CVariables:
+         - `_COMMON_TITLE`: Title of the common option group
+
+         - `_BEHAVIOR_TITLE`: Title of the behavior option group
+
+         - `_SUPPLEMENTAL_TITLE`: Title of the supplemental option group
+
+         - `_PATH_OPTIONS`: List of option attributes that need to be
+           treated as localized paths. Every entry is a tuple consisting of
+           the option attribute name the option name for the error message.
+           (``(('name', 'option'), ...)``)
+
+         - `_REQUIRED_OPTIONS`: List of option attributes that are required
+           under certain circumstances. Every entry is a tuple consisting of
+           the option attribute name, the list of mailer modes (or ``None``
+           for all modes) and an error text hint.
+           (``(('name', (mode, ...), 'text'), ...)``)
+
+         - `_OLD_OPTIONS`: Mapping table for old style command lines (< svn
+           1.2)
+
+         - `_OLD_OPTIONS_1_2`: Mapping table for old style command lines (>=
+           svn 1.2 only)
+
+         - `_WIN32_BG_ARG`: fixed argument which is appended to the command
+           line of the background process on Win32
+
+        :IVariables:
+         - `args`: The argument list to parse
+         - `_parser`: The `OptionParser` instance
+         - `_background`: Is daemonizing of the process allowed?
+
+        :Types:
+         - `_COMMON_TITLE`: ``str``
+         - `_BEHAVIOR_TITLE`: ``str``
+         - `_SUPPLEMENTAL_TITLE`: ``str``
+         - `_PATH_OPTIONS`: ``tuple``
+         - `_REQUIRED_OPTIONS`: ``tuple``
+         - `_OLD_OPTIONS`: ``dict``
+         - `_OLD_OPTIONS_1_2`: ``dict``
+         - `_WIN32_BG_ARG`: ``str``
+
+         - `args`: ``list``
+         - `_parser`: `OptionParser`
+         - `_background`: ``bool``
+    """
+    _WIN32_BG_ARG = "bg-process"
+
+    _COMMON_TITLE = "COMMON PARAMETERS"
+    _BEHAVIOR_TITLE = "BEHAVIOR OPTIONS"
+    _SUPPLEMENTAL_TITLE = "SUPPLEMENTAL PARAMETERS"
+
+    _PATH_OPTIONS = (('repository', '--repository'), ('config', '--config'))
+    m = settings.MODES
+    _REQUIRED_OPTIONS = (
+        ('repository', None, 'repository path'),
+        ('revision', (m.commit, m.propchange), 'revision number'),
+        ('author', (m.propchange, m.lock, m.unlock), 'author parameter'),
+        ('propname', (m.propchange,), 'property name parameter'),
+    )
+    del m
+
+    _OLD_OPTIONS = {
+        # svn-mailer commit <rep> <rev> [<cnf>]
+        "commit": ("--commit", "--repository", "--revision", "--config"),
+
+        # svn-mailer propchange <rep> <rev> <author> <prop> [<cnf>]
+        "propchange": ("--propchange", "--repository", "--revision",
+            "--author", "--propname", "--config"),
+    }
+    _OLD_OPTIONS_1_2 = {
+        # svn-mailer propchange2 <rep> <rev> <author> <prop> <act> [<cnf>]
+        "propchange2": ("--propchange", "--repository", "--revision",
+            "--author", "--propname", "--action", "--config"),
+
+        # svn-mailer lock <rep> <author> [<cnf>]
+        "lock": ("--lock", "--repository", "--author", "--config"),
+
+        # svn-mailer unlock <rep> <author> [<cnf>]
+        "unlock": ("--unlock", "--repository", "--author", "--config"),
+    }
+
+    def __init__(self, parser, background):
+        """ Initialization
+
+            :Parameters:
+             - `parser`: The `OptionParser` instance
+             - `background`: Is daemonizing of the process allowed?
+
+            :Types:
+             - `parser`: `OptionParser`
+             - `background`: ``bool``
+
+            :exception CommandlineError: The argument list is empty
+        """
+        self._parser = parser
+        self._background = background
+
+        parser.prog = os.path.basename(sys.argv[0])
+        self.args = self._transformArgs(sys.argv[1:])
+        self._addOptions()
+
+
+    def fixUp(self, (options, fixed)):
+        """ Fixes up the parsed option to match the needs of the mailer
+
+            :Parameters:
+             - `options`: The ``OptionContainer`` instance
+             - `fixed`: The list of fixed arguments
+
+            :Types:
+             - `options`: ``optparse.OptionContainer``
+             - `fixed`: ``list``
+
+            :return: The final ``OptionContainer`` instance
+            :rtype: ``optparse.OptionContainer``
+
+            :exception CommandlineError: The options are not suitable
+        """
+        # Check parameter consistency
+        length = len(fixed)
+        if length > 0:
+            # HACK ALERT! somehow.
+            if options.background and list(fixed) == [self._WIN32_BG_ARG]:
+                self._background = False
+            else:
+                raise CommandlineError("Too much arguments")
+
+        # fixup action attribute for svn < 1.2
+        if not subversion.version.min_1_2:
+            options.action = None
+
+        self._ensureRequired(options)
+        self._delocalize(options)
+
+        return self._handleBackground(options)
+
+
+    def formatOldStyle(self, width):
+        """ Returns the formatted old style help
+
+            :param `width`: Maximum width of the text
+            :type `width`: ``int``
+
+            :return: The formatted help text
+            :rtype: ``str``
+        """
+        import textwrap
+        wrapper = textwrap.TextWrapper(width = width)
+
+        oldstyle = wrapper.fill(
             "Alternatively you can use the old style compatibility "
             "command lines (options described above don't apply then):",
-            width = width,
         )
 
-        prog = self.get_prog_name()
-        indent = " " * (len(prog) + 1)
+        prog = self._parser.get_prog_name()
         clines = [
             "",
             "%(prog)s commit <repos> <revision> [<config>]",
             "%(prog)s propchange <repos> <revision> <author> <propname> "
                      "[<config>]",
         ]
-        if self._svn.min_1_2:
+        if subversion.version.min_1_2:
             clines.extend([
                 "",
                 "svn 1.2 and later:",
@@ -238,211 +407,242 @@ class SvnmailerOptionParser(optparse.OptionParser):
                 "%(prog)s lock <repos> <author> [<config>]",
                 "%(prog)s unlock <repos> <author> [<config>]",
             ])
-        clines = ["%s\n" % textwrap.fill(
-            line % {'prog': prog}, width = width, subsequent_indent = indent
-        ) for line in clines]
 
-        return "%s\n%s\n%s" % (optionhelp, oldstyle, ''.join(clines))
+        wrapper.subsequent_indent = " " * (len(prog) + 1)
+        return "%s\n%s\n" % (oldstyle, '\n'.join([
+            wrapper.fill(line % {'prog': prog}) for line in clines
+        ]))
 
 
-    def _getTerminalWidth(self):
-        """ Returns terminal width if determined, None otherwise
+    def _handleBackground(self, options):
+        """ Evaluates the ``--background`` option
 
-            @return: The width
-            @rtype: C{int}
+            If daemonizing is not allowed, this method is a noop at all.
+
+            Otherwise the behaviour depends on the platform:
+
+            POSIX systems
+                The process just ``fork``\s into the background and detaches
+                from the controlling terminal (calls ``setsid(2)``). The
+                parent process is exited immediately with return code ``0``.
+
+            Win32/64 systems
+                The process spawns itself again (flagged to be detached),
+                using ``sys.executable`` and ``sys.argv``. `_WIN32_BG_ARG`
+                is added as a fixed parameter to let the spawned process
+                know that is does not need to spawn again. If this worked,
+                the parent process exits with ``0``. As I don't know if this
+                works on all Windows systems as desired, this feature is
+                marked experimental on these platforms.
+
+            :param `options`: option container
+            :type `options`: ``optparse.OptionContainer``
         """
-        try:
-            import errno, fcntl, struct, sys, termios
-
-            def getwidth(fd):
-                """ Returns the width for descriptor fd """
-                # struct winsize { /* on linux in asm/termios.h */
-                #     unsigned short ws_row;
-                #     unsigned short ws_col;
-                #     unsigned short ws_xpixel;
-                #     unsigned short ws_ypixel;
-                # }
-                return struct.unpack("4H", fcntl.ioctl(
-                    fd, termios.TIOCGWINSZ, struct.pack("4H", 0, 0, 0, 0)
-                ))[1]
-
+        if options.background and self._background:
             try:
-                return getwidth(sys.stdout.fileno())
-            except IOError, exc:
-                if exc[0] == errno.EINVAL:
-                    return getwidth(sys.stdin.fileno())
-                raise # otherwise
+                import signal
+                signal.signal(signal.SIGHUP, signal.SIG_IGN)
 
-        except (SystemExit, KeyboardInterrupt):
-            raise
+                if os.setsid and os._exit: # try existance before the fork
+                    pid = os.fork()
+                    if pid == 0:
+                        pid = os.fork() # no zombies
+                    if pid > 0:
+                        os._exit(0)
+                    else:
+                        os.setsid() # detach
+            except OSError, exc:
+                warnings.warn(
+                    "svnmailer: OSError while detaching from foreground: %s" %
+                    str(exc)
+                )
+            except (AttributeError, ImportError):
+                msg = "svnmailer: --background is not implemented on this " \
+                    "platform"
 
-        except:
-            # don't even ignore
-            pass
+                if sys.platform != "win32":
+                    warnings.warn(msg)
+                else:
+                    # Is there a better way to hide in the background?
+                    from svnmailer import processes
 
-        return None
+                    args = [sys.executable] + list(sys.argv) + \
+                        [self._WIN32_BG_ARG]
+                    try:
+                        processes.Process.detach(args)
+                        os._exit(0)
+                    except NotImplementedError:
+                        warnings.warn(msg)
+
+        return options
 
 
-    def _initSvnmailer(self):
-        """ Builds the options from option groups """
-        self._addSvnmailerCommonOptions()
-        self._addSvnmailerBehaviourOptions()
-        self._addSvnmailerSupplementalOptions()
+    def _delocalize(self, options):
+        """ Delocalizes the supplied paths
+
+            :param `options`: The options to consider
+            :type `options`: ``optparse.OptionContainer``
+
+            :exception CommandlineError: Something went wrong
+        """
+        for attrname, name in self._PATH_OPTIONS:
+            attr = getattr(options, attrname)
+            if attr:
+                try:
+                    attr = util.filename.fromLocale(
+                        attr, options.path_encoding
+                    )
+                except UnicodeError, exc:
+                    raise CommandlineError(
+                        "%s recode problem: %s" % (name, str(exc))
+                    )
+                setattr(options, attrname, attr)
 
 
-    def _addSvnmailerCommonOptions(self):
+    def _ensureRequired(self, options):
+        """ Ensures that all required options are present
+
+            :param `options`: The options to consider
+            :type `options`: ``optparse.OptionContainer``
+
+            :exception CommandlineError: At least one option is missing
+        """
+        for attrname, modes, errtext in self._REQUIRED_OPTIONS:
+            if not getattr(options, attrname):
+                if modes is None or options.mode in modes:
+                    raise CommandlineError("Missing %s" % errtext)
+
+
+    def _addOptions(self):
+        """ Adds the possible options to the parser """
+        self._addCommonOptions()
+        self._addBehaviorOptions()
+        self._addSupplementalOptions()
+
+
+    def _addCommonOptions(self):
         """ Adds the common options group """
-        common_options = optparse.OptionGroup(
-            self, 'COMMON PARAMETERS'
-        )
-        common_options.add_option('--debug',
+        group = self._parser.add_option_group(self._COMMON_TITLE)
+
+        group.add_option('--debug',
             action = 'store_true',
             default = False,
             help = "Run in debug mode (means basically that all messages "
                 "are sent to STDOUT)",
         )
-        common_options.add_option('-d', '--repository',
+        group.add_option('-d', '--repository',
             help = 'The repository directory',
         )
-        common_options.add_option('-f', '--config',
+        group.add_option('-f', '--config',
             help = 'The configuration file',
         )
-        common_options.add_option('-e', '--path-encoding',
+        group.add_option('-e', '--path-encoding',
             help = 'Specifies the character encoding to be used for '
                 'filenames. By default the encoding is tried to be '
                 'determined automatically depending on the locale.'
         )
-        self.add_option_group(common_options)
+        group.add_option('-b', '--background',
+            action = 'store_true',
+            default = False,
+            help = 'Lets the mailer do its work in the background. That '
+                'way the hook script can exit faster.'
+        )
 
 
-    def _addSvnmailerBehaviourOptions(self):
-        """ Adds the behaviour options group """
-        from svnmailer.settings import modes
+    def _addBehaviorOptions(self):
+        """ Adds the behavior options group """
+        mode = settings.MODES
 
-        behaviour_options = optparse.OptionGroup(
-            self, 'BEHAVIOUR OPTIONS',
-            description = "The behaviour options are mutually exclusive, "
+        group = self._parser.add_option_group(self._BEHAVIOR_TITLE,
+            description = "The behavior options are mutually exclusive, "
                 "i.e. the last one wins."
         )
-        behaviour_options.add_option('-c', '--commit',
+        group.add_option('-c', '--commit',
             dest = 'mode',
             action = 'store_const',
-            const = modes.commit,
-            default = modes.commit,
+            const = mode.commit,
+            default = mode.commit,
             help = 'This is a regular commit of versioned data '
                    '(post-commit hook). This is default.',
         )
-        behaviour_options.add_option('-p', '--propchange',
+        group.add_option('-p', '--propchange',
             dest = 'mode',
             action = 'store_const',
-            const = modes.propchange,
+            const = mode.propchange,
             help = 'This is a modification of unversioned properties '
                 '(post-revprop-change hook)',
         )
 
-        if self._svn.min_1_2:
-            behaviour_options.add_option('-l', '--lock',
+        if subversion.version.min_1_2:
+            group.add_option('-l', '--lock',
                 dest = 'mode',
                 action = 'store_const',
-                const = modes.lock,
+                const = mode.lock,
                 help = '(svn 1.2 and later) This is a locking call '
                     '(post-lock hook)',
             )
-            behaviour_options.add_option('-u', '--unlock',
+            group.add_option('-u', '--unlock',
                 dest = 'mode',
                 action = 'store_const',
-                const = modes.unlock,
+                const = mode.unlock,
                 help = '(svn 1.2 and later) This is a unlocking call '
                     '(post-unlock hook)',
             )
 
-        self.add_option_group(behaviour_options)
 
-
-    def _addSvnmailerSupplementalOptions(self):
+    def _addSupplementalOptions(self):
         """ Adds the supplemental options """
-        supp_options = optparse.OptionGroup(
-            self, 'SUPPLEMENTAL PARAMETERS'
-        )
-        
-        supp_options.add_option('-r', '--revision',
+        group = self._parser.add_option_group(self._SUPPLEMENTAL_TITLE)
+
+        group.add_option('-r', '--revision',
             action = 'store',
             type = 'int',
             help = 'The modified/committed revision number',
         )
-        supp_options.add_option('-a', '--author',
+        group.add_option('-a', '--author',
             help = 'The author of the modification',
         )
-        supp_options.add_option('-n', '--propname',
+        group.add_option('-n', '--propname',
             help = 'The name of the modified property',
         )
 
-        if self._svn.min_1_2:
-            supp_options.add_option('-o', '--action',
+        if subversion.version.min_1_2:
+            group.add_option('-o', '--action',
                 help = '(svn 1.2 and later) The property change action',
             )
 
-        self.add_option_group(supp_options)
 
-
-    def _transformSvnmailerOldStyle(self, argv):
+    def _transformArgs(self, args):
         """ Parses the command line according to old style rules
 
-            @param argv: Command line list. If argv is None,
-                sys.argv[1:] is evaluated instead
-            @type argv: C{list}
+            :param args: The argument list (``['arg', 'arg', ...]``)
+            :type args: ``list``
 
-            @return: The commandline, possibly transformed to new style
-            @rtype: C{list}
+            :return: The argument, possibly transformed to new style
+                     (``['arg', 'arg', ...]``)
+            :rtype: ``list``
+
+            :exception CommandlineError: The argument list is empty
         """
-        if argv is None:
-            import sys
-            argv = sys.argv[1:]
+        length = len(args)
+        if length == 0:
+            raise CommandlineError(
+                "Type '%s --help' for usage" % self._parser.get_prog_name()
+            )
 
-        if argv:
-            length = len(argv)
+        mode = args[0]
+        names = self._OLD_OPTIONS.get(mode)
+        if names is None and subversion.version.min_1_2:
+            names = self._OLD_OPTIONS_1_2.get(mode)
 
-            # svn-mailer commit <rep> <rev> [<conf>]
-            if argv[0] == "commit" and 3 <= length <= 4:
-                config = argv[3:]
-                argv = ["--commit",
-                        "--repository", argv[1], "--revision", argv[2],
-                ]
-                if config:
-                    argv.extend(["--config", config[0]])
+        if names is not None:
+            lmax = len(names)
+            lmin = lmax - 1
+            if lmin <= length <= lmax:
+                newlist = [names[0]]
+                for idx, arg in enumerate(args):
+                    if idx:
+                        newlist.extend([names[idx], arg])
+                args = newlist
 
-            # svn-mailer propchange <rep> <rev> <author> <prop> [<conf>]
-            elif argv[0] == "propchange" and 5 <= length <= 6:
-                config = argv[5:]
-                argv = ["--propchange",
-                        "--repository", argv[1], "--revision", argv[2],
-                        "--author", argv[3], "--propname", argv[4],
-                ]
-                if config:
-                    argv.extend(["--config", config[0]])
-
-            else:
-                if self._svn.min_1_2:
-                    # svn-mailer propchange2 <rep> <rev> <author> <prop> <act>
-                    #            [<conf>]
-                    if argv[0] == "propchange2" and 6 <= length <= 7:
-                        config = argv[6:]
-                        argv = ["--propchange",
-                                "--repository", argv[1], "--revision", argv[2],
-                                "--author", argv[3], "--propname", argv[4],
-                                "--action", argv[5],
-                        ]
-                        if config:
-                            argv.extend(["--config", config[0]])
-
-                    # svn-mailer lock <rep> <author> [<conf>]
-                    # svn-mailer unlock <rep> <author> [<conf>]
-                    elif argv[0] in ("lock", "unlock") and 3 <= length <= 4:
-                        config = argv[3:]
-                        argv = ["--%s" % argv[0],
-                                "--repository", argv[1], "--author", argv[2]
-                        ]
-                        if config:
-                            argv.extend(["--config", config[0]])
-
-        return argv
+        return args

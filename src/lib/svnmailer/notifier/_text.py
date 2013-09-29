@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=R0921
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +18,8 @@
 """
 Plain text notifier base
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['TextNotifier']
 
 # global imports
@@ -29,24 +31,25 @@ class TextNotifier(_base.BaseNotifier):
 
         The derived class must implement the run method.
 
-        @cvar OUTPUT_SEPARATOR: the separator between headline and diff
-        @type OUTPUT_SEPARATOR: C{str}
+        :CVariables:
+         - `OUTPUT_SEPARATOR`: the separator between headline and diff
+         - `OUTPUT_SEPARATOR_LIGHT`: the separator between headline and
+           property diff
 
-        @cvar OUTPUT_SEPARATOR_LIGHT: the separator between headline and
-            property diff
-        @type OUTPUT_SEPARATOR_LIGHT: C{str}
+        :IVariables:
+         - `fp`: The file to write to
+         - `config`: The group config
+         - `changeset`: The list of changes to process
+         - `differ`: The differ object
 
-        @ivar fp: The file to write to
-        @type fp: file like object
+        :Types:
+         - `OUTPUT_SEPARATOR`: ``str``
+         - `OUTPUT_SEPARATOR_LIGHT`: ``str``
 
-        @ivar config: The group config
-        @type config: C{svnmailer.settings.GroupSettingsContainer}
-
-        @ivar changeset: The list of changes to process
-        @type changeset: C{list}
-
-        @ivar differ: The differ object
-        @type differ: C{svnmailer.differ.*}
+         - `fp`: file like object
+         - `config`: `svnmailer.settings._base.GroupSettingsContainer`
+         - `changeset`: ``list``
+         - `differ`: ``svnmailer.differ.*``
     """
     __implements__ = [_base.BaseNotifier]
 
@@ -71,8 +74,8 @@ class TextNotifier(_base.BaseNotifier):
     def getDate(self, oftime = None):
         """ Returns the revision date in a human readable format
 
-            @return: The date
-            @rtype: C{str}
+            :return: The date
+            :rtype: ``str``
         """
         import time
 
@@ -83,8 +86,8 @@ class TextNotifier(_base.BaseNotifier):
     def writeRevPropData(self, raw = False):
         """ Writes the revision property change data
 
-            @param raw: Don't recode the property?
-            @type raw: C{bool}
+            :param `raw`: Don't recode the property?
+            :type `raw`: ``bool``
         """
         runtime  = self._settings.runtime
 
@@ -138,9 +141,9 @@ class TextNotifier(_base.BaseNotifier):
 
     def writeLockData(self):
         """ Writes the locking metadata """
-        from svnmailer.settings import modes
+        from svnmailer.settings import MODES
         runtime  = self._settings.runtime
-        is_locked = bool(runtime.mode == modes.lock)
+        is_locked = bool(runtime.mode == MODES.lock)
 
         self.fp.write("Author: %s" % (
             self.getAuthor() or "(unknown)",)
@@ -164,38 +167,40 @@ class TextNotifier(_base.BaseNotifier):
 
     def writeDiffList(self):
         """ Writes the commit diffs """
+        diff_tokens, diff_tests = self.getDiffTokens(self.config)
+
         self.fp.write("\n")
 
-        cset = self.changeset + (self._groupset.xchanges or [])
-        tokens, tests = self.getDiffTokens(self.config)
-        tokentests = zip(tokens, tests)
+        set = self.changeset[:]
+        xset = self._groupset.xchanges
+        if xset:
+            set.extend(xset)
 
-        for change in cset:
-            diff_content, diff_prop = False, False
-            for token, test in tokentests:
+        for change in set:
+            for test in diff_tests:
                 if test(change):
-                    if token == self.PROPCHANGE:
-                        diff_prop = True
-                    else:
-                        diff_content = True
+                    if change.hasContentChanges():
+                        self.writeContentDiff(change)
 
-            if diff_content:
-                self.writeContentDiff(change)
-            if diff_prop:
-                self.writePropertyDiffs(tokens, change)
+                    if change.hasPropertyChanges() and \
+                            self.PROPCHANGE in diff_tokens:
+                        self.writePropertyDiffs(diff_tokens, change)
+                    # one diff per change is enough
+                    break
 
 
     def writePropertyDiffs(self, diff_tokens, change, raw = False):
         """ Writes the property diffs for a particular change
 
-            @param diff_tokens: The valid diff tokens
-            @type diff_tokens: C{list}
+            :Parameters:
+             - `diff_tokens`: The valid diff tokens
+             - `change`: The particular change to process
+             - `raw`: Don't recode the properties?
 
-            @param change: The particular change to process
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
-
-            @param raw: Don't recode the properties?
-            @type raw: C{bool}
+            :Types:
+             - `diff_tokens`: ``list``
+             - `change`: `svnmailer.subversion.VersionedPathDescriptor`
+             - `raw`: ``bool``
         """
         if change.wasDeleted():
             return # don't bother
@@ -222,24 +227,22 @@ class TextNotifier(_base.BaseNotifier):
                           raw = False):
         """ Writes a property diff
 
-            @param token: The diff token
-            @type token: C{unicode}
+            :Parameters:
+             - `token`: The diff token
+             - `name`: The name of the property
+             - `value1`: The raw old value
+             - `value2`: The raw new value
+             - `time`: Time to display in the diff description
+               in seconds since epoch
+             - `raw`: Don't recode the properties?
 
-            @param name: The name of the property
-            @type name: C{str}
-
-            @param value1: The raw old value
-            @type value1: C{str}
-
-            @param value2: The raw new value
-            @type value2: C{str}
-
-            @param time: Time to display in the diff description
-                in seconds since epoch
-            @type time: C{int}
-
-            @param raw: Don't recode the properties?
-            @type raw: C{bool}
+            :Types:
+             - `token`: ``unicode``
+             - `name`: ``str``
+             - `value1`: ``str``
+             - `value2`: ``str``
+             - `time`: ``int``
+             - `raw`: ``bool``
         """
         self.fp.write(self.OUTPUT_SEPARATOR_LIGHT)
 
@@ -274,20 +277,20 @@ class TextNotifier(_base.BaseNotifier):
     def writePropertyDiffAction(self, change, name, values, diff_tokens):
         """ Writes the property diff action for a particular change
 
-            @param change: The particular change to process
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
+            :Parameters:
+             - `change`: The particular change to process
+             - `name`: The property name
+             - `values`: The values of the property
+             - `diff_tokens`: Valid diff tokens
 
-            @param name: The property name
-            @type name: C{str}
+            :Types:
+             - `change`: `svnmailer.subversion.VersionedPathDescriptor`
+             - `name`: ``str``
+             - `values`: ``tuple``
+             - `diff_tokens`: ``list``
 
-            @param values: The values of the property
-            @type values: C{tuple}
-
-            @param diff_tokens: Valid diff tokens
-            @type diff_tokens: C{list}
-
-            @return: diff token that should be applied
-            @rtype: C{str}
+            :return: diff token that should be applied
+            :rtype: ``str``
         """
         token = self.getPropertyDiffAction(values)
         desc = {
@@ -308,11 +311,13 @@ class TextNotifier(_base.BaseNotifier):
     def writeContentDiff(self, change, raw = False):
         """ Writes the content diff for a particular change
 
-            @param change: The particular change to process
-            @type change: C{svnmailer.subversion.VersioendPathDescriptor}
+            :Parameters:
+             - `change`: The particular change to process
+             - `raw`: Prefer no recoding?
 
-            @param raw: Prefer no recoding?
-            @type raw: C{bool}
+            :Types:
+             - `change`: `svnmailer.subversion.VersionedPathDescriptor`
+             - `raw`: ``bool``
         """
         if change.isDirectory():
             # 'nuff said already
@@ -338,7 +343,7 @@ class TextNotifier(_base.BaseNotifier):
                 ]
             )
         else:
-            from svnmailer.settings import showenc
+            from svnmailer.settings import SHOWENC
 
             if raw:
                 default = False
@@ -346,12 +351,12 @@ class TextNotifier(_base.BaseNotifier):
             else:
                 enc = config.apply_charset_property and \
                     self.ENC_CONFIG or self.ENC_DEFAULT
-                default = bool(config.show_applied_charset == showenc.yes)
+                default = bool(config.show_applied_charset == SHOWENC.yes)
 
             file1, file2, rec1, rec2 = self.dumpContent(
                 change, enc = enc, default = default
             )
-            if config.show_applied_charset == showenc.no:
+            if config.show_applied_charset == SHOWENC.no:
                 rec1 = rec2 = None
 
             self.writeDiff(token,
@@ -367,11 +372,11 @@ class TextNotifier(_base.BaseNotifier):
     def writeContentDiffAction(self, change):
         """ Writes the content diff action for a particular change
 
-            @param change: The particular change to process
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
+            :param change: The particular change to process
+            :type change: `svnmailer.subversion.VersionedPathDescriptor`
 
-            @return: The diff token (maybe C{None})
-            @rtype: C{str}
+            :return: The diff token (maybe ``None``)
+            :rtype: ``str``
         """
         token = self.getContentDiffAction(change)
 
@@ -395,27 +400,25 @@ class TextNotifier(_base.BaseNotifier):
                   rec1 = None, rec2 = None, time = None):
         """ Writes a diff
 
-            By default L{value1} and L{value2} are strings to diff,
-            but if L{isfile} is set and C{True}, these are treated as names
+            By default `value1` and `value2` are strings to diff,
+            but if `isfile` is set and ``True``, these are treated as names
             of files to diff.
 
-            @param token: The diff token
-            @type token: C{unicode}
+            :Parameters:
+             - `token`: The diff token
+             - `name1`: The (faked) first filename
+             - `name2`: The (faked) second filename
+             - `value1`: The first value
+             - `value2`: The second value
+             - `isfile`: are the values file names?
 
-            @param name1: The (faked) first filename
-            @type name1: C{str}
-
-            @param name2: The (faked) second filename
-            @type name2: C{str}
-
-            @param value1: The first value
-            @type value1: C{str}
-            
-            @param value2: The second value
-            @type value2: C{str}
-
-            @param isfile: are the values file names?
-            @type isfile: C{bool}
+            :Types:
+             - `token`: ``unicode``
+             - `name1`: ``str``
+             - `name2`: ``str``
+             - `value1`: ``str``
+             - `value2`: ``str``
+             - `isfile`: ``bool``
         """
         date1 = ["(original)", "(added)"][token == self.ADD]
         date2 = [self.getDate(time), "(removed)"][token == self.DELETE]
@@ -446,30 +449,30 @@ class TextNotifier(_base.BaseNotifier):
 
         xset = self._groupset.xchanges
         if xset is not None:
-            from svnmailer.settings import xpath
+            from svnmailer.settings import XPATH
 
             if xset:
                 self.fp.write(
                     "\nChanges in other areas also in this revision:\n"
                 )
                 self._doWritePathList(xset)
-            elif self._groupset.groups[0].show_nonmatching_paths == xpath.no:
+            elif self._groupset.groups[0].show_nonmatching_paths == XPATH.no:
                 self.fp.write(
                     "\n(There are changes in other areas, but they are not "
                     "listed here.)\n"
                 )
 
 
-    def _doWritePathList(self, cset):
+    def _doWritePathList(self, set):
         """ Write the path list of a particular changeset
 
-            @param cset: The changeset to process
-            @type cset: C{list}
+            :param set: The changeset to process
+            :type set: ``list``
         """
         for title, changes in [(title, changes) for title, changes in (
-            ("Added",    [chg for chg in cset if chg.wasAdded()]),
-            ("Removed",  [chg for chg in cset if chg.wasDeleted()]),
-            ("Modified", [chg for chg in cset if chg.wasModified()]),
+            ("Added",    [chg for chg in set if chg.wasAdded()]),
+            ("Removed",  [chg for chg in set if chg.wasDeleted()]),
+            ("Modified", [chg for chg in set if chg.wasModified()]),
         ) if changes]:
             self.fp.write("%s:\n" % title)
             for change in changes:
@@ -479,8 +482,8 @@ class TextNotifier(_base.BaseNotifier):
     def writePathInfo(self, change):
         """ Writes a short info about the kind of change
 
-            @param change: The change info
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
+            :param change: The change info
+            :type change: `svnmailer.subversion.VersionedPathDescriptor`
         """
         slash = ["", "/"][change.isDirectory()]
 

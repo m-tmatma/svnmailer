@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = W0613
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=R0921
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +18,8 @@
 """
 Email notifier base module
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ["MailNotifier"]
 
 # global imports
@@ -37,8 +38,21 @@ class NoRecipientsError(Error):
 class MailNotifier(_text.TextNotifier):
     """ Bases class for mail (like) notifiers
 
-        @ivar _header_re: Pattern for header name checking
-        @type _header_re: sre pattern or C{None}
+        :CVariables:
+         - `COMMIT_SUBJECT`: Default commit event subject template
+         - `REVPROP_SUBJECT`: Default revprop-change event subject template
+         - `LOCK_SUBJECT`: Default lock event subject template
+         - `UNLOCK_SUBJECT`: Default unlock event subject template
+
+        :IVariables:
+         - `_header_re`: Pattern for header name checking
+
+        :Types:
+         - `COMMIT_SUBJECT`: ``unicode``
+         - `REVPROP_SUBJECT`: ``unicode``
+         - `LOCK_SUBJECT`: ``unicode``
+         - `UNLOCK_SUBJECT`: ``unicode``
+         - `_header_re`: sre pattern or ``None``
     """
     __implements__ = [_text.TextNotifier]
 
@@ -77,8 +91,8 @@ class MailNotifier(_text.TextNotifier):
     def getMails(self):
         """ Returns the composed mail(s)
 
-            @return: The mails
-            @rtype: generator
+            :return: The mails
+            :rtype: generator
         """
         for mail in self.composeMail():
             yield mail
@@ -86,17 +100,17 @@ class MailNotifier(_text.TextNotifier):
 
     def writeNotification(self):
         """ Writes the whole diff notification body """
-        from svnmailer.settings import modes
+        from svnmailer.settings import MODES
 
         mode = self._settings.runtime.mode
 
-        if mode == modes.commit:
+        if mode == MODES.commit:
             self.writeMetaData()
             self.writePathList()
             self.writeDiffList()
-        elif mode == modes.propchange:
+        elif mode == MODES.propchange:
             self.writeRevPropData()
-        elif mode in (modes.lock, modes.unlock):
+        elif mode in (MODES.lock, MODES.unlock):
             self.writeLockData()
         else:
             raise AssertionError("Unknown runtime.mode %r" % (mode,))
@@ -105,8 +119,8 @@ class MailNotifier(_text.TextNotifier):
     def getTransferEncoding(self):
         """ Returns the transfer encoding to use
 
-            @return: The configured value
-            @rtype: C{unicode}
+            :return: The configured value
+            :rtype: ``unicode``
         """
         return self.config.mail_transfer_encoding
 
@@ -114,14 +128,15 @@ class MailNotifier(_text.TextNotifier):
     def sendMail(self, sender, to_addr, mail):
         """ Sends the mail
 
-            @param sender: The mail sender (envelope from)
-            @type sender: C{str}
+            :Parameters:
+             - `sender`: The mail sender (envelope from)
+             - `to_addr`: The receivers
+             - `mail`: The mail object
 
-            @param to_addr: The receivers
-            @type to_addr: C{list}
-
-            @param mail: The mail object
-            @type mail: C{_TextMail}
+            :Types:
+             - `sender`: ``str``
+             - `to_addr`: ``list``
+             - `mail`: ``_TextMail``
         """
         raise NotImplementedError()
 
@@ -129,8 +144,8 @@ class MailNotifier(_text.TextNotifier):
     def composeMail(self):
         """ Composes the mail
 
-            @return: The senders, the receivers, the mail(s)
-            @rtype: C{tuple}
+            :return: The senders, the receivers, the mail(s)
+            :rtype: ``tuple``
         """
         raise NotImplementedError()
 
@@ -138,15 +153,16 @@ class MailNotifier(_text.TextNotifier):
     def getBasicHeaders(self):
         """ Returns the basic headers
 
-            @return: The headers
-            @rtype: C{dict}
+            :return: The headers
+            :rtype: ``dict``
         """
         from email import Utils, Header
         from svnmailer import version
 
         return {
             'X-Mailer': Header.Header(
-                ("svnmailer-%s" % version).decode('utf-8'), 'iso-8859-1'
+                ("svnmailer-%s" % version.string).decode('utf-8'),
+                'iso-8859-1'
             ),
             'Date': Utils.formatdate(),
         }
@@ -155,19 +171,17 @@ class MailNotifier(_text.TextNotifier):
     def composeHeaders(self, groups):
         """ Compose the informational headers of the mail
 
-            @param groups: The groups to process
-            @type groups: C{list}
+            :param `groups`: The groups to process
+            :type `groups`: ``list``
 
-            @return: sender (C{unicode}), recipients (C{list}), headers
-                (C{dict})
-            @rtype: C{tuple}
+            :return: sender (``unicode``), recipients (``list``), headers
+                (``dict``)
+            :rtype: ``tuple``
         """
         from email import Header
 
-        sender, from_addrs, reply_to, to_addrs, to_fakes, bcc_addrs = \
-            self.getMailAddresses(groups)
-        recipients = to_addrs + bcc_addrs
-        if not recipients:
+        sender, from_addrs, to_addrs, reply_to = self.getMailAddresses(groups)
+        if not to_addrs:
             raise NoRecipientsError()
 
         headers = self.getBasicHeaders()
@@ -175,12 +189,9 @@ class MailNotifier(_text.TextNotifier):
 
         if self._settings.general.debug_all_mails_to:
             headers['X-Supposed-Recipients'] = \
-                Header.Header(', '.join(recipients))
-            recipients = self._settings.general.debug_all_mails_to
-        if to_addrs:
-            headers['To'] = Header.Header(', '.join(to_addrs))
-        elif to_fakes:
-            headers['To'] = Header.Header(', '.join(to_fakes))
+                Header.Header(', '.join(to_addrs))
+            to_addrs = self._settings.general.debug_all_mails_to
+        headers['To'] = Header.Header(', '.join(to_addrs))
 
         if reply_to:
             headers['Reply-To'] = Header.Header(', '.join(reply_to))
@@ -197,17 +208,17 @@ class MailNotifier(_text.TextNotifier):
                 "[%s]" % group._name for group in groups
             ]), 'iso-8859-1')
 
-        return (sender, recipients, headers)
+        return (sender, to_addrs, headers)
 
 
     def getCustomHeaders(self, groups):
         """ Returns the custom headers
 
-            @param groups: The groups to process
-            @type groups: C{list}
+            :param groups: The groups to process
+            :type groups: ``list``
 
-            @return: The custom headers
-            @rtype: C{dict}
+            :return: The custom headers
+            :rtype: ``dict``
         """
         import re
         from email import Header
@@ -236,25 +247,20 @@ class MailNotifier(_text.TextNotifier):
     def getMailAddresses(self, groups):
         """ Returns the substituted mail addresses (from/to/reply-to)
 
-            @param groups: The groups to process
-            @type groups: C{list}
+            :param `groups`: The groups to process
+            :type `groups`: ``list``
 
-            @return: The address lists (sender, from, reply-to, to, to-fake,
-                     bcc)
-            @rtype: C{tuple}
+            :return: The address lists (sender, from, to, reply-to)
+            :rtype: ``tuple``
         """
         from_addrs = []
         to_addrs = []
-        to_fakes = []
-        bcc_addrs = []
         reply_to = []
 
         sender = None
         for group in groups:
             from_addrs.extend(group.from_addr or [])
             to_addrs.extend(group.to_addr or [])
-            bcc_addrs.extend(group.bcc_addr or [])
-            to_fakes.extend(group.to_fake and [group.to_fake] or [])
             reply_to.extend(
                 group.reply_to_addr and [group.reply_to_addr] or []
             )
@@ -264,31 +270,23 @@ class MailNotifier(_text.TextNotifier):
             or u'no_author'
         ]
         to_addrs = dict.fromkeys(to_addrs).keys()
-        bcc_addrs = dict.fromkeys(bcc_addrs).keys()
         reply_to = dict.fromkeys(reply_to).keys()
-        if to_addrs:
-            to_fakes = []
-        else:
-            to_fakes = dict.fromkeys(to_fakes).keys()
 
-        return (
-            sender or from_addrs[0], from_addrs, reply_to,
-            to_addrs, to_fakes, bcc_addrs
-        )
+        return (sender or from_addrs[0], from_addrs, to_addrs, reply_to)
 
 
     def getMailSubject(self, countprefix = None):
         """ Returns the subject
 
-            @param countprefix: Optional countprefix (inserted after the rev
-                number)
-            @type countprefix: C{unicode}
+            :param countprefix: Optional countprefix (inserted after the rev
+                                number)
+            :type countprefix: ``unicode``
 
-            @return: The subject line
-            @rtype: C{unicode}
+            :return: The subject line
+            :rtype: ``unicode``
         """
         from svnmailer import util
-        from svnmailer.settings import modes
+        from svnmailer.settings import MODES
 
         runtime = self._settings.runtime
         groups, changeset = (self._groupset.groups, self._groupset.changes[:])
@@ -300,10 +298,10 @@ class MailNotifier(_text.TextNotifier):
         short_length = max_length or 255 # for files/dirs
 
         template, mode = {
-            modes.commit:     (self.COMMIT_SUBJECT,  'commit',   ),
-            modes.propchange: (self.REVPROP_SUBJECT, 'propchange'),
-            modes.lock:       (self.LOCK_SUBJECT,    'lock',     ),
-            modes.unlock:     (self.UNLOCK_SUBJECT,  'unlock',   ),
+            MODES.commit:     (self.COMMIT_SUBJECT,  'commit',   ),
+            MODES.propchange: (self.REVPROP_SUBJECT, 'propchange'),
+            MODES.lock:       (self.LOCK_SUBJECT,    'lock',     ),
+            MODES.unlock:     (self.UNLOCK_SUBJECT,  'unlock',   ),
         }[runtime.mode]
 
         template = getattr(groups[0], "%s_subject_template" % mode) \
@@ -323,7 +321,7 @@ class MailNotifier(_text.TextNotifier):
             # set files/dirs, substitute, normalize WS
             params['files/dirs'] = params[param]
             cparams = params.copy()
-            cparams.update(groups[0]._sub_.dict())
+            cparams.update(groups[0]("subst"))
             return " ".join(util.substitute(template, cparams).split())
 
         subject = dosubject('files')
@@ -340,11 +338,11 @@ class MailNotifier(_text.TextNotifier):
     def _getPrefixedDirectories(self, changeset):
         """ Returns the longest common directory prefix
 
-            @param changeset: The change set
-            @type changeset: list
+            :param `changeset`: The change set
+            :type `changeset`: ``list``
 
-            @return: The common dir and the path list, human readable
-            @rtype: C{unicode}
+            :return: The common dir and the path list, human readable
+            :rtype: ``unicode``
         """
         import posixpath
         from svnmailer import util
@@ -364,11 +362,11 @@ class MailNotifier(_text.TextNotifier):
     def _getPrefixedFiles(self, changeset):
         """ Returns the longest common path prefix
 
-            @param changeset: The change set
-            @type changeset: list
+            :param changeset: The change set
+            :type changeset: ``list``
 
-            @return: The common dir and the path list, human readable
-            @rtype: C{unicode}
+            :return: The common dir and the path list, human readable
+            :rtype: ``unicode``
         """
         from svnmailer import util
 
@@ -388,14 +386,16 @@ class MailNotifier(_text.TextNotifier):
 
             All parameters are expected to be UTF-8 encoded
 
-            @param prefix: The prefix (may be empty)
-            @type prefix: C{str}
+            :Parameters:
+             - `prefix`: The prefix (may be empty)
+             - `paths`: List of paths (``[str, str, ...]``)
 
-            @param paths: List of paths (C{[str, str, ...]})
-            @type paths: C{list}
+            :Types:
+             - `prefix`: ``str``
+             - `paths`: ``list``
 
-            @return: The prefixed paths as unicode
-            @rtype: C{unicode}
+            :return: The prefixed paths as unicode
+            :rtype: ``unicode``
         """
         slash = [u"/", u""][bool(prefix)]
         paths = u" ".join([
@@ -404,5 +404,5 @@ class MailNotifier(_text.TextNotifier):
         ])
 
         return (prefix and
-            u"in /%s: %s" % (prefix.decode("utf-8"), paths) or paths
+            u"in /%s: %s" % (prefix, paths) or paths
         )

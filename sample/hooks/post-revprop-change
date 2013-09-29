@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# post revprop change hook -- called for revision property changes
+# like svn:log, svn:author, etc. Modifying revision properties will
+# only work if the pre-revprop-change hook is properly configured.
+#
+# The mailer is put into the background in order to
+# leave the script faster
+#
+# You need to adjust the config path
+# and the path to svn-mailer if necessary.
+#
+# If you're using SVN 1.2 or later you may use the second commandline
+# variant (see below) which uses the ACTION variable and pulls STDIN in
+# order to provide revision property diffs.
+
+CONFIG="/path/to/your/config"
+MAILER="@@SCRIPTS@@/svn-mailer"
+
+
+REPOS="$1"
+REV="$2"
+USER="$3"
+PROPNAME="$4"
+ACTION="$5"
+
+# command line for SVN < 1.2 (works with >= 1.2 as well)
+"${MAILER}" --propchange --config "${CONFIG}" \
+    --repository "${REPOS}" --revision "${REV}" \
+    --author "${USER}" --propname "${PROPNAME}" --background
+
+# command line for SVN >= 1.2 (uses new features)
+# "${MAILER}" --propchange --config "${CONFIG}" \
+#     --repository "${REPOS}" --revision "${REV}" \
+#     --author "${USER}" --propname "${PROPNAME}" \
+#     --action "${ACTION}" --background
+

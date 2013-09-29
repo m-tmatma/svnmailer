@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = W0201, W0233, W0613
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=W0142,W0201,W0233,E0201,R0921
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +18,8 @@
 """
 email notifier
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['Error', 'InvalidMailOption', 'getNotifier']
 
 # global imports
@@ -32,22 +33,23 @@ class Error(Exception):
 class InvalidMailOption(Error):
     """ Invalid Multipart mail option """
     pass
-
+ 
 
 def getNotifier(cls, config, groupset):
     """ Returns an initialized notifier or nothing
 
-        @param cls: The notifier base class to use
-        @type cls: C{class}
+        :Parameters:
+         - `cls`: The notifier base class to use
+         - `config`: The svnmailer config
+         - `groupset`: The groupset to process
 
-        @param config: The svnmailer config
-        @type config: C{svnmailer.settings.Settings}
+        :Types:
+         - `cls`: ``class``
+         - `config`: `svnmailer.settings._base.BaseSettings`
+         - `groupset`: ``list``
 
-        @param groupset: The groupset to process
-        @type groupset: C{list}
-
-        @return: The list of notifiers (containing 0 or 1 member)
-        @rtype: C{list}
+        :return: The list of notifiers (containing 0 or 1 member)
+        :rtype: ``list``
     """
     from svnmailer import util
 
@@ -60,20 +62,20 @@ def getNotifier(cls, config, groupset):
 def decorateNotifier(cls, action, config, groupset):
     """ Decorates the notifier class (or not)
 
-        @param cls: The notifier class
-        @type cls: C{class}
+        :Parameters:
+         - `cls`: The notifier class
+         - `action`: The configured action
+         - `config`: The svnmailer config
+         - `groupset`: The groupset to process
 
-        @param action: The configured action
-        @type action: C{unicode}
+        :Types:
+         - `cls`: ``class``
+         - `action`: ``unicode``
+         - `config`: `svnmailer.settings._base.BaseSettings`
+         - `groupset`: ``list``
 
-        @param config: The svnmailer config
-        @type config: C{svnmailer.settings.Settings}
-
-        @param groupset: The groupset to process
-        @type groupset: C{list}
-
-        @return: The decorated class or C{None}
-        @rtype: C{class}
+        :return: The decorated class or ``None``
+        :rtype: ``class``
     """
     if action and action.maxbytes:
         from svnmailer import util
@@ -116,8 +118,8 @@ class MultiMailNotifier(_mail.MailNotifier):
     def _parseMailType(self):
         """ Returns the multimail options
 
-            @return: The diff content type and disposition
-            @rtype: C{tuple}
+            :return: The diff content type and disposition
+            :rtype: ``tuple``
         """
         from svnmailer import util
 
@@ -150,8 +152,8 @@ class MultiMailNotifier(_mail.MailNotifier):
     def composeMail(self):
         """ Composes the mail
 
-            @return: The senders, the receivers, the mail(s)
-            @rtype: C{tuple}
+            :return: The senders, the receivers, the mail(s)
+            :rtype: ``tuple``
         """
         import cStringIO
 
@@ -185,8 +187,8 @@ class MultiMailNotifier(_mail.MailNotifier):
     def _getMultiMails(self):
         """ Returns the multipart mail(s)
 
-            @return: The mail(s)
-            @rtype: C{list} of C{_MultiMail}
+            :return: The mail(s)
+            :rtype: ``list`` of ``_MultiMail``
         """
         parts = [_SinglePart(self.fp.getvalue(), encoding = 'utf-8')]
         diff = None # avoid UnboundLocalError if the loop is not run
@@ -200,11 +202,11 @@ class MultiMailNotifier(_mail.MailNotifier):
     def _getMailWriter(self, fp):
         """ Returns a mail writer
 
-            @param fp: The stream to wrap
-            @type fp: file like object
+            :param fp: The stream to wrap
+            :type fp: ``file``
 
-            @return: The file object
-            @rtype: file like object
+            :return: The file object
+            :rtype: ``file``
         """
         from svnmailer import stream
 
@@ -268,25 +270,28 @@ class MultiMailNotifier(_mail.MailNotifier):
 class SplittingDecorator(object):
     """ Splits the content between diffs if it gets too long
 
-        @ivar max_notification_size: Maximum size of one mail content
-        @type max_notification_size: C{int}
+        :IVariables:
+         - `max_notification_size`: Maximum size of one mail content
+         - `drop`: maximum number of mails
+         - `drop_fp`: The alternate summary stream
 
-        @ivar drop: maximum number of mails
-        @type drop: C{int}
-
-        @ivar drop_fp: The alternate summary stream
-        @type drop_fp: file like object
+        :Types:
+         - `max_notification_size`: ``int``
+         - `drop`: `int`
+         - `drop_fp`: ``file``
     """
 
     def __init__(self, settings, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
 
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Types:
+             - `maxsize`: ``int``
+             - `drop`: ``int``
         """
         self.__super = super(self.__decorator_class, self)
         self.__super.__init__(settings, groupset, maxsize, drop)
@@ -315,8 +320,8 @@ class SplittingDecorator(object):
     def _getMultiMails(self):
         """ Returns the multipart mail(s)
 
-            @return: The mail(s)
-            @rtype: C{list} of C{_MultiMail}
+            :return: The mail(s)
+            :rtype: ``list`` of ``_MultiMail``
         """
         parts = [_SinglePart(self.fp.getvalue(), encoding = 'utf-8')]
 
@@ -379,12 +384,14 @@ class SplittingTruncatingDecorator(object):
     def __init__(self, settings, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
 
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Types:
+             - `maxsize`: ``int``
+             - `drop`: ``int``
         """
         self.__super = super(self.__decorator_class, self)
         self.__super.__init__(settings, groupset, maxsize, drop)
@@ -409,19 +416,21 @@ class SplittingTruncatingDecorator(object):
 class TruncatingDecorator(object):
     """ Truncates the mail body after n bytes
 
-        @ivar max_notification_size: Maximum size of one mail content
-        @type max_notification_size: C{int}
+        :ivar `max_notification_size`: Maximum size of one mail content
+        :type `max_notification_size`: ``int``
     """
 
     def __init__(self, settings, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
 
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Types:
+             - `maxsize`: ``int``
+             - `drop`: ``int``
         """
         self.__super = super(self.__decorator_class, self)
         self.__super.__init__(settings, groupset, maxsize, drop)
@@ -439,8 +448,8 @@ class TruncatingDecorator(object):
     def _getMultiMails(self):
         """ Returns the multipart mail(s)
 
-            @return: The mail(s)
-            @rtype: C{list} of C{_MultiMail}
+            :return: The mail(s)
+            :rtype: ``list`` of ``_MultiMail``
         """
         parts = [_SinglePart(self.fp.getvalue(), encoding = 'utf-8')]
 
@@ -473,25 +482,28 @@ class TruncatingDecorator(object):
 class URLDecorator(object):
     """ Shows only the urls, if the mail gets too long
 
-        @ivar url_fp: The alternative stream
-        @type url_fp: file like object
+        :IVariables:
+         - `url_fp`: The alternative stream
+         - `do_truncate`: truncating mode?
+         - `max_notification_size`: Maximum size of one mail content
 
-        @ivar do_truncate: truncating mode?
-        @type do_truncate: C{bool}
-
-        @ivar max_notification_size: Maximum size of one mail content
-        @type max_notification_size: C{int}
+        :Types:
+         - `url_fp`: ``file``
+         - `do_truncate`: ``bool``
+         - `max_notification_size`: ``int``
     """
 
     def __init__(self, settings, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
 
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Types:
+             - `maxsize`: ``int``
+             - `drop`: ``int``
         """
         self.__super = super(self.__decorator_class, self)
         self.__super.__init__(settings, groupset, maxsize, drop)
@@ -531,8 +543,8 @@ class URLDecorator(object):
     def _getMultiMails(self):
         """ Returns the multipart mail(s)
 
-            @return: The mail(s)
-            @rtype: C{list} of C{_MultiMail}
+            :return: The mail(s)
+            :rtype: ``list`` of ``_MultiMail``
         """
         part0 = _SinglePart(self.fp.getvalue(), encoding = 'utf-8')
         if self.do_truncate and self.fp.getTruncatedLineCount():
@@ -551,7 +563,7 @@ class URLDecorator(object):
             self.url_fp.close()
             return self.__super._getMultiMails()
 
-        if not self.getUrl(self.config):
+        if not self.getBrowserGenerator(self.config):
             self.fp.write(
                 u"\n[This mail would be too long, it should contain the "
                 u"URLs only, but no browser base url was configured...]\n"
@@ -590,12 +602,14 @@ class URLTruncatingDecorator(object):
     def __init__(self, settings, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
 
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Types:
+             -  `maxsize`: ``int``
+             - `drop`: ``int``
         """
         super(self.__decorator_class, self).__init__(
             settings, groupset, maxsize, drop
@@ -609,14 +623,15 @@ class DiffDescriptor(object):
     def __init__(self, notifier, tmpfile, change, propdiff = False):
         """ Initialization
 
-            @param tmpfile: The tempfile the diff was dumped to
-            @type tmpfile: C{svnmailer.util.TempFile}
+            :Parameters:
+             - `tmpfile`: The tempfile the diff was dumped to
+             - `change`: The change in question
+             - `propdiff`: is a property diff?
 
-            @param change: The change in question
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
-
-            @param propdiff: is a property diff?
-            @type propdiff: C{bool}
+            :Types:
+             - `tmpfile`: `svnmailer.util.TempFile`
+             - `change`: `svnmailer.subversion.VersionedPathDescriptor`
+             - `propdiff`: ``bool``
         """
         self.tmpfile  = tmpfile
         self.change   = change
@@ -634,8 +649,8 @@ class DiffDescriptor(object):
     def getValue(self):
         """ Returns the diff value
 
-            @return: The value
-            @rtype: C{str}
+            :return: The value
+            :rtype: ``str``
         """
         return file(self.tmpfile.name, 'rb').read()
 
@@ -643,8 +658,8 @@ class DiffDescriptor(object):
     def getSize(self):
         """ Returns the size of the diff part
 
-            @return: The size
-            @rtype: C{int}
+            :return: The size
+            :rtype: ``int``
         """
         import os
         return os.stat(self.tmpfile.name).st_size
@@ -672,11 +687,13 @@ class _MultiMail(MIMEMultipart.MIMEMultipart):
     def __init__(self, subject, parts):
         """ Initialization
 
-            @param subject: The subject to use
-            @type subject: C{str}
+            :Parameters:
+             - `subject`: The subject to use
+             - `parts`: The body parts
 
-            @param parts: The body parts
-            @type parts: C{list}
+            :Types:
+             - `subject`: ``str``
+             - `parts`: ``list``
         """
         from email import Header
 
@@ -689,8 +706,8 @@ class _MultiMail(MIMEMultipart.MIMEMultipart):
     def dump(self, fp):
         """ Serializes the mail into a descriptor
 
-            @param fp: The file object
-            @type fp: file like object
+            :param `fp`: The file object
+            :type `fp`: ``file``
         """
         from email import Generator
 
@@ -701,8 +718,8 @@ class _MultiMail(MIMEMultipart.MIMEMultipart):
     def update(self, headers):
         """ Update the header set of the mail
 
-            @param headers: The new headers
-            @type headers: C{dict}
+            :param `headers`: The new headers
+            :type `headers`: ``dict``
         """
         for name, value in headers.items():
             self[name] = value
@@ -715,8 +732,8 @@ class _SinglePart(MIMENonMultipart.MIMENonMultipart):
         ctype = 'text/plain', dispo = 'inline'):
         """ Initialization
 
-            @param body: The body
-            @type body: C{str}
+            :param body: The body
+            :type body: ``str``
         """
         tparam = {}
         dparam = {}
@@ -764,15 +781,17 @@ class _SinglePart(MIMENonMultipart.MIMENonMultipart):
     def _encodeRfc2184(self, value, dosplit = False):
         """ Encode a string (parameter value) according to RFC 2184
 
-            @param value: The value to encode
-            @type value: C{unicode}
+            :Parameters:
+             - `value`: The value to encode
+             - `dosplit`: Allow long parameter splitting? (Note that is not
+               widely supported...)
 
-            @param dosplit: Allow long parameter splitting? (Note that is not
-                widely supported...)
-            @type dosplit: C{bool}
+            :Types:
+             - `value`: ``unicode``
+             - `dosplit`: ``bool``
 
-            @return: The list of encoded values
-            @rtype: C{list}
+            :return: The list of encoded values
+            :rtype: ``list``
         """
         encode = False
         try:
@@ -802,8 +821,8 @@ class _SinglePart(MIMENonMultipart.MIMENonMultipart):
     def getSize(self):
         """ Serializes the mail into a descriptor
 
-            @return: The size of the serialized object
-            @rtype: C{int}
+            :return: The size of the serialized object
+            :rtype: ``int``
         """
         from email import Generator
         from svnmailer import stream

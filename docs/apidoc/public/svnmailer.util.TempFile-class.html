@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type TempFile</h2>
+<h2 class="class">Class TempFile</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+
@@ -46,11 +46,11 @@
 <hr/>
 
 <p>Tempfile container class</p>
-<p>The class contains a destructor that removes the created file. This 
-differs from the stuff in tempfile, which removes the file, when it's 
-closed.</p>
-The mode is fixed to <code>w+</code>; a <code>b</code> is added if the 
-<code>text</code> argument is false (see <code>__init__</code>)
+<p>The class contains a destructor that removes the created
+file. This differs from the stuff in tempfile, which removes
+the file, when it's closed.</p>
+<p>The mode is fixed to <tt class="literal"><span class="pre">w+</span></tt>; a <tt class="literal"><span class="pre">b</span></tt> is added if the <tt class="literal"><span class="pre">text</span></tt>
+argument is false (see <a href="svnmailer.util.TempFile-class.html#__init__" class="link"><code>__init__</code></a>)</p>
 <hr/>
 
 
@@ -87,12 +87,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
 helper for pickle...</td></tr>
@@ -112,6 +106,14 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -119,21 +121,10 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Instance Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">file like object</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">file</span></tt></font></td>
 <td><b><a href="svnmailer.util.TempFile-class.html#fp"><code>fp</code></a></b>: The file descriptor</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
 <td><b><a href="svnmailer.util.TempFile-class.html#name"><code>name</code></a></b>: The full name of the file</td></tr>
-</table><br />
-
-
-<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
-<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="summary">
-  <th colspan="2">Class Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-<td><b><a href="svnmailer.util.TempFile-class.html#fp"><code>fp</code></a></b>: <code>None</code></td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-<td><b><a href="svnmailer.util.TempFile-class.html#name"><code>name</code></a></b>: <code>None</code></td></tr>
 </table><br />
 
 
@@ -150,17 +141,16 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>text</span>=<span class=sig-default>False</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>tempdir</b></code> -
-         The temporary directory
+ The temporary directory
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       <dd><code><b>text</b></code> -
-         want to write text?
+ want to write text?
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>bool</code>)</i>
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Overrides:</b></dt>
@@ -174,8 +164,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">__del__</span>(<span class=sig-arg>self</span>)</span>
     <br /><i>(Destructor)</i>
   </h3>
-  Unlink the file name
-  <dl><dt></dt><dd>
+Unlink the file name  <dl><dt></dt><dd>
   </dd></dl>
 </td></tr></table>
 
@@ -183,12 +172,10 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">close</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Close the file (but don't delete it)
-  <dl><dt></dt><dd>
+Close the file (but don't delete it)  <dl><dt></dt><dd>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>ValueError</b></code> -
-        The file was already closed
-    </dl>
+The file was already closed    </dl>
   </dd></dl>
 </td></tr></table>
 <br />
@@ -202,15 +189,13 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="fp"></a>
 <h3>fp</h3>
-The file descriptor
-<dl>
+The file descriptor<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          file like object
-
+<tt class="literal"><span class="pre">file</span></tt>
       </dd>
 <span title="None">      <dt><b>Value:</b></dt>
       <dd><table><tr><td>
@@ -223,15 +208,13 @@ None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="name"></a>
 <h3>name</h3>
-The full name of the file
-<dl>
+The full name of the file<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>str</code>
-
+<tt class="literal"><span class="pre">str</span></tt>
       </dd>
 <span title="None">      <dt><b>Value:</b></dt>
       <dd><table><tr><td>
@@ -241,24 +224,6 @@ None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs
 </span>    </dl>
   </dd>
 </dl></td></tr></table>
-<br />
-
-
-<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
-<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="details">
-  <th colspan="2">Class Variable Details</th></tr>
-</table>
-<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
-<a name="fp"></a>
-<h3>fp</h3>
-<code>None</code>
-</td></tr></table>
-<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
-<a name="name"></a>
-<h3>name</h3>
-<code>None</code>
-</td></tr></table>
 <br />
 
 
@@ -275,7 +240,7 @@ None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:16 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

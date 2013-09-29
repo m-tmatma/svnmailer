@@ -37,62 +37,37 @@
 <!-- =========== START OF MODULE DESCRIPTION =========== -->
 <h2 class="module">Module svnmailer.notifier.cia_xmlrpc</h2>
 
-<h1 class="heading">CIA XML-RPC Notifier</h1>
-  This notifier delivers a notification message in XML format to a <a 
-  href="http://cia.navi.cx/">CIA server</a>. The data delivered contains 
-  in particular:
-  <ul>
-    <li>
-      The timestamp of the revision
-    </li>
-    <li>
-      Information about the generator (svnmailer)
-    </li>
-    <li>
-      Information about the project (<code>cia_project_name</code>, 
-      <code>cia_project_module</code>, <code>cia_project_branch</code>, 
-      <code>cia_project_submodule</code>).
-    </li>
-    <li>
-      Revision metadata:
-      <ul>
-        <li>
-          author
-        </li>
-        <li>
-          revision number
-        </li>
-        <li>
-          log entry
-        </li>
-        <li>
-          summary URL (if <code>browser_base_url</code> if 
-          configured)
-        </li>
-        <li>
-          number of modified lines
-        </li>
-      </ul>
-    </li>
-    <li>
-      Information about the files modified 
-      (<code>cia_project_path</code> is stripped). If 
-      <code>browser_base_url</code> is supplied, it is used to generate 
-      an URI for each file.
-    </li>
-  </ul>
-  The notifier runs only in the post-commit hook. For activation you 
-  need to supply the <code>cia_rpc_server</code> option in 
-  <code>[general]</code> and at least a <code>cia_project_name</code> in 
-  the group that should be tracked by CIA.
+<p>This notifier delivers a notification message in XML format
+to a <a class="reference" href="http://cia.navi.cx/">CIA server</a>. The data delivered
+contains in particular:</p>
+<ul class="rst-simple">
+<li>The timestamp of the revision</li>
+<li>Information about the generator (svnmailer)</li>
+<li>Information about the project (<tt class="literal"><span class="pre">cia_project_name</span></tt>,
+<tt class="literal"><span class="pre">cia_project_module</span></tt>, <tt class="literal"><span class="pre">cia_project_branch</span></tt>,
+<tt class="literal"><span class="pre">cia_project_submodule</span></tt>).</li>
+<li>Revision metadata:<ul>
+<li>author</li>
+<li>revision number</li>
+<li>log entry</li>
+<li>summary URL (if <tt class="literal"><span class="pre">browser_base_url</span></tt> if configured)</li>
+<li>number of modified lines</li>
+</ul>
+</li>
+<li>Information about the files modified (<tt class="literal"><span class="pre">cia_project_path</span></tt> is
+stripped). If <tt class="literal"><span class="pre">browser_base_url</span></tt> is supplied, it is used to
+generate an URI for each file.</li>
+</ul>
+<p>The notifier runs only in the post-commit hook. For activation you need
+to supply the <tt class="literal"><span class="pre">cia_rpc_server</span></tt> option in <tt class="literal"><span class="pre">[general]</span></tt> and at least a
+<tt class="literal"><span class="pre">cia_project_name</span></tt> in the group that should be tracked by CIA.</p>
 <hr/>
 
 <!-- =========== START OF FUNCTION SUMMARY =========== -->
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Function Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.notifier.cia_xmlrpc-module.html#getNotifier" class="summary-sig-name"><code>getNotifier</code></a>(<span class=summary-sig-arg>config</span>,
           <span class=summary-sig-arg>groupset</span>)</span></code>
 <br />
@@ -111,24 +86,22 @@ Returns an initialized notifier or nothing</td></tr>
   <h3><span class="sig"><span class="sig-name">getNotifier</span>(<span class=sig-arg>config</span>,
           <span class=sig-arg>groupset</span>)</span>
   </h3>
-  Returns an initialized notifier or nothing
-  <dl><dt></dt><dd>
+Returns an initialized notifier or nothing  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>config</b></code> -
-         The svnmailer config
+ The svnmailer config
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>svnmailer.settings.Settings</code>)</i>
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>svnmailer.settings._base.BaseSettings</code></a>)</i>
       <dd><code><b>groupset</b></code> -
-         The groupset to process
+ The groupset to process
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The list of notifiers (containing 0 or 1 member)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+The list of notifiers (containing 0 or 1 member)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -149,7 +122,7 @@ Returns an initialized notifier or nothing</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:02 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

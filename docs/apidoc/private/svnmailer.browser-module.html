@@ -24,7 +24,7 @@
     <td width="100%">
       <font size="-1"><b class="breadcrumbs">
         <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
-        Module&nbsp;browser
+        Package&nbsp;browser
       </b></font></br>
     </td>
     <td><table cellpadding="0" cellspacing="0">
@@ -33,25 +33,38 @@
     </table></td>
 </tr></table>
 
-<!-- =========== START OF MODULE DESCRIPTION =========== -->
-<h2 class="module">Module svnmailer.browser</h2>
+<!-- =========== START OF PACKAGE DESCRIPTION =========== -->
+<h2 class="package">Package svnmailer.browser</h2>
 
-Respository Browser URL construction
+<p>This package contains the different browser URL generator classes.
+A particular generator is selected by using the <a href="svnmailer.browser.Manager-class.html" class="link"><code>Manager</code></a> class, which
+is the only public object (well, except <tt class="literal"><span class="pre">Exception</span></tt>s) in this package.</p>
 <hr/>
+
+<!-- =========== START OF SUBMODULES =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Submodules</th></tr>
+  <tr><td><ul>
+<li> <b><a href="../private/svnmailer.browser._base-module.html"><code>_base</code></a></b>: <i>All browser generator classes should utilize the tools and base classes
+provides by this module.</i>
+<li> <b><a href="../private/svnmailer.browser.chora-module.html"><code>chora</code></a></b>: <i><a class="reference" href="http://horde.org/chora/">Chora</a> repository browser URL construction</i>
+<li> <b><a href="../private/svnmailer.browser.generic-module.html"><code>generic</code></a></b>: <i>Generic repository browser URL construction</i>
+<li> <b><a href="../private/svnmailer.browser.svnweb-module.html"><code>svnweb</code></a></b>: <i><a class="reference" href="http://freshmeat.net/projects/svnweb/">SVN::Web</a> repository browser URL construction</i>
+<li> <b><a href="../private/svnmailer.browser.trac-module.html"><code>trac</code></a></b>: <i><a class="reference" href="http://www.edgewall.com/trac/">Trac</a> repository browser URL construction</i>
+<li> <b><a href="../private/svnmailer.browser.viewcvs-module.html"><code>viewcvs</code></a></b>: <i><a class="reference" href="http://viewcvs.sourceforge.net/">ViewCVS</a> repository browser URL construction</i>
+<li> <b><a href="../private/svnmailer.browser.websvn-module.html"><code>websvn</code></a></b>: <i><a class="reference" href="http://websvn.tigris.org/">WebSVN</a> repository browser URL construction</i>
+  </ul></td></tr>
+</table><br />
+
 
 <!-- =========== START OF CLASSES =========== -->
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Classes</th></tr>
 <tr><td width="15%">
-  <b><a href="../private/svnmailer.browser.ParsedUrl-class.html"><code>ParsedUrl</code></a></b></td>
-  <td>Container for URL parsing and modification</td></tr>
-<tr><td width="15%">
-  <b><a href="../private/svnmailer.browser.ViewcvsGenerator-class.html"><code>ViewcvsGenerator</code></a></b></td>
-  <td>viewcvs generator</td></tr>
-<tr><td width="15%">
-  <b><a href="../private/svnmailer.browser.WebsvnGenerator-class.html"><code>WebsvnGenerator</code></a></b></td>
-  <td>websvn generator</td></tr>
+  <b><a href="svnmailer.browser.Manager-class.html"><code>Manager</code></a></b></td>
+  <td>Repository browser manager</td></tr>
 </table><br />
 
 
@@ -60,83 +73,12 @@ Respository Browser URL construction
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Exceptions</th></tr>
 <tr><td width="15%">
-  <b><a href="../private/svnmailer.browser.Error-class.html"><code>Error</code></a></b></td>
-  <td>Base exception for this module</td></tr>
+  <b><a href="svnmailer.browser.Error-class.html"><code>Error</code></a></b></td>
+  <td>Base exception for this package</td></tr>
 <tr><td width="15%">
-  <b><a href="../private/svnmailer.browser.InvalidBaseUrlError-class.html"><code>InvalidBaseUrlError</code></a></b></td>
-  <td>Invalid URL was configured</td></tr>
+  <b><a href="svnmailer.browser.InvalidGeneratorError-class.html"><code>InvalidGeneratorError</code></a></b></td>
+  <td>The generator name was not recognized</td></tr>
 </table><br />
-
-
-<!-- =========== START OF FUNCTION SUMMARY =========== -->
-<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="summary">
-  <th colspan="2">Function Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>object</code>
-</font></td>
-  <td><code><span class="summary-sig"><a href="svnmailer.browser-module.html#getBrowserUrlGenerator" class="summary-sig-name"><code>getBrowserUrlGenerator</code></a>(<span class=summary-sig-arg>config</span>)</span></code>
-<br />
-Returns an initialized repos browser generator</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
-</font></td>
-  <td><code><span class="summary-sig"><a href="../private/svnmailer.browser-module.html#parseBrowserBase" class="summary-sig-name"><code>parseBrowserBase</code></a>(<span class=summary-sig-arg>base_config</span>)</span></code>
-<br />
-Parses the given option value into type and base url</td></tr>
-</table><br />
-
-
-<!-- =========== START OF FUNCTION DETAILS =========== -->
-<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="details">
-  <th colspan="2">Function Details</th></tr>
-</table>
-
-<a name="getBrowserUrlGenerator"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">getBrowserUrlGenerator</span>(<span class=sig-arg>config</span>)</span>
-  </h3>
-  Returns an initialized repos browser generator
-  <dl><dt></dt><dd>
-    <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>config</b></code> -
-         The group configuration
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<p><code>svnmailer.settings.GroupSettingsContainer</code>)</i>
-      </dd>
-    </dl>
-    <dl><dt><b>Returns:</b></dt>
-      <dd>
-        The generator object or <code>None</code>
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>object</code>)</i>
-      </dd>
-    </dl>
-  </dd></dl>
-</td></tr></table>
-
-<a name="parseBrowserBase"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">parseBrowserBase</span>(<span class=sig-arg>base_config</span>)</span>
-  </h3>
-  Parses the given option value into type and base url
-  <dl><dt></dt><dd>
-    <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>base_config</b></code> -
-         The option value
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
-      </dd>
-    </dl>
-    <dl><dt><b>Returns:</b></dt>
-      <dd>
-        The type and the base url
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>tuple</code>)</i>
-      </dd>
-    </dl>
-  </dd></dl>
-</td></tr></table>
-<br />
 
 
 <!-- =========== START OF NAVBAR =========== -->
@@ -152,7 +94,7 @@ Parses the given option value into type and base url</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:07 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

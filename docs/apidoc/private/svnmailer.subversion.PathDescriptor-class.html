@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type PathDescriptor</h2>
+<h2 class="class">Class PathDescriptor</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+
@@ -50,8 +50,7 @@
 
 <hr/>
 
-Describes the basic information of a particular path
-<hr/>
+Describes the basic information of a particular path<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -66,8 +65,7 @@ Describes the basic information of a particular path
           <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
 <br />
 Initialization</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.PathDescriptor-class.html#__cmp__" class="summary-sig-name"><code>__cmp__</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>other</span>)</span></code>
 <br />
@@ -78,8 +76,7 @@ Compares two change objects by path</td></tr>
           <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
 <br />
 Custom initialization</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">bool</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.subversion.PathDescriptor-class.html#isDirectory" class="summary-sig-name"><code>isDirectory</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns whether the path is a directory</td></tr>
@@ -97,12 +94,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
@@ -123,6 +114,14 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -130,9 +129,9 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Instance Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
 <td><b><a href="../private/svnmailer.subversion.PathDescriptor-class.html#path"><code>path</code></a></b>: The path, we're talking about</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>Repository</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.subversion.Repository-class.html" class="link"><code>Repository</code></a></font></td>
 <td><b><a href="../private/svnmailer.subversion.PathDescriptor-class.html#repos"><code>repos</code></a></b>: The repository this change belongs to</td></tr>
 </table><br />
 
@@ -152,26 +151,23 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class="sig-kwarg">**kwargs</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>repos</b></code> -
-         The repository reference
+ The repository reference
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>Repository</code>)</i>
+        (type=<a href="svnmailer.subversion.Repository-class.html" class="link"><code>Repository</code></a>)</i>
       <dd><code><b>path</b></code> -
-         The path
+ The path
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
     </dl>
-<p><b>Note:</b> Don't override this method, override <a 
-href="../private/svnmailer.subversion.PathDescriptor-class.html#init" 
-class="link"><code>init</code></a> instead.
-</p>
+<p><b>Note:</b> Don't override this method, override <a href="../private/svnmailer.subversion.PathDescriptor-class.html#init" class="link"><code>init</code></a>
+instead.</p>
 
   </dd></dl>
 </td></tr></table>
@@ -182,20 +178,18 @@ class="link"><code>init</code></a> instead.
           <span class=sig-arg>other</span>)</span>
     <br /><i>(Comparison operator)</i>
   </h3>
-  Compares two change objects by path
-  <dl><dt></dt><dd>
+Compares two change objects by path  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>other</b></code> -
-         The object compared to
+ The object compared to
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=hopefully <code>VersionedPathDescriptor</code>)</i>
+        (type=hopefully <a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html" class="link"><code>VersionedPathDescriptor</code></a>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        Returns -1, 0 or 1
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+Returns -1, 0 or 1        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -207,8 +201,7 @@ class="link"><code>init</code></a> instead.
           <span class="sig-vararg">*args</span>,
           <span class="sig-kwarg">**kwargs</span>)</span>
   </h3>
-  Custom initialization
-  <dl><dt></dt><dd>
+Custom initialization  <dl><dt></dt><dd>
   </dd></dl>
 </td></tr></table>
 
@@ -216,13 +209,11 @@ class="link"><code>init</code></a> instead.
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">isDirectory</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Returns whether the path is a directory
-  <dl><dt></dt><dd>
+Returns whether the path is a directory  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        is a directory?
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>bool</code>)</i>
+is a directory?        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -238,15 +229,13 @@ class="link"><code>init</code></a> instead.
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="path"></a>
 <h3>path</h3>
-The path, we're talking about
-<dl>
+The path, we're talking about<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>str</code>
-
+<tt class="literal"><span class="pre">str</span></tt>
       </dd>
     </dl>
   </dd>
@@ -254,15 +243,13 @@ The path, we're talking about
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="repos"></a>
 <h3>repos</h3>
-The repository this change belongs to
-<dl>
+The repository this change belongs to<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>Repository</code>
-
+<a href="svnmailer.subversion.Repository-class.html" class="link"><code>Repository</code></a>
       </dd>
     </dl>
   </dd>
@@ -283,7 +270,7 @@ The repository this change belongs to
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:11 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

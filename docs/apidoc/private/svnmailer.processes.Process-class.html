@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.processes.Process</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.processes-module.html">Module&nbsp;processes</a> ::
+        Class&nbsp;Process
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/svnmailer.processes.Process-class.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer.processes.Process-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class Process</h2>
+
+<pre class="base-tree">
+<a href="__builtin__.object-class.html"><code>object</code></a> --+
+         |
+        <b>Process</b>
+</pre><br />
+
+<hr/>
+
+Spawn a child with certain attributes<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.processes.Process-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cmd</span>,
+          <span class=summary-sig-arg>pstdin</span>,
+          <span class=summary-sig-arg>pstdout</span>,
+          <span class=summary-sig-arg>pstderr</span>,
+          <span class=summary-sig-arg>detach</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.processes.Process-class.html#detach" class="summary-sig-name"><code>detach</code></a>(<span class=summary-sig-arg>cls</span>,
+          <span class=summary-sig-arg>command</span>)</span></code>
+<br />
+Returns the process object of a detached process    <i>(Class method)</i>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.processes.Process-class.html#pipe2" class="summary-sig-name"><code>pipe2</code></a>(<span class=summary-sig-arg>cls</span>,
+          <span class=summary-sig-arg>command</span>)</span></code>
+<br />
+Returns the process object of a piped process    <i>(Class method)</i>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.processes.Process-class.html#pipe4" class="summary-sig-name"><code>pipe4</code></a>(<span class=summary-sig-arg>cls</span>,
+          <span class=summary-sig-arg>command</span>)</span></code>
+<br />
+Returns the process object of a piped process    <i>(Class method)</i>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.processes.Process-class.html#wait" class="summary-sig-name"><code>wait</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Waits for the process to end</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt> or <tt class="literal"><span class="pre">list</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.processes.Process-class.html#_escapecmd" class="summary-sig-name"><code>_escapecmd</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>command</span>,
+          <span class=summary-sig-arg>winshell</span>)</span></code>
+<br />
+Return the revised command suitable for being exec'd</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">file</span></tt></font></td>
+<td><b><a href="svnmailer.processes.Process-class.html#fromchild"><code>fromchild</code></a></b>: pipe from the child</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">file</span></tt></font></td>
+<td><b><a href="svnmailer.processes.Process-class.html#tochild"><code>tochild</code></a></b>: pipe to the child</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.processes.ProcessImpl-class.html" class="link"><code>ProcessImpl</code></a></font></td>
+<td><b><a href="../private/svnmailer.processes.Process-class.html#_impl"><code>_impl</code></a></b>: The <a href="../private/svnmailer.processes.ProcessImpl-class.html" class="link"><code>ProcessImpl</code></a> instance</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="svnmailer.processes.Process-class.html#IMPLEMENTATION"><code>IMPLEMENTATION</code></a></b>: A token describing the chosen implementation.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">type</span></tt> or <tt class="literal"><span class="pre">ClassType</span></tt></font></td>
+  <td><a name="_IMPLEMENTATION_CLASS"></a><b><code>_IMPLEMENTATION_CLASS</code></b> = <a href="../private/svnmailer.processes.ProcessImpl-class.html"><code>svnmailer.processes.ProcessImpl</code></a></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">_sre.SRE_Pattern</span></tt></font></td>
+<td><b><a href="../private/svnmailer.processes.Process-class.html#_SLASHRE"><code>_SLASHRE</code></a></b>: The substitution regex for backslashes (Win32 only)</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">_sre.SRE_Pattern</span></tt></font></td>
+<td><b><a href="../private/svnmailer.processes.Process-class.html#_TOKENRE"><code>_TOKENRE</code></a></b>: The search regex for quotable tokens (Win32 only)</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>cmd</span>,
+          <span class=sig-arg>pstdin</span>=<span class=sig-default>False</span>,
+          <span class=sig-arg>pstdout</span>=<span class=sig-default>False</span>,
+          <span class=sig-arg>pstderr</span>=<span class=sig-default>False</span>,
+          <span class=sig-arg>detach</span>=<span class=sig-default>False</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+Initialization  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>cmd</b></code> -
+ The command to execute (type must be suitable for
+the platform)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt> or <tt class="literal"><span class="pre">basestring</span></tt>)</i>
+      <dd><code><b>pstdin</b></code> -
+ Pipe to stdin?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      <dd><code><b>pstdout</b></code> -
+ Pipe from stdout?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      <dd><code><b>pstderr</b></code> -
+ Pipe from stderr (on stdout channel)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      <dd><code><b>detach</b></code> -
+ Detach the process? (evauluated on Win32 only)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>NotImplementedError</b></code> -
+not implemented functions
+were activated    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="wait"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">wait</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Waits for the process to end  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The exit status of the process        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
+      </dd>
+    </dl>
+<p><b>Note:</b> The implementation may define a dummy wait call.
+The actual waiting happens when the last pipe handle is
+closed then. This happens if the dumb implementation is
+used.</p>
+
+  </dd></dl>
+</td></tr></table>
+
+<a name="_escapecmd"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_escapecmd</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>command</span>,
+          <span class=sig-arg>winshell</span>=<span class=sig-default>True</span>)</span>
+  </h3>
+<p>Return the revised command suitable for being exec'd</p>
+<p>Currently this means, it's escaped and converted to a string
+only for Win32, because on this system no list based exec is
+available. For other systems the list is just returned.</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>command</b></code> -
+ The command to escape
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
+      <dd><code><b>winshell</b></code> -
+ Use shell on windows (cmd.exe)?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The escaped command string or the original list        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt> or <tt class="literal"><span class="pre">list</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Method Details</th></tr>
+</table>
+
+<a name="detach"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">detach</span>(<span class=sig-arg>cls</span>,
+          <span class=sig-arg>command</span>)</span>
+  </h3>
+<p>Returns the process object of a detached process</p>
+<p>The function spawns a command detached from the current one.
+All std-handles are inherited (no pipe is opened).</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>command</b></code> -
+ The command list (the first item is the command
+itself, the rest represents the arguments)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The process object        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>NotImplementedError</b></code> -
+Detaching this way is not
+implemented on this platform    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="pipe2"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">pipe2</span>(<span class=sig-arg>cls</span>,
+          <span class=sig-arg>command</span>)</span>
+  </h3>
+<p>Returns the process object of a piped process</p>
+<p>The function spawns a command and opens two pipes. One pipe
+is for writing to command's stdin and the other one is for
+reading stdout. stderr is inherited from the caller.</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>command</b></code> -
+ The command list (the first item is the command
+itself, the rest represents the arguments)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The process object        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="pipe4"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">pipe4</span>(<span class=sig-arg>cls</span>,
+          <span class=sig-arg>command</span>)</span>
+  </h3>
+<p>Returns the process object of a piped process</p>
+<p>The function spawns a command and opens two pipes. One pipe
+is for writing to command's stdin and the other one is for
+reading stdout + stderr (together)</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>command</b></code> -
+ The command list (the first item is the command
+itself, the rest represents the arguments)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The process object        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="fromchild"></a>
+<h3>fromchild</h3>
+pipe from the child<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">file</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="tochild"></a>
+<h3>tochild</h3>
+pipe to the child<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">file</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_impl"></a>
+<h3>_impl</h3>
+The <a href="../private/svnmailer.processes.ProcessImpl-class.html" class="link"><code>ProcessImpl</code></a> instance<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<a href="../private/svnmailer.processes.ProcessImpl-class.html" class="link"><code>ProcessImpl</code></a>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="IMPLEMENTATION"></a>
+<h3>IMPLEMENTATION</h3>
+A token describing the chosen implementation.
+Possible tokens are: <tt class="literal"><span class="pre">subprocess</span></tt>, <tt class="literal"><span class="pre">popen</span></tt>, <tt class="literal"><span class="pre">win32api</span></tt>,
+<tt class="literal"><span class="pre">dumb</span></tt><dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+<span title="'popen'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>popen<span class="variable-quote">'</span>                                                                </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_SLASHRE"></a>
+<h3>_SLASHRE</h3>
+The substitution regex for backslashes (Win32 only)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">_sre.SRE_Pattern</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_TOKENRE"></a>
+<h3>_TOKENRE</h3>
+The search regex for quotable tokens (Win32 only)<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">_sre.SRE_Pattern</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:05 2005</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

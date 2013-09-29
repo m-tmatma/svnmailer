@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=W0201
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +18,8 @@
 """
 Stdout notifier - mostly for debugging purposes
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['getNotifier']
 
 # global imports
@@ -28,14 +30,16 @@ from svnmailer.notifier import _text
 def getNotifier(config, groupset):
     """ Returns an initialized notifier or nothing
 
-        @param config: The svnmailer config
-        @type config: C{svnmailer.settings.Settings}
+        :Parameters:
+         - `config`: The svnmailer config
+         - `groupset`: The groupset to process
 
-        @param groupset: The groupset to process
-        @type groupset: C{list}
+        :Types:
+         - `config`: `svnmailer.settings._base.BaseSettings`
+         - `groupset`: ``list``
 
-        @return: The list of notifiers (containing 0 or 1 member)
-        @rtype: C{list}
+        :return: The list of notifiers (containing 0 or 1 member)
+        :rtype: ``list``
     """
     return [StdoutNotifier(config, groupset)]
 
@@ -43,9 +47,8 @@ def getNotifier(config, groupset):
 class StdoutNotifier(_text.TextNotifier):
     """ Writes all stuff to sys.stdout
 
-        @cvar _fp: C{None}
-        @ivar _fp: alternate file like object (for testing purposes)
-        @type _fp: file like object
+        :ivar _fp: alternate file like object (for testing purposes)
+        :type _fp: ``file``
     """
     __implements__ = [_text.TextNotifier]
     _fp = None
@@ -66,17 +69,17 @@ class StdoutNotifier(_text.TextNotifier):
 
     def _writeNotification(self):
         """ Writes the whole diff notification body """
-        from svnmailer.settings import modes
+        from svnmailer.settings import MODES
 
         mode = self._settings.runtime.mode
 
-        if mode == modes.commit:
+        if mode == MODES.commit:
             self.writeMetaData()
             self.writePathList()
             self.writeDiffList()
-        elif mode == modes.propchange:
+        elif mode == MODES.propchange:
             self.writeRevPropData()
-        elif mode in (modes.lock, modes.unlock):
+        elif mode in (MODES.lock, MODES.unlock):
             self.writeLockData()
         else:
             raise AssertionError("Unknown runtime.mode %r" % (mode,))
@@ -85,8 +88,8 @@ class StdoutNotifier(_text.TextNotifier):
     def _writePreamble(self, groups):
         """ Writes the stdout preamble for the selected groups
 
-            @param groups: The groups that are notified
-            @type groups: C{list}
+            :param groups: The groups that are notified
+            :type groups: ``list``
         """
         self.fp.write(
             ">>> Notification for the following group%s:\n  %s\n\n" %
@@ -102,11 +105,11 @@ class StdoutNotifier(_text.TextNotifier):
             the current locale encoding. UTF-8 is default and fallback
             if anything fails.
 
-            @param fp: The file object written to
-            @type fp: file like object
+            :param fp: The file object written to
+            :type fp: ``file``
 
-            @return: The chosen encoding
-            @rtype: C{str}
+            :return: The chosen encoding
+            :rtype: ``str``
         """
         import os
 

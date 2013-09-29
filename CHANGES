@@ -1,19 +1,39 @@
-Changes with version 1.0.8
+Changes with version 1.1.0
 
- *) Allow mails sent as bcc introducing new options bcc_addr and to_fake
+ *) Introduce a better mocking system and statement coverage measuring in
+    the test framework
 
- *) Make the cia_rpc_server option configurable per group
+ *) Improve setup.py. Now the docs are installed by default, line endings
+    and file extensions are fixed depending on the platform
 
-Changes with version 1.0.7
+ *) Add man page for the svn-mailer script, which is installed on
+    non-win32 systems
 
- *) Fix unicode error, which crashed the mailer if the common prefix of the
-    files in the subject line contained non-ascii characters
+ *) Move config_charset and include_config options out of [general] and let
+    the new parser recognize them in the global context (before any section).
+    If there are no options in global context, these special options are
+    still looked up in [general] for backwards compatibility.
 
-Changes with version 1.0.6
+ *) No longer use ConfigParser, which magically modifies the option values.
+    Especially (undocumented!) comments after option values (started with
+    a whitespace and a semicolon ( ;) are no longer recognized.
 
- *) No longer post the full diff if only generate_diffs = propchange
-    Discovered by: Ling Li <ling caltech.edu> and
-                   Daniel Berlin <dberlin dberlin.org>
+ *) Remove the possibility to load the config from STDIN (as the original
+    mailer.py did)
+
+ *) Add --background option to detach the mailer from the hook script
+    (experimental on Win32)
+
+ *) Improve the diffLines count of the CIA notifier. It should
+    really reflect the number of lines changed now (instead of simple
+    plus/minus maximum per file)
+
+ *) Add generic repository browser URL generator, which can be utilized
+    when the built-in generators are not sufficient
+
+ *) Add URL generators for Trac, Chora and SVN::Web repository browsers
+
+ *) Add some sample configs and hook scripts for the impatient
 
 Changes with version 1.0.5
 

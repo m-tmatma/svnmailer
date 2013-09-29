@@ -1,0 +1,138 @@
+.\"  Copyright 2005 André Malo or his licensors, as applicable
+.\"
+.\"  Licensed under the Apache License, Version 2.0 (the "License");
+.\"  you may not use this file except in compliance with the License.
+.\"  You may obtain a copy of the License at
+.\" 
+.\"      http://www.apache.org/licenses/LICENSE-2.0
+.\"
+.\"  Unless required by applicable law or agreed to in writing, software
+.\"  distributed under the License is distributed on an "AS IS" BASIS,
+.\"  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+.\"  See the License for the specific language governing permissions and
+.\"  limitations under the License.
+.\"
+.TH SVN-MAILER "1" "2005" "svn-mailer 1.1.0-dev-r1373" "User Commands"
+.SH NAME
+svn-mailer \- A feature rich subversion commit notification tool
+.SH SYNOPSIS
+.B svn-mailer
+\fB\-\-commit\fR \fB\-d\fR \fIrepos\fR \fB\-r\fR \fIrev\fR [\fB\-f\fR \fIconfig\fR]
+
+.B svn-mailer
+\fB\-\-propchange\fR \fB\-d\fR \fIrepos\fR \fB\-r\fR \fIrev\fR \fB\-a\fR \fIauthor\fR \fB\-n\fR \fIpropname\fR
+    [\fB\-o\fR \fIaction\fR] [\fB\-f\fR \fIconfig\fR]
+
+.B svn-mailer
+\fB\-\-lock\fR \fB\-d\fR \fIrepos\fR \fB\-a\fR \fIauthor\fR [\fB\-f\fR \fIconfig\fR]
+
+.B svn-mailer
+\fB\-\-unlock\fR \fB\-d\fR \fIrepos\fR \fB\-a\fR \fIauthor\fR [\fB\-f\fR \fIconfig\fR]
+.SH DESCRIPTION
+The svnmailer package is a tool to post notifications of subversion events to
+various targets in different ways.  Currently implemented: Mail via SMTP or
+a sendmail pipe, news via NNTP, XML via XMLRPC to a CIA tracker (see
+http://cia.navi.cx/ for details).
+
+The \fBsvn\-mailer\fR command line script is typically invoked via
+subversion's hook mechanism, but you can run it manually as well.  This is
+useful to resend missing messages or for debugging purposes.  Remember
+to start it under the correct user/group id.  Otherwise it may have problems
+to open the repository or the config file.
+
+The svnmailer can be used in most cases as a drop-in replacement for
+\fImailer.py\fR distributed with subversion.  There are some subtle differences
+which are dedicated to more behavior consistency.  (Hopefully) all of them are
+stated in the HTML documentation.
+.SS GENERAL OPTIONS
+.TP
+\fB\-\-version\fR
+show program's version number and exit
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show a help message and exit
+.SS COMMON PARAMETERS
+.TP
+\fB\-\-debug\fR
+Run in debug mode (means basically that all messages are
+sent to STDOUT)
+.TP
+\fB\-dREPOSITORY\fR, \fB\-\-repository\fR=\fIREPOSITORY\fR
+The repository directory
+.TP
+\fB\-fCONFIG\fR, \fB\-\-config\fR=\fICONFIG\fR
+The configuration file
+.TP
+\fB\-ePATH_ENCODING\fR, \fB\-\-path\-encoding\fR=\fIPATH_ENCODING\fR
+Specifies the character encoding to be used for
+filenames. By default the encoding is tried to be
+determined automatically depending on the locale.
+.TP
+\fB\-b\fR, \fB\-\-background\fR
+Lets the mailer do its work in the background. That way
+the hook script can exit faster.
+.SS BEHAVIOR OPTIONS
+.PP
+The behavior options are mutually exclusive, i.e. the last one wins.
+.TP
+\fB\-c\fR, \fB\-\-commit\fR
+This is a regular commit of versioned data (post-commit hook). This is default.
+.TP
+\fB\-p\fR, \fB\-\-propchange\fR
+This is a modification of unversioned properties (post-revprop-change hook)
+.TP
+\fB\-l\fR, \fB\-\-lock\fR
+(svn 1.2 and later) This is a locking call (post-lock hook). The locked file
+names are read from STDIN.
+.TP
+\fB\-u\fR, \fB\-\-unlock\fR
+(svn 1.2 and later) This is a unlocking call (post-unlock hook). The unlocked
+file names are read from STDIN.
+.SS SUPPLEMENTAL PARAMETERS
+.TP
+\fB\-rREVISION\fR, \fB\-\-revision\fR=\fIREVISION\fR
+The modified/committed revision number
+.TP
+\fB\-aAUTHOR\fR, \fB\-\-author\fR=\fIAUTHOR\fR
+The author of the modification
+.TP
+\fB\-nPROPNAME\fR, \fB\-\-propname\fR=\fIPROPNAME\fR
+The name of the modified property
+.TP
+\fB\-oACTION\fR, \fB\-\-action\fR=\fIACTION\fR
+(svn 1.2 and later) The property change action. If specified, the old
+property value is read from STDIN.
+.SH "CONFIGURATION FILES"
+If the configuration file is not specified on the command line it is searched
+at default locations. The first one found is loaded. The locations are, in
+order: \fIsvnmailer.conf\fR in the \fIconf/\fR directory of the given
+repository, \fIsvnmailer.conf\fR in the script directory itself,
+\fI/etc/svnmailer.conf\fR.
+.SH OLD STYLE COMMAND LINE
+Alternatively you can use the old style compatibility command lines (options
+described above don't apply then):
+
+\fBsvn\-mailer\fR \fBcommit\fR \fIrepos\fR \fIrev\fR [\fIconfig\fR]
+
+\fBsvn\-mailer\fR \fBpropchange\fR \fIrepos\fR \fIrev\fR \fIauthor\fR \fIpropname\fR [\fIconfig\fR]
+
+With svn 1.2 and later:
+.br
+\fBsvn\-mailer\fR \fBpropchange2\fR \fIrepos\fR \fIrev\fR \fIauthor\fR
+\fIpropname\fR \fIaction\fR [\fIconfig\fR]
+
+\fBsvn\-mailer\fR \fBlock\fR \fIrepos\fR \fIauthor\fR [\fIconfig\fR]
+
+\fBsvn\-mailer\fR \fBunlock\fR \fIrepos\fR \fIauthor\fR [\fIconfig\fR]
+.SH "REPORTING BUGS"
+If you've found a bug or have an idea how to improve the svnmailer,
+please send a mail to <\fIsvnmailer\-bugs@perlig.de\fR>.
+.SH "AUTHOR INFORMATION"
+Andr\('e "nd" Malo <nd@perlig.de>, GPG: 0x8103A37E
+.SH "SEE ALSO"
+The full documentation of the svnmailer package is maintained in HTML form.
+You may find it in the \fI/usr/share/docs/svnmailer/\fR directory at your
+site or online at <\fIhttp://opensource.perlig.de/svnmailer/\fR>.
+
+For detailed information about subversion, consult the subversion book at
+<\fIhttp://svnbook.red-bean.com/\fR>.

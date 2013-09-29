@@ -36,49 +36,26 @@
 <!-- =========== START OF MODULE DESCRIPTION =========== -->
 <h2 class="module">Module svnmailer.main</h2>
 
-<h1 class="heading">Main Logic of the svnmailer</h1>
-  <p>This module is the central core of the svnmailer. It dispatches all 
-  work to be done. It contains just one class (<a 
-  href="svnmailer.main.Main-class.html" 
-  class="link"><code>Main</code></a>), which reads the config file while 
-  it is initialized. When the <code>Main.run()</code> method is called, 
-  it selects the groups to be notified, the notifiers to be run and runs 
-  all notifiers for each group.</p>
-  The Main class may raise several exceptions (which all inherit from 
-  <a href="svnmailer.main.Error-class.html" 
-  class="link"><code>Error</code></a>):
-  <ul>
-    <li>
-      <a href="svnmailer.main.ConfigError-class.html" 
-      class="link"><code>ConfigError</code></a> occurs, if the 
-      configuration contains errors (like type or value errors, unicode 
-      errors etc). The <a href="svnmailer.main.ConfigError-class.html" 
-      class="link"><code>ConfigError</code></a> exception is initialized 
-      with a string describing what kind of error occured.
-    </li>
-    <li>
-      <a href="svnmailer.main.NotifierError-class.html" 
-      class="link"><code>NotifierError</code></a> occurs, if one or more 
-      of the notifiers throw an exception. The <a 
-      href="svnmailer.main.Main-class.html" 
-      class="link"><code>Main</code></a> class catches these exceptions 
-      (except <code>KeyboardInterrupt</code> and <code>SystemExit</code>) 
-      and will initialize the <a 
-      href="svnmailer.main.NotifierError-class.html" 
-      class="link"><code>NotifierError</code></a> with the list of 
-      traceback strings, one for each exception occured. (See the 
-      format_exception docs at <a 
-      href="http://docs.python.org/lib/module-traceback.html">http://docs.python.org/lib/module-traceback.html</a>).
-    </li>
-    <li>
-      <a href="svnmailer.subversion.RepositoryError-class.html" 
-      class="link"><code>svnmailer.subversion.RepositoryError</code></a> 
-      occurs, if something failed while accessing the subversion 
-      repository. It contains some attributes for identifying the error: 
-      <code>svn_err_code</code>, <code>svn_err_name</code> and 
-      <code>svn_err_str</code>
-    </li>
-  </ul>
+<p>This module is the central core of the svnmailer. It dispatches all work to be
+done. It contains just one class (<a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a>), which reads the config file while
+it is initialized. When the <a href="../private/svnmailer.main-module.html#run" class="link"><code>Main.run</code></a> method is called, it selects the
+groups to be notified, the notifiers to be run and runs all notifiers for
+each group.</p>
+<p>The <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> class may raise several exceptions (which all inherit from <a href="svnmailer.main.Error-class.html" class="link"><code>Error</code></a>):</p>
+<ul class="rst-simple">
+<li><a href="svnmailer.main.ConfigError-class.html" class="link"><code>ConfigError</code></a> occurs, if the configuration contains errors (like type
+or value errors, unicode errors etc). The <a href="svnmailer.main.ConfigError-class.html" class="link"><code>ConfigError</code></a> exception is
+initialized with a string describing what kind of error occured.</li>
+<li><a href="svnmailer.main.NotifierError-class.html" class="link"><code>NotifierError</code></a> occurs, if one or more of the notifiers throw an
+exception. The <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> class catches these exceptions (except
+<tt class="literal"><span class="pre">KeyboardInterrupt</span></tt> and <tt class="literal"><span class="pre">SystemExit</span></tt>) and will initialize the
+<a href="svnmailer.main.NotifierError-class.html" class="link"><code>NotifierError</code></a> with the list of traceback strings, one for each
+exception occured. (See the <a class="reference" href="http://docs.python.org/lib/module-traceback.html">format_exception docs</a>).</li>
+<li><a href="svnmailer.subversion.RepositoryError-class.html" class="link"><code>svnmailer.subversion.RepositoryError</code></a> occurs, if something failed
+while accessing the subversion repository. It contains some attributes
+for identifying the error: <tt class="literal"><span class="pre">svn_err_code</span></tt>, <tt class="literal"><span class="pre">svn_err_name</span></tt> and
+<tt class="literal"><span class="pre">svn_err_str</span></tt></li>
+</ul>
 <hr/>
 
 <!-- =========== START OF CLASSES =========== -->
@@ -87,7 +64,7 @@
   <th colspan="2">Classes</th></tr>
 <tr><td width="15%">
   <b><a href="svnmailer.main.Main-class.html"><code>Main</code></a></b></td>
-  <td>main svnmailer logic</td></tr>
+  <td>Main svnmailer logic</td></tr>
 </table><br />
 
 
@@ -120,7 +97,7 @@
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:19 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

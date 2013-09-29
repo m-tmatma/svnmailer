@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = C0103, W0201, W0232, W0233
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=W0201,W0232,W0233,C0103,E0201,R0921
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +18,8 @@
 """
 text based email notifier
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['getNotifier']
 
 # global imports
@@ -28,17 +29,18 @@ from svnmailer.notifier import _mail
 def getNotifier(cls, config, groupset):
     """ Returns an initialized notifier or nothing
 
-        @param cls: The notifier base class to use
-        @type cls: C{class}
+        :Parameters:
+         - `cls`: The notifier base class to use
+         - `config`: The svnmailer config
+         - `groupset`: The groupset to process
 
-        @param config: The svnmailer config
-        @type config: C{svnmailer.settings.Settings}
+        :Types:
+         - `cls`: ``class``
+         - `config`: `svnmailer.settings._base.BaseSettings`
+         - `groupset`: ``list``
 
-        @param groupset: The groupset to process
-        @type groupset: C{list}
-
-        @return: The list of notifiers (containing 0 or 1 member)
-        @rtype: C{list}
+        :return: The list of notifiers (containing 0 or 1 member)
+        :rtype: ``list``
     """
     from svnmailer import util
 
@@ -51,32 +53,32 @@ def getNotifier(cls, config, groupset):
 def decorateNotifier(cls, action, config, groupset):
     """ Decorates the notifier class (or not)
 
-        @param cls: The notifier class
-        @type cls: C{class}
+        :Parameters:
+         - `cls`: The notifier class
+         - `action`: The configured action
+         - `config`: The svnmailer config
+         - `groupset`: The groupset to process
 
-        @param action: The configured action
-        @type action: C{unicode}
+        :Types:
+         - `cls`: ``class``
+         - `action`: ``unicode``
+         - `config`: `svnmailer.settings._base.BaseSettings`
+         - `groupset`: ``list``
 
-        @param config: The svnmailer config
-        @type config: C{svnmailer.settings.Settings}
-
-        @param groupset: The groupset to process
-        @type groupset: C{list}
-
-        @return: The decorated class or C{None}
-        @rtype: C{class}
+        :return: The decorated class or ``None``
+        :rtype: ``class``
     """
     if action:
-        from svnmailer.settings import modes
+        from svnmailer.settings import MODES
         runtime = config.runtime
 
-        is_commit = bool(runtime.mode == modes.commit)
+        is_commit = bool(runtime.mode == MODES.commit)
         other = bool(
             (    action.REVPROP in action.scope
-            and runtime.mode == modes.propchange)
+            and runtime.mode == MODES.propchange)
                             or
             (    action.LOCKS in action.scope
-            and runtime.mode in (modes.lock, modes.unlock))
+            and runtime.mode in (MODES.lock, MODES.unlock))
         )
 
         if action.maxbytes and (is_commit or other):
@@ -119,8 +121,8 @@ class TextMailNotifier(_mail.MailNotifier):
     def composeMail(self):
         """ Composes the mail
 
-            @return: The senders, the receivers, the mail(s)
-            @rtype: C{tuple}
+            :return: The senders, the receivers, the mail(s)
+            :rtype: ``tuple``
         """
         import cStringIO
 
@@ -157,14 +159,16 @@ class TextMailNotifier(_mail.MailNotifier):
     def _getTextMails(self, charset, enc):
         """ Returns the text mail(s)
 
-            @param charset: The mail charset
-            @type charset: C{str}
+            :Parameters:
+             - `charset`: The mail charset
+             - `enc`: transfer encoding token
 
-            @param enc: transfer encoding token
-            @type enc: C{str}
+            :Types:
+             - `charset`: ``str``
+             - `enc`: ``str``
 
-            @return: The mail(s)
-            @rtype: C{list} of C{_TextMail}
+            :return: The mail(s)
+            :rtype: ``list`` of ``_TextMail``
         """
         return [_TextMail(
             self.getMailSubject(), self.fp.getvalue(), charset, enc
@@ -174,11 +178,11 @@ class TextMailNotifier(_mail.MailNotifier):
     def _getMailWriter(self, fp):
         """ Returns a mail writer
 
-            @param fp: The stream to wrap
-            @type fp: file like object
+            :param fp: The stream to wrap
+            :type fp: ``file``
 
-            @return: The file object
-            @rtype: file like object
+            :return: The file object
+            :rtype: ``file``
         """
         from svnmailer import stream
 
@@ -188,28 +192,30 @@ class TextMailNotifier(_mail.MailNotifier):
 class SplittingDecorator(object):
     """ Splits the content between diffs, if it gets loo long
 
-        @ivar final_fp: Actual stream object containg all data
-        @type final_fp: file like object
+        :IVariables:
+         - `final_fp`: Actual stream object containg all data
+         - `max_notification_size`: Maximum size of one mail content
+         - `drop`: maximum number of mails
+         - `drop_fp`: The alternate summary stream
 
-        @ivar max_notification_size: Maximum size of one mail content
-        @type max_notification_size: C{int}
-
-        @ivar drop: maximum number of mails
-        @type drop: C{int}
-
-        @ivar drop_fp: The alternate summary stream
-        @type drop_fp: file like object
+        :Types:
+         - `final_fp`: ``file``
+         - `max_notification_size`: ``int``
+         - `drop`: ``int``
+         - `drop_fp`: ``file``
     """
 
     def __init__(self, config, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
 
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Types:
+             - `maxsize`: ``int``
+             - `drop`: ``int``
         """
         self.__super = super(self.__decorator_class, self)
         self.__super.__init__(config, groupset, maxsize, drop)
@@ -283,8 +289,8 @@ class SplittingDecorator(object):
     def _flushToFinalStream(self, split = False):
         """ Flushes the current content to the final stream
 
-            @param split: Should split regardless of the current size?
-            @type split: C{bool}
+            :param split: Should split regardless of the current size?
+            :type split: ``bool``
         """
         value = self.fp.getvalue()
         self.fp.seek(0)
@@ -316,12 +322,14 @@ class TruncatingDecorator(object):
     def __init__(self, config, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
-
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
+            
+            :Types:
+             - `maxsize`: ``int``
+             - `drop`: `int`
         """
         self.__super = super(self.__decorator_class, self)
         self.__super.__init__(config, groupset, maxsize, drop)
@@ -339,19 +347,21 @@ class TruncatingDecorator(object):
 class URLDecorator(object):
     """ Shows only the urls, if the mail gets too long
 
-        @ivar url_fp: The alternative stream
-        @type url_fp: file like object
+        :ivar url_fp: The alternative stream
+        :type url_fp: ``file``
     """
 
     def __init__(self, config, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
 
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Types:
+             - `maxsize`: ``int``
+             - `drop`: ``int``
         """
         self.__super = super(self.__decorator_class, self)
         self.__super.__init__(config, groupset, maxsize, drop)
@@ -400,7 +410,7 @@ class URLDecorator(object):
 
     def writeDiffList(self):
         """ Writes the commit diffs """
-        if self.getUrl(self.config):
+        if self.getBrowserGenerator(self.config):
             self.url_fp.write(
                 u"\n[This mail would be too long, it was shortened to "
                 u"contain the URLs only.]\n\n"
@@ -433,12 +443,14 @@ class URLTruncatingDecorator(object):
     def __init__(self, config, groupset, maxsize, drop):
         """ Initialization
 
-            @param maxsize: The maximum number of bytes that should be written
-                into one mail
-            @type maxsize: C{int}
+            :Parameters:
+             - `maxsize`: The maximum number of bytes that should be written
+               into one mail
+             - `drop`: maximum number of mails
 
-            @param drop: maximum number of mails
-            @type drop: C{int}
+            :Types:
+             - `maxsize`: ``int``
+             - `drop`: ``int``
         """
         self.__super = super(self.__decorator_class, self)
         self.__super.__init__(config, groupset, maxsize, drop)
@@ -464,17 +476,17 @@ class _TextMail(MIMENonMultipart.MIMENonMultipart):
     def __init__(self, subject, body, charset, enc = 'Q'):
         """ Initialization
 
-            @param subject: The subject to use
-            @type subject: C{str}
+            :Parameters:
+             - `subject`: The subject to use
+             - `body`: The mail body
+             - `charset`: The charset, the body is encoded
+             - `enc`: transfer encoding token (``Q``, ``B`` or ``8``)
 
-            @param body: The mail body
-            @type body: C{str}
-
-            @param charset: The charset, the body is encoded
-            @type charset: C{str}
-
-            @param enc: transfer encoding token (C{Q}, C{B} or C{8})
-            @type enc: C{str}
+            :Types:
+             - `subject`: ``str``
+             - `body`: ``str``
+             - `charset`: ``str``
+             - `enc`: ``str``
         """
         from email import Charset, Header
 
@@ -493,8 +505,8 @@ class _TextMail(MIMENonMultipart.MIMENonMultipart):
     def dump(self, fp):
         """ Serializes the mail into a descriptor
 
-            @param fp: The file object
-            @type fp: file like object
+            :param fp: The file object
+            :type fp: ``file``
         """
         from email import Generator
 
@@ -521,8 +533,8 @@ class _TextMail(MIMENonMultipart.MIMENonMultipart):
     def update(self, headers):
         """ Update the header set of the mail
 
-            @param headers: The new headers
-            @type headers: C{dict}
+            :param headers: The new headers
+            :type headers: ``dict``
         """
         for name, value in headers.items():
             self[name] = value

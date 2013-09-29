@@ -1,0 +1,32 @@
+CONFIGURATION SAMPLES
+=====================
+
+In this directory the impatient will find some configuration
+files and hook examples. You'll find some explaining comments
+inside. But don't forget to glance over the documentation anyway :)
+
+
+CONFIGS
+=======
+
+* simple.conf:
+  A really simple config. Just enter your mail address there und you're done.
+
+* groups.conf:
+  Just to show, how different paths in a repository may be prepared for
+  notifications to different people
+
+* advanced.conf (passwords.txt, authors.txt):
+  More complex config (with supplemental files), which maintains different
+  repositories, groups within these repositories, different notification
+  formats, option mapping and more.
+
+
+HOOKS
+=====
+
+The hooks/ subdirectory contains hooks for all possible svnmailer notification
+modes. The files without extension are bash scripts. The files with the .bat
+extension are for Windows users.
+
+Have fun!

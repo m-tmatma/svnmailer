@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type SplittingStream</h2>
+<h2 class="class">Class SplittingStream</h2>
 
 <pre class="base-tree">
  <a href="__builtin__.object-class.html"><code>object</code></a> --+    
@@ -47,8 +47,7 @@
 
 <hr/>
 
-Stream wrapper, which provides the ability to split the stream
-<hr/>
+Stream wrapper, which provides the ability to split the stream<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -64,14 +63,12 @@ Initialization</td></tr>
   <td><code><span class="summary-sig"><a href="svnmailer.stream.SplittingStream-class.html#close" class="summary-sig-name"><code>close</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Closes the stream and removes all tempfiles</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.stream.SplittingStream-class.html#getPart" class="summary-sig-name"><code>getPart</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>idx</span>)</span></code>
 <br />
-Returns the value of part <code>idx</code></td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
-</font></td>
+Returns the value of part <a href="svnmailer.stream.SplittingStream-class.html#getPart" class="link"><code>idx</code></a></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.stream.SplittingStream-class.html#getPartCount" class="summary-sig-name"><code>getPartCount</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the number of splitted parts</td></tr>
@@ -111,12 +108,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
 helper for pickle...</td></tr>
@@ -136,6 +127,14 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -143,11 +142,11 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Instance Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
 <td><b><a href="svnmailer.stream.SplittingStream-class.html#current"><code>current</code></a></b>: The current byte counter</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from _BaseStream</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">file like object</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">file</span></tt></font></td>
 <td><b><a href="../private/svnmailer.stream._BaseStream-class.html#stream"><code>stream</code></a></b>: The wrapped stream</td></tr>
 </table><br />
 
@@ -164,13 +163,12 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>tempdir</span>=<span class=sig-default>None</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>tempdir</b></code> -
-         specific temporary directory
+ specific temporary directory
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Overrides:</b></dt>
@@ -183,8 +181,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">close</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Closes the stream and removes all tempfiles
-  <dl><dt></dt><dd>
+Closes the stream and removes all tempfiles  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="../private/svnmailer.stream._BaseStream-class.html#close"><code>svnmailer.stream._BaseStream.close</code></a></dd>
     </dl>
@@ -196,20 +193,18 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">getPart</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>idx</span>)</span>
   </h3>
-  Returns the value of part <code>idx</code>
-  <dl><dt></dt><dd>
+Returns the value of part <a href="svnmailer.stream.SplittingStream-class.html#getPart" class="link"><code>idx</code></a>  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>idx</b></code> -
-         The part number
+ The part number
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The content of the particular part
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+The content of the particular part        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -219,13 +214,11 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">getPartCount</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Returns the number of splitted parts
-  <dl><dt></dt><dd>
+Returns the number of splitted parts  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The number
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+The number        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -235,9 +228,9 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">split</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  <p>Splits the stream</p>
-  This dumps the current content into a tempfile clears the old 
-  stream.
+<p>Splits the stream</p>
+<p>This dumps the current content into a tempfile clears
+the old stream.</p>
   <dl><dt></dt><dd>
   </dd></dl>
 </td></tr></table>
@@ -247,8 +240,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">write</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>towrite</span>)</span>
   </h3>
-  Writes to the current stream and counts the number of bytes
-  <dl><dt></dt><dd>
+Writes to the current stream and counts the number of bytes  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="../private/svnmailer.stream._BaseStream-class.html#write"><code>svnmailer.stream._BaseStream.write</code></a></dd>
     </dl>
@@ -265,15 +257,13 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="current"></a>
 <h3>current</h3>
-The current byte counter
-<dl>
+The current byte counter<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>int</code>
-
+<tt class="literal"><span class="pre">int</span></tt>
       </dd>
     </dl>
   </dd>
@@ -294,7 +284,7 @@ The current byte counter
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:11 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

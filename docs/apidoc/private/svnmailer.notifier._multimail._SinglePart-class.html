@@ -50,8 +50,7 @@
 
 <hr/>
 
-A single part of a multipart mail
-<hr/>
+A single part of a multipart mail<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -68,15 +67,13 @@ A single part of a multipart mail
           <span class=summary-sig-arg>dispo</span>)</span></code>
 <br />
 Initialization</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail._SinglePart-class.html#_encodeRfc2184" class="summary-sig-name"><code>_encodeRfc2184</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>value</span>,
           <span class=summary-sig-arg>dosplit</span>)</span></code>
 <br />
 Encode a string (parameter value) according to RFC 2184</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail._SinglePart-class.html#getSize" class="summary-sig-name"><code>getSize</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Serializes the mail into a descriptor</td></tr>
@@ -124,6 +121,11 @@ Return the entire formatted message as a string.</td></tr>
           <span class="summary-sig-kwarg">**_params</span>)</span></code>
 <br />
 Extended header setting.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="email.Message.Message-class.html#add_payload" class="summary-sig-name"><code>add_payload</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>payload</span>)</span></code>
+<br />
+Add the given payload to the current payload.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="email.Message.Message-class.html#as_string" class="summary-sig-name"><code>as_string</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>unixfrom</span>)</span></code>
@@ -325,13 +327,12 @@ Walk over the message tree, yielding each subpart.</td></tr>
           <span class=sig-arg>dispo</span>=<span class=sig-default>'inline'</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>body</b></code> -
-         The body
+ The body
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Overrides:</b></dt>
@@ -346,25 +347,23 @@ Walk over the message tree, yielding each subpart.</td></tr>
           <span class=sig-arg>value</span>,
           <span class=sig-arg>dosplit</span>=<span class=sig-default>False</span>)</span>
   </h3>
-  Encode a string (parameter value) according to RFC 2184
-  <dl><dt></dt><dd>
+Encode a string (parameter value) according to RFC 2184  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>value</b></code> -
-         The value to encode
+ The value to encode
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>unicode</code>)</i>
+        (type=<tt class="literal"><span class="pre">unicode</span></tt>)</i>
       <dd><code><b>dosplit</b></code> -
-         Allow long parameter splitting? (Note that is not widely 
-        supported...)
+ Allow long parameter splitting? (Note that is not
+widely supported...)
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>bool</code>)</i>
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The list of encoded values
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+The list of encoded values        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -374,13 +373,11 @@ Walk over the message tree, yielding each subpart.</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">getSize</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Serializes the mail into a descriptor
-  <dl><dt></dt><dd>
+Serializes the mail into a descriptor  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The size of the serialized object
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>int</code>)</i>
+The size of the serialized object        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">int</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -401,7 +398,7 @@ Walk over the message tree, yielding each subpart.</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:12 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:16 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

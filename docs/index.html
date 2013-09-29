@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+ Copyright 2004-2005 André Malo or his licensors, as applicable
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
     <title>svnmailer - documentation</title>
@@ -41,6 +56,14 @@
             <li><a href="#config-selection">Group Selection</a></li>
           </ul>
         </li>
+        <li><a href="#global">Global Configuration Options</a>
+          <ul>
+            <li><a
+            href="#global-charset"><code>config_charset</code></a></li>
+            <li><a
+            href="#global-include"><code>include_config</code></a></li>
+          </ul>
+        </li>
         <li><a href="#maps">[maps] Configuration Section</a>
           <ul>
             <li><a href="#maps-config">Plain Config Maps</a></li>
@@ -48,11 +71,6 @@
         </li>
         <li><a href="#general">[general] Configuration Section</a>
           <ul>
-            <li><a href="#general-config-charset"><code>config_charset</code></a></li>
-            <li><a
-            href="#general-include-config"><code>include_config</code></a></li>
-            <li><a href="#general-diff-command"><code>diff_command</code></a>
-            (deprecated)</li>
             <li><a href="#general-sendmail-command"><code>sendmail_command</code></a></li>
             <li><a href="#general-smtp-host"><code>smtp_host</code></a></li>
             <li><a href="#general-smtp-user-pass"><code>smtp_user</code> and
@@ -63,9 +81,16 @@
             <li><a
             href="#general-debug-all-mails-to"><code>debug_all_mails_to</code></a></li>
             <li><a
-            href="#general-cia-rpc-server"><code>cia_rpc_server</code></a>
-            (deprecated)</li>
+            href="#general-cia-rpc-server"><code>cia_rpc_server</code></a></li>
             <li><a href="#general-tempdir"><code>tempdir</code></a></li>
+            <li><a
+            href="#general-config-charset"><code>config_charset</code></a>
+            (deprecated)</li>
+            <li><a
+            href="#general-include-config"><code>include_config</code></a>
+            (deprecated)</li>
+            <li><a href="#general-diff-command"><code>diff_command</code></a>
+            (deprecated)</li>
           </ul>
         </li>
         <li><a href="#groups">Group Configuration Sections</a>
@@ -87,13 +112,17 @@
             <li><a
             href="#groups-max-subject-length"><code>max_subject_length</code></a></li>
             <li><a href="#groups-addr"><code>from_addr</code>,
-            <code>reply_to_addr</code>, <code>to_addr</code>, <code>to_fake</code> and <code>bcc_addr</code></a></li>
+            <code>to_addr</code> and <code>reply_to_addr</code></a></li>
             <li><a
             href="#groups-to-newsgroup"><code>to_newsgroup</code></a></li>
             <li><a
             href="#groups-diff-command"><code>diff_command</code></a></li>
             <li><a href="#groups-generate-diffs"><code>generate_diffs</code></a></li>
             <li><a href="#groups-browser-base"><code>browser_base_url</code></a></li>
+            <li><a href="#groups-generic-urls"><code>revision_url</code>,
+            <code>diff_add_url</code>, <code>diff_copy_url</code>,
+            <code>diff_delete_url</code> and
+            <code>diff_modify_url</code></a></li>
             <li><a href="#groups-viewcvs-base"><code>viewcvs_base_url</code></a></li>
             <li><a
             href="#groups-long-mail-action"><code>long_mail_action</code></a></li>
@@ -108,8 +137,6 @@
             href="#groups-show-charset"><code>show_applied_charset</code></a></li>
             <li><a href="#groups-custom-header"><code>custom_header</code></a></li>
             <li><a href="#groups-extract-x509"><code>extract_x509_author</code></a></li>
-            <li><a
-            href="#groups-cia-rpc-server"><code>cia_rpc_server</code></a></li>
             <li><a
             href="#groups-cia-project-name"><code>cia_project_name</code></a></li>
             <li><a
@@ -135,6 +162,8 @@
             <li><a href="#cmd-version"><code>--version</code></a></li>
             <li><a href="#cmd-help"><code>--help</code></a></li>
             <li><a href="#cmd-debug"><code>--debug</code></a></li>
+            <li><a href="#cmd-background"><code>--background</code>
+            (<code>-b</code>)</a></li>
             <li><a
             href="#cmd-path-encoding"><code>--path-encoding</code>
             (<code>-e</code>)</a></li>
@@ -214,20 +243,20 @@
       </ul>
 
       <p>The svnmailer is a pure python package, which is packed using
-      distutils. So the installation on your system is fairly simple.
-      First <a href="http://opensource.perlig.de/svnmailer/#download"
+      the standard distutils. So the installation on your system is fairly
+      simple. First <a href="http://opensource.perlig.de/svnmailer/#download"
       >download</a> the package and make sure you've checked the
       integrity of the downloaded file. There are a detached GPG signature
       (<code>*.asc</code>) and signed hash files (<code>*.md5</code> and
-      <code>*.sha1</code>), which you can use for this task.</p>
+      <code>*.sha1</code>), which can be used for this task.</p>
 
       <p>After unpacking the archive file change into the
-      <code>svnmailer-1.0.8</code> directory and follow the typical
+      <code>svnmailer-1.1.0-dev-r1373</code> directory and follow the typical
       python procedure:</p>
 
       <div class="example"><p><code>
-        $ bzip2 -cd svnmailer-1.0.8.tar.bz2 | tar -xf -<br />
-        $ cd svnmailer-1.0.8<br />
+        $ bzip2 -cd svnmailer-1.1.0-dev-r1373.tar.bz2 | tar -xf -<br />
+        $ cd svnmailer-1.1.0-dev-r1373<br />
         $ python setup.py install
       </code></p></div>
 
@@ -274,12 +303,25 @@
           name: value
         </code></p></div>
 
-        <p>As you might have guessed, comments are preceded by the hash character
-        (<code>#</code>). Empty lines (or lines containing only whitespaces) are
-        ignored. Note that section headings, comments and value definitions have
-        to start at the first column, because the configuration parser treats
-        (non-empty) lines starting with spaces or tabs as continuations of the
-        previous line (like in mail headers).</p>
+        <p>As you might have guessed, comments are preceded by the hash
+        character (<code>#</code>). Lines starting with a semicolon
+        (<code>;</code>) are also recognized as comment lines. Empty lines
+        (or lines containing only whitespaces) are ignored. Note that
+        section headings, comments and value definitions have to start
+        at the first column, because the configuration parser treats
+        (non-empty) lines starting with spaces or tabs as continuations of
+        the previous line (like in mail headers).</p>
+
+        <p>There is a subtle difference compared to the original mailer.py
+        script. The svnmailer doesn't utilize the <a
+        href="http://docs.python.org/lib/module-ConfigParser.html"
+        >ConfigParser</a> module, which cuts values after the first
+        occurence of a semicolon which is preceeded by a whitespace
+        character (that way this sequence starts a comment "after" the value).
+        As this is not desired (since the sequence is not escapable) the
+        svnmailer uses an own module, which doesn't modify the values. In
+        fact, this special behaviour is not even documented, so removing it
+        shouldn't hurt much.</p>
 
 <!-- config: Semantics -->
         <h3><a name="config-semantics" id="config-semantics">Semantics</a></h3>
@@ -306,6 +348,19 @@
         <p>If you call the svnmailer with this config, it will generate diffs
         for every possible action at any path for any supplied repository and
         write a notification message to <code>stdout</code>.</p>
+
+        <p>Furthermore, there are options, which don't fit into any section at
+        all, namely <a href="#global-charset"><code>config_charset</code></a>
+        and <a href="#global-include"><code>include_config</code></a>. They
+        are defined in the global context, i.e. <em>before</em> the first
+        section in the main config file. Before version 1.1 of the svnmailer
+        both options were defined in the <a
+        href="#general"><code>[general]</code></a> section, so there is a
+        compatibility behaviour built in: If there are no global options
+        defined, they are looked up in the <code>[general]</code> section. But
+        you cannot place, say, <code>config_charset</code> into the global
+        context and <code>include_config</code> into
+        <code>[general]</code>.</p>
 
 <!-- config: Group selection -->
         <h3><a name="config-selection" id="config-selection">Group
@@ -340,6 +395,11 @@
         href="#groups-diff-command"><code>diff_command</code></a>, <a
         href="#groups-generate-diffs"><code>generate_diffs</code></a>, <a
         href="#groups-browser-base"><code>browser_base_url</code></a>, <a
+        href="#groups-generic-urls"><code>revision_url</code></a>, <a
+        href="#groups-generic-urls"><code>diff_add_url</code></a>, <a
+        href="#groups-generic-urls"><code>diff_copy_url</code></a>, <a
+        href="#groups-generic-urls"><code>diff_delete_url</code></a>, <a
+        href="#groups-generic-urls"><code>diff_modify_url</code></a>, <a
         href="#groups-viewcvs-base"><code>viewcvs_base_url</code></a>, <a
         href="#groups-extract-x509"><code>extract_x509_author</code></a>, <a
         href="#groups-long-mail-action"><code>long_mail_action</code></a>, <a
@@ -350,10 +410,100 @@
         href="#groups-charset-property"><code>apply_charset_property</code></a>, <a
         href="#groups-show-charset"><code>show_applied_charset</code></a>.</p>
 
-        <p>Note that there's a subtle difference to the original mailer
+        <p>Here's another subtle difference to the original mailer.py
         script. If there are group configurations defined, the svnmailer will
         never consider the <code>[defaults]</code> section as an additional
         group to be notified.</p>
+
+<!-- Global Configuration Options -->
+      <h2><a name="global" id="global">Global Configuration Options</a></h2>
+      <table summary="A short description of the possible global configuration options"
+         class="options">
+      <caption>The possible global configuration options</caption>
+      <tr><th class="option-name">Option Name</th>
+          <th class="option-type">Type</th>
+          <th class="option-desc">Description</th></tr>
+      <tr><td><code>config_charset</code></td>
+          <td>string</td>
+          <td>The character encoding of the config file</td></tr>
+      <tr><td><code>include_config</code></td>
+          <td>List</td>
+          <td>A list of config files to include</td></tr>
+      </table>
+
+      <p>These options don't fit into any particular section type.</p>
+
+<!-- global: config_charset -->
+        <h3><a name="global-charset"
+        id="global-charset">config_charset</a></h3>
+        <p>The <dfn><code>config_charset</code></dfn> option defines, how
+        the svnmailer should interpret the (bytes read as) option values in
+        your config files. It defaults to <code>us-ascii</code>, which means,
+        normally you can leave it just out. It is very useful if you want to
+        define, say, French subject prefixes or the like. Besides the exceptions
+        described below, the svnmailer will die with an
+        <code>UnicodeError</code> if there are characters in the config file
+        which are not valid for the given <code>config_charset</code>.</p>
+        
+        <p>Some options, namely of type "quoted literal"
+        (like <a href="#general-smtp-user-pass"><code>smtp_user</code></a>) are not
+        charset decoded, but taken literally (though possibly unquoted).
+        Furthermore, the first item of command line option values (the command
+        itself) <em>may</em> be interpreted literally, too. This depends on
+        the OS and the <a
+        href="#cmd-path-encoding"><code>--path-encoding</code></a> option. See
+        there for details.</p>
+
+        <p>There's a limitation: <code>config_charset</code>
+        should be an <code>US-ASCII</code> based encoding (for example,
+        <code>UTF-16</code> is a bad choice).</p>
+
+        <div class="example"><p><code>
+        # Example<br />
+        # =======<br />
+        config_charset = iso-8859-1
+        </code></p></div>
+
+<!-- global: include_config -->
+        <h3><a name="global-include"
+        id="global-include">include_config</a></h3>
+        <p>The <dfn><code>include_config</code></dfn> option specifies further
+        config files which are appended to the current one. The config files
+        can be defined using either relative or absolute paths in the
+        filesystem. Relative paths are taken relative to the config file
+        which includes them. The option value is parsed like a command
+        line -- it is split on whitespaces, except when they are quoted.
+        Have a look at the description of <a
+        href="#groups-diff-command"><code>diff_command</code></a> for a
+        detailed explanation of the rules.</p>
+
+        <p>One typical use of <code>include_config</code> is to exclude
+        mappings from the main config for maintenance and/or security
+        reasons.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          include_config = passwords.txt<br />
+          <br />
+          [general]<br />
+          smtp_user = smtpuser<br />
+          smtp_pass = smtppass<br />
+          <br />
+          [maps]<br />
+          smtp_user = [smtp]<br />
+          smtp_pass = [smtp]<br />
+        </code></p></div>
+
+        <p>And the following could be the <code>passwords.txt</code> file:</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [smtp]<br />
+          smtpuser = "someuser"<br />
+          smtppass = "secret password"
+        </code></p></div>
 
 <!-- [maps] Configuration Section -->
       <h2><a name="maps" id="maps">[maps] Configuration Section</a></h2>
@@ -440,15 +590,6 @@
       <tr><th class="option-name">Option Name</th>
           <th class="option-type">Type</th>
           <th class="option-desc">Description</th></tr>
-      <tr><td><code>config_charset</code></td>
-          <td>string</td>
-          <td>The character encoding of the config file</td></tr>
-      <tr><td><code>include_config</code></td>
-          <td>List</td>
-          <td>A list of config files to include</td></tr>
-      <tr><td><code>diff_command</code> (deprecated)</td>
-          <td>command line</td>
-          <td>The external diff program to use.</td></tr>
       <tr><td><code>sendmail_command</code></td>
           <td>command line</td>
           <td>The sendmail compatible command line template</td></tr>
@@ -475,12 +616,24 @@
       <tr><td><code>debug_all_mails_to</code></td>
           <td>mail addresses</td>
           <td>Mails should go only to these fixed addresses</td></tr>
-      <tr><td><code>cia_rpc_server</code> (deprecated)</td>
+      <tr><td><code>cia_rpc_server</code></td>
           <td>string</td>
           <td>CIA XML-RPC tracking server</td></tr>
       <tr><td><code>tempdir</code></td>
           <td>string</td>
           <td>The directory to use for temporary files</td></tr>
+      <tr><td><code>config_charset</code> (deprecated)</td>
+          <td>string</td>
+          <td>(Use the <a href="#global-charset">global
+              <code>config_charset</code> option</a>)</td></tr>
+      <tr><td><code>include_config</code> (deprecated)</td>
+          <td>List</td>
+          <td>(Use the <a href="#global-include">global
+          <code>include_config</code> option</a>)</td></tr>
+      <tr><td><code>diff_command</code> (deprecated)</td>
+          <td>command line</td>
+          <td>(Use the <a href="#group-diff-command"><code>diff_command</code>
+              option defined in group sections</a>)</td></tr>
       </table>
 
       <p>Though the <code>[general]</code> section defines such basic
@@ -491,11 +644,6 @@
 
       <p>The different options play together as follows:</p>
       <ul>
-        <li>If the <code>diff_command</code> option is given and not empty,
-        it is used to generate the diff output. Otherwise an internal differ
-        is used. The internal differ always generates the unified diff
-        format.</li>
-
         <li>If the <code>sendmail_command</code> option is given, it is used
         to send the mail.</li>
 
@@ -514,86 +662,6 @@
         small header, which configuration groups were selected). This can be
         used for debugging purposes.</li>
       </ul>
-
-<!-- general: config_charset -->
-        <h3><a name="general-config-charset"
-        id="general-config-charset">config_charset</a></h3>
-        <p>The <dfn><code>config_charset</code></dfn> option defines, how
-        the svnmailer should interpret the (bytes read as) option values in
-        your config files. It defaults to <code>us-ascii</code>, which means,
-        normally you can leave it just out. But note that there are
-        exceptions. The options of type "quoted literal" are not
-        charset decoded, but taken literally (though possibly unquoted).
-        Furthermore the first item of command line option values (the command
-        itself) <em>may</em> be interpreted literally, too. This depends on
-        the OS and the <a
-        href="#cmd-path-encoding"><code>--path-encoding</code></a> option. See
-        there for details.</p>
-
-        <p>There's a subtle limitation: <code>config_charset</code>
-        should be an <code>US-ASCII</code> based encoding (for example,
-        <code>UTF-16</code> is a bad choice).</p>
-
-        <div class="example"><p><code>
-        # Example<br />
-        # =======<br />
-        [general]<br />
-        config_charset = iso-8859-1
-        </code></p></div>
-
-<!-- general: include_config -->
-        <h3><a name="general-include-config"
-        id="general-include-config">include_config</a></h3>
-        <p>The <dfn><code>include_config</code></dfn> option specifies further
-        config files to append to the current one. The config files can be
-        defined using either relative or absolute paths in the filesystem.
-        Relative paths are taken relative to the config file which includes
-        them. The option value is parsed like a command line -- it is split
-        on whitespaces, except when they are quoted. Have a look at the
-        description of <a
-        href="#groups-diff-command"><code>diff_command</code></a> for a
-        detailed explanation of the rules.</p>
-        
-        <p>One typical use of <code>include_config</code> is to exclude
-        mappings from the main config for maintenance and/or security
-        reasons.</p>
-
-        <p>Note that it is not possible (yet?) to override a section by
-        including another file. Each and every section still can only be
-        defined <em>once</em>.</p>
-
-        <div class="example"><p><code>
-          # Example<br />
-          # =======<br />
-          [general]<br />
-          include_config = passwords.txt<br />
-          <br />
-          smtp_user = smtpuser<br />
-          smtp_pass = smtppass<br />
-          <br />
-          [maps]<br />
-          smtp_user = [smtp]<br />
-          smtp_pass = [smtp]<br />
-        </code></p></div>
-
-        <p>And the following could be the <code>passwords.txt</code> file:</p>
-
-        <div class="example"><p><code>
-          # Example<br />
-          # =======<br />
-          [smtp]<br />
-          smtpuser = "someuser"<br />
-          smtppass = "secret password"
-        </code></p></div>
-
-<!-- general: diff_command -->
-        <h3><a name="general-diff-command"
-        id="general-diff-command">diff_command</a></h3>
-        <p>The <dfn><code>diff_command</code></dfn> option in
-        <code>[general]</code> is deprecated. <a
-        href="#groups-diff-command"><code>diff_command</code> options defined
-        in group sections</a> are taken in preference of the one defined in
-        <code>[general]</code>.</p>
 
 <!-- general: sendmail_command -->
         <h3><a name="general-sendmail-command"
@@ -744,8 +812,7 @@
 
         <p>This one is a real debugging option. It specifies a fixed list of
         mail addresses, where all notification mails should be sent to --
-        regardless of the <a href="#groups-addr"><code>to_addr</code> or
-        <code>bcc_addr</code></a>
+        regardless of the <a href="#groups-addr"><code>to_addr</code></a>
         templates of the selected groups. The addresses of the overridden
         recipients are sent along with the mail using the
         <code>X-Supposed-Recipients</code> header.</p>
@@ -760,10 +827,34 @@
 <!-- general: cia_rpc_server -->
         <h3><a name="general-cia-rpc-server"
         id="general-cia-rpc-server">cia_rpc_server</a></h3>
-        <p>The <dfn><code>cia_rpc_server</code></dfn> in <code>[general]</code>
-        if deprecated. <a href="#groups-cia-rpc-server"
-        ><code>cia_rpc_server</code> options defined in group sections</a> are
-        preferred to the ones defined in <code>[general]</code>.</p>
+        <p>The <dfn><code>cia_rpc_server</code></dfn> option defines a <a
+        href="http://cia.navi.cx/">CIA</a> XML-RPC handler, where your commits 
+        or some of them) should be tracked in real time. If this option is
+        defined and not empty, the <code>cia_xmlrpc</code> notifier is
+        considered to be run, but it will be activated only if the <a
+        href="#config-selection">selected notification group</a> defines a <a
+        href="#groups-cia-project-name"><code>cia_project_name</code></a>
+        option. Note that it's possible for every group to run more than one
+        notifier (e.g., <code>mail</code> and <code>cia_xmlrpc</code>) per
+        commit.</p>
+
+        <p>The <code>cia_rpc_server</code> option takes a <code>http</code> or
+        <code>https</code> URL. Note that the trailing slash is
+        <em>important</em>. If there's no URL path given (i.e., just
+        <code>http://server</code>), the svnmailer (or better, the utilized <a
+        href="http://docs.python.org/lib/module-xmlrpclib.html">XML-RPC
+        library</a>) assumes it to be <code>/RPC2</code>.</p>
+
+        <p>The CIA notifier will not send any information if it runs in the
+        post-revprop-change hook. By default there's no RPC server defined.</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          [general]<br />
+          # (note the missing trailing slash!)<br />
+          cia_rpc_server = http://cia.navi.cx
+        </code></p></div>
 
 <!-- general: tempdir -->
         <h3><a name="general-tempdir" id="general-tempdir">tempdir</a></h3>
@@ -779,6 +870,27 @@
           [general]<br />
           tempdir = /space/svnmailer-tmp
         </code></p></div>
+
+<!-- general: config_charset -->
+        <h3><a name="general-config-charset"
+        id="general-config-charset">config_charset</a></h3>
+        <p>Defining this option inside <code>[general]</code> is deprecated.
+        Use the <a href="#global">global context</a> instead.</p>
+
+<!-- general: include_config -->
+        <h3><a name="general-include-config"
+        id="general-include-config">include_config</a></h3>
+        <p>Defining this option inside <code>[general]</code> is deprecated.
+        Use the <a href="#global">global context</a> instead.</p>
+
+<!-- general: diff_command -->
+        <h3><a name="general-diff-command"
+        id="general-diff-command">diff_command</a></h3>
+        <p>The <dfn><code>diff_command</code></dfn> option in
+        <code>[general]</code> is deprecated. <a
+        href="#groups-diff-command"><code>diff_command</code> options defined
+        in group sections</a> are taken in preference of the one defined in
+        <code>[general]</code>.</p>
 
 <!-- groups -->
       <h2><a name="groups" id="groups">Group Configuration Sections</a></h2>
@@ -855,9 +967,24 @@
           <td>token list</td>
           <td>The list of actions, which generate diffs</td></tr>
       <tr><td><code>browser_base_url</code></td>
-          <td>string</td>
+          <td>template</td>
           <td>Base URL and type of the repository browser
               installation</td></tr>
+      <tr><td><code>revision_url</code></td>
+          <td>template</td>
+          <td>URL format for revision overviews</td></tr>
+      <tr><td><code>diff_add_url</code></td>
+          <td>template</td>
+          <td>URL format for added files</td></tr>
+      <tr><td><code>diff_copy_url</code></td>
+          <td>template</td>
+          <td>URL format for copied (and modified) files</td></tr>
+      <tr><td><code>diff_delete_url</code></td>
+          <td>template</td>
+          <td>URL format for deleted files</td></tr>
+      <tr><td><code>diff_modify_url</code></td>
+          <td>template</td>
+          <td>URL format for modified files</td></tr>
       <tr><td><code>viewcvs_base_url</code></td>
           <td>string</td>
           <td>(<em>DEPRECATED</em>) Base URL of the ViewCVS
@@ -893,9 +1020,6 @@
           <td>boolean</td>
           <td>Treats the author as x509 subject string and tries to extract
               the author's real name and email address</td></tr>
-      <tr><td><code>cia_rpc_server</code></td>
-          <td>string</td>
-          <td>CIA XML-RPC tracking server</td></tr>
       <tr><td><code>cia_project_name</code></td>
           <td>template</td>
           <td>The project name submitted to the CIA tracker</td></tr>
@@ -1295,36 +1419,25 @@
 <!-- groups: from_addr -->
 <!-- groups: to_addr -->
 <!-- groups: reply_to_addr -->
-        <h3><a name="groups-addr" id="groups-addr">from_addr, reply_to_addr,
-        to_addr, to_fake and bcc_addr</a></h3>
-        <p><dfn><code>from_addr</code></dfn>,
-        <dfn><code>reply_to_addr</code></dfn>, <dfn><code>to_addr</code></dfn>
-        and <dfn><code>bcc_addr</code></dfn> define address templates for
-        the mails to be sent. <code>from_addr</code>, <code>to_addr</code> and
-        <code>bcc_addr</code> accept space or tab separated lists of address
+        <h3><a name="groups-addr" id="groups-addr">from_addr, to_addr and
+        reply_to_addr</a></h3>
+        <p><dfn><code>from_addr</code></dfn>, <dfn><code>to_addr</code></dfn>
+        and <dfn><code>reply_to_addr</code></dfn> define address templates for
+        the mails to be sent. Both <code>from_addr</code> and
+        <code>to_addr</code> accept space or tab separated lists of address
         templates, while <code>reply_to_addr</code> takes just one address. The
-        basic semantics should be quite clear: <code>from_addr</code> defines
-        the sender addresses (but usually just one), <code>to_addr</code> the
-        recipient addresses which should show up in the <code>To</code> header,
-        <code>bcc_addr</code> the undisclosed recipients and
-        <code>reply_to_addr</code> the address, where answers to
+        semantics should be quite clear: <code>from_addr</code> defines the sender
+        addresses (but usually just one), <code>to_addr</code> the recipient
+        addresses and <code>reply_to_addr</code> the address, where answers to
         the commit mail should be sent to. If groups are merged during the
         selection process, there can be any number of senders, receivers and
         even reply-to addresses in the mail (which conforms to <a
-        href="http://ftp.rfc-editor.org/in-notes/rfc2822.txt">RFC 2822</a>,
-        if you care about such things). Duplicates in the address lists are
-        filtered away. In the case of more than one final sender address, the
-        svnmailer generates an additional <code>Sender:</code> header with the
-        first item of the sender address list (which is more or less random,
-        but they should be all valid, right?).</p>
-
-        <p>The <dfn><code>to_fake</code></dfn> option comes into play if you
-        have <code>bcc_addr</code> defined but no <code>to_addr</code>. By
-        default, the svnmailer would just omit the <code>To</code> header
-        and send the mail to the bcc recipients without this header. You
-        might want to fill the header with a dummy address in this case.
-        <code>to_fake</code> will be just written into the header but
-        not treated as valid recipient address.</p>
+        href="http://ftp.rfc-editor.org/in-notes/rfc2822.txt">RFC 2822</a>, if you
+        care about such things). Duplicates in the address lists are filtered
+        away. In the case of more than one final sender address, the svnmailer
+        generates an additional <code>Sender:</code> header with the first
+        item of the sender address list (which is more or less random, but
+        they should be all valid, right?).</p>
 
         <p>If there are no sender addresses given, it uses the string
         <code>no_author</code> (as the original script does). That may lead to
@@ -1336,7 +1449,7 @@
         XML-RPC active). If this is not, what you want, you have to
         supply functioning <code>to_addr</code> options.</p>
 
-        <p>All those options may contain <a
+        <p>All those addresses may contain <a
         href="#groups-subst">substitution</a> patterns in the form
         <code>%(<var>name</var>)s</code>. The list of values to substitute is
         determined for each notification group dynamically using the
@@ -1352,9 +1465,6 @@
         <p>All address templates described here are empty by default. For
         compatibility reasons the <code>reply_to_addr</code> option can also
         be written as <code>reply_to</code>.</p>
-
-        <p><code>bcc_addr</code> and <code>to_fake</code> are available in
-        version 1.0.8 and later.</p>
 
         <div class="example"><p><code>
           # Example<br />
@@ -1437,8 +1547,8 @@
 
         <p>Note that on POSIX systems no shell is called to execute the
         program, so shell metacharacters are not interpreted. However, on
-        Win32 the shell (<code>cmd.exe</code> &amp; Co.) <em>is</em> called,
-        but the arguments are properly escaped.</p>
+        Win32 the shell (<code>cmd.exe</code> &amp; Co.) <em>may</em> be
+        called, but the arguments are properly escaped then.</p>
 
         <p>For compatibility and convenience the <code>diff_command</code>
         option can also be written as <code>diff</code>.</p>
@@ -1509,12 +1619,20 @@
         not empty, the svnmailer generates URLs for the specified repository
         browser. One URL for the whole revision is placed on top and for every
         generated file diff a conrete URL is written before the actual diff
-        output. The default value is empty and no urls are generated.</p>
+        output.</p>
 
-        <p>The option takes two parameters. The first one specifies the browser
+        <p>The option takes either one or two parameters. In case of
+        <em>one</em> parameter, it has to be <code>generic</code>. In this case
+        the svnmailer gets URL templates from the <a
+        href="#groups-generic-urls"><code>revision_url</code>,
+        <code>diff_add_url</code>, <code>diff_copy_url</code>,
+        <code>diff_delete_url</code> and <code>diff_modify_url</code></a>
+        options.</p>
+
+        <p>If you supply two parameters, the first one specifies the browser
         type. The second parameter determines the base url of the browser
         installation. The base url is interpreted by the semantics specified by
-        the type, which can be one of:</p>
+        the type, which (treated case insensitive) can be one of:</p>
 
         <dl>
           <dt><code>viewcvs</code></dt>
@@ -1543,7 +1661,49 @@
           However, the best way to get the proper base URL is to open the
           repository root directory in your browser and just copy the URL
           and paste it into the svnmailer config.</p></dd>
+          
+          <dt><code>svn::web</code></dt>
+          <dd>The base url specifies the repository's <a
+          href="http://search.cpan.org/~clkao/SVN-Web/">SVN::Web</a>
+          root listing URL. The svnmailer appends the desired action (like
+          <code>checkout</code>, <code>browse</code>, or <code>diff</code>)
+          to this path and touches the following query parameters:
+          <code>rev</code>, <code>rev1</code> and <code>rev2</code>. Since
+          <code>SVN::Web</code> currently does not support diffs between files
+          on different locations (such as copied and modified files), the
+          svnmailer just provides a checkout link for the new file.</dd>
+
+          <dt><code>chora</code></dt>
+          <dd>The base url specifies the repository's <a
+          href="http://horde.org/chora/">Chora</a> root listing URL.
+          The svnmailer appends (or replaces the non-directory portion like
+          <code>index.php</code> with) the desired action php script names
+          (like <code>co.php</code> or <code>diff.php</code>)
+          to this path and touches the following query parameters:
+          <code>r</code>, <code>r1</code> and <code>r2</code>. Further it
+          removes any <code>Horde</code> session id, so you could just
+          copy the URL from your browser and paste it into your config.
+          The <code>Chora</code> browser has some limitations: Currently
+          it does not support diffs between files on different locations
+          (such as copied and modified files), the svnmailer just provides
+          a checkout link for the new file in that case. It also doesn't
+          seem to support revision overviews; a link to the base directory
+          is supplied instead.</dd>
+
+          <dt><code>trac</code></dt>
+          <dd>The base url specifies your <a
+          href="http://www.edgewall.com/trac/">Trac</a> browser url. The actions
+          (<code>changeset</code>, <code>file</code>) are properly inserted and
+          the changed path appended. The only query parameter touched is
+          <code>rev</code>. Trac (as of version 0.8.2) cannot display single
+          file diffs where one could point to directly, so the svnmailer
+          provides normal file view URLs of the particular revision.</dd>
         </dl>
+
+        <p>If you don't specify <code>browser_base_url</code>, it defaults to
+        <code>generic</code>. This is compatible behaviour to the original
+        <code>mailer.py</code> script. If you specify
+        <code>browser_base_url</code> empty, URL generation is turned off.</p>
 
         <div class="example"><p><code>
           # Example<br />
@@ -1560,7 +1720,20 @@
           <br />
           # or websvn is configured using PATH_INFO<br />
           # (it's called multiviews in their docs)<br />
-          browser_base_url = websvn http://example.org/svn/<var>repos/</var>
+          browser_base_url = websvn http://example.org/svn/<var>repos/</var><br />
+          <br />
+          [SVN::Web group]<br />
+          browser_base_url = SVN::Web http://example.org/svn/<var>repos/</var><br />
+          <br />
+          [Chora using group]<br />
+          browser_base_url = Chora http://example.org/chora/?rt=<var>repos</var><br />
+          <br />
+          [Using Trac]<br />
+          browser_base_url = Trac http://example.org/trac/browser/<br />
+          <br />
+          [Using something completely different]<br />
+          browser_base_url = Generic<br />
+          revision_url = http://example.org/foo/?r=%(revision)s
         </code></p></div>
 
         <p>And here is an output of a change in a sample repository
@@ -1591,6 +1764,69 @@
           Propchange: foo/eggs<br />
           ------------------------------------------------------------------------------<br />
           &nbsp;&nbsp;&nbsp;&nbsp;color = white
+        </code></p></div>
+
+<!-- groups: revision_url -->
+<!-- groups: diff_add_url -->
+<!-- groups: diff_copy_url -->
+<!-- groups: diff_delete_url -->
+<!-- groups: diff_modify_url -->
+        <h3><a name="groups-generic-urls"
+        id="groups-generic-urls">revision_url, diff_add_url, diff_copy_url,
+        diff_delete_url and diff_modify_url</a></h3>
+        <p>These options can be used to specify URL templates, if the built-in
+        URL generators provided by the <a
+        href="#groups-browser-base"><code>browser_base_url</code></a> option
+        are not sufficient. In order to let the svnmailer use the templates
+        you may not specify <code>browser_base_url</code> at all or set it
+        explicitly to <code>generic</code>. The latter variant is
+        preferred, however.</p>
+
+        <p>The <dfn><code>revision_url</code></dfn> option should specify an
+        URL that gives an overview of the particular revision (log entry, list
+        of changed files). The other options should be configured with URLs that
+        can placed above the accompanying diffs (see <a
+        href="#groups-generate-diffs">generate_diffs</a>). You don't need to
+        specify each option. The ones you leave out, just won't be provided in
+        the mail. By default all options are empty.</p>
+
+        <p>In addition to the <a href="#groups-subst">normal substitution
+        record</a> the following substitutions are available:</p>
+
+        <table summary="Additional substitutions" class="options">
+        <caption>Additional substitutions</caption>
+        <tr><th>Name</th><th>Value Description</th></tr>
+        <tr><td><code>path</code></td>
+            <td>The path of the changed file</td></tr>
+        <tr><td><code>base_path</code></td>
+            <td>The path of the changed file in the previous
+                revision</td></tr>
+        <tr><td><code>base_revision</code></td>
+            <td>The previous revision of the file</td></tr>
+        <tr><td><code>base_rev</code></td>
+            <td>A compatibility alias for
+                <code>base_revision</code></td></tr>
+        <tr><td><code>rev</code></td>
+            <td>A compatibility alias for <code>revision</code></td></tr>
+        </table>
+
+        <p>Note that all paths are given without a leading slash. Furthermore
+        <em>all</em> substitution values are first UTF-8 encoded and then
+        URL escaped (so <code>Andr&eacute;</code> becomes
+        <code>Andr%C3%A9</code>).</p>
+
+        <div class="example"><p><code>
+          # Example<br />
+          # =======<br />
+          # (Linebreaks after equal signs are not intended)<br />
+          <br />
+          [defaults]<br />
+          browser_base_url = Generic<br />
+          revision_url = http://example.org/foo/?rev=%(revision)s<br />
+          diff_add_url = http://example.org/foo/%(path)s?rev=%(revision)s<br />
+          diff_copy_url = http://example.org/foo/%(path)s/?p=/%(base_path)s&amp;r1=%(base_revision)s&amp;r2=%(revision)s<br />
+          diff_delete_url = http://example.org/foo/%(base_path)s?rev=%(base_revision)s<br />
+          diff_modify_url = http://example.org/foo/%(path)s/?r1=%(base_revision)s&amp;r2=%(revision)s
         </code></p></div>
 
 <!-- groups: viewcvs_base_url -->
@@ -2052,41 +2288,6 @@ Modified: foo/somefile.html.ru<br />
           from_addr = %(x509_address)s
         </code></p></div>
 
-<!-- groups: cia_rpc_server -->
-        <h3><a name="groups-cia-rpc-server"
-        id="groups-cia-rpc-server">cia_rpc_server</a></h3>
-        <p>The <dfn><code>cia_rpc_server</code></dfn> option defines a <a
-        href="http://cia.navi.cx/">CIA</a> XML-RPC handler, where your commits 
-        or some of them) should be tracked in real time. If this option is
-        defined and not empty, the <code>cia_xmlrpc</code> notifier is
-        considered to be run, but it will be activated only if the <a
-        href="#config-selection">selected notification group</a> defines a <a
-        href="#groups-cia-project-name"><code>cia_project_name</code></a>
-        option. Note that it's possible for every group to run more than one
-        notifier (e.g., <code>mail</code> and <code>cia_xmlrpc</code>) per
-        commit.</p>
-
-        <p>The <code>cia_rpc_server</code> option takes a <code>http</code> or
-        <code>https</code> URL. Note that the trailing slash is
-        <em>important</em>. If there's no URL path given (i.e., just
-        <code>http://server</code>), the svnmailer (or better, the utilized <a
-        href="http://docs.python.org/lib/module-xmlrpclib.html">XML-RPC
-        library</a>) assumes it to be <code>/RPC2</code>.</p>
-
-        <p>The CIA notifier will not send any information if it runs in the
-        post-revprop-change hook. By default there's no RPC server defined.</p>
-
-        <p>The <code>cia_rpc_server</code> option is allowed in group
-        section in version 1.0.8 and later.</p>
-
-        <div class="example"><p><code>
-          # Example<br />
-          # =======<br />
-          [defaults]<br />
-          # (note the missing trailing slash!)<br />
-          cia_rpc_server = http://cia.navi.cx
-        </code></p></div>
-
 <!-- groups: cia_project_name -->
         <h3><a name="groups-cia-project-name"
         id="groups-cia-project-name">cia_project_name</a></h3>
@@ -2094,7 +2295,7 @@ Modified: foo/somefile.html.ru<br />
         name under which the changes are tracked in a <a
         href="http://cia.navi.cx/">CIA real time tracker</a>. In order to track
         your projects using CIA notifiations you need to define the <a
-        href="#groups-cia-rpc-server"><code>cia_rpc_server</code></a> option
+        href="#general-cia-rpc-server"><code>cia_rpc_server</code></a> option
         properly at least and a <code>cia_project_name</code> for the
         notification groups that should be tracked. However, you should
         consider to set <a
@@ -2109,7 +2310,7 @@ Modified: foo/somefile.html.ru<br />
         <div class="example"><p><code>
           # Example<br />
           # =======<br />
-          [defaults]<br />
+          [general]<br />
           cia_rpc_server = http://cia.example.org<br />
           <br />
           [some group]<br />
@@ -2135,9 +2336,11 @@ Modified: foo/somefile.html.ru<br />
         <div class="example"><p><code>
           # Example<br />
           # =======<br />
+          [general]<br />
+          cia_rpc_server = http://cia.example.org<br />
+          <br />
           [defaults]<br />
           for_paths = [^/]+/(?P&lt;MOD&gt;[^/]+)/(?:branches/(?P&lt;BRA&gt;[^/]+)/)?<br />
-          cia_rpc_server = http://cia.example.org<br />
           cia_project_module = %(MOD)s<br />
           cia_project_branch = %(BRA)s<br />
           <br />
@@ -2168,9 +2371,11 @@ Modified: foo/somefile.html.ru<br />
         <div class="example"><p><code>
           # Example<br />
           # =======<br />
+          [general]<br />
+          cia_rpc_server = http://cia.example.org<br />
+          <br />
           [defaults]<br />
           for_paths = (?P&lt;PATH&gt;[^/]+)/(?P&lt;MOD&gt;[^/]+)/(?:branches/(?P&lt;BRA&gt;[^/]+)/)?<br />
-          cia_rpc_server = http://cia.example.org<br />
           cia_project_module = %(MOD)s<br />
           cia_project_branch = %(BRA)s<br />
           cia_project_path   = %(PATH)s<br />
@@ -2419,7 +2624,7 @@ Modified: foo/somefile.html.ru<br />
         <br />
         # post-unlock hook:<br />
         /usr/bin/svn-mailer --unlock --config /path/to/your/config \<br />
-        <span class="indent">--repository "${REPOS}" --author "${USER}"</span>
+        <span class="indent">--repository "${REPOS}" --author "${USER}" &amp;</span>
       </code></p></div>
 
       <p>The <code>REPOS</code> and <code>USER</code> variables should be still
@@ -2462,6 +2667,9 @@ Modified: foo/somefile.html.ru<br />
       <tr><td><code>--debug</code></td>
           <td>flag</td>
           <td>Turns on debugging mode</td></tr>
+      <tr><td><code>--background</code></td>
+          <td>flag</td>
+          <td>Does the work from the background</td></tr>
       <tr><td><code>--path-encoding</code> (<code>-e</code>)</td>
           <td>string</td>
           <td>The encoding used for file and path names</td></tr>
@@ -2571,7 +2779,7 @@ Modified: foo/somefile.html.ru<br />
 
       <div class="example"><p><code>
         $ svn-mailer --version<br />
-        svnmailer-1.0.8<br />
+        svnmailer-1.1.0-dev-r1373<br />
         with svn 1.1.3 (r12730)
       </code></p></div>
 
@@ -2600,7 +2808,7 @@ Modified: foo/somefile.html.ru<br />
         Content-Type: text/plain; charset="utf-8"<br />
         MIME-Version: 1.0<br />
         Content-Transfer-Encoding: quoted-printable<br />
-        X-Mailer: svnmailer-1.0.8<br />
+        X-Mailer: svnmailer-1.1.0-dev-r1373<br />
         Date: Sat, 15 Jan 2005 21:03:58 -0000<br />
         Subject: r1 - foo<br />
         To: foo@example.org<br />
@@ -2617,6 +2825,41 @@ Modified: foo/somefile.html.ru<br />
         Added:<br />
         &nbsp; &nbsp; foo/
       </code></p></div>
+
+<!-- cmd: background -->
+      <h3><a name="cmd-background" id="cmd-background">--background
+      (-b)</a></h3>
+      <p>The <dfn><code>--background</code></dfn> option lets the svnmailer
+      do its work detached from the hook script. From the view of the hook
+      script it exits immediately (with success). From the view of the
+      mailer a child process is started, which inherits <code>STDIN</code>,
+      <code>STDOUT</code>, <code>STDERR</code> and the command line and
+      the actual work is done asynchronously. In order to catch mailer errors
+      it is a good idea to log the <code>STDERR</code> channel to a
+      file:</p>
+
+      <div class="example"><p><code>
+        $ svnmailer [options] --background 2&gt;&gt;/path/to/svnmailer-errors.log
+      </code></p></div>
+
+      <p>The idea behind the <code>--background</code> option is to speed up
+      the hook script. If the mailer is started synchronously the committer
+      may get the feeling that the commit hangs for a while, especially if
+      the svnmailer does a lot of file system access operations.</p>
+
+      <p>If your platform does not support starting a detached child process,
+      or an error occurs the <code>--background</code> option writes a warning
+      to <code>STDERR</code> and does its work synchronously instead.
+      Platforms supporting the <code>fork(2)</code> and <code>setsid(2)</code>
+      system calls are supported at all. On Windows it depends. When running
+      Python 2.3 you need to have the <a
+      href="http://pywin32.sourceforge.net/">pywin32</a> package installed.
+      Fortunately <a href="http://activestate.com/">ActivePython</a> already
+      bundles the <code>pywin32</code> package. Python versions greater or
+      equal 2.4 provide the necessary interfaces out of the box.</p>
+
+      <p><strong>Warning:</strong> The <code>--background</code> option is
+      experimental on windows platforms.</p>
 
 <!-- cmd: path-encoding -->
       <h3><a name="cmd-path-encoding" id="cmd-path-encoding">--path-encoding
@@ -2765,7 +3008,7 @@ Modified: foo/somefile.html.ru<br />
       written as <code>-o</code> (shortcut for "operation" :-).</p>
     </div>
     <div id="footer">
-      <p>Copyright 2004-2006 Andr&eacute; Malo or his licensors,
+      <p>Copyright 2004-2005 Andr&eacute; Malo or his licensors,
       as applicable.</p>
       <div class="arrowup">
         <a href="#logo" title="top">

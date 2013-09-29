@@ -116,14 +116,6 @@ h1 {
   color: #2A3167;
 }
 
-#content h2 a,
-#content h2 a:hover,
-#content h2 a:active {
-  color: #2A3167;
-  background-color: inherit;
-  text-decoration: none;
-}
-
 #content h3 {
   margin: 1.3em 0 0.4em 0;
   padding: 0;
@@ -136,6 +128,17 @@ h1 {
 
 #content h3 + ul {
   margin-top: 0;
+}
+
+#content h2 a,
+#content h2 a:hover,
+#content h2 a:active,
+#content h3 a,
+#content h3 a:hover,
+#content h3 a:active {
+  color: #2A3167;
+  background-color: inherit;
+  text-decoration: none;
 }
 
 #content p,dt,dd,li {

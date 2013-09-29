@@ -35,25 +35,33 @@
 <!-- =========== START OF PACKAGE DESCRIPTION =========== -->
 <h2 class="package">Package svnmailer</h2>
 
-This is the core svnmailer package. It contains all logic to send 
-subversion commit mails. The package is intended to be used by the 
-svn-mailer command line script.
-<hr/>
+This is the svnmailer package. It contains all logic to post subversion
+event notifications. The package is intended to be used by the <tt class="literal"><span class="pre">svn-mailer</span></tt>
+command line script.<hr/>
 
 <!-- =========== START OF SUBMODULES =========== -->
 <table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="details">
   <th colspan="2">Submodules</th></tr>
   <tr><td><ul>
-<li> <b><a href="svnmailer.browser-module.html"><code>browser</code></a></b>: <i>Respository Browser URL construction</i>
+<li> <b><a href="svnmailer.browser-module.html"><code>browser</code></a></b>: <i>This package contains the different browser URL generator classes.</i>
+  <ul>
+    <li> <b><a href="../private/svnmailer.browser._base-module.html"><code>_base</code></a></b>: <i>All browser generator classes should utilize the tools and base classes
+provides by this module.</i>
+    <li> <b><a href="../private/svnmailer.browser.chora-module.html"><code>chora</code></a></b>: <i><a class="reference" href="http://horde.org/chora/">Chora</a> repository browser URL construction</i>
+    <li> <b><a href="../private/svnmailer.browser.generic-module.html"><code>generic</code></a></b>: <i>Generic repository browser URL construction</i>
+    <li> <b><a href="../private/svnmailer.browser.svnweb-module.html"><code>svnweb</code></a></b>: <i><a class="reference" href="http://freshmeat.net/projects/svnweb/">SVN::Web</a> repository browser URL construction</i>
+    <li> <b><a href="../private/svnmailer.browser.trac-module.html"><code>trac</code></a></b>: <i><a class="reference" href="http://www.edgewall.com/trac/">Trac</a> repository browser URL construction</i>
+    <li> <b><a href="../private/svnmailer.browser.viewcvs-module.html"><code>viewcvs</code></a></b>: <i><a class="reference" href="http://viewcvs.sourceforge.net/">ViewCVS</a> repository browser URL construction</i>
+    <li> <b><a href="../private/svnmailer.browser.websvn-module.html"><code>websvn</code></a></b>: <i><a class="reference" href="http://websvn.tigris.org/">WebSVN</a> repository browser URL construction</i>
+  </ul>
 <li> <b><a href="svnmailer.cli-module.html"><code>cli</code></a></b>: <i>The svnmailer provides two different command line interfaces.</i>
-<li> <b><a href="svnmailer.config-module.html"><code>config</code></a></b>: <i>Configfile parsing</i>
 <li> <b><a href="svnmailer.differ-module.html"><code>differ</code></a></b>: <i>Differ classes</i>
 <li> <b><a href="svnmailer.main-module.html"><code>main</code></a></b>: <i>This module is the central core of the svnmailer.</i>
 <li> <b><a href="svnmailer.notifier-module.html"><code>notifier</code></a></b>: <i>Package svnmailer.notifier</i>
   <ul>
-    <li> <b><a href="svnmailer.notifier.cia_xmlrpc-module.html"><code>cia_xmlrpc</code></a></b>: <i>This notifier delivers a notification message in XML format to a <a 
-href="http://cia.navi.cx/">CIA server</a>.</i>
+    <li> <b><a href="svnmailer.notifier.cia_xmlrpc-module.html"><code>cia_xmlrpc</code></a></b>: <i>This notifier delivers a notification message in XML format
+to a <a class="reference" href="http://cia.navi.cx/">CIA server</a>.</i>
     <li> <b><a href="svnmailer.notifier.mail-module.html"><code>mail</code></a></b>: <i>Text based email notifiers (either piped to a program or via SMTP)</i>
     <li> <b><a href="svnmailer.notifier.news-module.html"><code>news</code></a></b>: <i>Text based news notifier (via NNTP)</i>
     <li> <b><a href="svnmailer.notifier.selector-module.html"><code>selector</code></a></b>: <i>notifier selector module</i>
@@ -65,17 +73,36 @@ href="http://cia.navi.cx/">CIA server</a>.</i>
     <li> <b><a href="../private/svnmailer.notifier._textmail-module.html"><code>_textmail</code></a></b>: <i>text based email notifier</i>
     <li> <b><a href="../private/svnmailer.notifier._textnews-module.html"><code>_textnews</code></a></b>: <i>Text based news notifier</i>
   </ul>
-<li> <b><a href="svnmailer.settings-module.html"><code>settings</code></a></b>: <i>This module defines one public class, called <a 
-href="svnmailer.settings.Settings-class.html" 
-class="link"><code>Settings</code></a>.</i>
+<li> <b><a href="svnmailer.processes-module.html"><code>processes</code></a></b>: <i>This module contains a portable class (<a href="svnmailer.processes.Process-class.html" class="link"><code>Process</code></a>) for process creation
+with pipes.</i>
+<li> <b><a href="svnmailer.settings-module.html"><code>settings</code></a></b>: <i>This package is responsible for all settings logic.</i>
+  <ul>
+    <li> <b><a href="../private/svnmailer.settings._accessors-module.html"><code>_accessors</code></a></b>: <i>This module defines the settings member descriptors used by the svnmailer.</i>
+    <li> <b><a href="../private/svnmailer.settings._base-module.html"><code>_base</code></a></b>: <i>Base classes for setting loader implementations</i>
+    <li> <b><a href="../private/svnmailer.settings._fileparser-module.html"><code>_fileparser</code></a></b>: <i>This parser is derived from the <a class="reference" href="http://docs.python.org/lib/module-ConfigParser.html">ConfigParser module</a>, which
+unfortunately has some design and documentation flaws.</i>
+    <li> <b><a href="../private/svnmailer.settings._typedstruct-module.html"><code>_typedstruct</code></a></b>: <i>The classes defined in this module are responsible for the separation of
+the settings logic from the application logic.</i>
+    <li> <b><a href="../private/svnmailer.settings.configfile-module.html"><code>configfile</code></a></b>: <i>This module provides a settings loader, which pulls the config from an
+INI like text file.</i>
+    <li> <b><a href="../private/svnmailer.settings.mappers-module.html"><code>mappers</code></a></b>: <i>The mapper provided by the <a href="../private/svnmailer.settings.mappers.PlainMapper-class.html" class="link"><code>PlainMapper</code></a> class maps value according to
+configured mapping sections.</i>
+  </ul>
 <li> <b><a href="svnmailer.stream-module.html"><code>stream</code></a></b>: <i>svnmailer stream objects</i>
-<li> <b><a href="svnmailer.struct_accessors-module.html"><code>struct_accessors</code></a></b>: <i>This module exactly describes the struct member definitions used by 
-the svnmailer.</i>
 <li> <b><a href="svnmailer.subversion-module.html"><code>subversion</code></a></b>: <i>Access to the subversion respository</i>
-<li> <b><a href="svnmailer.typedstruct-module.html"><code>typedstruct</code></a></b>: <i>This module provides helpers for creating typed data structures.</i>
-<li> <b><a href="svnmailer.util-module.html"><code>util</code></a></b>: <i>This module contains some utility functions and classes used in 
-several places of the svnmailer.</i>
+<li> <b><a href="svnmailer.util-module.html"><code>util</code></a></b>: <i>This module contains some utility functions and classes used in several
+places of the svnmailer.</i>
   </ul></td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASSES =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Classes</th></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer._Version-class.html"><code>_Version</code></a></b></td>
+  <td>Represents the svnmailer version</td></tr>
 </table><br />
 
 
@@ -83,9 +110,7 @@ several places of the svnmailer.</i>
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>bool</code></font></td>
-<td><b><a href="svnmailer-module.html#is_dev"><code>is_dev</code></a></b>: is development version?</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer._Version-class.html" class="link"><code>_Version</code></a></font></td>
 <td><b><a href="svnmailer-module.html#version"><code>version</code></a></b>: Version of the svnmailer package</td></tr>
 </table><br />
 
@@ -96,43 +121,20 @@ several places of the svnmailer.</i>
   <th colspan="2">Variable Details</th></tr>
 </table>
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
-<a name="is_dev"></a>
-<h3>is_dev</h3>
-is development version?
-<dl>
-  <dt></dt>
-  <dd>
-    <dl>
-      <dt><b>Type:</b></dt>
-      <dd>
-          <code>bool</code>
-
-      </dd>
-<span title="False">      <dt><b>Value:</b></dt>
-      <dd><table><tr><td>
-<pre class="variable">
-False                                                                  </pre>
-        </td></tr></table></dd>
-</span>    </dl>
-  </dd>
-</dl></td></tr></table>
-<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="version"></a>
 <h3>version</h3>
-Version of the svnmailer package
-<dl>
+Version of the svnmailer package<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>str</code>
-
+<a href="../private/svnmailer._Version-class.html" class="link"><code>_Version</code></a>
       </dd>
-<span title="'1.0.8'">      <dt><b>Value:</b></dt>
+<span title="&lt;svnmailer.version 1.1.0-dev-r1373&gt;">      <dt><b>Value:</b></dt>
       <dd><table><tr><td>
 <pre class="variable">
-<span class="variable-quote">'</span>1.0.8<span class="variable-quote">'</span>                                                                </pre>
+&lt;svnmailer.version 1.1.0-dev-r1373&gt;                                    </pre>
         </td></tr></table></dd>
 </span>    </dl>
   </dd>
@@ -153,7 +155,7 @@ Version of the svnmailer package
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:07 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

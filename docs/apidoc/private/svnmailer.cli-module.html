@@ -36,15 +36,14 @@
 <!-- =========== START OF MODULE DESCRIPTION =========== -->
 <h2 class="module">Module svnmailer.cli</h2>
 
-<h1 class="heading">Command line interface</h1>
-  <p>The svnmailer provides two different command line interfaces. On the 
-  one hand there's the compatibility command line to the mailer.py 
-  script, which has some limitations and problems because of its 
-  unflexibility. On the other hand you'll find the new-style command 
-  line, which contains no subcommands and fixed parameters at all.</p>
-  The CLI simply transforms old-style command lines to the new format 
-  internally and processes these further using the optparse module:
-<pre class="literalblock">
+<p>The svnmailer provides two different command line interfaces. On the one hand
+there's the compatibility command line to the <a class="reference" href="http://svn.collab.net/viewcvs/svn/trunk/tools/hook-scripts/mailer/mailer.py">mailer.py script</a>, which has
+some limitations and problems because of its unflexibility. On the other hand
+you'll find the new-style command line, which contains no subcommands and
+fixed parameters at all.</p>
+<p>The CLI simply transforms old-style command lines to the new format internally
+and processes these further using the optparse module:</p>
+<pre class="literal-block">
    svn-mailer commit &lt;rep&gt; &lt;rev&gt; [&lt;config&gt;]
 -&gt; svn-mailer --commit --repository &lt;rep&gt; --revision &lt;rev&gt;
              [--config &lt;config&gt;]
@@ -54,7 +53,7 @@
               --author &lt;author&gt; --propname &lt;prop&gt;
              [--config &lt;conf&gt;]
 
-   # (useful with svn 1.2 and later)
+   # (available with svn 1.2 and later)
    svn-mailer propchange2 &lt;rep&gt; &lt;rev&gt; &lt;author&gt; &lt;prop&gt; &lt;action&gt; [&lt;conf&gt;]
 -&gt; svn-mailer --propchange --repository &lt;rep&gt; --revision &lt;rev&gt;
               --author &lt;author&gt; --propname &lt;prop&gt; --action &lt;action&gt;
@@ -75,8 +74,11 @@
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Classes</th></tr>
 <tr><td width="15%">
-  <b><a href="../private/svnmailer.cli.SvnmailerOptionParser-class.html"><code>SvnmailerOptionParser</code></a></b></td>
+  <b><a href="svnmailer.cli.OptionParser-class.html"><code>OptionParser</code></a></b></td>
   <td>Fully initialized option parser</td></tr>
+<tr><td width="15%">
+  <b><a href="../private/svnmailer.cli.OptionHelper-class.html"><code>OptionHelper</code></a></b></td>
+  <td>Option parser helper class</td></tr>
 </table><br />
 
 
@@ -88,57 +90,9 @@
   <b><a href="svnmailer.cli.CommandlineError-class.html"><code>CommandlineError</code></a></b></td>
   <td>Error in commandline</td></tr>
 <tr><td width="15%">
-  <b><a href="../private/svnmailer.cli.Error-class.html"><code>Error</code></a></b></td>
+  <b><a href="svnmailer.cli.Error-class.html"><code>Error</code></a></b></td>
   <td>Base exception for this module</td></tr>
 </table><br />
-
-
-<!-- =========== START OF FUNCTION SUMMARY =========== -->
-<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="summary">
-  <th colspan="2">Function Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>optparse.OptionParser</code>
-</font></td>
-  <td><code><span class="summary-sig"><a href="svnmailer.cli-module.html#getOptions" class="summary-sig-name"><code>getOptions</code></a>(<span class=summary-sig-arg>argv</span>)</span></code>
-<br />
-Parse commandline options</td></tr>
-</table><br />
-
-
-<!-- =========== START OF FUNCTION DETAILS =========== -->
-<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="details">
-  <th colspan="2">Function Details</th></tr>
-</table>
-
-<a name="getOptions"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">getOptions</span>(<span class=sig-arg>argv</span>=<span class=sig-default>None</span>)</span>
-  </h3>
-  Parse commandline options
-  <dl><dt></dt><dd>
-    <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>argv</b></code> -
-         Command line list. If argv is None, sys.argv[1:] is evaluated 
-        instead
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
-      </dd>
-    </dl>
-    <dl><dt><b>Returns:</b></dt>
-      <dd>
-        option object
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>optparse.OptionParser</code>)</i>
-      </dd>
-    </dl>
-    <dl><dt><b>Raises:</b></dt>
-      <dd><code><b>CommandlineError</b></code> -
-        Error in command line options
-    </dl>
-  </dd></dl>
-</td></tr></table>
-<br />
 
 
 <!-- =========== START OF NAVBAR =========== -->
@@ -154,7 +108,7 @@ Parse commandline options</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:05 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

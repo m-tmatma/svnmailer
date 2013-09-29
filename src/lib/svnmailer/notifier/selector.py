@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-1 -*-
+# pylint-version = 0.7.0
 #
-# Copyright 2005-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,23 +17,23 @@
 """
 notifier selector module
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['Selector']
 
 
 class Selector(object):
     """ Notifier selector class
 
-        @ivar _settings: The svnmailer settings
-        @type _settings: C{svnmailer.settings.Settings}
+        :ivar _settings: The svnmailer settings
+        :type _settings: `svnmailer.settings._base.BaseSettings`
     """
 
     def __init__(self, settings):
         """ Initialization
 
-            @param settings: the svnmailer settings
-            @type settings: C{svnmailer.settings.Settings}
+            :param settings: the svnmailer settings
+            :type settings: `svnmailer.settings._base.BaseSettings`
         """
         self._settings = settings
 
@@ -40,11 +41,11 @@ class Selector(object):
     def selectNotifiers(self, groupset):
         """ Returns the initialized notifiers for the specified groupset
 
-            @param groupset: The groupset to process
-            @type groupset: C{list}
+            :param groupset: The groupset to process
+            :type groupset: ``list``
 
-            @return: The notifiers
-            @rtype: C{list} of C{svnmailer.notifier.*}
+            :return: The notifiers
+            :rtype: ``list`` of ``svnmailer.notifier.*``
         """
         from svnmailer.notifier import mail, news, cia_xmlrpc
 

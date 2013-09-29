@@ -44,7 +44,7 @@
 
 <dl><dt><b>Known Subclasses:</b></dt>
 <dd>
-    <a href="../private/svnmailer.cli.SvnmailerOptionParser-class.html"><code>SvnmailerOptionParser</code></a></dd></dl>
+    <a href="svnmailer.cli.OptionParser-class.html"><code>OptionParser</code></a></dd></dl>
 
 <hr/>
 
@@ -63,12 +63,7 @@ Instance attributes:
     the name of the current program (to override
     os.path.basename(sys.argv[0])).
 
-  option_groups : [OptionGroup]
-    list of option groups in this parser (option groups are
-    irrelevant for parsing the command-line, but very useful
-    for generating help)
-
-  allow_interspersed_args : bool = true
+  allow_interspersed_args : boolean = true
     if true, positional arguments may be interspersed with options.
     Assuming -a and -b each take a single argument, the command-line
       -ablah foo bar -bboo baz
@@ -80,14 +75,6 @@ Instance attributes:
     non-option argument.  (This is the tradition followed by
     Python's getopt module, Perl's Getopt::Std, and other argument-
     parsing libraries, but it is generally annoying to users.)
-
-  process_default_values : bool = true
-    if true, option default values are processed similarly to option
-    values from the command line: that is, they are passed to the
-    type-checking function for the option's type (as long as the
-    default value is a string).  (This really only matters if you
-    have defined custom types; see SF bug #955889.)  Set it to false
-    to restore the behaviour of Optik 1.4.1 and earlier.
 
   rargs : [string]
     the argument list currently being parsed.  Only set when
@@ -155,15 +142,6 @@ error(msg : string)
 
 Print a usage message incorporating 'msg' to stderr and exit.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><a name="exit"></a><span class="summary-sig"><span class="summary-sig-name">exit</span>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>status</span>,
-          <span class=summary-sig-arg>msg</span>)</span></code>
-</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><a name="expand_prog_name"></a><span class="summary-sig"><span class="summary-sig-name">expand_prog_name</span>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>s</span>)</span></code>
-</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><a name="format_help"></a><span class="summary-sig"><span class="summary-sig-name">format_help</span>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>formatter</span>)</span></code>
 </td></tr>
@@ -175,14 +153,8 @@ Print a usage message incorporating 'msg' to stderr and exit.</td></tr>
   <td><code><a name="get_default_values"></a><span class="summary-sig"><span class="summary-sig-name">get_default_values</span>(<span class=summary-sig-arg>self</span>)</span></code>
 </td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><a name="get_description"></a><span class="summary-sig"><span class="summary-sig-name">get_description</span>(<span class=summary-sig-arg>self</span>)</span></code>
-</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><a name="get_option_group"></a><span class="summary-sig"><span class="summary-sig-name">get_option_group</span>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>opt_str</span>)</span></code>
-</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><a name="get_prog_name"></a><span class="summary-sig"><span class="summary-sig-name">get_prog_name</span>(<span class=summary-sig-arg>self</span>)</span></code>
 </td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><a name="get_usage"></a><span class="summary-sig"><span class="summary-sig-name">get_usage</span>(<span class=summary-sig-arg>self</span>)</span></code>
@@ -235,28 +207,18 @@ Print the version message for this program (self.version) to
           <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
 </td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><a name="set_process_default_values"></a><span class="summary-sig"><span class="summary-sig-name">set_process_default_values</span>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>process</span>)</span></code>
-</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><a name="set_usage"></a><span class="summary-sig"><span class="summary-sig-name">set_usage</span>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>usage</span>)</span></code>
-</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><a name="_add_help_option"></a><span class="summary-sig"><span class="summary-sig-name">_add_help_option</span>(<span class=summary-sig-arg>self</span>)</span></code>
-</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><a name="_add_version_option"></a><span class="summary-sig"><span class="summary-sig-name">_add_version_option</span>(<span class=summary-sig-arg>self</span>)</span></code>
 </td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><a name="_create_option_list"></a><span class="summary-sig"><span class="summary-sig-name">_create_option_list</span>(<span class=summary-sig-arg>self</span>)</span></code>
 </td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><a name="_get_all_options"></a><span class="summary-sig"><span class="summary-sig-name">_get_all_options</span>(<span class=summary-sig-arg>self</span>)</span></code>
-</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><a name="_get_args"></a><span class="summary-sig"><span class="summary-sig-name">_get_args</span>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>args</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="_get_prog_name"></a><span class="summary-sig"><span class="summary-sig-name">_get_prog_name</span>(<span class=summary-sig-arg>self</span>)</span></code>
 </td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><a name="_init_parsing_state"></a><span class="summary-sig"><span class="summary-sig-name">_init_parsing_state</span>(<span class=summary-sig-arg>self</span>)</span></code>
@@ -550,7 +512,7 @@ interspersed non-option arguments in 'largs'.
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:14 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

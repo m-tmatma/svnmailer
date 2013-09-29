@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type Main</h2>
+<h2 class="class">Class Main</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+
@@ -45,8 +45,7 @@
 
 <hr/>
 
-main svnmailer logic
-<hr/>
+Main svnmailer logic<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -55,9 +54,21 @@ main svnmailer logic
   <th colspan="2">Method Summary</th></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.main.Main-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>options</span>)</span></code>
+          <span class=summary-sig-arg>settings</span>)</span></code>
 <br />
 Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.main.Main-class.html#fromCommandline" class="summary-sig-name"><code>fromCommandline</code></a>(<span class=summary-sig-arg>cls</span>,
+          <span class=summary-sig-arg>background</span>)</span></code>
+<br />
+Initializes <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> from command line arguments    <i>(Class method)</i>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.main.Main-class.html#fromOptions" class="summary-sig-name"><code>fromOptions</code></a>(<span class=summary-sig-arg>cls</span>,
+          <span class=summary-sig-arg>options</span>)</span></code>
+<br />
+Initializes <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> from an option container    <i>(Class method)</i>
+</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.main.Main-class.html#run" class="summary-sig-name"><code>run</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
@@ -76,12 +87,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
@@ -102,33 +107,36 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
-<!-- =========== START OF METHOD DETAILS =========== -->
+<!-- =========== START OF INSTANCE METHOD DETAILS =========== -->
 <table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="details">
-  <th colspan="2">Method Details</th></tr>
+  <th colspan="2">Instance Method Details</th></tr>
 </table>
 
 <a name="__init__"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
-          <span class=sig-arg>options</span>)</span>
+          <span class=sig-arg>settings</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>options</b></code> -
-         Command line options
+      <dd><code><b>settings</b></code> -
+ The settings to use
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>optparse.OptionParser</code>)</i>
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>svnmailer.settings._base.BaseSettings</code></a>)</i>
       </dd>
-    </dl>
-    <dl><dt><b>Raises:</b></dt>
-      <dd><code><b>ConfigError</b></code> -
-        Configuration error
     </dl>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
@@ -140,14 +148,71 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">run</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Dispatches the work to be done
-  <dl><dt></dt><dd>
+Dispatches the work to be done  <dl><dt></dt><dd>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>svnmailer.subversion.RepositoryError</b></code> -
-        Error while accessing the subversion repository
-      <dd><code><b>NotifierError</b></code> -
-        One or more notifiers went crazy
+Error while
+accessing the subversion repository      <dd><code><b>NotifierError</b></code> -
+One or more notifiers went crazy    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Method Details</th></tr>
+</table>
+
+<a name="fromCommandline"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">fromCommandline</span>(<span class=sig-arg>cls</span>,
+          <span class=sig-arg>background</span>=<span class=sig-default>True</span>)</span>
+  </h3>
+Initializes <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> from command line arguments  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>background</b></code> -
+ May the process daemonize itself?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      </dd>
     </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+A command line error occured      <dd><code><b>ConfigurationError</b></code> -
+A configuration error occured    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="fromOptions"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">fromOptions</span>(<span class=sig-arg>cls</span>,
+          <span class=sig-arg>options</span>)</span>
+  </h3>
+Initializes <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> from an option container  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+ The options to consider
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigError</b></code> -
+A configuration error occured    </dl>
   </dd></dl>
 </td></tr></table>
 <br />
@@ -166,7 +231,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:15 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = C0103, R0901, W0201
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=W0232,C0103,W0142,W0201
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,14 +18,16 @@
 """
 Access to the subversion respository
 
-@var version: The version of the subversion library (maj, min, pat, rev)
-@type version: C{_Version}
+:Variables:
+ - `version`: The version of the subversion library
+ - `_SVN_INVALID_REVNUM`: the invalid revision number
 
-@var _SVN_INVALID_REVNUM: the invalid revision number
-@type _SVN_INVALID_REVNUM: C{int}
+:Types:
+ - `version`: `_Version`
+ - `_SVN_INVALID_REVNUM`: ``int``
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = [
     'version', 'Repository', 'Error', 'RepositoryError', 'isUnicodeProperty'
     'VersionedPathDescriptor', 'LockedPathDescriptor',
@@ -47,23 +50,21 @@ Error = svn_core.SubversionException
 class _Version(object):
     """ SVN version container class
 
-        @ivar major: Major version
-        @type major: C{int}
+        :IVariables:
+         - `major`: Major version
+         - `minor`: Minor version
+         - `patch`: Patch level
+         - `revision`: Revision number
+         - `tag`: Additional tag
+         - `min_1_2`: SVN >= 1.2?
 
-        @ivar minor: Minor version
-        @type minor: C{int}
-
-        @ivar patch: Patch level
-        @type patch: C{int}
-
-        @ivar revision: Revision number
-        @type revision: C{int}
-
-        @ivar tag: Additional tag
-        @type tag: C{str}
-
-        @ivar min_1_2: SVN >= 1.2?
-        @type min_1_2: C{bool}
+        :Types:
+         - `major`: ``int``
+         - `minor`: ``int``
+         - `patch`: ``int``
+         - `revision`: ``int``
+         - `tag`: ``str``
+         - `min_1_2`: ``bool``
     """
 
     def __init__(self):
@@ -73,12 +74,20 @@ class _Version(object):
         self.revision = svn_core.SVN_VER_REVISION
         self.tag = svn_core.SVN_VER_TAG
         try:
-            self.patch = svn_core.SVN_VER_PATCH # 1.1
+            self.patch = svn_core.SVN_VER_PATCH # >=1.1
         except AttributeError:
             self.patch = svn_core.SVN_VER_MICRO # 1.0
 
         self.min_1_2 = bool(
             self.major > 1 or (self.major == 1 and self.minor >= 2)
+        )
+
+
+    def __repr__(self):
+        """ String representation for debugging """
+        return "<svn version %d.%d.%d%s rev:%d, 1.2+: %s>" % (
+            self.major, self.minor, self.patch,
+            self.tag, self.revision, self.min_1_2
         )
 
 version = _Version()
@@ -87,11 +96,11 @@ version = _Version()
 def isUnicodeProperty(name):
     """ Returns if the supplied name represents a translated property
 
-        @param name: The property name
-        @type name: C{str}
+        :param name: The property name
+        :type name: ``str``
 
-        @return: The decision
-        @rtype: C{bool}
+        :return: The decision
+        :rtype: ``bool``
     """
     return bool(svn_core.svn_prop_needs_translation(name))
 
@@ -99,11 +108,11 @@ def isUnicodeProperty(name):
 def isBinary(mtype):
     """ Returns True if the supplied mime type represents a binary
 
-        @param mtype: The mime type
-        @type mtype: C{str}
+        :param mtype: The mime type
+        :type mtype: ``str``
 
-        @return: The decision
-        @rtype: C{bool}
+        :return: The decision
+        :rtype: ``bool``
     """
     return bool(mtype and
         svn_core.svn_mime_type_is_binary(mtype)
@@ -113,21 +122,22 @@ def isBinary(mtype):
 class RepositoryError(Exception):
     """ A repository error occured
 
-        @ivar svn_err_code: The SVN error code
-        @type svn_err_code: C{int}
+        :IVariables:
+         - `svn_err_code`: The SVN error code
+         - `svn_err_name`: The name of the SVN error (if it could be mapped)
+         - `svn_err_str`: The SVN error description
 
-        @ivar svn_err_name: The name of the SVN error (if it could be mapped)
-        @type svn_err_name: C{str}
-
-        @ivar svn_err_str: The SVN error description
-        @type svn_err_str: C{str}
+        :Types:
+         - `svn_err_code`: ``int``
+         - `svn_err_name`: ``str``
+         - `svn_err_str`: ``str``
     """
 
     def __init__(self, sexc):
         """ Initialization
 
-            @param sexc: C{svnmailer.subversion.Error}
-            @type sexc: C{svnmailer.subversion.Error}
+            :param sexc: `svnmailer.subversion.Error`
+            :type sexc: `svnmailer.subversion.Error`
         """
         Exception.__init__(self)
         self.svn_err_str, self.svn_err_code = sexc.args
@@ -139,8 +149,8 @@ class RepositoryError(Exception):
     def __str__(self):
         """ Human readable representation
 
-            @return: The string representation
-            @rtype: C{str}
+            :return: The string representation
+            :rtype: ``str``
         """
         return str((self.svn_err_code, self.svn_err_name, self.svn_err_str))
 
@@ -149,40 +159,31 @@ class RepositoryError(Exception):
 class Repository(object):
     """ Access to the subversion repository
 
-        @cvar _pool: C{None}
-        @ivar _pool: main APR pool
-        @type _pool: swig object
+        :IVariables:
+         - `path`: The path to the repository
+         - `_pool`: main APR pool
+         - `_apr_initialized`: is APR initialized?
+         - `_repos`: Reference to the open repository
+         - `_fs`: Reference to the repos filesystem
+         - `_revRoots`: Cached revision root objects
+         - `_revChanges`: Cached revision change lists
+         - `_revProps`: Cached revision properties
+         - `_revTimes`: Cached revision times
+         - `_pathProps`: Cached path properties
+         - `_pathPropLists`: Cached path propery lists
 
-        @cvar _apr_initialized: C{False}
-        @ivar _apr_initialized: is APR initialized?
-        @type _apr_initialized: C{bool}
-
-        @ivar _repos: Reference to the open repository
-        @type _repos: swig object
-
-        @ivar _fs: Reference to the repos filesystem
-        @type _fs: swig object
-
-        @ivar _revRoots: Cached revision root objects
-        @type _revRoots: C{dict}
-
-        @ivar _revChanges: Cached revision change lists
-        @type _revChanges: C{dict}
-
-        @ivar _revProps: Cached revision properties
-        @type _revProps: C{dict}
-
-        @ivar _revTimes: Cached revision times
-        @type _revTimes: C{dict}
-
-        @ivar _pathProps: Cached path properties
-        @type _pathProps: C{dict}
-
-        @ivar _pathPropLists: Cached path propery lists
-        @type _pathPropLists: C{dict}
-
-        @ivar path: The path to the repository
-        @type path: C{unicode}
+        :Types:
+         - `path`: ``unicode``
+         - `_pool`: swig object
+         - `_apr_initialized`: ``bool``
+         - `_repos`: swig object
+         - `_fs`: swig object
+         - `_revRoots`: ``dict``
+         - `_revChanges`: ``dict``
+         - `_revProps`: ``dict``
+         - `_revTimes`: ``dict``
+         - `_pathProps`: ``dict``
+         - `_pathPropLists`: ``dict``
     """
     _pool = None
     _apr_initialized = False
@@ -191,8 +192,8 @@ class Repository(object):
     def __init__(self, repos_path):
         """ Open the repository
 
-            @param repos_path: The repository path as unicode
-            @type repos_path: C{unicode}
+            :param repos_path: The repository path as unicode
+            :type repos_path: ``unicode``
         """
         # init APR
         svn_core.apr_initialize()
@@ -235,11 +236,11 @@ class Repository(object):
     def getChangesList(self, revision):
         """ Return the list of changes of a revisions sorted by path
 
-            @param revision: The revision
-            @type revision: C{int}
+            :param revision: The revision
+            :type revision: ``int``
 
-            @return: The Changes list
-            @rtype: C{list}
+            :return: The Changes list
+            :rtype: ``list``
         """
         try:
             changelist = self._revChanges[revision]
@@ -269,14 +270,16 @@ class Repository(object):
     def getPathProperties(self, path, revision):
         """ Get a dict of properties for a particular path/revision
 
-            @param path: The path
-            @type path: C{str}
+            :Parameters:
+             - `path`: The path
+             - `revision`: The revision number
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :Types:
+             - `path`: ``str``
+             - `revision`: ``int``
 
-            @return: The dict of properties
-            @rtype: C{dict}
+            :return: The dict of properties
+            :rtype: ``dict``
         """
         try:
             plist = self._pathPropLists[(path, revision)]
@@ -293,18 +296,19 @@ class Repository(object):
     def getPathProperty(self, name, path, revision):
         """ Get the value of a particular property
 
-            @param name: The name of the property
-            @type name: C{str}
+            :Parameters:
+             - `name`: The name of the property
+             - `path`: The path the property is attached to
+             - `revision`: The revision number
 
-            @param path: The path the property is attached to
-            @type path: C{str}
+            :Types:
+             - `name`: ``str``
+             - `path`: ``str``
+             - `revision`: ``int``
 
-            @param revision: The revision number
-            @type revision: C{int}
-
-            @return: The property value or C{None} if the property
-                doesn't exist.
-            @rtype: C{str}
+            :return: The property value or ``None`` if the property
+                     doesn't exist.
+            :rtype: ``str``
         """
         try:
             value = self._pathProps[(name, path, revision)]
@@ -320,14 +324,16 @@ class Repository(object):
     def getPathMimeType(self, path, revision):
         """ Get the MIME type of a particular path
 
-            @param path: The path
-            @type path: C{str}
+            :Parameters:
+             - `path`: The path
+             - `revision`: The revision number
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :Types:
+             - `path`: ``str``
+             - `revision`: ``int``
 
-            @return: The mime type or C{None}
-            @rtype: C{str}
+            :return: The mime type or ``None``
+            :rtype: ``str``
         """
         return self.getPathProperty(
             svn_core.SVN_PROP_MIME_TYPE, path, revision
@@ -337,14 +343,15 @@ class Repository(object):
     def dumpPathContent(self, fp, path, revision):
         """ Dump the contents of a particular path into a file
 
-            @param fp: The file descriptor
-            @type fp: file like object
+            :Parameters:
+             - `fp`: The file descriptor
+             - `path`: The path to process
+             - `revision`: The revision number
 
-            @param path: The path to process
-            @type path: C{str}
-
-            @param revision: The revision number
-            @type revision: C{int}
+            :Types:
+             - `fp`: ``file``
+             - `path`: ``str``
+             - `revision`: ``int``
         """
         pool = svn_core.svn_pool_create(self._pool)
 
@@ -370,11 +377,14 @@ class Repository(object):
     def getRevisionTime(self, revision):
         """ Returns the time of a particular rev. in seconds since epoch
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :Parameters:
+             - `revision`: The revision number
 
-            @return: The time
-            @rtype: C{int}
+            :Types:
+             - `revision`: ``int``
+
+            :return: The time
+            :rtype: ``int``
         """
         try:
             rtime = self._revTimes[revision]
@@ -392,11 +402,11 @@ class Repository(object):
     def getRevisionAuthor(self, revision):
         """ Returns the author of a particular revision
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :param revision: The revision number
+            :type revision: ``int``
 
-            @return: The author
-            @rtype: C{str}
+            :return: The author
+            :rtype: ``str``
         """
         return self.getRevisionProperty(
             revision, svn_core.SVN_PROP_REVISION_AUTHOR
@@ -406,11 +416,11 @@ class Repository(object):
     def getRevisionLog(self, revision):
         """ Returns the log entry of a particular revision
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :param revision: The revision number
+            :type revision: ``int``
 
-            @return: The log entry or C{None}
-            @rtype: C{str}
+            :return: The log entry or ``None``
+            :rtype: ``str``
         """
         return self.getRevisionProperty(
             revision, svn_core.SVN_PROP_REVISION_LOG
@@ -420,14 +430,16 @@ class Repository(object):
     def getRevisionProperty(self, revision, propname):
         """ Returns the value of a revision property
 
-            @param propname: The property name
-            @type propname: C{str}
+            :Parameters:
+             - `propname`: The property name
+             - `revision`: The revision number
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :Types:
+             - `propname`: ``str``
+             - `revision`: ``int``
 
-            @return: The property value
-            @rtype: C{str}
+            :return: The property value
+            :rtype: ``str``
         """
         try:
             value = self._revProps[(revision, propname)]
@@ -441,11 +453,11 @@ class Repository(object):
     def _getChangeCollector(self, revision):
         """ Return the RevisionChangeCollector instance
 
-            @param revision: The revision
-            @type revision: C{int}
+            :param revision: The revision
+            :type revision: ``int``
 
-            @return: The Collector instance
-            @rtype: C{_RevisionChangeCollector}
+            :return: The Collector instance
+            :rtype: `_RevisionChangeCollector`
         """
         return _RevisionChangeCollector(self, revision)
 
@@ -453,13 +465,13 @@ class Repository(object):
     def _getRevisionRoot(self, revision):
         """ Return the root object of a particular revision
 
-            @note: The root objects are cached
+            :note: The root objects are cached
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :param revision: The revision number
+            :type revision: ``int``
 
-            @return: The revision root
-            @rtype: swig object
+            :return: The revision root
+            :rtype: swig object
         """
         try:
             root = self._revRoots[revision]
@@ -474,24 +486,28 @@ class Repository(object):
 class PathDescriptor(object):
     """ Describes the basic information of a particular path
 
-        @ivar path: The path, we're talking about
-        @type path: C{str}
+        :IVariables:
+         - `path`: The path, we're talking about
+         - `repos`: The repository this change belongs to
 
-        @ivar repos: The repository this change belongs to
-        @type repos: C{Repository}
+        :Types:
+         - `path`: ``str``
+         - `repos`: `Repository`
     """
 
     def __init__(self, repos, path, *args, **kwargs):
         """ Initialization
 
-            @note: Don't override this method, override L{init}
-                instead.
+            :note: Don't override this method, override `init`
+                   instead.
 
-            @param repos: The repository reference
-            @type repos: C{Repository}
+            :Parameters:
+             - `repos`: The repository reference
+             - `path`: The path
 
-            @param path: The path
-            @type path: C{str}
+            :Types:
+             - `repos`: `Repository`
+             - `path`: ``str``
         """
         self.repos = repos
         self.path = (path[:1] == '/' and [path[1:]] or [path])[0]
@@ -507,11 +523,11 @@ class PathDescriptor(object):
     def __cmp__(self, other):
         """ Compares two change objects by path
 
-            @param other: The object compared to
-            @type other: hopefully C{VersionedPathDescriptor}
+            :param other: The object compared to
+            :type other: hopefully `VersionedPathDescriptor`
 
-            @return: Returns -1, 0 or 1
-            @rtype: C{int}
+            :return: Returns -1, 0 or 1
+            :rtype: ``int``
         """
         return cmp(self.path, other.path)
 
@@ -519,8 +535,8 @@ class PathDescriptor(object):
     def isDirectory(self):
         """ Returns whether the path is a directory
 
-            @return: is a directory?
-            @rtype: C{bool}
+            :return: is a directory?
+            :rtype: ``bool``
         """
         raise NotImplementedError()
 
@@ -528,8 +544,8 @@ class PathDescriptor(object):
 class LockedPathDescriptor(PathDescriptor):
     """ Describes the lock status of a particular path
 
-        @ivar is_locked: is locked?
-        @type is_locked: C{bool}
+        :ivar is_locked: is locked?
+        :type is_locked: `bool`
     """
     def init(self, *args, **kwargs):
         """ Custom initialization """
@@ -570,14 +586,16 @@ class LockedPathDescriptor(PathDescriptor):
 class VersionedPathDescriptor(PathDescriptor):
     """ Describes the changes of a particular path
 
-        This is a wrapper around svn_repos.ChangedPath instances.
+        This is a wrapper around ``svn_repos.ChangedPath`` instances.
         outside of this module one shouldn't need to deal with these.
 
-        @ivar revision: The revision number
-        @type revision: C{int}
+        :IVariables:
+         - `revision`: The revision number
+         - `_change`: The change
 
-        @ivar _change: The change
-        @type _change: C{svn_repos.ChangedPath}
+        :Types:
+         - `revision`: ``int``
+         - `_change`: ``svn_repos.ChangedPath``
     """
     def init(self, *args, **kwargs):
         """ Custom initialization """
@@ -587,11 +605,13 @@ class VersionedPathDescriptor(PathDescriptor):
     def _init(self, revision, change):
         """ Initialization 
 
-            @param revision: The revision number
-            @type revision: C{int}
+            :Parameters:
+             - `revision`: The revision number
+             - `change`: The change specification
 
-            @param change: The change specification
-            @type change: C{svn_repos.ChangedPath}
+            :Types:
+             - `revision`: ``int``
+             - `change`: ``svn_repos.ChangedPath``
         """
         self.revision = revision
         self._change = change
@@ -600,8 +620,8 @@ class VersionedPathDescriptor(PathDescriptor):
     def getBaseRevision(self):
         """ Returns the revision number of the original path
 
-            @return: The revision number
-            @rtype: C{int}
+            :return: The revision number
+            :rtype: ``int``
         """
         return self._change.base_rev
 
@@ -609,9 +629,12 @@ class VersionedPathDescriptor(PathDescriptor):
     def getBasePath(self):
         """ Returns the original path
 
-            @return: The path
-            @rtype: C{str}
+            :return: The path
+            :rtype: ``str``
         """
+        if self._change.base_path is None:
+            return None
+
         # check the difference between 1.1 and 1.2 bindings...
         return (self._change.base_path[:1] == '/' and
             [self._change.base_path[1:]] or [self._change.base_path])[0]
@@ -624,8 +647,8 @@ class VersionedPathDescriptor(PathDescriptor):
             a 2-tuple as value where the first element contains the
             old property value and second element the new one.
 
-            @return: The dict of changed properties
-            @rtype: C{dict}
+            :return: The dict of changed properties
+            :rtype: ``dict``
         """
         if type(self._change.prop_changes) == type({}):
             return self._change.prop_changes
@@ -669,8 +692,8 @@ class VersionedPathDescriptor(PathDescriptor):
     def isBinary(self):
         """ Returns whether one of the revisions is a binary file
 
-            @return: is binary?
-            @rtype: C{bool}
+            :return: is binary?
+            :rtype: ``bool``
         """
         if not self.wasDeleted():
             if isBinary(self.repos.getPathMimeType(
@@ -689,8 +712,8 @@ class VersionedPathDescriptor(PathDescriptor):
     def hasPropertyChanges(self):
         """ Returns whether the path has property changes
 
-            @return: has property changes?
-            @rtype: C{bool}
+            :return: has property changes?
+            :rtype: ``bool``
         """
         return bool(self._change.prop_changes)
 
@@ -698,8 +721,8 @@ class VersionedPathDescriptor(PathDescriptor):
     def hasContentChanges(self):
         """ Returns whether the path has content changes
 
-            @return: has content changes?
-            @rtype: C{bool}
+            :return: has content changes?
+            :rtype: ``bool``
         """
         return bool(self._change.text_changed)
 
@@ -707,8 +730,8 @@ class VersionedPathDescriptor(PathDescriptor):
     def wasDeleted(self):
         """ Returns whether the path was deleted
 
-            @return: was deleted?
-            @rtype: C{bool}
+            :return: was deleted?
+            :rtype: ``bool``
         """
         return bool(self._change.path is None)
 
@@ -716,8 +739,8 @@ class VersionedPathDescriptor(PathDescriptor):
     def wasAdded(self):
         """ Returns whether the path was added
 
-            @return: was added?
-            @rtype: C{bool}
+            :return: was added?
+            :rtype: ``bool``
         """
         return bool(self._change.added)
 
@@ -725,8 +748,8 @@ class VersionedPathDescriptor(PathDescriptor):
     def wasModified(self):
         """ Returns whether the path was just modified
 
-            @return: was modified?
-            @rtype: C{bool}
+            :return: was modified?
+            :rtype: ``bool``
         """
         return bool(not self._change.added and self._change.path is not None)
 
@@ -734,8 +757,8 @@ class VersionedPathDescriptor(PathDescriptor):
     def wasCopied(self):
         """ Returns whether the path was copied
 
-            @return: was copied?
-            @rtype: C{bool}
+            :return: was copied?
+            :rtype: ``bool``
         """
         return bool(
             self._change.added and self._change.base_path and
@@ -756,20 +779,21 @@ else:
 class _RevisionChangeCollector(Collector):
     """ Collect all changes between two particular revisions
 
-        @cvar __pool: C{None}
-        @ivar __pool: The APR subpool
-        @type __pool: swig object
+        :ivar __pool: The APR subpool
+        :type __pool: swig object
     """
     __pool = None
 
     def __init__(self, repos, revision):
         """ Initialization
 
-            @param repos: Reference to the repository object
-            @type repos: C{Repository}
+            :Parameters:
+             - `repos`: Reference to the repository object
+             - `revision`: The revision
 
-            @param revision: The revision
-            @type revision: C{int}
+            :Types:
+             - `repos`: `Repository`
+             - `revision`: ``int``
         """
         self.__repos = repos
         self.__pool = svn_core.svn_pool_create(repos._pool)
@@ -793,8 +817,8 @@ class _RevisionChangeCollector(Collector):
     def getPool(self):
         """ Returns the subpool
 
-            @return: the pool
-            @rtype: swig object
+            :return: the pool
+            :rtype: swig object
         """
         return self.__pool
 
@@ -802,12 +826,12 @@ class _RevisionChangeCollector(Collector):
     def _get_root(self, rev):
         """ Return the root of a particular revision
 
-            @note: The root objects are cached
+            :note: The root objects are cached
 
-            @param rev: The revision number
-            @type rev: C{int}
+            :param rev: The revision number
+            :type rev: ``int``
 
-            @return: The revision root
-            @rtype: swig object
+            :return: The revision root
+            :rtype: swig object
         """
         return self.__repos._getRevisionRoot(rev)

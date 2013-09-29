@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=W0232
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,22 +18,24 @@
 """
 Text based email notifiers (either piped to a program or via SMTP)
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['getNotifier']
 
 
 def getNotifier(config, groupset):
     """ Returns an initialized notifier or nothing
 
-        @param config: The svnmailer config
-        @type config: C{svnmailer.settings.Settings}
+        :Parameters:
+         - `config`: The svnmailer config
+         - `groupset`: The groupset to process
 
-        @param groupset: The groupset to process
-        @type groupset: C{list}
+        :Types:
+         - `config`: `svnmailer.settings._base.BaseSettings`
+         - `groupset`: ``list``
 
-        @return: The list of notifiers (containing 0 or 1 member)
-        @rtype: C{list}
+        :return: The list of notifiers (containing 0 or 1 member)
+        :rtype: ``list``
     """
     from svnmailer import settings
     from svnmailer.notifier import _textmail, _multimail
@@ -44,7 +48,7 @@ def getNotifier(config, groupset):
 
     if cls:
         mtype = (groupset.groups[0].mail_type or u'single').split()[0].lower()
-        is_commit = (config.runtime.mode == settings.modes.commit)
+        is_commit = (config.runtime.mode == settings.MODES.commit)
         mod = (is_commit and mtype == u'multipart') and \
             _multimail or _textmail
         return mod.getNotifier(cls, config, groupset)
@@ -80,9 +84,9 @@ class SendmailSubmitter(object):
 
     def sendMail(self, sender, to_addr, mail):
         """ Sends the mail via a piped mailer """
-        from svnmailer import util
+        from svnmailer import processes
 
-        pipe = util.getPipe2(self._getMailCommand(sender, to_addr))
+        pipe = processes.Process.pipe2(self._getMailCommand(sender, to_addr))
         pipe.fromchild.close() # we don't expect something
         mail.dump(pipe.tochild)
         pipe.tochild.close()
@@ -97,14 +101,16 @@ class SendmailSubmitter(object):
             The command is created using sendmail conventions.
             If you want another commandline, override this method.
 
-            @param sender: The sender address
-            @type sender: C{str}
+            :Parameters:
+             - `sender`: The sender address
+             - `to_addr`: The receivers
 
-            @param to_addr: The receivers
-            @type to_addr: C{list}
+            :Types:
+             - `sender`: ``str``
+             - `to_addr`: ``list``
 
-            @return: The command
-            @rtype: C{list}
+            :return: The command
+            :rtype: ``list``
         """
         cmd = list(self._settings.general.sendmail_command)
         cmd[1:] = [(isinstance(arg, unicode) and

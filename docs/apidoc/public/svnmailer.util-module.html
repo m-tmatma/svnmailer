@@ -36,10 +36,9 @@
 <!-- =========== START OF MODULE DESCRIPTION =========== -->
 <h2 class="module">Module svnmailer.util</h2>
 
-<h1 class="heading">Utilities</h1>
-  This module contains some utility functions and classes used in 
-  several places of the svnmailer. These functions have a quite general 
-  character and can be used easily outside of the svnmailer as well.
+<p>This module contains some utility functions and classes used in several
+places of the svnmailer. These functions have a quite general character
+and can be used easily outside of the svnmailer as well.</p>
 <hr/>
 
 <!-- =========== START OF CLASSES =========== -->
@@ -53,6 +52,9 @@
   <b><a href="svnmailer.util.SafeDict-class.html"><code>SafeDict</code></a></b></td>
   <td>A dict, which returns '' on unknown keys or false values</td></tr>
 <tr><td width="15%">
+  <b><a href="svnmailer.util.Singleton-class.html"><code>Singleton</code></a></b></td>
+  <td>Singleton base class</td></tr>
+<tr><td width="15%">
   <b><a href="svnmailer.util.TempFile-class.html"><code>TempFile</code></a></b></td>
   <td>Tempfile container class</td></tr>
 </table><br />
@@ -62,69 +64,41 @@
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Function Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#commonPaths" class="summary-sig-name"><code>commonPaths</code></a>(<span class=summary-sig-arg>paths</span>)</span></code>
 <br />
 Returns the common component and the stripped paths</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code> or <code>None</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt> or <tt class="literal"><span class="pre">None</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#extractX509User" class="summary-sig-name"><code>extractX509User</code></a>(<span class=summary-sig-arg>author</span>)</span></code>
 <br />
 Returns user data extracted from x509 subject string</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#filterForXml" class="summary-sig-name"><code>filterForXml</code></a>(<span class=summary-sig-arg>value</span>)</span></code>
 <br />
 Replaces control characters with replace characters</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        any
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1">any</font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#getGlobValue" class="summary-sig-name"><code>getGlobValue</code></a>(<span class=summary-sig-arg>globs</span>,
           <span class=summary-sig-arg>path</span>)</span></code>
 <br />
 Returns the value of the glob, where path matches</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#getParentDirList" class="summary-sig-name"><code>getParentDirList</code></a>(<span class=summary-sig-arg>path</span>)</span></code>
 <br />
 Returns the directories up to a (posix) path</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>popen2.Popen4</code> or <code>_DummyPopen4</code>
-</font></td>
-  <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#getPipe4" class="summary-sig-name"><code>getPipe4</code></a>(<span class=summary-sig-arg>command</span>)</span></code>
-<br />
-Returns a pipe object (<code>Popen4</code> or 
-<code>_DummyPopen4</code> on win32)</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code> or <code>list</code>
-</font></td>
-  <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#getSuitableCommandLine" class="summary-sig-name"><code>getSuitableCommandLine</code></a>(<span class=summary-sig-arg>command</span>,
-          <span class=summary-sig-arg>_platform</span>)</span></code>
-<br />
-Return the revised command suitable for being exec'd</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#inherit" class="summary-sig-name"><code>inherit</code></a>(<span class=summary-sig-arg>cls</span>,
           <span class="summary-sig-vararg">*bases</span>)</span></code>
 <br />
 Inherits class cls from *bases</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#modifyQuery" class="summary-sig-name"><code>modifyQuery</code></a>(<span class=summary-sig-arg>query</span>,
-          <span class=summary-sig-arg>rem</span>,
-          <span class=summary-sig-arg>add</span>,
-          <span class=summary-sig-arg>set</span>,
-          <span class=summary-sig-arg>delim</span>)</span></code>
+<tr><td align="right" valign="top" width="15%"><font size="-1">any</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#loadDotted" class="summary-sig-name"><code>loadDotted</code></a>(<span class=summary-sig-arg>name</span>)</span></code>
 <br />
-Returns a modified query string</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
-</font></td>
-  <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#parseQuery" class="summary-sig-name"><code>parseQuery</code></a>(<span class=summary-sig-arg>query</span>)</span></code>
-<br />
-Parses a query string</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
-</font></td>
+Loads a dotted name</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#splitCommand" class="summary-sig-name"><code>splitCommand</code></a>(<span class=summary-sig-arg>command</span>)</span></code>
 <br />
 Split a command string with respect to quotes and such</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code> or <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">basestring</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.util-module.html#substitute" class="summary-sig-name"><code>substitute</code></a>(<span class=summary-sig-arg>template</span>,
           <span class=summary-sig-arg>subst</span>)</span></code>
 <br />
@@ -142,23 +116,22 @@ Returns a filled template</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">commonPaths</span>(<span class=sig-arg>paths</span>)</span>
   </h3>
-  <p>Returns the common component and the stripped paths</p>
-  It expects that directories do always end with a trailing slash and 
-  paths never begin with a slash (except root).
+<p>Returns the common component and the stripped paths</p>
+<p>It expects that directories do always end with a trailing slash and
+paths never begin with a slash (except root).</p>
   <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>paths</b></code> -
-         The list of paths (<code>[str, str, ...]</code>)
+ The list of paths (<tt class="literal"><span class="pre">[str,</span> <span class="pre">str,</span> <span class="pre">...]</span></tt>)
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The common component (always a directory) and the stripped 
-        paths (<code>(str, [str, str, ...])</code>)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>tuple</code>)</i>
+The common component (always a directory) and the stripped
+paths (<tt class="literal"><span class="pre">(str,</span> <span class="pre">[str,</span> <span class="pre">str,</span> <span class="pre">...])</span></tt>)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">tuple</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -168,21 +141,18 @@ Returns a filled template</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">extractX509User</span>(<span class=sig-arg>author</span>)</span>
   </h3>
-  Returns user data extracted from x509 subject string
-  <dl><dt></dt><dd>
+Returns user data extracted from x509 subject string  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>author</b></code> -
-         The author string
+ The author string
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">basestring</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        user name, mail address (user name maybe 
-        <code>None</code>)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>tuple</code> or <code>None</code>)</i>
+user name, mail address (user name maybe <tt class="literal"><span class="pre">None</span></tt>)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">tuple</span></tt> or <tt class="literal"><span class="pre">None</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -192,20 +162,18 @@ Returns a filled template</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">filterForXml</span>(<span class=sig-arg>value</span>)</span>
   </h3>
-  Replaces control characters with replace characters
-  <dl><dt></dt><dd>
+Replaces control characters with replace characters  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>value</b></code> -
-         The value to filter
+ The value to filter
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>unicode</code>)</i>
+        (type=<tt class="literal"><span class="pre">unicode</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The filtered value
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>unicode</code>)</i>
+The filtered value        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">unicode</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -216,23 +184,21 @@ Returns a filled template</td></tr>
   <h3><span class="sig"><span class="sig-name">getGlobValue</span>(<span class=sig-arg>globs</span>,
           <span class=sig-arg>path</span>)</span>
   </h3>
-  Returns the value of the glob, where path matches
-  <dl><dt></dt><dd>
+Returns the value of the glob, where path matches  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>globs</b></code> -
-         The glob list (<code>[(glob, associated value)]</code>)
+ The glob list (<tt class="literal"><span class="pre">[(glob,</span> <span class="pre">associated</span> <span class="pre">value)]</span></tt>)
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code> of <code>tuple</code>)</i>
+        (type=sequence)</i>
       <dd><code><b>path</b></code> -
-         The path to match
+ The path to match
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The matched value or <code>None</code>
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+The matched value or <tt class="literal"><span class="pre">None</span></tt>        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         (type=any)</i>
       </dd>
     </dl>
@@ -243,85 +209,20 @@ Returns a filled template</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">getParentDirList</span>(<span class=sig-arg>path</span>)</span>
   </h3>
-  Returns the directories up to a (posix) path
-  <dl><dt></dt><dd>
+Returns the directories up to a (posix) path  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>path</b></code> -
-         The path to process
+ The path to process
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The directory list
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+The directory list        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
-  </dd></dl>
-</td></tr></table>
-
-<a name="getPipe4"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">getPipe4</span>(<span class=sig-arg>command</span>)</span>
-  </h3>
-  Returns a pipe object (<code>Popen4</code> or 
-  <code>_DummyPopen4</code> on win32)
-  <dl><dt></dt><dd>
-    <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>command</b></code> -
-         The command list (the first item is the command itself, the 
-        rest represents the arguments)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
-      </dd>
-    </dl>
-    <dl><dt><b>Returns:</b></dt>
-      <dd>
-        The pipe object
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>popen2.Popen4</code> or <code>_DummyPopen4</code>)</i>
-      </dd>
-    </dl>
-  </dd></dl>
-</td></tr></table>
-
-<a name="getSuitableCommandLine"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">getSuitableCommandLine</span>(<span class=sig-arg>command</span>,
-          <span class=sig-arg>_platform</span>=<span class=sig-default>None</span>)</span>
-  </h3>
-  <p>Return the revised command suitable for being exec'd</p>
-  Currently this means, it's escaped and converted to a string only 
-  for Win32, because on this system the shell is called. For other 
-  systems the list is just returned.
-  <dl><dt></dt><dd>
-    <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>command</b></code> -
-         The command to escape
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
-      <dd><code><b>_platform</b></code> -
-         A platform string (for testing purposes only)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
-      </dd>
-    </dl>
-    <dl><dt><b>Returns:</b></dt>
-      <dd>
-        The escaped command string or the original list
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code> or <code>list</code>)</i>
-      </dd>
-    </dl>
-<p><b>Note:</b> <p>This is more or less the same as the stuff in 
-svn.fs._escape_msvcrt_shell_command/arg. But it belongs somewhere else - 
-e.g. into a util module...</p>
-Perhaps once a day the whole package goes directly into the subversion 
-distribution and then it's all cool.
-</p>
-
   </dd></dl>
 </td></tr></table>
 
@@ -330,105 +231,52 @@ distribution and then it's all cool.
   <h3><span class="sig"><span class="sig-name">inherit</span>(<span class=sig-arg>cls</span>,
           <span class="sig-vararg">*bases</span>)</span>
   </h3>
-  Inherits class cls from *bases
-  <dl><dt></dt><dd>
+Inherits class cls from *bases  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>cls</b></code> -
-         The class to inherit from *bases
+ The class to inherit from <a href="svnmailer.util-module.html#inherit" class="link"><code>bases</code></a>
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>class</code>)</i>
+        (type=<tt class="literal"><span class="pre">class</span></tt>)</i>
       <dd><code><b>bases</b></code> -
-         The base class(es)
+ The base class(es)
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+        (type=<tt class="literal"><span class="pre">tuple</span></tt>)</i>
       </dd>
     </dl>
-<p><b>Note:</b> cls needs a __dict__, so __slots__ is tabu
-</p>
+<p><b>Note:</b> <a href="svnmailer.util-module.html#inherit" class="link"><code>cls</code></a> needs a <tt class="literal"><span class="pre">__dict__</span></tt>, so <tt class="literal"><span class="pre">__slots__</span></tt> is a nono</p>
 
   </dd></dl>
 </td></tr></table>
 
-<a name="modifyQuery"></a>
+<a name="loadDotted"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">modifyQuery</span>(<span class=sig-arg>query</span>,
-          <span class=sig-arg>rem</span>=<span class=sig-default>None</span>,
-          <span class=sig-arg>add</span>=<span class=sig-default>None</span>,
-          <span class=sig-arg>set</span>=<span class=sig-default>None</span>,
-          <span class=sig-arg>delim</span>=<span class=sig-default>'&amp;'</span>)</span>
+  <h3><span class="sig"><span class="sig-name">loadDotted</span>(<span class=sig-arg>name</span>)</span>
   </h3>
-  Returns a modified query string
+<p>Loads a dotted name</p>
+<p>The dotted name can be anything, which is passively resolvable
+(i.e. without the invocation of a class to get their attributes or
+the like). For example, <a href="svnmailer.util-module.html#loadDotted" class="link"><code>name</code></a> could be 'svnmailer.util.loadDotted'
+and would return this very function. It's assumed that the first
+part of the <a href="svnmailer.util-module.html#loadDotted" class="link"><code>name</code></a> is always is a module.</p>
+<p>If a dotted name was loaded successfully, the object will be cached
+and delivered from there the next time.</p>
   <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>query</b></code> -
-         The query string to modify
+      <dd><code><b>name</b></code> -
+ The dotted name to load
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code> or <code>dict</code>)</i>
-      <dd><code><b>rem</b></code> -
-         parameters to remove (if present)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code> of <code>str</code>)</i>
-      <dd><code><b>add</b></code> -
-         parameters to add
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code> of <code>tuple</code>)</i>
-      <dd><code><b>set</b></code> -
-         parameters to override
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code> of <code>tuple</code>)</i>
-      <dd><code><b>delim</b></code> -
-         Delimiter to use when rebuilding the query string
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
-      </dd>
-    </dl>
-<p><b>Warning:</b> query parameters containing no <code>=</code> character are silently 
-dropped.
-</p>
-
-<p><b>Note:</b> set is a convenience parameter, it's actually a combination of 
-<code>rem</code> and <code>add</code>. The order of processing is:
-<ol start="1">
-  <li>
-    append the set parameters to <code>rem</code> and 
-    <code>add</code>
-  </li>
-  <li>
-    apply <code>rem</code>
-  </li>
-  <li>
-    apply <code>add</code>
-  </li>
-</ol>
-</p>
-
-  </dd></dl>
-</td></tr></table>
-
-<a name="parseQuery"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">parseQuery</span>(<span class=sig-arg>query</span>)</span>
-  </h3>
-  Parses a query string
-  <dl><dt></dt><dd>
-    <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>query</b></code> -
-         The query string to parse
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The parsed query (<code>{key: [values]}</code>)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>dict</code>)</i>
+The loaded object        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=any)</i>
       </dd>
     </dl>
-<p><b>Warning:</b> query parameters containing no <code>=</code> character are silently 
-dropped.
-</p>
-
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ImportError</b></code> -
+A module in the path could not be loaded    </dl>
   </dd></dl>
 </td></tr></table>
 
@@ -436,48 +284,39 @@ dropped.
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">splitCommand</span>(<span class=sig-arg>command</span>)</span>
   </h3>
-  <p>Split a command string with respect to quotes and such</p>
-  The command string consists of several tokens:
-  <ul>
-    <li>
-      whitespace: Those are separators except inside quoted items
-    </li>
-    <li>
-      unquoted items: every token that doesn't start with a double 
-      quote (&quot;)
-    </li>
-    <li>
-      quoted items: every token that starts with a double quote 
-      (&quot;). Those items must be closed with a double quote and may 
-      contain whitespaces. The enclosing quotes are stripped. To put a 
-      double quote character inside such a token, it has to be escaped 
-      with a backslash (\). Therefore - backslashes themselves have to be 
-      escaped as well. The escapes are also stripped from the result.
-    </li>
-  </ul>
-  Here's an example: <code>r'foo bar &quot;baz&quot; 
-  &quot;zo\&quot;&quot; &quot;\\nk&quot;'</code> resolves to 
-  <code>['foo', 'bar', 'baz', 'zo&quot;', r'\nk']</code>
+<p>Split a command string with respect to quotes and such</p>
+<p>The command string consists of several tokens:</p>
+<ul class="rst-simple">
+<li>whitespace: Those are separators except inside quoted items</li>
+<li>unquoted items: every token that doesn't start with
+a double quote (<tt class="literal"><span class="pre">&quot;</span></tt>)</li>
+<li>quoted items: every token that starts with a double quote (<tt class="literal"><span class="pre">&quot;</span></tt>).
+Those items must be closed with a double quote and may contain
+whitespaces. The enclosing quotes are stripped. To put a double
+quote character inside such a token, it has to be escaped with
+a backslash (<tt class="literal"><span class="pre">\</span></tt>). Therefore - backslashes themselves have to be
+escaped as well. The escapes are also stripped from the result.</li>
+</ul>
+<p>Here's an example: <tt class="literal"><span class="pre">r'foo</span> <span class="pre">bar</span> <span class="pre">&quot;baz&quot;</span> <span class="pre">&quot;zo\&quot;&quot;</span> <span class="pre">&quot;\\nk&quot;'</span></tt> resolves
+to <tt class="literal"><span class="pre">['foo',</span> <span class="pre">'bar',</span> <span class="pre">'baz',</span> <span class="pre">'zo&quot;',</span> <span class="pre">r'\nk']</span></tt></p>
   <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>command</b></code> -
-         The command string
+ The command string
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The splitted command
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+The splitted command        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>ValueError</b></code> -
-        The command string is not valid (unclosed quote or the 
-        like)
-    </dl>
+The command string is not valid
+(unclosed quote or the like)    </dl>
   </dd></dl>
 </td></tr></table>
 
@@ -486,28 +325,26 @@ dropped.
   <h3><span class="sig"><span class="sig-name">substitute</span>(<span class=sig-arg>template</span>,
           <span class=sig-arg>subst</span>)</span>
   </h3>
-  <p>Returns a filled template</p>
-  If the <a href="svnmailer.util-module.html#substitute" 
-  class="link"><code>template</code></a> is <code>None</code>, this 
-  function returns <code>None</code> as well.
+<p>Returns a filled template</p>
+<p>If the <a href="svnmailer.util-module.html#substitute" class="link"><code>template</code></a> is <tt class="literal"><span class="pre">None</span></tt>, this function returns <tt class="literal"><span class="pre">None</span></tt>
+as well.</p>
   <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>template</b></code> -
-         The temlate to fill
+ The temlate to fill
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>unicode</code>)</i>
+        (type=<tt class="literal"><span class="pre">basestring</span></tt>)</i>
       <dd><code><b>subst</b></code> -
-         The substitution parameters
+ The substitution parameters
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>dict</code>)</i>
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The filled template (The return type depends on the template 
-        and the parameters)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code> or <code>unicode</code>)</i>
+The filled template (The return type depends on the
+template and the parameters)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">basestring</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -528,7 +365,7 @@ dropped.
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:02 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

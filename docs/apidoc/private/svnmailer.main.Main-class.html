@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type Main</h2>
+<h2 class="class">Class Main</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+
@@ -45,8 +45,7 @@
 
 <hr/>
 
-main svnmailer logic
-<hr/>
+Main svnmailer logic<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -55,9 +54,21 @@ main svnmailer logic
   <th colspan="2">Method Summary</th></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.main.Main-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>options</span>)</span></code>
+          <span class=summary-sig-arg>settings</span>)</span></code>
 <br />
 Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.main.Main-class.html#fromCommandline" class="summary-sig-name"><code>fromCommandline</code></a>(<span class=summary-sig-arg>cls</span>,
+          <span class=summary-sig-arg>background</span>)</span></code>
+<br />
+Initializes <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> from command line arguments    <i>(Class method)</i>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.main.Main-class.html#fromOptions" class="summary-sig-name"><code>fromOptions</code></a>(<span class=summary-sig-arg>cls</span>,
+          <span class=summary-sig-arg>options</span>)</span></code>
+<br />
+Initializes <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> from an option container    <i>(Class method)</i>
+</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.main.Main-class.html#run" class="summary-sig-name"><code>run</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
@@ -66,41 +77,30 @@ Dispatches the work to be done</td></tr>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.main.Main-class.html#_closeRepository" class="summary-sig-name"><code>_closeRepository</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Closes the repository</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.main.Main-class.html#_getChanges" class="summary-sig-name"><code>_getChanges</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the list of changes for the requested revision</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.main.Main-class.html#_getDefaultSubst" class="summary-sig-name"><code>_getDefaultSubst</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>group</span>,
           <span class=summary-sig-arg>repos_path</span>,
           <span class=summary-sig-arg>path</span>)</span></code>
 <br />
 Returns the default substitution dict</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.main.Main-class.html#_getGroupsByChange" class="summary-sig-name"><code>_getGroupsByChange</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>change</span>)</span></code>
 <br />
 Returns the matching groups for a particular change</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.main.Main-class.html#_getGroupSets" class="summary-sig-name"><code>_getGroupSets</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the list of groupsets (grouped groups...) to notify</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.notifier.selector.Selector</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.notifier.selector.Selector-class.html" class="link"><code>svnmailer.notifier.selector.Selector</code></a></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.main.Main-class.html#_getNotifierSelector" class="summary-sig-name"><code>_getNotifierSelector</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the notifier selector</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.config.ConfigFileSettings</code>
-</font></td>
-  <td><code><span class="summary-sig"><a href="../private/svnmailer.main.Main-class.html#_getSettings" class="summary-sig-name"><code>_getSettings</code></a>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>options</span>)</span></code>
-<br />
-Returns the settings object</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.main.Main-class.html#_openRepository" class="summary-sig-name"><code>_openRepository</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
@@ -119,12 +119,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
@@ -145,6 +139,14 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -152,35 +154,30 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Instance Variable Summary</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svnmailer.settings.Settings</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>svnmailer.settings._base.BaseSettings</code></a></font></td>
 <td><b><a href="../private/svnmailer.main.Main-class.html#_settings"><code>_settings</code></a></b>: The settings to use</td></tr>
 </table><br />
 
 
-<!-- =========== START OF METHOD DETAILS =========== -->
+<!-- =========== START OF INSTANCE METHOD DETAILS =========== -->
 <table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="details">
-  <th colspan="2">Method Details</th></tr>
+  <th colspan="2">Instance Method Details</th></tr>
 </table>
 
 <a name="__init__"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
-          <span class=sig-arg>options</span>)</span>
+          <span class=sig-arg>settings</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>options</b></code> -
-         Command line options
+      <dd><code><b>settings</b></code> -
+ The settings to use
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>optparse.OptionParser</code>)</i>
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>svnmailer.settings._base.BaseSettings</code></a>)</i>
       </dd>
-    </dl>
-    <dl><dt><b>Raises:</b></dt>
-      <dd><code><b>ConfigError</b></code> -
-        Configuration error
     </dl>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
@@ -192,14 +189,12 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">run</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Dispatches the work to be done
-  <dl><dt></dt><dd>
+Dispatches the work to be done  <dl><dt></dt><dd>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>svnmailer.subversion.RepositoryError</b></code> -
-        Error while accessing the subversion repository
-      <dd><code><b>NotifierError</b></code> -
-        One or more notifiers went crazy
-    </dl>
+Error while
+accessing the subversion repository      <dd><code><b>NotifierError</b></code> -
+One or more notifiers went crazy    </dl>
   </dd></dl>
 </td></tr></table>
 
@@ -207,8 +202,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">_closeRepository</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Closes the repository
-  <dl><dt></dt><dd>
+Closes the repository  <dl><dt></dt><dd>
   </dd></dl>
 </td></tr></table>
 
@@ -216,19 +210,17 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">_getChanges</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Returns the list of changes for the requested revision
-  <dl><dt></dt><dd>
+Returns the list of changes for the requested revision  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The list of changes (<code>[Descriptor, ...]</code>)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+The list of changes (<tt class="literal"><span class="pre">[Descriptor,</span> <span class="pre">...]</span></tt>)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>svnmailer.subversion.Error</b></code> -
-        Error while accessing the subversion repository
-    </dl>
+Error while accessing the
+subversion repository    </dl>
   </dd></dl>
 </td></tr></table>
 
@@ -239,34 +231,33 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>repos_path</span>,
           <span class=sig-arg>path</span>)</span>
   </h3>
-  Returns the default substitution dict
-  <dl><dt></dt><dd>
+Returns the default substitution dict  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>group</b></code> -
-         The group to consider
+ The group to consider
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<p><code>svnmailer.settings.GroupSettingsContainer</code>)</i>
+        (type=<a href="../private/svnmailer.settings._base.GroupSettingsContainer-class.html" class="link"><code>svnmailer.settings._base.GroupSettingsContainer</code></a>)</i>
       <dd><code><b>repos_path</b></code> -
-         The repository path
+ The repository path
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>unicode</code>)</i>
+        (type=<tt class="literal"><span class="pre">unicode</span></tt>)</i>
       <dd><code><b>path</b></code> -
-         The change path
+ The change path
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>unicode</code>)</i>
+        (type=<tt class="literal"><span class="pre">unicode</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The initialized dictionary
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>dict</code>)</i>
+The initialized dictionary        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">dict</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>svnmailer.subversion.Error</b></code> -
-        An error occured while accessing the subversion repository
-    </dl>
+An error occured while
+accessing the subversion
+repository    </dl>
   </dd></dl>
 </td></tr></table>
 
@@ -275,20 +266,18 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">_getGroupsByChange</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>change</span>)</span>
   </h3>
-  Returns the matching groups for a particular change
-  <dl><dt></dt><dd>
+Returns the matching groups for a particular change  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>change</b></code> -
-         The change to select
+ The change to select
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<p><code>svnmailer.subversion.VersionedPathDescriptor</code>)</i>
+        (type=<a href="../private/svnmailer.subversion.VersionedPathDescriptor-class.html" class="link"><code>svnmailer.subversion.VersionedPathDescriptor</code></a>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The group list
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+The group list        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -298,13 +287,11 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">_getGroupSets</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Returns the list of groupsets (grouped groups...) to notify
-  <dl><dt></dt><dd>
+Returns the list of groupsets (grouped groups...) to notify  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The list (maybe empty). (<code>[GroupSet, ...]</code>)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code>)</i>
+The list (maybe empty). (<tt class="literal"><span class="pre">[GroupSet,</span> <span class="pre">...]</span></tt>)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -314,42 +301,12 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">_getNotifierSelector</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Returns the notifier selector
-  <dl><dt></dt><dd>
+Returns the notifier selector  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The selector
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>svnmailer.notifier.selector.Selector</code>)</i>
+The selector        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.notifier.selector.Selector-class.html" class="link"><code>svnmailer.notifier.selector.Selector</code></a>)</i>
       </dd>
-    </dl>
-  </dd></dl>
-</td></tr></table>
-
-<a name="_getSettings"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">_getSettings</span>(<span class=sig-arg>self</span>,
-          <span class=sig-arg>options</span>)</span>
-  </h3>
-  Returns the settings object
-  <dl><dt></dt><dd>
-    <dl><dt><b>Parameters:</b></dt>
-      <dd><code><b>options</b></code> -
-         Command line options
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>svnmailer.cli.SvnmailerOptionParser</code>)</i>
-      </dd>
-    </dl>
-    <dl><dt><b>Returns:</b></dt>
-      <dd>
-        The settings object
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>svnmailer.config.ConfigFileSettings</code>)</i>
-      </dd>
-    </dl>
-    <dl><dt><b>Raises:</b></dt>
-      <dd><code><b>ConfigError</b></code> -
-        configuration error
     </dl>
   </dd></dl>
 </td></tr></table>
@@ -358,12 +315,70 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">_openRepository</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Opens the repository
-  <dl><dt></dt><dd>
+Opens the repository  <dl><dt></dt><dd>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>svnmailer.subversion.Error</b></code> -
-        Error while accessing the subversion repository
+Error while accessing the
+subversion repository    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Method Details</th></tr>
+</table>
+
+<a name="fromCommandline"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">fromCommandline</span>(<span class=sig-arg>cls</span>,
+          <span class=sig-arg>background</span>=<span class=sig-default>True</span>)</span>
+  </h3>
+Initializes <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> from command line arguments  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>background</b></code> -
+ May the process daemonize itself?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      </dd>
     </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>CommandlineError</b></code> -
+A command line error occured      <dd><code><b>ConfigurationError</b></code> -
+A configuration error occured    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="fromOptions"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">fromOptions</span>(<span class=sig-arg>cls</span>,
+          <span class=sig-arg>options</span>)</span>
+  </h3>
+Initializes <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> from an option container  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+ The options to consider
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new <a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="svnmailer.main.Main-class.html" class="link"><code>Main</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigError</b></code> -
+A configuration error occured    </dl>
   </dd></dl>
 </td></tr></table>
 <br />
@@ -377,15 +392,13 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
 <a name="_settings"></a>
 <h3>_settings</h3>
-The settings to use
-<dl>
+The settings to use<dl>
   <dt></dt>
   <dd>
     <dl>
       <dt><b>Type:</b></dt>
       <dd>
-          <code>svnmailer.settings.Settings</code>
-
+<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>svnmailer.settings._base.BaseSettings</code></a>
       </dd>
     </dl>
   </dd>
@@ -406,7 +419,7 @@ The settings to use
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:15 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

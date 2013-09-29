@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=W0232
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,22 +18,24 @@
 """
 Text based news notifier (via NNTP)
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['getNotifier']
 
 
 def getNotifier(settings, groupset):
     """ Returns an initialized notifier or nothing
 
-        @param settings: The svnmailer settings
-        @type settings: C{svnmailer.settings.Settings}
+        :Parameters:
+         - `settings`: The svnmailer settings
+         - `groupset`: The groupset to process
 
-        @param groupset: The groupset to process
-        @type groupset: C{list}
+        :Types:
+         - `settings`: `svnmailer.settings._base.BaseSettings`
+         - `groupset`: `list`
 
-        @return: The list of notifiers (containing 0 or 1 member)
-        @rtype: C{list}
+        :return: The list of notifiers (containing 0 or 1 member)
+        :rtype: ``list``
     """
     from svnmailer.notifier import _textnews
 

@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = W0704
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=W0142
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,35 +20,44 @@ Main Logic of the svnmailer
 ===========================
 
 This module is the central core of the svnmailer. It dispatches all work to be
-done. It contains just one class (L{Main}), which reads the config file while
-it is initialized. When the C{Main.run()} method is called, it selects the
+done. It contains just one class (`Main`), which reads the config file while
+it is initialized. When the `Main.run` method is called, it selects the
 groups to be notified, the notifiers to be run and runs all notifiers for
 each group.
 
-The Main class may raise several exceptions (which all inherit from L{Error}):
-    - L{ConfigError} occurs, if the configuration contains errors (like type
-      or value errors, unicode errors etc). The L{ConfigError} exception is
-      initialized with a string describing what kind of error occured.
+The `Main` class may raise several exceptions (which all inherit from `Error`):
 
-    - L{NotifierError} occurs, if one or more of the notifiers throw an
-      exception. The L{Main} class catches these exceptions (except
-      C{KeyboardInterrupt} and C{SystemExit}) and will initialize the
-      L{NotifierError} with the list of traceback strings, one for each
-      exception occured. (See the format_exception docs at
-      U{http://docs.python.org/lib/module-traceback.html}).
+- `ConfigError` occurs, if the configuration contains errors (like type
+  or value errors, unicode errors etc). The `ConfigError` exception is
+  initialized with a string describing what kind of error occured.
 
-    - L{svnmailer.subversion.RepositoryError} occurs, if something failed
-      while accessing the subversion repository. It contains some attributes
-      for identifying the error: C{svn_err_code}, C{svn_err_name} and
-      C{svn_err_str}
+- `NotifierError` occurs, if one or more of the notifiers throw an
+  exception. The `Main` class catches these exceptions (except
+  ``KeyboardInterrupt`` and ``SystemExit``) and will initialize the
+  `NotifierError` with the list of traceback strings, one for each
+  exception occured. (See the `format_exception docs`_).
+
+- `svnmailer.subversion.RepositoryError` occurs, if something failed
+  while accessing the subversion repository. It contains some attributes
+  for identifying the error: ``svn_err_code``, ``svn_err_name`` and
+  ``svn_err_str``
+
+.. _format_exception docs: http://docs.python.org/lib/module-traceback.html
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = ['Main', 'Error', 'ConfigError', 'NotifierError']
+
+# global imports
+import sys
 
 # Exceptions
 class Error(Exception):
     """ Base exception for this module """
+    pass
+
+class CommandlineError(Error):
+    """ Command line error occured """
     pass
 
 class ConfigError(Error):
@@ -60,29 +70,77 @@ class NotifierError(Error):
 
 
 class Main(object):
-    """ main svnmailer logic
+    """ Main svnmailer logic
 
-        @ivar _settings: The settings to use
-        @type _settings: C{svnmailer.settings.Settings}
+        :ivar _settings: The settings to use
+        :type _settings: `svnmailer.settings._base.BaseSettings`
     """
 
-    def __init__(self, options):
+    def __init__(self, settings):
         """ Initialization
 
-            @param options: Command line options
-            @type options: C{optparse.OptionParser}
-
-            @exception ConfigError: Configuration error
+            :param settings: The settings to use
+            :type settings: `svnmailer.settings._base.BaseSettings`
         """
-        self._settings = self._getSettings(options)
+        self._settings = settings
+
+
+    def fromCommandline(cls, background = True):
+        """ Initializes `Main` from command line arguments
+
+            :param background: May the process daemonize itself?
+            :type background: ``bool``
+
+            :return: A new `Main` instance
+            :rtype: `Main`
+
+            :Exceptions:
+             - `CommandlineError`: A command line error occured
+             - `ConfigurationError`: A configuration error occured
+        """
+        from svnmailer import cli
+
+        try:
+            options = cli.OptionParser(background).parseArgs()
+        except cli.Error, exc:
+            raise CommandlineError(str(exc))
+
+        return cls.fromOptions(options)
+
+    fromCommandline = classmethod(fromCommandline)
+
+
+    def fromOptions(cls, options):
+        """ Initializes `Main` from an option container
+
+            :param options: The options to consider
+            :type options: ``optparse.OptionContainer``
+
+            :return: A new `Main` instance
+            :rtype: `Main`
+
+            :exception ConfigError: A configuration error occured
+        """
+        from svnmailer import settings
+
+        manager = settings.Manager()
+        try:
+            settings = manager.loadSettings(options)
+        except settings.Error, exc:
+            raise ConfigError, str(exc), sys.exc_info()[2]
+
+        return cls(settings)
+
+    fromOptions = classmethod(fromOptions)
 
 
     def run(self):
         """ Dispatches the work to be done
 
-            @exception svnmailer.subversion.RepositoryError: Error while
-                accessing the subversion repository
-            @exception NotifierError: One or more notifiers went crazy
+            :Exceptions:
+             - `svnmailer.subversion.RepositoryError`: Error while
+               accessing the subversion repository
+             - `NotifierError`: One or more notifiers went crazy
         """
         from svnmailer import subversion
 
@@ -102,7 +160,7 @@ class Main(object):
                         except throwables:
                             raise
                         except:
-                            import sys, traceback
+                            import traceback
                             info = sys.exc_info()
                             backtrace = traceback.format_exception(
                                 info[0], info[1], info[2]
@@ -121,7 +179,6 @@ class Main(object):
                     raise NotifierError(*notifier_errors)
 
             except subversion.Error, exc:
-                import sys
                 raise subversion.RepositoryError, exc, sys.exc_info()[2]
 
         finally:
@@ -133,8 +190,8 @@ class Main(object):
     def _getNotifierSelector(self):
         """ Returns the notifier selector
 
-            @return: The selector
-            @rtype: C{svnmailer.notifier.selector.Selector}
+            :return: The selector
+            :rtype: `svnmailer.notifier.selector.Selector`
         """
         from svnmailer.notifier import selector
         return selector.Selector(self._settings)
@@ -143,15 +200,15 @@ class Main(object):
     def _getChanges(self):
         """ Returns the list of changes for the requested revision
 
-            @return: The list of changes (C{[Descriptor, ...]})
-            @rtype: C{list}
+            :return: The list of changes (``[Descriptor, ...]``)
+            :rtype: ``list``
 
-            @exception svnmailer.subversion.Error: Error while accessing the
-                subversion repository
+            :exception svnmailer.subversion.Error: Error while accessing the
+                                                   subversion repository
         """
         from svnmailer import settings, subversion
 
-        modes = settings.modes
+        modes = settings.MODES
         runtime = self._settings.runtime
 
         if runtime.mode in (modes.commit, modes.propchange):
@@ -172,8 +229,8 @@ class Main(object):
     def _getGroupSets(self):
         """ Returns the list of groupsets (grouped groups...) to notify
 
-            @return: The list (maybe empty). (C{[GroupSet, ...]})
-            @rtype: C{list}
+            :return: The list (maybe empty). (``[GroupSet, ...]``)
+            :rtype: ``list``
         """
         # collect changes and group by group [ ;-) ]
         group_changes = {}
@@ -199,8 +256,7 @@ class Main(object):
                 # equal to the first stored group, all other stored
                 # groups are considered equal as well. (Otherwise
                 # they wouldn't been there ...)
-                if stored.changes == changelist and \
-                        group._compare(stored.groups[0]):
+                if stored.changes == changelist and stored.groups[0] == group:
                     stored.groups.append(group)
                     group = None
                     break
@@ -214,11 +270,11 @@ class Main(object):
     def _getGroupsByChange(self, change):
         """ Returns the matching groups for a particular change 
 
-            @param change: The change to select
-            @type change: C{svnmailer.subversion.VersionedPathDescriptor}
+            :param change: The change to select
+            :type change: `svnmailer.subversion.VersionedPathDescriptor`
 
-            @return: The group list
-            @rtype: C{list}
+            :return: The group list
+            :rtype: ``list``
         """
         selected_groups = []
         ignored_groups = []
@@ -256,7 +312,7 @@ class Main(object):
 
             # store the substdict for later use
             for name, value in subst.items():
-                group._sub_(name, value)
+                group[name] = value
 
             (selected_groups, ignored_groups)[
                 bool(group.ignore_if_other_matches)
@@ -272,30 +328,34 @@ class Main(object):
     def _getDefaultSubst(self, group, repos_path, path):
         """ Returns the default substitution dict
 
-            @param group: The group to consider
-            @type group: C{svnmailer.settings.GroupSettingsContainer}
+            :Parameters:
+             - `group`: The group to consider
+             - `repos_path`: The repository path
+             - `path`: The change path
 
-            @param repos_path: The repository path
-            @type repos_path: C{unicode}
+            :Types:
+             - `group`: `svnmailer.settings._base.GroupSettingsContainer`
+             - `repos_path`: ``unicode``
+             - `path`: ``unicode``
 
-            @param path: The change path
-            @type path: C{unicode}
+            :return: The initialized dictionary
+            :rtype: ``dict``
 
-            @return: The initialized dictionary
-            @rtype: C{dict}
-
-            @exception svnmailer.subversion.Error: An error occured while
-                accessing the subversion repository
+            :exception svnmailer.subversion.Error: An error occured while
+                                                   accessing the subversion
+                                                   repository
         """
-        from svnmailer.settings import modes
+        from svnmailer.settings import MODES
 
         runtime = self._settings.runtime
         author = runtime.author
-        if not author and runtime.mode in (modes.commit, modes.propchange):
+        if not author and runtime.mode in (MODES.commit, MODES.propchange):
             author = runtime._repos.getRevisionAuthor(runtime.revision)
+            if author:
+                author = author.decode('utf-8', 'replace')
 
         subst = {
-            'author'  : author or 'no_author',
+            'author'  : (author or u'no_author'),
             'group'   : group._name,
             'property': runtime.propname,
             'revision': runtime.revision and u"%d" % runtime.revision,
@@ -310,8 +370,9 @@ class Main(object):
 
                 realname, mail = x509
                 subst.update({
-                    'x509_address': realname and "%s <%s>" % (
-                        Header.Header(realname).encode(), mail) or mail,
+                    'x509_address': (realname and "%s <%s>" % (
+                        Header.Header(realname).encode().decode('us-ascii'),
+                        mail)) or mail,
                     'x509_CN': realname,
                     'x509_emailAddress': mail,
                 })
@@ -329,31 +390,11 @@ class Main(object):
         return subst
 
 
-    def _getSettings(self, options):
-        """ Returns the settings object
-
-            @param options: Command line options
-            @type options: C{svnmailer.cli.SvnmailerOptionParser}
-
-            @return: The settings object
-            @rtype: C{svnmailer.config.ConfigFileSettings}
-
-            @exception ConfigError: configuration error
-        """
-        from svnmailer import config
-
-        try:
-            return config.ConfigFileSettings(options)
-        except config.Error, exc:
-            import sys
-            raise ConfigError, str(exc), sys.exc_info()[2]
-
-
     def _openRepository(self):
         """ Opens the repository
 
-            @exception svnmailer.subversion.Error: Error while accessing the
-                subversion repository
+            :exception svnmailer.subversion.Error: Error while accessing the
+                                                   subversion repository
         """
         from svnmailer import subversion, util
 
@@ -378,45 +419,47 @@ class Main(object):
         try:
             self._settings.runtime._repos.close()
         except AttributeError:
-            # That's ok
+            """ That's ok """
             pass
 
 
 class GroupSet(object):
     """ Container object for a single groupset
 
-        @ivar groups: The groups to process
-        @type groups: C{list}
+        :IVariables:
+         - `groups`: The groups to process
+         - `changes`: The changes that belong to the group
+         - `xchanges`: The changes that don't belong to the
+           group (only filled if ``show_nonmatching_paths = yes``)
 
-        @ivar changes: The changes that belong to the group
-        @type changes: C{list}
-
-        @ivar xchanges: The changes that don't belong to the
-            group (only filled if show_nonmatching_paths = yes)
-        @type xchanges: C{list}
+        :Types:
+         - `groups`: ``list``
+         - `changes`: ``list``
+         - `xchanges`: ``list``
     """
     
     def __init__(self, groups, changes, allchanges):
         """ Initialization
 
-            @param groups: The groups to process
-            @type groups: C{list}
+            :Parameters:
+             - `groups`: The groups to process
+             - `changes`: The changes that belong to the group
+             - `allchanges`: All changes
 
-            @param changes: The changes that belong to the group
-            @type changes: C{list}
-
-            @param allchanges: All changes
-            @type allchanges: C{list}
+            :Types:
+             - `groups`: ``list``
+             - `changes`: ``list``
+             - `allchanges`: ``list``
         """
-        from svnmailer.settings import xpath
+        from svnmailer.settings import XPATH
 
         self.groups = groups
         self.changes = changes
 
         nongroups = groups[0].show_nonmatching_paths
-        if nongroups == xpath.ignore:
+        if nongroups == XPATH.ignore:
             self.xchanges = None
-        elif nongroups == xpath.yes:
+        elif nongroups == XPATH.yes:
             self.xchanges = [
                 change for change in allchanges
                 if change not in changes

@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=E0201
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +18,8 @@
 """
 svnmailer stream objects
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = [
     'UnicodeStream', 'TruncatingStream', 'CuckooStream', 'SplittingStream',
     'DevNullStream', 'BinaryOrUnicodeStream', 'CountStream'
@@ -27,15 +29,15 @@ __all__       = [
 class _BaseStream(object):
     """ Base stream wrapper
 
-        @ivar stream: The wrapped stream
-        @type stream: file like object
+        :ivar stream: The wrapped stream
+        :type stream: ``file``
     """
 
     def __init__(self, stream):
         """ Initialization
 
-            @param stream: The stream to wrap
-            @type stream: file like object
+            :param stream: The stream to wrap
+            :type stream: ``file``
         """
         self.stream = stream
 
@@ -43,8 +45,8 @@ class _BaseStream(object):
     def write(self, towrite):
         """ Writes the data to the stream
 
-            @param towrite: stuff to write
-            @type towrite: C{str}
+            :param towrite: stuff to write
+            :type towrite: ``str``
         """
         self.stream.write(towrite)
 
@@ -52,8 +54,8 @@ class _BaseStream(object):
     def writelines(self, lines):
         r"""Write a list of strings
 
-            @param lines: The lines to write (including \n)
-            @type lines: C{list}
+            :param lines: The lines to write (including \n)
+            :type lines: ``list``
         """
         for line in lines:
             self.write(line)
@@ -72,31 +74,33 @@ class _BaseStream(object):
 class UnicodeStream(_BaseStream):
     """ Stream wrapper, which accepts unicode and a specified charset
 
-        @ivar decode: Decoder function for the input encoding
-        @type decode: callable
+        :IVariables:
+         - `decode`: Decoder function for the input encoding
+         - `err`: error handling advise
 
-        @ivar err: error handling advise
-        @type err: C{str}
+        :Types:
+         - `decode`: callable
+         - `err`: ``str``
     """
 
     def __init__(self, stream, in_enc = 'utf-8', out_enc = 'utf-8',
                  errors = "replace"):
         """ Initialization
 
-            @param stream: The stream to wrap
-            @type stream: file like object
+            :Parameters:
+             - `stream`: The stream to wrap
+             - `in_enc`: The input encoding, that should be assumed, if a
+               pure string is written
+             - `out_enc`: The output encoding
+             - `errors`: The error handling indicator, when an unicode error
+               occurs. (The default is quite lenient and writes replace
+               characters on errors)
 
-            @param in_enc: The input encoding, that should be assumed, if a
-                pure string is written
-            @type in_enc: C{str}
-
-            @param out_enc: The output encoding
-            @type out_enc: C{str}
-
-            @param errors: The error handling indicator, when an unicode error
-                occurs. (The default is quite lenient and writes replace
-                characters on errors)
-            @type errors: C{str}
+            :Types:
+             - `stream`: ``file``
+             - `in_enc`: ``str``
+             - `out_enc`: ``str``
+             - `errors`: ``str``
         """
         import codecs
 
@@ -132,27 +136,29 @@ class BinaryOrUnicodeStream(_BaseStream):
 class TruncatingStream(_BaseStream):
     """ stream wrapper, which truncates after a limit
 
-        @ivar maxsize: The maximum size in bytes
-        @type maxsize: C{int}
+        :IVariables:
+         - `maxsize`: The maximum size in bytes
+         - `current`: The number of bytes received
+         - `trunced`: The number of lines truncated (maybe actual-1)
+         - `lastchar`: The last character written
 
-        @ivar current: The number of bytes received
-        @type current: C{int}
-
-        @ivar trunced: The number of lines truncated (maybe actual-1)
-        @type trunced: C{int}
-
-        @ivar lastchar: The last character written
-        @type lastchar: C{str}
+        :Types:
+         - `maxsize`: ``int``
+         - `current`: ``int``
+         - `trunced`: ``int``
+         - `lastchar`: ``str``
     """
 
     def __init__(self, stream, maxsize, add_note = False):
         """ Initialization
 
-            @param stream: The stream to wrap
-            @type stream: file like object
+            :Parameters:
+             - `stream`: The stream to wrap
+             - `maxsize`: The maximum size in bytes
 
-            @param maxsize: The maximum size in bytes
-            @type maxsize: C{int}
+            :Types:
+             - `stream`: ``file``
+             - `maxsize`: ``int``
         """
         super(TruncatingStream, self).__init__(stream)
 
@@ -184,8 +190,8 @@ class TruncatingStream(_BaseStream):
     def getTruncatedLineCount(self):
         """ Returns the number of truncated lines
 
-            @return: The line count
-            @rtype: C{int}
+            :return: The line count
+            :rtype: ``int``
         """
         return self.trunced + (self.lastchar != "\n")
 
@@ -193,8 +199,8 @@ class TruncatingStream(_BaseStream):
     def writeWithoutTruncation(self, towrite):
         """ Writes without truncation
 
-            @param towrite: The data to write
-            @type towrite: C{str}
+            :param towrite: The data to write
+            :type towrite: ``str``
         """
         super(TruncatingStream, self).write(towrite)
 
@@ -234,7 +240,7 @@ class TruncatingFileStream(TruncatingStream):
                 self.writeWithoutTruncation(
                     "\n[... %d lines stripped ...]\n" % num
                 )
-        super(TruncatingFileStream, self).close()
+        super(TruncatingStream, self).close()
 
 
 class CuckooStream(_BaseStream):
@@ -243,8 +249,8 @@ class CuckooStream(_BaseStream):
     def replaceStream(self, stream):
         """ Replaces the stream with another
 
-            @param stream: The new stream
-            @type stream: file like object
+            :param stream: The new stream
+            :type stream: ``file``
         """
         self.stream.close()
         self.stream = stream
@@ -253,15 +259,15 @@ class CuckooStream(_BaseStream):
 class SplittingStream(_BaseStream):
     """ Stream wrapper, which provides the ability to split the stream
 
-        @ivar current: The current byte counter
-        @type current: C{int}
+        :ivar current: The current byte counter
+        :type current: ``int``
     """
 
     def __init__(self, tempdir = None):
         """ Initialization
 
-            @param tempdir: specific temporary directory
-            @type tempdir: C{str}
+            :param tempdir: specific temporary directory
+            :type tempdir: ``str``
         """
         import cStringIO
         stream = cStringIO.StringIO()
@@ -309,20 +315,20 @@ class SplittingStream(_BaseStream):
     def getPartCount(self):
         """ Returns the number of splitted parts
 
-            @return: The number
-            @rtype: C{int}
+            :return: The number
+            :rtype: ``int``
         """
         return len(self.tempfiles)
 
 
     def getPart(self, idx):
-        """ Returns the value of part C{idx}
+        """ Returns the value of part `idx`
 
-            @param idx: The part number
-            @type idx: C{int}
+            :param idx: The part number
+            :type idx: ``int``
 
-            @return: The content of the particular part
-            @rtype: C{str}
+            :return: The content of the particular part
+            :rtype: ``str``
         """
         try:
             tmpfile = self.tempfiles[idx]

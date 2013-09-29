@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.settings.Manager</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.settings-module.html">Package&nbsp;settings</a> ::
+        Class&nbsp;Manager
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/svnmailer.settings.Manager-class.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="svnmailer.settings.Manager-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class Manager</h2>
+
+<pre class="base-tree">
+<a href="__builtin__.object-class.html"><code>object</code></a> --+    
+         |    
+ <a href="svnmailer.util.Singleton-class.html"><code>Singleton</code></a> --+
+             |
+            <b>Manager</b>
+</pre><br />
+
+<hr/>
+
+Svnmailer settings manager<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Manager-class.html#loadSettings" class="summary-sig-name"><code>loadSettings</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>options</span>)</span></code>
+<br />
+Loads the settings using the registered loader</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Manager-class.html#registerLoader" class="summary-sig-name"><code>registerLoader</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>classname</span>)</span></code>
+<br />
+Registers a new settings loader</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Manager-class.html#registerMapper" class="summary-sig-name"><code>registerMapper</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>classname</span>)</span></code>
+<br />
+Registers a new mapper class</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Manager-class.html#registerOption" class="summary-sig-name"><code>registerOption</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>category</span>,
+          <span class=summary-sig-arg>name</span>,
+          <span class=summary-sig-arg>spec</span>,
+          <span class=summary-sig-arg>aliases</span>,
+          <span class=summary-sig-arg>compare</span>)</span></code>
+<br />
+Registers a new configuration option</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.settings.Manager-class.html#registerType" class="summary-sig-name"><code>registerType</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>,
+          <span class=summary-sig-arg>classname</span>)</span></code>
+<br />
+Registers a new member type</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.Manager-class.html#_load" class="summary-sig-name"><code>_load</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>classname</span>)</span></code>
+<br />
+Loads the class specified by <a href="../private/svnmailer.settings.Manager-class.html#_load" class="link"><code>classname</code></a></td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from Singleton</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.util.Singleton-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Non-initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="svnmailer.util.Singleton-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>cls</span>)</span></code>
+<br />
+Returns the one and only instance    <i>(Static method)</i>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings.Manager-class.html#_LOADER"><code>_LOADER</code></a></b>: The settings loader.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings.Manager-class.html#_MAPPERS"><code>_MAPPERS</code></a></b>: The list of mapper classes.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings.Manager-class.html#_MEMBERS"><code>_MEMBERS</code></a></b>: The member definitions of the configuration sections.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings.Manager-class.html#_TYPEMAP"><code>_TYPEMAP</code></a></b>: The mapping of all available type names to their
+actual implementation classes.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">module</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings.Manager-class.html#_util"><code>_util</code></a></b>: The util module</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from Singleton</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>NoneType</code></font></td>
+<td><b><a href="svnmailer.util.Singleton-class.html#__singletoninstance__"><code>__singletoninstance__</code></a></b> = <span title="None">None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Method Details</th></tr>
+</table>
+
+<a name="loadSettings"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">loadSettings</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>options</span>)</span>
+  </h3>
+Loads the settings using the registered loader  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>options</b></code> -
+ runtime options
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">optparse.OptionContainer</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+A new <a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>Error</b></code> -
+A settings error occured      <dd><code><b>ImportError</b></code> -
+A class could not be loaded    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="registerLoader"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">registerLoader</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>classname</span>)</span>
+  </h3>
+Registers a new settings loader  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>classname</b></code> -
+ The fully qualified class name (e.g.
+<tt class="literal"><span class="pre">'svnmailer.settings.configfile.ConfigFileSettings'</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="registerMapper"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">registerMapper</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>classname</span>)</span>
+  </h3>
+Registers a new mapper class  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>classname</b></code> -
+ The fully qualified class name (e.g.
+<tt class="literal"><span class="pre">'svnmailer.settings.mappers.PlainMapper'</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="registerOption"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">registerOption</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>category</span>,
+          <span class=sig-arg>name</span>,
+          <span class=sig-arg>spec</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>aliases</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>compare</span>=<span class=sig-default>True</span>)</span>
+  </h3>
+Registers a new configuration option  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>category</b></code> -
+ The configuration category where the option
+should be recognized. Valid values are <tt class="literal"><span class="pre">general</span></tt>, <tt class="literal"><span class="pre">group</span></tt>
+and <tt class="literal"><span class="pre">runtime</span></tt>. Modifying the latter is not so useful though.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      <dd><code><b>name</b></code> -
+ The name of the option (like <tt class="literal"><span class="pre">'cia_project_path'</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      <dd><code><b>spec</b></code> -
+ The member specification. Generally this is a tuple,
+with two items: <tt class="literal"><span class="pre">('descriptor',</span> <span class="pre">{specdict})</span></tt>. If <tt class="literal"><span class="pre">specdict</span></tt>
+is empty, the descriptor string is sufficient. If no
+specific descriptor is needed, <tt class="literal"><span class="pre">None</span></tt> may be used.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">tuple</span></tt> or <tt class="literal"><span class="pre">str</span></tt>)</i>
+      <dd><code><b>aliases</b></code> -
+ Alias names for this member (<tt class="literal"><span class="pre">('alias',</span> <span class="pre">...)</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=sequence)</i>
+      <dd><code><b>compare</b></code> -
+ Does the option needs to be included in the
+comparison of different group sections (while compressing
+notification groups) (In other words -- does it affect the
+mail/news subject or body in any way)? Setting to <tt class="literal"><span class="pre">False</span></tt>
+is only valid if <a href="svnmailer.settings.Manager-class.html#registerOption" class="link"><code>category</code></a> is <tt class="literal"><span class="pre">group</span></tt>.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>KeyError</b></code> -
+The category was invalid    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="registerType"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">registerType</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>name</span>,
+          <span class=sig-arg>classname</span>)</span>
+  </h3>
+Registers a new member type  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>name</b></code> -
+ The name of the type. It is case sensitive.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      <dd><code><b>classname</b></code> -
+ The fully qualified class name (e.g.
+<tt class="literal"><span class="pre">'svnmailer.settings._accessors.UnicodeMember'</span></tt>)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_load"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_load</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>classname</span>)</span>
+  </h3>
+Loads the class specified by <a href="../private/svnmailer.settings.Manager-class.html#_load" class="link"><code>classname</code></a>  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>classname</b></code> -
+ The classname to load
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ImportError</b></code> -
+The import of the class failed    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_LOADER"></a>
+<h3>_LOADER</h3>
+The settings loader. It should be modified by the
+<a href="svnmailer.settings.Manager-class.html#registerLoader" class="link"><code>registerLoader</code></a> method only and is also a fully qualified
+class name. Note that each <a href="svnmailer.settings.Manager-class.html#registerLoader" class="link"><code>registerLoader</code></a> call overrides the
+previous one.<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+<span title="'svnmailer.settings.configfile.ConfigFileSettings'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>svnmailer.settings.configfile.ConfigFileSettings<span class="variable-quote">'</span>                     </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_MAPPERS"></a>
+<h3>_MAPPERS</h3>
+The list of mapper classes. It should be modified by
+the <a href="svnmailer.settings.Manager-class.html#registerMapper" class="link"><code>registerMapper</code></a> method only. The classes are expressed by
+their fully qualified names in string form (like
+<tt class="literal"><span class="pre">'svnmailer.settings.mappers.PlainMapper'</span></tt>). The list is
+initially filled with the builtin mapper classes.<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">list</span></tt>
+      </dd>
+<span title="['svnmailer.settings.mappers.PlainMapper']">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+['svnmailer.settings.mappers.PlainMapper']                             </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_MEMBERS"></a>
+<h3>_MEMBERS</h3>
+The member definitions of the configuration sections.
+Use <a href="svnmailer.settings.Manager-class.html#registerOption" class="link"><code>registerOption</code></a> to modifiy it.<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">dict</span></tt>
+      </dd>
+<span title="{'runtime': {'members': {'repository': 'filename', 'author': 'unicode', 'stdin': 'stdin', '_repos': None, 'action': 'unicode', 'mode': 'string', 'propname': 'unicode', 'debug': 'bool', 'path_encoding': 'string', 'config': 'filename', 'revision': 'int'}, 'aliases': {}}, 'group': {'eqignore': ['_name', '_def_for_repos', '_def_for_paths', 'for_repos', 'for_paths', 'exclude_paths', 'ignore_if_other_matches', 'to_addr', 'from_addr', 'to_newsgroup', 'custom_header', 'cia_project_name', 'cia_project_module', 'cia_project_branch', 'cia_project_submodule', 'cia_project_path'], 'members': {'diff_modi...">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{'general': {'aliases': {'diff': 'diff_command',
+                         'mail_command': 'sendmail_command',
+                         'smtp_hostname': 'smtp_host'},
+             'members': {'cia_rpc_server': ('unicode', {'map': True}),
+                         'debug_all_mails_to': ('tokenlist', {'map': T<span class="variable-linewrap">\</span>
+rue}),
+                         'diff_command': 'unicommand',
+                         'nntp_host': ('unicode', {'map': True}),
+<span class="variable-ellipsis">...</span>                                                                    </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_TYPEMAP"></a>
+<h3>_TYPEMAP</h3>
+The mapping of all available type names to their
+actual implementation classes. It should be modified by the
+<a href="svnmailer.settings.Manager-class.html#registerType" class="link"><code>registerType</code></a> method only. The classes are expressed by their
+fully qualified names in string form (like
+<tt class="literal"><span class="pre">'svnmailer.settings._accessors.UnicodeMember'</span></tt>). The dict
+is initially filled with builtin descriptor classes.<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">dict</span></tt>
+      </dd>
+<span title="{'regex': 'svnmailer.settings._accessors.RegexMember', 'string': 'svnmailer.settings._accessors.StringMember', 'int': 'svnmailer.settings._accessors.IntegerMember', 'stdin': 'svnmailer.settings._accessors.StdinMember', 'tokenlist': 'svnmailer.settings._accessors.TokenlistMember', 'filename': 'svnmailer.settings._accessors.FilenameMember', 'token': 'svnmailer.settings._accessors.TokenMember', 'bool': 'svnmailer.settings._accessors.BooleanMember', 'unicode': 'svnmailer.settings._accessors.UnicodeMember', 'humanbool': 'svnmailer.settings._accessors.HumanBooleanMember', 'unicommand': 'svnmailer...">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{'bool': 'svnmailer.settings._accessors.BooleanMember',
+ 'filename': 'svnmailer.settings._accessors.FilenameMember',
+ 'humanbool': 'svnmailer.settings._accessors.HumanBooleanMember',
+ 'int': 'svnmailer.settings._accessors.IntegerMember',
+ 'mailaction': 'svnmailer.settings._accessors.MailactionMember',
+ 'quotedstr': 'svnmailer.settings._accessors.QuotedstringMember',
+ 'regex': 'svnmailer.settings._accessors.RegexMember',
+ 'stdin': 'svnmailer.settings._accessors.StdinMember',
+<span class="variable-ellipsis">...</span>                                                                    </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_util"></a>
+<h3>_util</h3>
+The util module<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">module</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:13 2005</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

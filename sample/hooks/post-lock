@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# post lock hook -- called if a file is locked by a user
+# This is a feature of SVN >= 1.2
+#
+# The mailer is put into the background in order to
+# leave the script faster
+#
+# You need to adjust the config path
+# and the path to svn-mailer if necessary.
+#
+# Note that the mailer also pulls STDIN in order to retrieve
+# the file names which were locked.
+
+CONFIG="/path/to/your/config"
+MAILER="@@SCRIPTS@@/svn-mailer"
+
+
+REPOS="$1"
+USER="$2"
+
+"${MAILER}" --lock --config "${CONFIG}" \
+    --repository "${REPOS}" --author "${USER}" --background
+

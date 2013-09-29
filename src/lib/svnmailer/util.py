@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
-# pylint: disable-msg = W0613, W0622, W0704
+# -*- coding: iso-8859-1 -*-
+# pylint: disable-msg=W0611
+# pylint-version = 0.7.0
 #
-# Copyright 2004-2006 AndrÃ© Malo or his licensors, as applicable
+# Copyright 2004-2005 André Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,12 +23,10 @@ This module contains some utility functions and classes used in several
 places of the svnmailer. These functions have a quite general character
 and can be used easily outside of the svnmailer as well.
 """
-__author__    = "AndrÃ© Malo"
-__docformat__ = "epytext en"
+__author__    = "André Malo"
+__docformat__ = "restructuredtext en"
 __all__       = [
     'TempFile',
-    'getPipe4',
-    'getSuitableCommandLine',
     'splitCommand',
     'filename',
     'extractX509User',
@@ -35,16 +34,16 @@ __all__       = [
     'filterForXml',
     'getParentDirList',
     'getGlobValue',
-    'parseQuery',
-    'modifyQuery',
     'inherit',
     'commonPaths',
     'ReadOnlyDict',
     'SafeDict',
+    'Singleton',
+    'loadDotted',
 ]
 
 # global imports
-import locale, os, sys
+import errno, locale, os, sys
 
 
 class TempFile(object):
@@ -54,20 +53,18 @@ class TempFile(object):
         file. This differs from the stuff in tempfile, which removes
         the file, when it's closed.
 
-        The mode is fixed to C{w+}; a C{b} is added if the C{text}
-        argument is false (see C{__init__})
+        The mode is fixed to ``w+``; a ``b`` is added if the ``text``
+        argument is false (see `__init__`)
 
-        @cvar name: C{None}
-        @ivar name: The full name of the file
-        @type name: C{str}
+        :IVariables:
+         - `name`: The full name of the file
+         - `fp`: The file descriptor
+         - `_unlink`: ``os.unlink``
 
-        @cvar fp: C{None}
-        @ivar fp: The file descriptor
-        @type fp: file like object
-
-        @cvar _unlink: C{None}
-        @ivar _unlink: C{os.unlink}
-        @type _unlink: callable
+        :Types:
+         - `name`: ``str``
+         - `fp`: ``file``
+         - `_unlink`: ``callable``
     """
     name = None
     fp = None
@@ -76,11 +73,13 @@ class TempFile(object):
     def __init__(self, tempdir = None, text = False):
         """ Initialization
 
-            @param tempdir: The temporary directory
-            @type tempdir: C{str}
+            :Parameters:
+             - `tempdir`: The temporary directory
+             - `text`: want to write text?
 
-            @param text: want to write text?
-            @type text: C{bool}
+            :Types:
+             - `tempdir`: ``str``
+             - `text`: ``bool``
         """
         import tempfile
 
@@ -96,183 +95,52 @@ class TempFile(object):
             try:
                 self.fp.close()
             except ValueError:
-                # ok
+                """ ok """
                 pass
 
         if self.name and self._unlink:
             try:
                 self._unlink(self.name)
             except OSError:
-                # don't even ignore
+                """ don't even ignore """
                 pass
 
 
     def close(self):
         """ Close the file (but don't delete it)
 
-            @exception ValueError: The file was already closed
+            :exception ValueError: The file was already closed
         """
         if self.fp:
             self.fp.close()
-
-
-def getPipe2(command):
-    """ Returns a pipe object (C{Popen3} or C{_DummyPopen3} on win32)
-
-        @param command: The command list (the first item is the command
-            itself, the rest represents the arguments)
-        @type command: C{list}
-
-        @return: The pipe object
-        @rtype: C{popen2.Popen3} or C{_DummyPopen3}
-    """
-    import popen2
-
-    try:
-        cls = popen2.Popen3
-    except AttributeError:
-        cls = _DummyPopen3
-
-    return cls(getSuitableCommandLine(command))
-
-
-def getPipe4(command):
-    """ Returns a pipe object (C{Popen4} or C{_DummyPopen4} on win32)
-
-        @param command: The command list (the first item is the command
-            itself, the rest represents the arguments)
-        @type command: C{list}
-
-        @return: The pipe object
-        @rtype: C{popen2.Popen4} or C{_DummyPopen4}
-    """
-    import popen2
-
-    try:
-        cls = popen2.Popen4
-    except AttributeError:
-        cls = _DummyPopen4
-
-    return cls(getSuitableCommandLine(command))
-
-
-class _DummyPopen4(object):
-    """ Dummy Popen4 class for platforms which don't provide one in popen2 """
-
-    def __init__(self, cmd, bufsize = -1):
-        """ Initialization """
-        bufsize = -1 # otherwise error on win32
-        self.tochild, self.fromchild = os.popen4(cmd, 'b', bufsize)
-
-
-    def wait(self):
-        """ Dummy wait """
-        return 0
-
-
-class _DummyPopen3(object):
-    """ Dummy Popen3 class for platforms which don't provide one in popen2 """
-
-    def __init__(self, cmd, capturestderr = False, bufsize = -1):
-        """ Initialization """
-        bufsize = -1 # otherwise error on win32
-        capturestderr = False # we don't do this on win32
-        self.tochild, self.fromchild = os.popen2(cmd, 'b', bufsize)
-        self.childerr = None
-
-
-    def wait(self):
-        """ Dummy wait """
-        return 0
-
-
-def getSuitableCommandLine(command, _platform = None):
-    """ Return the revised command suitable for being exec'd
-
-        Currently this means, it's escaped and converted to a string
-        only for Win32, because on this system the shell is called.
-        For other systems the list is just returned.
-
-        @note: This is more or less the same as the stuff in
-            svn.fs._escape_msvcrt_shell_command/arg. But it
-            belongs somewhere else - e.g. into a util module...
-
-            Perhaps once a day the whole package goes directly
-            into the subversion distribution and then it's all
-            cool.
-
-        @param command: The command to escape
-        @type command: C{list}
-
-        @param _platform: A platform string (for testing purposes only)
-        @type _platform: C{str}
-
-        @return: The escaped command string or the original list
-        @rtype: C{str} or C{list}
-    """
-    platform = _platform or sys.platform
-    if platform != "win32":
-        return command
-
-    try:
-        slashre = getSuitableCommandLine._slashre
-    except AttributeError:
-        import re
-        slashre = getSuitableCommandLine._slashre = re.compile(r'(\\+)("|$)')
-
-    # What we do here is:
-    # (1) double up slashes, but only before quotes or the string end
-    #     (since we surround it by quotes afterwards)
-    # (2) Escape " as "^""
-    #     This means "string end", "Escaped quote", "string begin" in that
-    #     order
-    #     (See also http://www.microsoft.com/technet/archive/winntas
-    #               /deploy/prodspecs/shellscr.mspx)
-
-    # Original comments from the svn.fs functions:
-    # ============================================
-    # According cmd's usage notes (cmd /?), it parses the command line by
-    # "seeing if the first character is a quote character and if so, stripping
-    # the leading character and removing the last quote character."
-    # So to prevent the argument string from being changed we add an extra set
-    # of quotes around it here.
-
-    # The (very strange) parsing rules used by the C runtime library are
-    # described at:
-    # http://msdn.microsoft.com/library/en-us/vclang/html
-    # /_pluslang_Parsing_C.2b2b_.Command.2d.Line_Arguments.asp
-
-    return '"%s"' % " ".join([
-        '"%s"' % slashre.sub(r'\1\1\2', arg).replace('"', '"^""')
-        for arg in command
-    ])
 
 
 def splitCommand(command):
     r"""Split a command string with respect to quotes and such
 
         The command string consists of several tokens:
-            - whitespace: Those are separators except inside quoted items
-            - unquoted items: every token that doesn't start with
-                a double quote (")
-            - quoted items: every token that starts with a double quote (").
-                Those items must be closed with a double quote and may contain
-                whitespaces. The enclosing quotes are stripped. To put a double
-                quote character inside such a token, it has to be escaped with
-                a backslash (\). Therefore - backslashes themselves have to be
-                escaped as well. The escapes are also stripped from the result.
 
-        Here's an example: C{r'foo bar "baz" "zo\"" "\\nk"'} resolves
-        to C{['foo', 'bar', 'baz', 'zo"', r'\nk']}
+        * whitespace: Those are separators except inside quoted items
+        * unquoted items: every token that doesn't start with
+          a double quote (``"``)
+        * quoted items: every token that starts with a double quote (``"``).
+          Those items must be closed with a double quote and may contain
+          whitespaces. The enclosing quotes are stripped. To put a double
+          quote character inside such a token, it has to be escaped with
+          a backslash (``\``). Therefore - backslashes themselves have to be
+          escaped as well. The escapes are also stripped from the result.
 
-        @param command: The command string
-        @type command: C{str}
+        Here's an example: ``r'foo bar "baz" "zo\"" "\\nk"'`` resolves
+        to ``['foo', 'bar', 'baz', 'zo"', r'\nk']``
 
-        @return: The splitted command
-        @rtype: C{list}
+        :param command: The command string
+        :type command: ``str``
 
-        @exception ValueError: The command string is not valid
-            (unclosed quote or the like)
+        :return: The splitted command
+        :rtype: ``list``
+
+        :exception ValueError: The command string is not valid
+                               (unclosed quote or the like)
     """
     try:
         argre, checkre, subre = splitCommand._regexps
@@ -296,7 +164,20 @@ def splitCommand(command):
 
 
 class _LocaleFile(object):
-    """ Transform filenames according to locale """
+    """ Transform filenames according to locale
+
+        :IVariables:
+         - `unicode_system`: Does the system support unicode file names?
+         - `from_enc`: The default encoding of filenames coming from
+           the environment
+         - `to_enc`: The default encoding of filenames written to disk
+
+        :Types:
+         - `unicode_system`: ``bool``
+         - `from_enc`: ``str``
+         - `to_enc`: ``str``
+    """
+
     def __init__(self, _locale = locale, _os = os, _sys = sys):
         """ Initialization """
         self.unicode_system = _os.path.supports_unicode_filenames
@@ -304,31 +185,34 @@ class _LocaleFile(object):
         self.to_enc = _sys.getfilesystemencoding() or "us-ascii"
 
 
-    def toLocale(self, name, name_enc = None, locale_enc = None):
+    def toLocale(self, name, name_enc = None, locale_enc = None, force = False):
         """ Transforms a file name to the locale representation
 
-            @param name: The name to consider
-            @type name: C{str} / C{unicode}
+            :Parameters:
+             - `name`: The name to consider
+             - `name_enc`: The source encoding of ``name``, if it's
+               not unicode already
+             - `locale_enc`: The file system encoding (used only if it's
+               not a unicode supporting OS)
+             - `force`: force transcoding even if unicode system?
 
-            @param name_enc: The source encoding of C{name}, if it's
-                not unicode already
-            @type name_enc: C{str}
+            :Types:
+             - `name`: ``basestring``
+             - `name_enc`: ``str``
+             - `locale_enc`: ``str``
+             - `force`: ``bool``
 
-            @param locale_enc: The file system encoding (used only
-                if it's not a unicode supporting OS)
-            @type locale_enc: C{str}
+            :return: The name in locale representation
+            :rtype: ``basestring``
 
-            @return: The name in locale representation
-            @rtype: C{str}/C{unicode}
-
-            @exception UnicodeError: An error happened while recoding
+            :exception UnicodeError: An error happened while recoding
         """
         if locale_enc is None:
             locale_enc = self.to_enc
         if name_enc is None:
             name_enc = self.from_enc
 
-        if self.unicode_system:
+        if self.unicode_system and not force:
             if isinstance(name, unicode):
                 return name
             else:
@@ -336,7 +220,7 @@ class _LocaleFile(object):
 
         if locale_enc.lower() == "none":
             if isinstance(name, unicode):
-                raise RuntimeError("Illegal call")
+                raise AssertionError("Illegal call")
             else:
                 return name
 
@@ -349,16 +233,18 @@ class _LocaleFile(object):
     def fromLocale(self, name, locale_enc = None):
         """ Transform a file name from locale repr to unicode (hopefully)
 
-            @param name: The name to decode
-            @type name: C{str}/C{unicode}
+            :Parameters:
+             - `name`: The name to decode
+             - `locale_enc`: The locale encoding
 
-            @param locale_enc: The locale encoding
-            @type locale_enc: C{str}
+            :Types:
+             - `name`: ``basestring``
+             - `locale_enc`: ``str``
 
-            @return: The decoded name
-            @rtype: C{unicode}/C{str}
+            :return: The decoded name
+            :rtype: ``basestring``
 
-            @exception UnicodeError: An error happend while recoding
+            :exception UnicodeError: An error happend while recoding
         """
         if isinstance(name, unicode):
             return name
@@ -374,14 +260,87 @@ class _LocaleFile(object):
 filename = _LocaleFile()
 
 
+class _Terminal(object):
+    """ Deal with terminal properties """
+
+    def __init__(self):
+        """ Initialization """
+        fd = None
+        for fp in (sys.stdout, sys.stdin):
+            try:
+                _fd = fp.fileno()
+            except (AttributeError, ValueError):
+                continue
+            else:
+                if self.isatty(_fd):
+                    fd = _fd
+                    break
+
+        self._fd = fd
+
+
+    def isatty(self, fd):
+        """ Returns whether the given descriptor is connected to a terminal
+
+            If the ``os`` module doesn't provide an ``isatty`` function,
+            we return ``False`` instead of raising an exception
+
+            :param fd: The file descriptor to inspect
+            :type fd: ``int``
+
+            :return: Is `fd` connected to a terminal?
+            :rtype: ``bool``
+        """
+        try:
+            _isatty = bool(os.isatty(fd))
+        except AttributeError:
+            _isatty = False
+
+        return _isatty
+
+
+    def getWidth(self):
+        """ Returns terminal width if determined, None otherwise
+
+            :return: The width
+            :rtype: ``int``
+        """
+        if self._fd is None:
+            return None
+
+        try:
+            import fcntl, struct, termios
+
+            # struct winsize { /* on linux in asm/termios.h */
+            #     unsigned short ws_row;
+            #     unsigned short ws_col;
+            #     unsigned short ws_xpixel;
+            #     unsigned short ws_ypixel;
+            # }
+            return struct.unpack("4H", fcntl.ioctl(
+                self._fd, termios.TIOCGWINSZ, struct.pack("4H", 0, 0, 0, 0)
+            ))[1]
+
+        except (SystemExit, KeyboardInterrupt):
+            raise
+
+        except:
+            """ don't even ignore """
+            pass
+
+        return None
+
+terminal = _Terminal()
+
+
 def extractX509User(author):
     """ Returns user data extracted from x509 subject string
 
-        @param author: The author string
-        @type author: C{str}
+        :param author: The author string
+        :type author: ``basestring``
 
-        @return: user name, mail address (user name maybe C{None})
-        @rtype: C{tuple} or C{None}
+        :return: user name, mail address (user name maybe ``None``)
+        :rtype: ``tuple`` or ``None``
     """
     if author:
         try:
@@ -392,7 +351,9 @@ def extractX509User(author):
             eare = re.compile(ur'/emailAddress=([^/]+)', re.I)
             extractX509User._regexps = (cnre, eare)
 
-        author = author.decode('utf-8', 'replace')
+        if not isinstance(author, unicode):
+            author = author.decode('utf-8', 'replace')
+
         ea_match = eare.search(author)
         if ea_match:
             cn_match = cnre.search(author)
@@ -404,33 +365,33 @@ def extractX509User(author):
 def substitute(template, subst):
     """ Returns a filled template
 
-        If the L{template} is C{None}, this function returns C{None}
+        If the `template` is ``None``, this function returns ``None``
         as well.
 
-        @param template: The temlate to fill
-        @type template: C{unicode}
+        :param template: The temlate to fill
+        :type template: ``basestring``
 
-        @param subst: The substitution parameters
-        @type subst: C{dict}
+        :param subst: The substitution parameters
+        :type subst: ``dict``
 
-        @return: The filled template (The return type depends on the
+        :return: The filled template (The return type depends on the
             template and the parameters)
-        @rtype: C{str} or C{unicode}
+        :rtype: ``basestring``
     """
     if template is None:
         return None
 
-    return template % SafeDict(subst.items())
+    return template % SafeDict(subst)
 
 
 def filterForXml(value):
     """ Replaces control characters with replace characters
 
-        @param value: The value to filter
-        @type value: C{unicode}
+        :param value: The value to filter
+        :type value: ``unicode``
 
-        @return: The filtered value
-        @rtype: C{unicode}
+        :return: The filtered value
+        :rtype: ``unicode``
     """
     try:
         regex = filterForXml._regex
@@ -439,7 +400,7 @@ def filterForXml(value):
         chars = u''.join([chr(num) for num in range(32)
             if num not in (9, 10, 13) # XML 1.0
         ])
-        regex = filterForXml._regex = re.compile("[%s]" % chars)
+        regex = filterForXml._regex = re.compile(u"[%s]" % chars)
 
     return regex.sub(u'\ufffd', value)
 
@@ -447,11 +408,11 @@ def filterForXml(value):
 def getParentDirList(path):
     """ Returns the directories up to a (posix) path
 
-        @param path: The path to process
-        @type path: C{str}
+        :param path: The path to process
+        :type path: ``str``
 
-        @return: The directory list
-        @rtype: C{list}
+        :return: The directory list
+        :rtype: ``list``
     """
     import posixpath
 
@@ -472,14 +433,16 @@ def getParentDirList(path):
 def getGlobValue(globs, path):
     """ Returns the value of the glob, where path matches
 
-        @param globs: The glob list (C{[(glob, associated value)]})
-        @type globs: C{list} of C{tuple}
+        :Parameters:
+         - `globs`: The glob list (``[(glob, associated value)]``)
+         - `path`: The path to match
 
-        @param path: The path to match
-        @type path: C{str}
+        :Types:
+         - `globs`: sequence
+         - `path`: ``str``
 
-        @return: The matched value or C{None}
-        @rtype: any
+        :return: The matched value or ``None``
+        :rtype: any
     """
     import fnmatch
 
@@ -492,103 +455,18 @@ def getGlobValue(globs, path):
     return result
 
 
-def modifyQuery(query, rem = None, add = None, set = None, delim = '&'):
-    """ Returns a modified query string
-
-        @note: set is a convenience parameter, it's actually a combination of
-            C{rem} and C{add}. The order of processing is:
-                1. append the set parameters to C{rem} and C{add}
-                2. apply C{rem}
-                3. apply C{add}
-
-        @warning: query parameters containing no C{=} character are silently
-            dropped.
-
-        @param query: The query string to modify
-        @type query: C{str} or C{dict}
-
-        @param rem: parameters to remove (if present)
-        @type rem: C{list} of C{str}
-
-        @param add: parameters to add
-        @type add: C{list} of C{tuple}
-
-        @param set: parameters to override
-        @type set: C{list} of C{tuple}
-
-        @param delim: Delimiter to use when rebuilding the query string
-        @type delim: C{str}
-    """
-    rem = list(rem or [])
-    add = list(add or [])
-    set = list(set or [])
-
-    # parse query string
-    query_dict = (isinstance(query, dict) and
-        [query.copy()] or [parseQuery(query)]
-    )[0]
-
-    # append set list to rem and add
-    rem.extend([tup[0] for tup in set])
-    add.extend(set)
-
-    # apply rem
-    for key in rem:
-        try:
-            del query_dict[key]
-        except KeyError:
-            # don't even ignore
-            pass
-
-    # apply add
-    for key, val in add:
-        query_dict.setdefault(key, []).append(val)
-
-    # rebuild query and return
-    return delim.join([
-        delim.join(["%s=%s" % (key, str(val)) for val in vals])
-        for key, vals in query_dict.items()
-    ])
-
-
-def parseQuery(query):
-    """ Parses a query string
-
-        @warning: query parameters containing no C{=} character are silently
-            dropped.
-
-        @param query: The query string to parse
-        @type query: C{str}
-
-        @return: The parsed query (C{{key: [values]}})
-        @rtype: C{dict}
-    """
-    try:
-        queryre = parseQuery._regex
-    except AttributeError:
-        import re
-        parseQuery._regex = queryre = re.compile(r'[&;]')
-
-    query_dict = {}
-    for key, val in [pair.split('=', 1)
-            for pair in queryre.split(query) if '=' in pair]:
-        query_dict.setdefault(key, []).append(val)
-
-    return query_dict
-
-
 def commonPaths(paths):
     """ Returns the common component and the stripped paths
 
         It expects that directories do always end with a trailing slash and
         paths never begin with a slash (except root).
 
-        @param paths: The list of paths (C{[str, str, ...]})
-        @type paths: C{list}
+        :param paths: The list of paths (``[str, str, ...]``)
+        :type paths: ``list``
 
-        @return: The common component (always a directory) and the stripped
-            paths (C{(str, [str, str, ...])})
-        @rtype: C{tuple}
+        :return: The common component (always a directory) and the stripped
+                 paths (``(str, [str, str, ...])``)
+        :rtype: ``tuple``
     """
     import posixpath
 
@@ -607,15 +485,17 @@ def commonPaths(paths):
 
 
 def inherit(cls, *bases):
-    """ Inherits class cls from *bases
+    r"""Inherits class cls from \*bases
 
-        @note: cls needs a __dict__, so __slots__ is tabu
+        :note: `cls` needs a ``__dict__``\, so ``__slots__`` is a nono
 
-        @param cls: The class to inherit from *bases
-        @type cls: C{class}
+        :Parameters:
+         - `cls`: The class to inherit from `bases`
+         - `bases`: The base class(es)
 
-        @param bases: The base class(es)
-        @type bases: C{list}
+        :Types:
+         - `cls`: ``class``
+         - `bases`: ``tuple``
     """
     newdict = dict([(key, value)
         for key, value in cls.__dict__.items()
@@ -633,14 +513,14 @@ def parseContentType(value):
         (the email module unfortunately doesn't provide a public
         interface for this)
 
-        @warning: comments are not recognized yet
+        :warning: comments are not recognized (yet?)
 
-        @param value: The value to parse - must be ascii compatible
-        @type value: C{basestring}
+        :param value: The value to parse - must be ascii compatible
+        :type value: ``basestring``
 
-        @return: The parsed header (C{(value, {key, [value, value, ...]})})
-            or C{None}
-        @rtype: C{tuple}
+        :return: The parsed header (``(value, {key, [value, value, ...]})``)
+                 or ``None``
+        :rtype: ``tuple``
     """
     try:
         if isinstance(value, unicode):
@@ -738,3 +618,67 @@ class SafeDict(dict):
     def __getitem__(self, key):
         """ Returns an empty string on false values or unknown keys """
         return dict.get(self, key) or ''
+
+
+class Singleton(object):
+    """ Singleton base class """
+    __singletoninstance__ = None
+
+    def __new__(cls):
+        """ Returns the one and only instance """
+        self = cls.__singletoninstance__
+        if self is None:
+            self = object.__new__(cls)
+            cls.__singletoninstance__ = self
+
+        return self
+
+
+    def __init__(self):
+        """ Non-initialization """
+        pass
+
+
+def loadDotted(name):
+    """ Loads a dotted name
+
+        The dotted name can be anything, which is passively resolvable
+        (i.e. without the invocation of a class to get their attributes or
+        the like). For example, `name` could be 'svnmailer.util.loadDotted'
+        and would return this very function. It's assumed that the first
+        part of the `name` is always is a module.
+
+        If a dotted name was loaded successfully, the object will be cached
+        and delivered from there the next time.
+
+        :param name: The dotted name to load
+        :type name: ``str``
+
+        :return: The loaded object
+        :rtype: any
+
+        :exception ImportError: A module in the path could not be loaded
+    """
+    try:
+        return loadDotted._cache[name]
+    except AttributeError:
+        """ create cache """
+        loadDotted._cache = {}
+    except KeyError:
+        """ cache MISS """
+        pass
+
+    components = name.split('.')
+    path = [components.pop(0)]
+    obj = __import__(path[0])
+    while components:
+        comp = components.pop(0)
+        path.append(comp)
+        try:
+            obj = getattr(obj, comp)
+        except AttributeError:
+            __import__('.'.join(path))
+            obj = getattr(obj, comp)
+
+    loadDotted._cache[name] = obj
+    return obj

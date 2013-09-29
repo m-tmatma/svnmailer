@@ -34,7 +34,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type str</h2>
+<h2 class="class">Class str</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+    
@@ -136,12 +136,6 @@ x.__mul__(n) &lt;==&gt; x*n...</td></tr>
 <br />
 x.__ne__(y) &lt;==&gt; x!=y...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.str-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.str-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__repr__() &lt;==&gt; repr(x)...</td></tr>
@@ -166,8 +160,7 @@ Return a copy of the string S with only its first character
 capitalized.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.str-class.html#center" class="summary-sig-name"><code>center</code></a>(<span class=summary-sig-arg>S</span>,
-          <span class=summary-sig-arg>width</span>,
-          <span class=summary-sig-arg>fillchar</span>)</span></code>
+          <span class=summary-sig-arg>width</span>)</span></code>
 <br />
 Return S centered in a string of length width.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
@@ -260,8 +253,7 @@ Return a string which is the concatenation of the strings in the
 sequence.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.str-class.html#ljust" class="summary-sig-name"><code>ljust</code></a>(<span class=summary-sig-arg>S</span>,
-          <span class=summary-sig-arg>width</span>,
-          <span class=summary-sig-arg>fillchar</span>)</span></code>
+          <span class=summary-sig-arg>width</span>)</span></code>
 <br />
 Return S left justified in a string of length width.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
@@ -297,18 +289,9 @@ such that sub is contained within s[start,end].</td></tr>
 Like S.rfind() but raise ValueError when the substring is not found.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.str-class.html#rjust" class="summary-sig-name"><code>rjust</code></a>(<span class=summary-sig-arg>S</span>,
-          <span class=summary-sig-arg>width</span>,
-          <span class=summary-sig-arg>fillchar</span>)</span></code>
+          <span class=summary-sig-arg>width</span>)</span></code>
 <br />
 Return S right justified in a string of length width.</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.str-class.html#rsplit" class="summary-sig-name"><code>rsplit</code></a>(<span class=summary-sig-arg>S</span>,
-          <span class=summary-sig-arg>sep</span>,
-          <span class=summary-sig-arg>maxsplit</span>)</span></code>
-<br />
-Return a list of the words in the string S, using sep as the
-delimiter string, starting at the end of the string and working
-to the front.</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.str-class.html#rstrip" class="summary-sig-name"><code>rstrip</code></a>(<span class=summary-sig-arg>S</span>,
           <span class=summary-sig-arg>chars</span>)</span></code>
@@ -389,6 +372,14 @@ helper for pickle...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
 x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -691,29 +682,6 @@ x!=y
   </dd></dl>
 </td></tr></table>
 
-<a name="__new__"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">__new__</span>(<span class=sig-arg>T</span>,
-          <span class=sig-arg>S</span>,
-          <span class="sig-vararg">...</span>)</span>
-  </h3>
-<pre class="literalblock">
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T
-</pre>
-  <dl><dt></dt><dd>
-    <dl><dt><b>Returns:</b></dt>
-      <dd>
-<pre class="literalblock">
-a new object with type S, a subtype of T
-</pre>
-      </dd>
-    </dl>
-    <dl><dt><b>Overrides:</b></dt>
-      <dd><a href="__builtin__.basestring-class.html#__new__"><code>__builtin__.basestring.__new__</code></a></dd>
-    </dl>
-  </dd></dl>
-</td></tr></table>
-
 <a name="__repr__"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">__repr__</span>(<span class=sig-arg>x</span>)</span>
@@ -818,12 +786,11 @@ string
 <a name="center"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">center</span>(<span class=sig-arg>S</span>,
-          <span class=sig-arg>width</span>,
-          <span class=sig-arg>fillchar</span>=<span class=sig-default>...</span>)</span>
+          <span class=sig-arg>width</span>)</span>
   </h3>
 <pre class="literalblock">
-Return S centered in a string of length width. Padding is
-done using the specified fill character (default is a space)
+Return S centered in a string of length width. Padding is done
+using spaces.
 </pre>
   <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
@@ -1156,12 +1123,11 @@ string
 <a name="ljust"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">ljust</span>(<span class=sig-arg>S</span>,
-          <span class=sig-arg>width</span>,
-          <span class=sig-arg>fillchar</span>=<span class=sig-default>...</span>)</span>
+          <span class=sig-arg>width</span>)</span>
   </h3>
 <pre class="literalblock">
 Return S left justified in a string of length width. Padding is
-done using the specified fill character (default is a space).
+done using spaces.
 </pre>
   <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
@@ -1277,42 +1243,17 @@ int
 <a name="rjust"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">rjust</span>(<span class=sig-arg>S</span>,
-          <span class=sig-arg>width</span>,
-          <span class=sig-arg>fillchar</span>=<span class=sig-default>...</span>)</span>
+          <span class=sig-arg>width</span>)</span>
   </h3>
 <pre class="literalblock">
 Return S right justified in a string of length width. Padding is
-done using the specified fill character (default is a space)
+done using spaces.
 </pre>
   <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
 <pre class="literalblock">
 string
-</pre>
-      </dd>
-    </dl>
-  </dd></dl>
-</td></tr></table>
-
-<a name="rsplit"></a>
-<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
-  <h3><span class="sig"><span class="sig-name">rsplit</span>(<span class=sig-arg>S</span>,
-          <span class=sig-arg>sep</span>=<span class=sig-default>...&nbsp;</span>,
-          <span class=sig-arg>maxsplit</span>=<span class=sig-default>...</span>)</span>
-  </h3>
-<pre class="literalblock">
-Return a list of the words in the string S, using sep as the
-delimiter string, starting at the end of the string and working
-to the front.  If maxsplit is given, at most maxsplit splits are
-done. If sep is not specified or is None, any whitespace string
-is a separator.
-</pre>
-  <dl><dt></dt><dd>
-    <dl><dt><b>Returns:</b></dt>
-      <dd>
-<pre class="literalblock">
-list of strings
 </pre>
       </dd>
     </dl>
@@ -1543,7 +1484,7 @@ string
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:11 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:13 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

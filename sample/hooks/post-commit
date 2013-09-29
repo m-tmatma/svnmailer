@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# post commit hook -- called for normal commits
+#
+# The mailer is put into the background in order to
+# leave the script faster
+#
+# You need to adjust the config path
+# and the path to svn-mailer if necessary.
+
+CONFIG="/path/to/your/config"
+MAILER="@@SCRIPTS@@/svn-mailer"
+
+
+REPOS="$1"
+REV="$2"
+
+"${MAILER}" --commit --config "${CONFIG}" \
+    --repository "${REPOS}" --revision "${REV}" --background
+

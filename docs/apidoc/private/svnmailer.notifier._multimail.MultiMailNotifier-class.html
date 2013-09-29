@@ -36,7 +36,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type MultiMailNotifier</h2>
+<h2 class="class">Class MultiMailNotifier</h2>
 
 <pre class="base-tree">
   <a href="__builtin__.object-class.html"><code>object</code></a> --+            
@@ -52,8 +52,7 @@
 
 <hr/>
 
-Bases class for mail notifiers using attachments for the diffs
-<hr/>
+Bases class for mail notifiers using attachments for the diffs<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -73,24 +72,20 @@ Initialization</td></tr>
           <span class=summary-sig-arg>fp</span>)</span></code>
 <br />
 Returns the (possibly decorated) diff stream</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        file like object
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">file</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#_getMailWriter" class="summary-sig-name"><code>_getMailWriter</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>fp</span>)</span></code>
 <br />
 Returns a mail writer</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>list</code> of <code>_MultiMail</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt> of <tt class="literal"><span class="pre">_MultiMail</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#_getMultiMails" class="summary-sig-name"><code>_getMultiMails</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the multipart mail(s)</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#_parseMailType" class="summary-sig-name"><code>_parseMailType</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the multimail options</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#composeMail" class="summary-sig-name"><code>composeMail</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Composes the mail</td></tr>
@@ -120,61 +115,51 @@ Writes the commit diffs into temp files</td></tr>
 Dump the property diff into a separate file</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from MailNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#_getPathString" class="summary-sig-name"><code>_getPathString</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>prefix</span>,
           <span class=summary-sig-arg>paths</span>)</span></code>
 <br />
 Returns the (possibly) prefixed paths as string</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#_getPrefixedDirectories" class="summary-sig-name"><code>_getPrefixedDirectories</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>changeset</span>)</span></code>
 <br />
 Returns the longest common directory prefix</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#_getPrefixedFiles" class="summary-sig-name"><code>_getPrefixedFiles</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>changeset</span>)</span></code>
 <br />
 Returns the longest common path prefix</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#composeHeaders" class="summary-sig-name"><code>composeHeaders</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>groups</span>)</span></code>
 <br />
 Compose the informational headers of the mail</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#getBasicHeaders" class="summary-sig-name"><code>getBasicHeaders</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the basic headers</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>dict</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#getCustomHeaders" class="summary-sig-name"><code>getCustomHeaders</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>groups</span>)</span></code>
 <br />
 Returns the custom headers</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#getMailAddresses" class="summary-sig-name"><code>getMailAddresses</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>groups</span>)</span></code>
 <br />
 Returns the substituted mail addresses (from/to/reply-to)</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        generator
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1">generator</font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#getMails" class="summary-sig-name"><code>getMails</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the composed mail(s)</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#getMailSubject" class="summary-sig-name"><code>getMailSubject</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>countprefix</span>)</span></code>
 <br />
 Returns the subject</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#getTransferEncoding" class="summary-sig-name"><code>getTransferEncoding</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the transfer encoding to use</td></tr>
@@ -190,17 +175,15 @@ Writes the whole diff notification body</td></tr>
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from TextNotifier</th></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#_doWritePathList" class="summary-sig-name"><code>_doWritePathList</code></a>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>cset</span>)</span></code>
+          <span class=summary-sig-arg>set</span>)</span></code>
 <br />
 Write the path list of a particular changeset</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#getDate" class="summary-sig-name"><code>getDate</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>oftime</span>)</span></code>
 <br />
 Returns the revision date in a human readable format</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#writeContentDiffAction" class="summary-sig-name"><code>writeContentDiffAction</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>change</span>)</span></code>
 <br />
@@ -245,8 +228,7 @@ Writes the commit path list</td></tr>
           <span class=summary-sig-arg>raw</span>)</span></code>
 <br />
 Writes a property diff</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#writePropertyDiffAction" class="summary-sig-name"><code>writePropertyDiffAction</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>change</span>,
           <span class=summary-sig-arg>name</span>,
@@ -261,119 +243,106 @@ Writes the property diff action for a particular change</td></tr>
 Writes the revision property change data</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from BaseNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_getContentEncoding" class="summary-sig-name"><code>_getContentEncoding</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>path</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Returns the encoding for the specified path and revision</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#dumpContent" class="summary-sig-name"><code>dumpContent</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>change</span>,
           <span class=summary-sig-arg>enc</span>,
           <span class=summary-sig-arg>default</span>)</span></code>
 <br />
 Dump the two revisions of a particular change</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getAuthor" class="summary-sig-name"><code>getAuthor</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the author of the revision</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getBrowserGenerator" class="summary-sig-name"><code>getBrowserGenerator</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>)</span></code>
+<br />
+Returns the browser generator if any</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentDiffAction" class="summary-sig-name"><code>getContentDiffAction</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>change</span>)</span></code>
 <br />
 Returns the content diff action for a particular change</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentDiffUrl" class="summary-sig-name"><code>getContentDiffUrl</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>config</span>,
           <span class=summary-sig-arg>change</span>)</span></code>
 <br />
 Returns the content diff url for a particular change</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentEncodingProperty" class="summary-sig-name"><code>getContentEncodingProperty</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>path</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Returns the content encoding property for a path/rev</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code> of <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getContentEncodings" class="summary-sig-name"><code>getContentEncodings</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>change</span>,
           <span class=summary-sig-arg>default</span>)</span></code>
 <br />
 Returns the encodings of the change content (base and current rev)</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.differ.*</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">svnmailer.differ.*</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getDiffer" class="summary-sig-name"><code>getDiffer</code></a>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>command</span>)</span></code>
+          <span class=summary-sig-arg>command</span>,
+          <span class=summary-sig-arg>tags</span>)</span></code>
 <br />
 Returns the initialized differ</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getDiffTokens" class="summary-sig-name"><code>getDiffTokens</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>config</span>)</span></code>
 <br />
 Returns valid diff tokens and tests</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getEncodingFromMimeType" class="summary-sig-name"><code>getEncodingFromMimeType</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>path</span>,
           <span class=summary-sig-arg>revision</span>)</span></code>
 <br />
 Returns the encoding extracted from svn:mime-type</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getLog" class="summary-sig-name"><code>getLog</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the log entry of the revision</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getPropertyDiffAction" class="summary-sig-name"><code>getPropertyDiffAction</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>values</span>)</span></code>
 <br />
 Returns the property diff action for a particular change</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code> or {str}
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt> or <tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTempDir" class="summary-sig-name"><code>getTempDir</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the temporary directory</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>svnmailer.util.TempFile</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="svnmailer.util.TempFile-class.html" class="link"><code>svnmailer.util.TempFile</code></a></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTempFile" class="summary-sig-name"><code>getTempFile</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns an open temporary file container object</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getTime" class="summary-sig-name"><code>getTime</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the time of the revision in seconds since epoch</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#getUrl" class="summary-sig-name"><code>getUrl</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>config</span>)</span></code>
 <br />
 Returns the revision URL</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">bool</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isBinaryProperty" class="summary-sig-name"><code>isBinaryProperty</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>values</span>)</span></code>
 <br />
 Returns if the supplied property seems to be binary</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">bool</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isOneLineProperty" class="summary-sig-name"><code>isOneLineProperty</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>name</span>,
           <span class=summary-sig-arg>value</span>)</span></code>
 <br />
 Returns if the supplied property value takes just one line</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>bool</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">bool</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#isUTF8Property" class="summary-sig-name"><code>isUTF8Property</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>name</span>)</span></code>
 <br />
@@ -392,12 +361,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
@@ -418,6 +381,14 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -427,25 +398,25 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <th colspan="2">Instance Variable Summary</th></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from MailNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">sre pattern or <code>None</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1">sre pattern or <tt class="literal"><span class="pre">None</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#_header_re"><code>_header_re</code></a></b>: Pattern for header name checking</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from TextNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#changeset"><code>changeset</code></a></b>: The list of changes to process</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svnmailer.settings.GroupSettingsContainer</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._base.GroupSettingsContainer-class.html" class="link"><code>svnmailer.settings._base.GroupSettingsContainer</code></a></font></td>
 <td><b><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#config"><code>config</code></a></b>: The group config</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svnmailer.differ.*</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">svnmailer.differ.*</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#differ"><code>differ</code></a></b>: The differ object</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">file like object</font></td>
 <td><b><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#fp"><code>fp</code></a></b>: The file to write to</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from BaseNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.main.GroupSet-class.html" class="link"><code>svnmailer.main.GroupSet</code></a></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_groupset"><code>_groupset</code></a></b>: The groupset to process</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">dict</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_penc_cache"><code>_penc_cache</code></a></b>: The (path, rev) -&gt; property encoding cache</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>svnmailer.settings.Settings</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>svnmailer.settings._base.BaseSettings</code></a></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_settings"><code>_settings</code></a></b>: The settings to use</td></tr>
 </table><br />
 
@@ -459,47 +430,45 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 </span></td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from MailNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
-<td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#COMMIT_SUBJECT"><code>COMMIT_SUBJECT</code></a></b> = <span title="u'%(prefix)s r%(revision)s %(part)s - %(files/dirs)s'"><code>u'%(prefix)s&nbsp;r%(revision)s&nbsp;%(part)s&nbsp;-&nbsp;%<span class="variable-ellipsis">...</span></code>
-</span></td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
-<td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#LOCK_SUBJECT"><code>LOCK_SUBJECT</code></a></b> = <span title="u'%(prefix)s %(files/dirs)s'"><code>u'%(prefix)s&nbsp;%(files/dirs)s'              </code>
-</span></td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
-<td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#REVPROP_SUBJECT"><code>REVPROP_SUBJECT</code></a></b> = <span title="u'%(prefix)s r%(revision)s - %(property)s'"><code>u'%(prefix)s&nbsp;r%(revision)s&nbsp;-&nbsp;%(propert<span class="variable-ellipsis">...</span></code>
-</span></td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
-<td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#UNLOCK_SUBJECT"><code>UNLOCK_SUBJECT</code></a></b> = <span title="u'%(prefix)s %(files/dirs)s'"><code>u'%(prefix)s&nbsp;%(files/dirs)s'            </code>
-</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
+<td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#COMMIT_SUBJECT"><code>COMMIT_SUBJECT</code></a></b>: Default commit event subject template</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
+<td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#LOCK_SUBJECT"><code>LOCK_SUBJECT</code></a></b>: Default lock event subject template</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
+<td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#REVPROP_SUBJECT"><code>REVPROP_SUBJECT</code></a></b>: Default revprop-change event subject template</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
+<td><b><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#UNLOCK_SUBJECT"><code>UNLOCK_SUBJECT</code></a></b>: Default unlock event subject template</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from TextNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#OUTPUT_SEPARATOR"><code>OUTPUT_SEPARATOR</code></a></b>: the separator between headline and diff</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
-<td><b><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#OUTPUT_SEPARATOR_LIGHT"><code>OUTPUT_SEPARATOR_LIGHT</code></a></b>: the separator between headline and property diff</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#OUTPUT_SEPARATOR_LIGHT"><code>OUTPUT_SEPARATOR_LIGHT</code></a></b>: the separator between headline and
+property diff</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from BaseNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>tuple</code></font></td>
-<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_diffable_tests"><code>_diffable_tests</code></a></b>: Map <code>generate_diffs</code> list entrys to change methods</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">tuple</span></tt></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#_diffable_tests"><code>_diffable_tests</code></a></b>: Maps <tt class="literal"><span class="pre">generate_diffs</span></tt> list entrys to change
+methods</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ADD"><code>ADD</code></a></b>: &quot;add&quot; token</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#COPY"><code>COPY</code></a></b>: &quot;copy&quot; token</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#DELETE"><code>DELETE</code></a></b>: &quot;delete&quot; token</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
-<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_CONFIG"><code>ENC_CONFIG</code></a></b>: magic value, meaning that the content encoding should be retrieved 
-from the config</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
-<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_DEFAULT"><code>ENC_DEFAULT</code></a></b> = <span title="'show default encoding'"><code><span class="variable-quote">'</span>show&nbsp;default&nbsp;encoding<span class="variable-quote">'</span>                    </code>
-</span></td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_CONFIG"><code>ENC_CONFIG</code></a></b>: Magic value, meaning that the content encoding should
+be retrieved from the config</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_DEFAULT"><code>ENC_DEFAULT</code></a></b>: Magic value to determine if the default encoding
+should be displayed</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#ENC_PROPERTY"><code>ENC_PROPERTY</code></a></b>: The property name, where encodings could be stored</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#MODIFY"><code>MODIFY</code></a></b>: &quot;modify&quot; token</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#NONE"><code>NONE</code></a></b>: &quot;none&quot; token</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>unicode</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">unicode</span></tt></font></td>
 <td><b><a href="../private/svnmailer.notifier._base.BaseNotifier-class.html#PROPCHANGE"><code>PROPCHANGE</code></a></b>: &quot;propchange&quot; token</td></tr>
 </table><br />
 
@@ -519,8 +488,7 @@ from the config</td></tr>
           <span class="sig-kwarg">**kwargs</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#__init__"><code>svnmailer.notifier._mail.MailNotifier.__init__</code></a></dd>
     </dl>
@@ -532,8 +500,7 @@ from the config</td></tr>
   <h3><span class="sig"><span class="sig-name">_getDiffStream</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>fp</span>)</span>
   </h3>
-  Returns the (possibly decorated) diff stream
-  <dl><dt></dt><dd>
+Returns the (possibly decorated) diff stream  <dl><dt></dt><dd>
   </dd></dl>
 </td></tr></table>
 
@@ -542,20 +509,18 @@ from the config</td></tr>
   <h3><span class="sig"><span class="sig-name">_getMailWriter</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>fp</span>)</span>
   </h3>
-  Returns a mail writer
-  <dl><dt></dt><dd>
+Returns a mail writer  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>fp</b></code> -
-         The stream to wrap
+ The stream to wrap
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=file like object)</i>
+        (type=<tt class="literal"><span class="pre">file</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The file object
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=file like object)</i>
+The file object        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">file</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -565,13 +530,11 @@ from the config</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">_getMultiMails</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Returns the multipart mail(s)
-  <dl><dt></dt><dd>
+Returns the multipart mail(s)  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The mail(s)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>list</code> of <code>_MultiMail</code>)</i>
+The mail(s)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt> of <tt class="literal"><span class="pre">_MultiMail</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -581,13 +544,11 @@ from the config</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">_parseMailType</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Returns the multimail options
-  <dl><dt></dt><dd>
+Returns the multimail options  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The diff content type and disposition
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>tuple</code>)</i>
+The diff content type and disposition        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">tuple</span></tt>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -597,13 +558,11 @@ from the config</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">composeMail</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Composes the mail
-  <dl><dt></dt><dd>
+Composes the mail  <dl><dt></dt><dd>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The senders, the receivers, the mail(s)
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>tuple</code>)</i>
+The senders, the receivers, the mail(s)        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">tuple</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Overrides:</b></dt>
@@ -619,8 +578,7 @@ from the config</td></tr>
           <span class=sig-arg>to_addr</span>,
           <span class=sig-arg>mail</span>)</span>
   </h3>
-  Sends the mail (abstract method)
-  <dl><dt></dt><dd>
+Sends the mail (abstract method)  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#sendMail"><code>svnmailer.notifier._mail.MailNotifier.sendMail</code></a></dd>
     </dl>
@@ -633,8 +591,7 @@ from the config</td></tr>
           <span class=sig-arg>change</span>,
           <span class=sig-arg>raw</span>=<span class=sig-default>False</span>)</span>
   </h3>
-  Dump the diff into a separate file
-  <dl><dt></dt><dd>
+Dump the diff into a separate file  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#writeContentDiff"><code>svnmailer.notifier._text.TextNotifier.writeContentDiff</code></a></dd>
     </dl>
@@ -645,8 +602,7 @@ from the config</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">writeDiffList</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Writes the commit diffs into temp files
-  <dl><dt></dt><dd>
+Writes the commit diffs into temp files  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#writeDiffList"><code>svnmailer.notifier._text.TextNotifier.writeDiffList</code></a></dd>
     </dl>
@@ -660,8 +616,7 @@ from the config</td></tr>
           <span class=sig-arg>change</span>,
           <span class=sig-arg>raw</span>=<span class=sig-default>False</span>)</span>
   </h3>
-  Dump the property diff into a separate file
-  <dl><dt></dt><dd>
+Dump the property diff into a separate file  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="../private/svnmailer.notifier._text.TextNotifier-class.html#writePropertyDiffs"><code>svnmailer.notifier._text.TextNotifier.writePropertyDiffs</code></a></dd>
     </dl>
@@ -711,7 +666,7 @@ from the config</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:12 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:01 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

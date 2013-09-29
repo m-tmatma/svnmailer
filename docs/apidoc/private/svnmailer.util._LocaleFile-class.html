@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type _LocaleFile</h2>
+<h2 class="class">Class _LocaleFile</h2>
 
 <pre class="base-tree">
 <a href="__builtin__.object-class.html"><code>object</code></a> --+
@@ -45,8 +45,7 @@
 
 <hr/>
 
-Transform filenames according to locale
-<hr/>
+Transform filenames according to locale<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -60,19 +59,18 @@ Transform filenames according to locale
           <span class=summary-sig-arg>_sys</span>)</span></code>
 <br />
 Initialization</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>/<code>str</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">basestring</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.util._LocaleFile-class.html#fromLocale" class="summary-sig-name"><code>fromLocale</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>name</span>,
           <span class=summary-sig-arg>locale_enc</span>)</span></code>
 <br />
 Transform a file name from locale repr to unicode (hopefully)</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>str</code>/<code>unicode</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">basestring</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.util._LocaleFile-class.html#toLocale" class="summary-sig-name"><code>toLocale</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>name</span>,
           <span class=summary-sig-arg>name_enc</span>,
-          <span class=summary-sig-arg>locale_enc</span>)</span></code>
+          <span class=summary-sig-arg>locale_enc</span>,
+          <span class=summary-sig-arg>force</span>)</span></code>
 <br />
 Transforms a file name to the locale representation</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
@@ -89,12 +87,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
@@ -115,6 +107,28 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.util._LocaleFile-class.html#from_enc"><code>from_enc</code></a></b>: The default encoding of filenames coming from
+the environment</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.util._LocaleFile-class.html#to_enc"><code>to_enc</code></a></b>: The default encoding of filenames written to disk</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">bool</span></tt></font></td>
+<td><b><a href="../private/svnmailer.util._LocaleFile-class.html#unicode_system"><code>unicode_system</code></a></b>: Does the system support unicode file names?</td></tr>
 </table><br />
 
 
@@ -127,13 +141,12 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <a name="__init__"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
-          <span class=sig-arg>_locale</span>=<span class=sig-default>&lt;module&nbsp;'locale'&nbsp;from&nbsp;'/usr/lib/python2.4/locale.pyc'&gt;</span>,
-          <span class=sig-arg>_os</span>=<span class=sig-default>&lt;module&nbsp;'os'&nbsp;from&nbsp;'/usr/lib/python2.4/os.pyc'&gt;</span>,
+          <span class=sig-arg>_locale</span>=<span class=sig-default>&lt;module&nbsp;'locale'&nbsp;from&nbsp;'/usr/lib/python2.3/locale.pyc'&gt;</span>,
+          <span class=sig-arg>_os</span>=<span class=sig-default>&lt;module&nbsp;'os'&nbsp;from&nbsp;'/usr/lib/python2.3/os.pyc'&gt;</span>,
           <span class=sig-arg>_sys</span>=<span class=sig-default>&lt;module&nbsp;'sys'&nbsp;(built-in)&gt;</span>)</span>
     <br /><i>(Constructor)</i>
   </h3>
-  Initialization
-  <dl><dt></dt><dd>
+Initialization  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
     </dl>
@@ -146,30 +159,27 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
           <span class=sig-arg>name</span>,
           <span class=sig-arg>locale_enc</span>=<span class=sig-default>None</span>)</span>
   </h3>
-  Transform a file name from locale repr to unicode (hopefully)
-  <dl><dt></dt><dd>
+Transform a file name from locale repr to unicode (hopefully)  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>name</b></code> -
-         The name to decode
+ The name to decode
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>/<code>unicode</code>)</i>
+        (type=<tt class="literal"><span class="pre">basestring</span></tt>)</i>
       <dd><code><b>locale_enc</b></code> -
-         The locale encoding
+ The locale encoding
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The decoded name
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>unicode</code>/<code>str</code>)</i>
+The decoded name        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">basestring</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>UnicodeError</b></code> -
-        An error happend while recoding
-    </dl>
+An error happend while recoding    </dl>
   </dd></dl>
 </td></tr></table>
 
@@ -178,40 +188,93 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <h3><span class="sig"><span class="sig-name">toLocale</span>(<span class=sig-arg>self</span>,
           <span class=sig-arg>name</span>,
           <span class=sig-arg>name_enc</span>=<span class=sig-default>None</span>,
-          <span class=sig-arg>locale_enc</span>=<span class=sig-default>None</span>)</span>
+          <span class=sig-arg>locale_enc</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>force</span>=<span class=sig-default>False</span>)</span>
   </h3>
-  Transforms a file name to the locale representation
-  <dl><dt></dt><dd>
+Transforms a file name to the locale representation  <dl><dt></dt><dd>
     <dl><dt><b>Parameters:</b></dt>
       <dd><code><b>name</b></code> -
-         The name to consider
+ The name to consider
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code> / <code>unicode</code>)</i>
+        (type=<tt class="literal"><span class="pre">basestring</span></tt>)</i>
       <dd><code><b>name_enc</b></code> -
-         The source encoding of <code>name</code>, if it's not unicode 
-        already
+ The source encoding of <tt class="literal"><span class="pre">name</span></tt>, if it's
+not unicode already
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
       <dd><code><b>locale_enc</b></code> -
-         The file system encoding (used only if it's not a unicode 
-        supporting OS)
+ The file system encoding (used only if it's
+not a unicode supporting OS)
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>)</i>
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      <dd><code><b>force</b></code> -
+ force transcoding even if unicode system?
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">bool</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Returns:</b></dt>
       <dd>
-        The name in locale representation
-        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        (type=<code>str</code>/<code>unicode</code>)</i>
+The name in locale representation        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">basestring</span></tt>)</i>
       </dd>
     </dl>
     <dl><dt><b>Raises:</b></dt>
       <dd><code><b>UnicodeError</b></code> -
-        An error happened while recoding
-    </dl>
+An error happened while recoding    </dl>
   </dd></dl>
 </td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="from_enc"></a>
+<h3>from_enc</h3>
+The default encoding of filenames coming from
+the environment<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="to_enc"></a>
+<h3>to_enc</h3>
+The default encoding of filenames written to disk<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="unicode_system"></a>
+<h3>unicode_system</h3>
+Does the system support unicode file names?<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">bool</span></tt>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
 <br />
 
 
@@ -228,7 +291,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:10 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:06 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

@@ -35,7 +35,7 @@
 </tr></table>
 
 <!-- =========== START OF CLASS DESCRIPTION =========== -->
-<h2 class="class">Type TruncatingFileStream</h2>
+<h2 class="class">Class TruncatingFileStream</h2>
 
 <pre class="base-tree">
   <a href="__builtin__.object-class.html"><code>object</code></a> --+        
@@ -49,8 +49,7 @@
 
 <hr/>
 
-Truncating stream, which writes the truncating note on close
-<hr/>
+Truncating stream, which writes the truncating note on close<hr/>
 
 
 <!-- =========== START OF METHOD SUMMARY =========== -->
@@ -70,8 +69,7 @@ Closes the stream</td></tr>
           <span class=summary-sig-arg>add_note</span>)</span></code>
 <br />
 Initialization</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>int</code>
-</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
   <td><code><span class="summary-sig"><a href="svnmailer.stream.TruncatingStream-class.html#getTruncatedLineCount" class="summary-sig-name"><code>getTruncatedLineCount</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the number of truncated lines</td></tr>
@@ -122,12 +120,6 @@ x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
 <br />
 x.__hash__() &lt;==&gt; hash(x)...</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
-          <span class=summary-sig-arg>S</span>,
-          <span class="summary-sig-vararg">...</span>)</span></code>
-<br />
-T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
 <br />
 helper for pickle...</td></tr>
@@ -147,6 +139,14 @@ x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
   <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
 <br />
 x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
 </table><br />
 
 
@@ -156,17 +156,17 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
   <th colspan="2">Instance Variable Summary</th></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from TruncatingStream</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
 <td><b><a href="svnmailer.stream.TruncatingStream-class.html#current"><code>current</code></a></b>: The number of bytes received</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
 <td><b><a href="svnmailer.stream.TruncatingStream-class.html#lastchar"><code>lastchar</code></a></b>: The last character written</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
 <td><b><a href="svnmailer.stream.TruncatingStream-class.html#maxsize"><code>maxsize</code></a></b>: The maximum size in bytes</td></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1"><code>int</code></font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">int</span></tt></font></td>
 <td><b><a href="svnmailer.stream.TruncatingStream-class.html#trunced"><code>trunced</code></a></b>: The number of lines truncated (maybe actual-1)</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from _BaseStream</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">file like object</font></td>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">file</span></tt></font></td>
 <td><b><a href="../private/svnmailer.stream._BaseStream-class.html#stream"><code>stream</code></a></b>: The wrapped stream</td></tr>
 </table><br />
 
@@ -181,8 +181,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">close</span>(<span class=sig-arg>self</span>)</span>
   </h3>
-  Closes the stream
-  <dl><dt></dt><dd>
+Closes the stream  <dl><dt></dt><dd>
     <dl><dt><b>Overrides:</b></dt>
       <dd><a href="../private/svnmailer.stream._BaseStream-class.html#close"><code>svnmailer.stream._BaseStream.close</code></a></dd>
     </dl>
@@ -204,7 +203,7 @@ x.__str__() &lt;==&gt; str(x)...</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Mon Apr 17 12:39:10 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:01 2005</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>

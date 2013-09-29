@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>svnmailer.settings.configfile.FileConfig</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="svnmailer-module.html">Package&nbsp;svnmailer</a> ::
+        <a href="svnmailer.settings-module.html">Package&nbsp;settings</a> ::
+        <a href="../private/svnmailer.settings.configfile-module.html">Module&nbsp;configfile</a> ::
+        Class&nbsp;FileConfig
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/svnmailer.settings.configfile.FileConfig-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class FileConfig</h2>
+
+<pre class="base-tree">
+<a href="__builtin__.object-class.html"><code>object</code></a> --+    
+         |    
+<a href="../private/svnmailer.settings._base.BaseConfig-class.html"><code>BaseConfig</code></a> --+
+             |
+            <b>FileConfig</b>
+</pre><br />
+
+<hr/>
+
+Representation of the loaded config file<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>settingsobj</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#__delitem__" class="summary-sig-name"><code>__delitem__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>)</span></code>
+<br />
+Removes the specified section</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#__iter__" class="summary-sig-name"><code>__iter__</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Iterator over the section names</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_attachIncludes" class="summary-sig-name"><code>_attachIncludes</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>parsed</span>,
+          <span class=summary-sig-arg>settingsobj</span>,
+          <span class=summary-sig-arg>includes</span>,
+          <span class=summary-sig-arg>mainfile</span>)</span></code>
+<br />
+Attaches the includes to the main config</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_createFileParser" class="summary-sig-name"><code>_createFileParser</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns a new <tt class="literal"><span class="pre">FileParser</span></tt> instance</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._fileparser.Option-class.html" class="link"><code>_fileparser.Option</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_extractOption" class="summary-sig-name"><code>_extractOption</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+<br />
+Returns the specified option or <tt class="literal"><span class="pre">None</span></tt></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">file</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_findConfig" class="summary-sig-name"><code>_findConfig</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>settingsobj</span>)</span></code>
+<br />
+Finds and opens the main config file</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">list</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_getDefaultConfigFiles" class="summary-sig-name"><code>_getDefaultConfigFiles</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>settingsobj</span>)</span></code>
+<br />
+Returns the default config file locations</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_loadConfig" class="summary-sig-name"><code>_loadConfig</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>settingsobj</span>)</span></code>
+<br />
+Load and parse main config file</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_optionxform" class="summary-sig-name"><code>_optionxform</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>option</span>)</span></code>
+<br />
+Returns the transformed option</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_processPreOptions" class="summary-sig-name"><code>_processPreOptions</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>parsed</span>,
+          <span class=summary-sig-arg>settingsobj</span>,
+          <span class=summary-sig-arg>name</span>)</span></code>
+<br />
+Processes the pre section options</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#extractSection" class="summary-sig-name"><code>extractSection</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>section</span>,
+          <span class=summary-sig-arg>xform</span>,
+          <span class=summary-sig-arg>keep</span>,
+          <span class=summary-sig-arg>check</span>)</span></code>
+<br />
+Returns the options of the specified section</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__repr__() &lt;==&gt; repr(x)...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value...</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)...</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from type</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.type-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T...</td></tr>
+</table><br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Instance Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a></font></td>
+<td><b><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_parsed"><code>_parsed</code></a></b>: The <a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a> instance</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from BaseConfig</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings._base.BaseConfig-class.html#charset"><code>charset</code></a></b>: Charset of the config file</td></tr>
+</table><br />
+
+
+<!-- =========== START OF CLASS VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Class Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#__implements__"><code>__implements__</code></a></b> = <span title="[&lt;class 'svnmailer.settings._base.BaseConfig'&gt;]"><code>[&lt;class&nbsp;'svnmailer.settings._base.BaseC<span class="variable-ellipsis">...</span></code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_CHARSETOPTION"><code>_CHARSETOPTION</code></a></b>: Normalized name of the <tt class="literal"><span class="pre">config_charset</span></tt> option</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><tt class="literal"><span class="pre">str</span></tt></font></td>
+<td><b><a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_INCLUDEOPTION"><code>_INCLUDEOPTION</code></a></b>: Normalized name of the <tt class="literal"><span class="pre">include_config</span></tt> option</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>settingsobj</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+Initialization  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>settingsobj</b></code> -
+ The settings object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigIOError</b></code> -
+some configfile could not be opened      <dd><code><b>ConfigMissingError</b></code> -
+see <a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_findConfig" class="link"><code>_findConfig</code></a>      <dd><code><b>ValueError</b></code> -
+Syntax Error detected or unicode failure
+in <tt class="literal"><span class="pre">include_config</span></tt> preoption      <dd><code><b>ConfigInvalidError</b></code> -
+some error occured while parsing the
+config    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.settings._base.BaseConfig-class.html#__init__"><code>svnmailer.settings._base.BaseConfig.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__delitem__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__delitem__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>section</span>)</span>
+    <br /><i>(Index deletion operator)</i>
+  </h3>
+Removes the specified section  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.settings._base.BaseConfig-class.html#__delitem__"><code>svnmailer.settings._base.BaseConfig.__delitem__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__iter__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__iter__</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Iterator over the section names  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.settings._base.BaseConfig-class.html#__iter__"><code>svnmailer.settings._base.BaseConfig.__iter__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_attachIncludes"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_attachIncludes</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>parsed</span>,
+          <span class=sig-arg>settingsobj</span>,
+          <span class=sig-arg>includes</span>,
+          <span class=sig-arg>mainfile</span>)</span>
+  </h3>
+Attaches the includes to the main config  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>parsed</b></code> -
+ The parsed config
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a>)</i>
+      <dd><code><b>settingsobj</b></code> -
+ The settings object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a>)</i>
+      <dd><code><b>includes</b></code> -
+ Whitespace separated sequence of quoted strings
+where each represents a file name to include (this is the
+specification of the option value)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      <dd><code><b>mainfile</b></code> -
+ main config filename
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigIOError</b></code> -
+Error reading an included file      <dd><code><b>ValueError</b></code> -
+Syntax Error detected or unicode failure
+in <a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_attachIncludes" class="link"><code>includes</code></a>      <dd><code><b>ConfigInvalidError</b></code> -
+sectionless option in include file
+detected    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_createFileParser"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_createFileParser</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+Returns a new <tt class="literal"><span class="pre">FileParser</span></tt> instance  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The <tt class="literal"><span class="pre">FileParser</span></tt> instance        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_extractOption"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_extractOption</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>section</span>,
+          <span class=sig-arg>option</span>)</span>
+  </h3>
+<p>Returns the specified option or <tt class="literal"><span class="pre">None</span></tt></p>
+<p>All options of the section are scanned and transformed
+using <a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_optionxform" class="link"><code>_optionxform</code></a>. The first matching option
+wins and is removed after retrieving the value.</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>section</b></code> -
+ The section to scan
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._fileparser.Section-class.html" class="link"><code>_fileparser.Section</code></a>)</i>
+      <dd><code><b>option</b></code> -
+ The option name in question
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The option        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._fileparser.Option-class.html" class="link"><code>_fileparser.Option</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_findConfig"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_findConfig</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>settingsobj</span>)</span>
+  </h3>
+Finds and opens the main config file  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>settingsobj</b></code> -
+ The settings object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The open descriptor        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">file</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigMissingError</b></code> -
+<p>config neither specified nor
+on default locations found. Default locations are (tried
+in that order):</p>
+<ul class="rst-simple">
+<li>&lt;repos&gt;/conf/mailer.conf</li>
+<li>&lt;scriptdir&gt;/mailer.conf</li>
+<li>/etc/svn-mailer.conf</li>
+</ul>
+      <dd><code><b>ConfigIOError</b></code> -
+specified configfile could not be opened    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_getDefaultConfigFiles"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_getDefaultConfigFiles</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>settingsobj</span>)</span>
+  </h3>
+Returns the default config file locations  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>settingsobj</b></code> -
+ The settings object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The list of config file locations        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">list</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_loadConfig"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_loadConfig</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>settingsobj</span>)</span>
+  </h3>
+Load and parse main config file  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>settingsobj</b></code> -
+ The settings object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The parsed config        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigIOError</b></code> -
+some configfile could not be opened      <dd><code><b>ConfigMissingError</b></code> -
+see <a href="../private/svnmailer.settings.configfile.FileConfig-class.html#_findConfig" class="link"><code>_findConfig</code></a>      <dd><code><b>ValueError</b></code> -
+Syntax Error detected or unicode failure
+in includes    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_optionxform"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_optionxform</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>option</span>)</span>
+  </h3>
+Returns the transformed option  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+The normalized option        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">str</span></tt>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_processPreOptions"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_processPreOptions</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>parsed</span>,
+          <span class=sig-arg>settingsobj</span>,
+          <span class=sig-arg>name</span>)</span>
+  </h3>
+<p>Processes the pre section options</p>
+<p>These options are specified <em>before</em> the first section
+If there aren't any of such options specified, they are
+looked up in <tt class="literal"><span class="pre">[general]</span></tt> (backwards compat).</p>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>parsed</b></code> -
+ The parsed config
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a>)</i>
+      <dd><code><b>settingsobj</b></code> -
+ The settings object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="../private/svnmailer.settings._base.BaseSettings-class.html" class="link"><code>_base.BaseSettings</code></a>)</i>
+      <dd><code><b>name</b></code> -
+ The name of the main config file (used to determine
+relative includes)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<tt class="literal"><span class="pre">basestring</span></tt>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigIOError</b></code> -
+Error reading an included file      <dd><code><b>ValueError</b></code> -
+Syntax Error detected or unicode failure
+in includes      <dd><code><b>ConfigInvalidError</b></code> -
+There are unknown options without a
+section    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="extractSection"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">extractSection</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>section</span>,
+          <span class=sig-arg>xform</span>=<span class=sig-default>True</span>,
+          <span class=sig-arg>keep</span>=<span class=sig-default>False</span>,
+          <span class=sig-arg>check</span>=<span class=sig-default>True</span>)</span>
+  </h3>
+Returns the options of the specified section  <dl><dt></dt><dd>
+    <dl><dt><b>Raises:</b></dt>
+      <dd><code><b>ConfigSectionNotFoundError</b></code> -
+The section was not found      <dd><code><b>ConfigOptionUnknownError</b></code> -
+A option name was invalid    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.settings._base.BaseConfig-class.html#extractSection"><code>svnmailer.settings._base.BaseConfig.extractSection</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF INSTANCE VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Instance Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_parsed"></a>
+<h3>_parsed</h3>
+The <a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a> instance<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<a href="../private/svnmailer.settings._fileparser.FileParser-class.html" class="link"><code>_fileparser.FileParser</code></a>
+      </dd>
+    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF CLASS VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Class Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="__implements__"></a>
+<h3>__implements__</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>list</code>
+
+      </dd>
+<span title="[&lt;class 'svnmailer.settings._base.BaseConfig'&gt;]">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+[&lt;class 'svnmailer.settings._base.BaseConfig'&gt;]                        </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_CHARSETOPTION"></a>
+<h3>_CHARSETOPTION</h3>
+Normalized name of the <tt class="literal"><span class="pre">config_charset</span></tt> option<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+<span title="'config_charset'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>config_charset<span class="variable-quote">'</span>                                                       </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="_INCLUDEOPTION"></a>
+<h3>_INCLUDEOPTION</h3>
+Normalized name of the <tt class="literal"><span class="pre">include_config</span></tt> option<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+<tt class="literal"><span class="pre">str</span></tt>
+      </dd>
+<span title="'include_config'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>include_config<span class="variable-quote">'</span>                                                       </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="svnmailer-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.0 on Sun Sep 25 20:49:02 2005</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>
