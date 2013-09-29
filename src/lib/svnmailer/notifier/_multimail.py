@@ -19,11 +19,20 @@ email notifier
 """
 __author__    = "André Malo"
 __docformat__ = "epytext en"
-__all__       = ['getNotifier']
+__all__       = ['Error', 'InvalidMailOption', 'getNotifier']
 __pylintver__ = "0.6.4"
 
 # global imports
 from svnmailer.notifier import _mail
+
+# exceptions
+class Error(Exception):
+    """ Base exception for this module """
+    pass
+
+class InvalidMailOption(Error):
+    """ Invalid Multipart mail option """
+    pass
 
 
 def getNotifier(cls, config, groupset):
@@ -97,6 +106,47 @@ def decorateNotifier(cls, action, config, groupset):
 class MultiMailNotifier(_mail.MailNotifier):
     """ Bases class for mail notifiers using attachments for the diffs """
     __implements__ = [_mail.MailNotifier]
+
+    # need this (variable args) for deco classes
+    def __init__(self, config, groupset, *args, **kwargs):
+        """ Initialization """
+        _mail.MailNotifier.__init__(self, config, groupset)
+        self.mctype, self.mdispo = self._parseMailType()
+
+
+    def _parseMailType(self):
+        """ Returns the multimail options
+
+            @return: The diff content type and disposition
+            @rtype: C{tuple}
+        """
+        from svnmailer import util
+
+        ctype = 'text/plain'
+        dispo = 'inline'
+        for option in (self.config.mail_type or '').split()[1:]:
+            try:
+                name, value = [val.lower() for val in option.split('=')]
+                if name == u'type':
+                    ctype = util.parseContentType(value)
+                    if not ctype:
+                        raise ValueError(
+                            "invalid multimail type specification %r" % value
+                        )
+                    ctype = ctype[0]
+                elif name == u'disposition':
+                    if value not in (u'inline', 'attachment'):
+                        raise ValueError(
+                            "invalid disposition specification %r" % value
+                        )
+                    dispo = value
+                else:
+                    raise ValueError("unknown multimail option %r" % option)
+            except ValueError, exc:
+                raise InvalidMailOption(str(exc))
+
+        return (ctype, dispo)
+
 
     def composeMail(self):
         """ Composes the mail
@@ -573,6 +623,8 @@ class DiffDescriptor(object):
         self.change   = change
         self.propdiff = propdiff
         self.encoding = None
+        self.ctype    = notifier.mctype
+        self.dispo    = notifier.mdispo
 
         if not self.propdiff:
             enc1, enc2 = notifier.getContentEncodings(change, None)
@@ -607,7 +659,8 @@ class DiffDescriptor(object):
         enc = (self.propdiff and [None] or [self.encoding])[0]
 
         part = _SinglePart(self.getValue(),
-            name = name, encoding = enc, binary = True
+            name = name, encoding = enc, binary = True, ctype = self.ctype,
+            dispo = self.dispo
         )
 
         return part
@@ -659,7 +712,8 @@ class _MultiMail(MIMEMultipart.MIMEMultipart):
 class _SinglePart(MIMENonMultipart.MIMENonMultipart):
     """ A single part of a multipart mail """
 
-    def __init__(self, body, name = None, encoding = None, binary = False):
+    def __init__(self, body, name = None, encoding = None, binary = False,
+        ctype = 'text/plain', dispo = 'inline'):
         """ Initialization
 
             @param body: The body
@@ -689,11 +743,13 @@ class _SinglePart(MIMENonMultipart.MIMENonMultipart):
         if encoding is not None:
             tparam['charset'] = encoding
 
+        maintype, subtype = ctype.encode('us-ascii').split('/')
         MIMENonMultipart.MIMENonMultipart.__init__(
-            self, 'text', 'plain', **tparam
+            self, maintype, subtype, **tparam
         )
         self.set_payload(body)
-        self.add_header('Content-Disposition', 'inline', **dparam)
+        self.add_header('Content-Disposition',
+            dispo.encode('usi-ascii'), **dparam)
         if binary:
             cte = 'binary'
         else:

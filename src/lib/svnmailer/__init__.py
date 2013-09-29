@@ -29,11 +29,11 @@ __author__    = "André Malo"
 __docformat__ = "epytext en"
 __pylintver__ = "0.6.4"
 
-version = "1.0.3"
+version = "1.0.4"
 is_dev = False
 
 if is_dev:
-    if "1.0.3".find("@VERSION@") == -1: # dev release
-        version = "1.0.3"
+    if "1.0.4".find("@VERSION@") == -1: # dev release
+        version = "1.0.4"
     else:
         version = "%s-dev" % version

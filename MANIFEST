@@ -170,6 +170,7 @@ docs/apidoc/private/svnmailer.config.Error-class.html
 docs/apidoc/private/svnmailer.subversion._Version-class.html
 docs/apidoc/private/svnmailer.notifier._mail.NoRecipientsError-class.html
 docs/apidoc/private/toc-svnmailer.notifier._multimail-module.html
+docs/apidoc/private/svnmailer.notifier._multimail.Error-class.html
 docs/apidoc/private/__builtin__.basestring-class.html
 docs/apidoc/private/svnmailer.notifier._multimail.TruncatingDecorator-class.html
 docs/apidoc/private/toc-svnmailer.main-module.html
@@ -185,6 +186,7 @@ docs/apidoc/private/svnmailer.struct_accessors.IntegerDescriptor-class.html
 docs/apidoc/private/svnmailer.subversion.VersionedPathDescriptor-class.html
 docs/apidoc/private/toc-svnmailer-module.html
 docs/apidoc/private/email.Message.Message-class.html
+docs/apidoc/private/svnmailer.notifier._multimail.InvalidMailOption-class.html
 docs/apidoc/private/svnmailer.notifier.selector-module.html
 docs/apidoc/private/svnmailer.notifier._mail-module.html
 docs/apidoc/private/svnmailer.struct_accessors._MailAction-class.html

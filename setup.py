@@ -24,7 +24,7 @@ def setup():
 
     core.setup(
         name = "svnmailer",
-        version = "1.0.3",
+        version = "1.0.4",
         description = "Feature rich subversion commit notification tool",
         author = "André Malo",
         author_email = "nd@perlig.de",

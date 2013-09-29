@@ -184,11 +184,19 @@ class SvnmailerOptionParser(optparse.OptionParser):
     def get_prog_name(self):
         """ Returns the program name """
         try:
-            # python 2.4 changed the interface. argh.
+            # >= python 2.4
             return optparse.OptionParser.get_prog_name(self)
         except AttributeError:
-            # python 2.3
-            return optparse.OptionParser._get_prog_name(self)
+            try:
+                # >= python 2.3.4
+                return optparse.OptionParser._get_prog_name(self)
+            except AttributeError:
+                # <= python 2.3.3
+                if self.prog:
+                    return self.prog
+                else:
+                    import os, sys
+                    return os.path.basename(sys.argv[0])
 
 
     def format_help(self, formatter = None):

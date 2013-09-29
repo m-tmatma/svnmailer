@@ -45,7 +45,7 @@ def getNotifier(config, groupset):
         cls = SMTPSubmitter
 
     if cls:
-        mtype = (groupset.groups[0].mail_type or '').lower()
+        mtype = (groupset.groups[0].mail_type or u'single').split()[0].lower()
         is_commit = (config.runtime.mode == settings.modes.commit)
         mod = (is_commit and mtype == u'multipart') and \
             _multimail or _textmail

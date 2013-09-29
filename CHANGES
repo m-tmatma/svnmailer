@@ -1,3 +1,11 @@
+Changes with version 1.0.4
+
+ *) Add the possibility to specify content-type and disposition for
+    multipart diffs.
+
+ *) Fix another help output crash due to the instable optparse interface.
+    Disovered by: Michael Klemm <michael.klemm informatik.uni-erlangen.de>
+
 Changes with version 1.0.3
 
  *) Fix annoying bug, which mangled hyphens in mapping table definitions.

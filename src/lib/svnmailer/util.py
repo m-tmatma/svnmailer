@@ -638,15 +638,18 @@ def parseContentType(value):
 
         @warning: comments are not recognized yet
 
-        @param value: The value to parse
-        @type value: C{str}
+        @param value: The value to parse - must be ascii compatible
+        @type value: C{basestring}
 
         @return: The parsed header (C{(value, {key, [value, value, ...]})})
             or C{None}
         @rtype: C{tuple}
     """
     try:
-        value.decode('us-ascii')
+        if isinstance(value, unicode):
+            value.encode('us-ascii')
+        else:
+            value.decode('us-ascii')
     except (AttributeError, UnicodeError):
         return None
 
@@ -663,7 +666,7 @@ def parseContentType(value):
         }
 
         typere = re.compile(
-            r'\s*([^;/\s]+/[^;\s]+)((?:\s*;\s*%(key)s\s*=\s*%(val)s)*)\s*$' %
+            r'\s*([^;/\s]+/[^;/\s]+)((?:\s*;\s*%(key)s\s*=\s*%(val)s)*)\s*$' %
             {'key': tokenres, 'val': valueres,}
         )
         pairre = re.compile(r'\s*;\s*(%(key)s)\s*=\s*(%(val)s)' % {

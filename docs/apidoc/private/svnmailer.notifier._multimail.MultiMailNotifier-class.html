@@ -61,6 +61,14 @@ Bases class for mail notifiers using attachments for the diffs
 <tr bgcolor="#70b0f0" class="summary">
   <th colspan="2">Method Summary</th></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>,
+          <span class=summary-sig-arg>groupset</span>,
+          <span class="summary-sig-vararg">*args</span>,
+          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
+<br />
+Initialization</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#_getDiffStream" class="summary-sig-name"><code>_getDiffStream</code></a>(<span class=summary-sig-arg>self</span>,
           <span class=summary-sig-arg>fp</span>)</span></code>
 <br />
@@ -76,6 +84,11 @@ Returns a mail writer</td></tr>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#_getMultiMails" class="summary-sig-name"><code>_getMultiMails</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
 <br />
 Returns the multipart mail(s)</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
+</font></td>
+  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#_parseMailType" class="summary-sig-name"><code>_parseMailType</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the multimail options</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">        <code>tuple</code>
 </font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._multimail.MultiMailNotifier-class.html#composeMail" class="summary-sig-name"><code>composeMail</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
@@ -107,14 +120,6 @@ Writes the commit diffs into temp files</td></tr>
 Dump the property diff into a separate file</td></tr>
 <tr bgcolor="#e8f0f8" class="group">
   <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from MailNotifier</th></tr>
-<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
-  <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
-          <span class=summary-sig-arg>config</span>,
-          <span class=summary-sig-arg>groupset</span>,
-          <span class="summary-sig-vararg">*args</span>,
-          <span class="summary-sig-kwarg">**kwargs</span>)</span></code>
-<br />
-Initialization</td></tr>
 <tr><td align="right" valign="top" width="15%"><font size="-1">        <code>unicode</code>
 </font></td>
   <td><code><span class="summary-sig"><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#_getPathString" class="summary-sig-name"><code>_getPathString</code></a>(<span class=summary-sig-arg>self</span>,
@@ -505,6 +510,23 @@ from the config</td></tr>
   <th colspan="2">Method Details</th></tr>
 </table>
 
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>config</span>,
+          <span class=sig-arg>groupset</span>,
+          <span class="sig-vararg">*args</span>,
+          <span class="sig-kwarg">**kwargs</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+  Initialization
+  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="../private/svnmailer.notifier._mail.MailNotifier-class.html#__init__"><code>svnmailer.notifier._mail.MailNotifier.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
 <a name="_getDiffStream"></a>
 <table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
   <h3><span class="sig"><span class="sig-name">_getDiffStream</span>(<span class=sig-arg>self</span>,
@@ -550,6 +572,22 @@ from the config</td></tr>
         The mail(s)
         <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         (type=<code>list</code> of <code>_MultiMail</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="_parseMailType"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">_parseMailType</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the multimail options
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        The diff content type and disposition
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>tuple</code>)</i>
       </dd>
     </dl>
   </dd></dl>
@@ -673,7 +711,7 @@ from the config</td></tr>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sun May 14 11:45:17 2006</font></td>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sun May 14 11:49:50 2006</font></td>
     <td align="right"><a href="http://epydoc.sourceforge.net"
                       ><font size="-2">http://epydoc.sf.net</font></a></td>
   </tr>
