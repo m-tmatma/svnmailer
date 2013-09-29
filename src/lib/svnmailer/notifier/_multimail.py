@@ -749,7 +749,7 @@ class _SinglePart(MIMENonMultipart.MIMENonMultipart):
         )
         self.set_payload(body)
         self.add_header('Content-Disposition',
-            dispo.encode('usi-ascii'), **dparam)
+            dispo.encode('us-ascii'), **dparam)
         if binary:
             cte = 'binary'
         else:

@@ -1,9 +1,14 @@
+Changes with version 1.0.5
+
+ *) Fix a nasty typo introduced with 1.0.4, which made multipart mails
+    unusable
+
 Changes with version 1.0.4
 
  *) Add the possibility to specify content-type and disposition for
-    multipart diffs.
+    multipart diffs
 
- *) Fix another help output crash due to the instable optparse interface.
+ *) Fix another help output crash due to the instable optparse interface
     Disovered by: Michael Klemm <michael.klemm informatik.uni-erlangen.de>
 
 Changes with version 1.0.3
