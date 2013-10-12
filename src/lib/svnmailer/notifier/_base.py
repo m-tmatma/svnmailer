@@ -368,11 +368,6 @@ class BaseNotifier(object):
             fh.close()
             content2 = ''.join(lines2)
 
-            import sys
-            if sys.modules.has_key('pdb'):
-                import pdb
-                pdb.set_trace()
-
             import codecs
             for encoding in default_charsets:
                 try:
