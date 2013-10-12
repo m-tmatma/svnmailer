@@ -322,6 +322,7 @@ class BaseNotifier(object):
         from svnmailer import stream
 
         rec1 = rec2 = None
+        enc1 = enc2 = None
         if enc not in (self.ENC_CONFIG, self.ENC_DEFAULT):
             rec1 = rec2 = enc1 = enc2 = enc
         else:
@@ -335,66 +336,76 @@ class BaseNotifier(object):
                 elif rec2 and not rec1:
                     rec1 = enc1
             elif enc == self.ENC_DEFAULT:
-                enc1 = enc2 = 'iso-8859-1'
+                if default_charsets == None:
+                    enc1 = enc2 = 'iso-8859-1'
 
             if default:
                 rec1 = rec1 or enc1
                 rec2 = rec2 or enc2
 
         if default_charsets != None:
-            enc1_list = default_charsets + (enc1, )
-            enc2_list = default_charsets + (enc2, )
-        else:
-            enc1_list = (enc1, )
-            enc2_list = (enc2, )
-
-        import codecs
-        for tmp_enc1 in enc1_list:
             file1 = self.getTempFile()
             if not change.wasAdded() or change.wasCopied():
-                fp = (tmp_enc1 and tmp_enc1.lower() != 'utf-8') and \
-                    stream.UnicodeStream(file1.fp, tmp_enc1) or file1.fp
                 self._settings.runtime._repos.dumpPathContent(
-                    fp, change.getBasePath(), change.getBaseRevision()
+                    file1.fp, change.getBasePath(), change.getBaseRevision()
                 )
             file1.close()
-            
-            if default_charsets != None:
-                try:
-                    import codecs
-                    fh = codecs.open(file1.name, 'r', encoding='utf-8')
-                    fh.readlines()
-                    fh.seek(0)
-                    fh.close()
-                    rec1 = tmp_enc1
-                    break
-                except UnicodeDecodeError:
-                    continue
-                else:
-                    continue
 
-        for tmp_enc2 in enc2_list:
             file2 = self.getTempFile()
             if not change.wasDeleted():
-                fp = (tmp_enc2 and tmp_enc2.lower() != 'utf-8') and \
-                    stream.UnicodeStream(file2.fp, tmp_enc2) or file2.fp
                 self._settings.runtime._repos.dumpPathContent(
-                    fp, change.path, change.revision
+                    file2.fp, change.path, change.revision
                 )
             file2.close()
 
-            if default_charsets != None:
+            fh = open(file1.name, 'r')
+            lines1 = fh.readlines()
+            fh.close()
+            content1 = ''.join(lines1)
+
+            fh = open(file2.name, 'r')
+            lines2 = fh.readlines()
+            fh.close()
+            content2 = ''.join(lines2)
+
+            import sys
+            if sys.modules.has_key('pdb'):
+                import pdb
+                pdb.set_trace()
+
+            import codecs
+            for encoding in default_charsets:
                 try:
-                    fh = codecs.open(file2.name, 'r', encoding='utf-8')
-                    fh.readlines()
-                    fh.seek(0)
-                    fh.close()
-                    rec2 = tmp_enc2
+                    data = content1.decode(encoding)
+                    rec1 = enc1 = encoding
                     break
-                except UnicodeDecodeError:
-                    continue
-                else:
-                    continue
+                except:
+                    pass
+            for encoding in default_charsets:
+                try:
+                    data = content2.decode(encoding)
+                    rec2 = enc2 = encoding
+                    break
+                except:
+                    pass
+
+        file1 = self.getTempFile()
+        if not change.wasAdded() or change.wasCopied():
+            fp = (enc1 and enc1.lower() != 'utf-8') and \
+                stream.UnicodeStream(file1.fp, enc1) or file1.fp
+            self._settings.runtime._repos.dumpPathContent(
+                fp, change.getBasePath(), change.getBaseRevision()
+            )
+        file1.close()
+
+        file2 = self.getTempFile()
+        if not change.wasDeleted():
+            fp = (enc2 and enc2.lower() != 'utf-8') and \
+                stream.UnicodeStream(file2.fp, enc2) or file2.fp
+            self._settings.runtime._repos.dumpPathContent(
+                fp, change.path, change.revision
+            )
+        file2.close()
 
         return (file1, file2, rec1, rec2)
 
