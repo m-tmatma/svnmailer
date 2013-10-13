@@ -294,7 +294,7 @@ class BaseNotifier(object):
         return (diff_tokens, diff_tests)
 
 
-    def dumpContent(self, change, enc = 'utf-8', default = False, default_charsets = None):
+    def dumpContent(self, change, enc = 'utf-8', default = False, default_charsets = None, show_applied_charset = False):
         """ Dump the two revisions of a particular change
 
             This dumps the files, not the properties
@@ -308,6 +308,8 @@ class BaseNotifier(object):
 
              - `default`: Return the default encoding (ISO-8859-1) if the
                determined is ``None``
+
+             - `show_applied_charset`: show applied charset
 
             :Types:
              - `change`: `svnmailer.subversion.VersionedPathDescriptor`
@@ -372,14 +374,14 @@ class BaseNotifier(object):
             for encoding in default_charsets:
                 try:
                     data = content1.decode(encoding)
-                    rec1 = enc1 = encoding
+                    enc1 = encoding
                     break
                 except:
                     pass
             for encoding in default_charsets:
                 try:
                     data = content2.decode(encoding)
-                    rec2 = enc2 = encoding
+                    enc2 = encoding
                     break
                 except:
                     pass
@@ -401,6 +403,12 @@ class BaseNotifier(object):
                 fp, change.path, change.revision
             )
         file2.close()
+
+        if show_applied_charset:
+            if rec1 == None:
+                rec1 = enc1
+            if rec2 == None:
+                rec2 = enc2
 
         return (file1, file2, rec1, rec2)
 

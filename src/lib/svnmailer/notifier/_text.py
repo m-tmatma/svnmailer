@@ -352,12 +352,13 @@ class TextNotifier(_base.BaseNotifier):
                 enc = config.apply_charset_property and \
                     self.ENC_CONFIG or self.ENC_DEFAULT
                 default = bool(config.show_applied_charset == SHOWENC.yes)
+            show_applied_charset = bool(config.show_applied_charset == SHOWENC.yes)
 
             default_charsets = None
             if config.default_charsets:
                 default_charsets = config.default_charsets
             file1, file2, rec1, rec2 = self.dumpContent(
-                change, enc = enc, default = default, default_charsets = default_charsets
+                change, enc = enc, default = default, default_charsets = default_charsets, show_applied_charset = show_applied_charset
             )
             if config.show_applied_charset == SHOWENC.no:
                 rec1 = rec2 = None
