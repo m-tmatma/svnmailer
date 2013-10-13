@@ -184,7 +184,7 @@ Changes with version 1.0.0
  *) Add news notifier (submitting via NNTP)
 
  *) The directory used for temporary files is now configurable
- 
+
  *) Add the group name to the substitution dict
 
  *) Add overlong mail handling. (long_mail_action configuration option)
