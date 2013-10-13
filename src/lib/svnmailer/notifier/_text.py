@@ -444,6 +444,18 @@ class TextNotifier(_base.BaseNotifier):
                 self.fp.write("\n")
 
         if diff_empty:
+            if rec1 != None and rec2 != None and rec1 != rec2:
+                self.fp.write("--- ")
+                self.fp.write(name1)
+                self.fp.write("\t")
+                self.fp.write(date1)
+                self.fp.write("\n")
+
+                self.fp.write("+++ ")
+                self.fp.write(name2)
+                self.fp.write("\t")
+                self.fp.write(date2)
+                self.fp.write("\n")
             self.fp.write("    (empty)\n")
 
 
