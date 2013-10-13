@@ -1,0 +1,300 @@
+SVN-fs-dump-format-version: 2
+
+UUID: 4f293e2a-ce80-1c40-bf0e-fe2491d6b62e
+
+Revision-number: 0
+Prop-content-length: 56
+Content-length: 56
+
+K 8
+svn:date
+V 27
+2013-09-30T14:57:41.531233Z
+PROPS-END
+
+Revision-number: 1
+Prop-content-length: 117
+Content-length: 117
+
+K 10
+svn:author
+V 4
+user
+K 8
+svn:date
+V 27
+2013-09-30T15:02:10.390233Z
+K 7
+svn:log
+V 18
+set svn:auto-props
+PROPS-END
+
+Node-path: 
+Node-kind: dir
+Node-action: change
+Prop-content-length: 65
+Content-length: 65
+
+K 14
+svn:auto-props
+V 29
+*.txt = svn:eol-style=native
+
+PROPS-END
+
+
+Revision-number: 2
+Prop-content-length: 117
+Content-length: 117
+
+K 10
+svn:author
+V 4
+user
+K 8
+svn:date
+V 27
+2013-09-30T15:03:43.452290Z
+K 7
+svn:log
+V 18
+add svn:auto-props
+PROPS-END
+
+Node-path: 
+Node-kind: dir
+Node-action: change
+Prop-content-length: 90
+Content-length: 90
+
+K 14
+svn:auto-props
+V 54
+*.txt = svn:eol-style=native;svn:mime-type=text/plain
+
+PROPS-END
+
+
+Revision-number: 3
+Prop-content-length: 107
+Content-length: 107
+
+K 10
+svn:author
+V 4
+user
+K 8
+svn:date
+V 27
+2013-09-30T15:04:02.831908Z
+K 7
+svn:log
+V 9
+add utf-8
+PROPS-END
+
+Node-path: utf-8.txt
+Node-kind: file
+Node-action: add
+Prop-content-length: 75
+Text-content-length: 90
+Text-content-md5: da7a99b5b88c038573a7cb65f78b1ad5
+Text-content-sha1: 6ff1afa83919085132a1aa0d3243e407414d3364
+Content-length: 165
+
+K 13
+svn:eol-style
+V 6
+native
+K 13
+svn:mime-type
+V 10
+text/plain
+PROPS-END
+„Åì„ÅÆ„Éï„Ç°„Ç§„É´„ÅØ UTF-8 „Åß„Åô„ÄÇ
+Ê≠£„Åó„ÅèË°®Á§∫„Åß„Åç„Çã„Åã„Çí„ÉÜ„Çπ„Éà„Åó„Åæ„Åô„ÄÇ
+
+
+Revision-number: 4
+Prop-content-length: 111
+Content-length: 111
+
+K 10
+svn:author
+V 4
+user
+K 8
+svn:date
+V 27
+2013-09-30T15:05:16.559037Z
+K 7
+svn:log
+V 12
+add shiftjis
+PROPS-END
+
+Node-path: shiftjis.txt
+Node-kind: file
+Node-action: add
+Prop-content-length: 75
+Text-content-length: 67
+Text-content-md5: 25c35f2fa65aa82ad8f10c1b079f0bc2
+Text-content-sha1: 6f5eb2e40cb1503136f1836b9c971fff1e27175c
+Content-length: 142
+
+K 13
+svn:eol-style
+V 6
+native
+K 13
+svn:mime-type
+V 10
+text/plain
+PROPS-END
+Ç±ÇÃÉtÉ@ÉCÉãÇÕ Shift-JIS Ç≈Ç∑ÅB
+ê≥ÇµÇ≠ï\é¶Ç≈Ç´ÇÈÇ©ÇÉeÉXÉgÇµÇ‹Ç∑ÅB
+
+
+Revision-number: 5
+Prop-content-length: 109
+Content-length: 109
+
+K 10
+svn:author
+V 4
+user
+K 8
+svn:date
+V 27
+2013-09-30T15:05:29.736960Z
+K 7
+svn:log
+V 10
+add euc-jp
+PROPS-END
+
+Node-path: euc-jp.txt
+Node-kind: file
+Node-action: add
+Prop-content-length: 75
+Text-content-length: 64
+Text-content-md5: 630e0f44d7366a0c355edeba5446d583
+Text-content-sha1: 03945683c2aee0e49e9e319a79b46c0959c0d661
+Content-length: 139
+
+K 13
+svn:eol-style
+V 6
+native
+K 13
+svn:mime-type
+V 10
+text/plain
+PROPS-END
+§≥§Œ•’•°•§•Î§œ EUC-JP §«§π°£
+¿µ§∑§Ø…Ωº®§«§≠§Î§´§Ú•∆•π•»§∑§ﬁ§π°£
+
+
+Revision-number: 6
+Prop-content-length: 112
+Content-length: 112
+
+K 10
+svn:author
+V 4
+user
+K 8
+svn:date
+V 27
+2013-09-30T15:07:25.966331Z
+K 7
+svn:log
+V 13
+add shift-jis
+PROPS-END
+
+Node-path: change-shiftjis-to-euc-jp.txt
+Node-kind: file
+Node-action: add
+Prop-content-length: 75
+Text-content-length: 101
+Text-content-md5: dc700be55f09d5fe14d7d23d4299d2f4
+Text-content-sha1: 68b5f45c3fdb4fb17b19bbaaa811bf9e058c74d1
+Content-length: 176
+
+K 13
+svn:eol-style
+V 6
+native
+K 13
+svn:mime-type
+V 10
+text/plain
+PROPS-END
+Ç±ÇÃÉtÉ@ÉCÉãÇÕ Shift-JIS Ç©ÇÁ EUC-JP ÇÃï∂éöÉRÅ[Éhïœä∑ÉeÉXÉgÇ≈Ç∑ÅB
+ê≥ÇµÇ≠ï\é¶Ç≈Ç´ÇÈÇ©ÇÉeÉXÉgÇµÇ‹Ç∑ÅB
+
+
+Revision-number: 7
+Prop-content-length: 124
+Content-length: 124
+
+K 10
+svn:author
+V 4
+user
+K 8
+svn:date
+V 27
+2013-09-30T15:07:52.343425Z
+K 7
+svn:log
+V 25
+change shiftjis to euc-jp
+PROPS-END
+
+Node-path: change-shiftjis-to-euc-jp.txt
+Node-kind: file
+Node-action: change
+Text-content-length: 101
+Text-content-md5: ccc5798a05e9b699e223d3825475ec86
+Text-content-sha1: 7feebe82a53a6cacf416748903ee9ed0b690b15a
+Content-length: 101
+
+§≥§Œ•’•°•§•Î§œ Shift-JIS §´§È EUC-JP §Œ ∏ª˙•≥°º•… —¥π•∆•π•»§«§π°£
+¿µ§∑§Ø…Ωº®§«§≠§Î§´§Ú•∆•π•»§∑§ﬁ§π°£
+
+
+Revision-number: 8
+Prop-content-length: 110
+Content-length: 110
+
+K 10
+svn:author
+V 4
+user
+K 8
+svn:date
+V 27
+2013-10-12T00:28:49.363029Z
+K 7
+svn:log
+V 11
+add comment
+PROPS-END
+
+Node-path: euc-jp.txt
+Node-kind: file
+Node-action: change
+Text-content-length: 84
+Text-content-md5: ff5c3d5d6e2e95ac5bf3a2c4edf32916
+Text-content-sha1: c28af2c56cdd55dab2da94d2aba1278270f5f712
+Content-length: 84
+
+§≥§Œ•’•°•§•Î§œ EUC-JP §«§π°£
+¿µ§∑§Ø…Ωº®§«§≠§Î§´§Ú•∆•π•»§∑§ﬁ§π°£
+
+•’•°•§•Î —ππ•∆•π•»
+
+
