@@ -1,8 +1,8 @@
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 # pylint: disable-msg=W0142
 # pylint-version = 0.7.0
 #
-# Copyright 2004-2005 André Malo or his licensors, as applicable
+# Copyright 2004-2005 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ The `Main` class may raise several exceptions (which all inherit from `Error`):
 
 .. _format_exception docs: http://docs.python.org/lib/module-traceback.html
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "restructuredtext en"
 __all__       = ['Main', 'Error', 'ConfigError', 'NotifierError']
 

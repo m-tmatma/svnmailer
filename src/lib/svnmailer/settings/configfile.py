@@ -1,8 +1,8 @@
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 # pylint: disable-msg=W0142,W0201
 # pylint-version = 0.7.0
 #
-# Copyright 2004-2005 André Malo or his licensors, as applicable
+# Copyright 2004-2005 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 This module provides a settings loader, which pulls the config from an
 INI like text file.
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "restructuredtext en"
 __all__       = [
     'Error',

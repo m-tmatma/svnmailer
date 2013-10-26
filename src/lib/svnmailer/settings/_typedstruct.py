@@ -1,8 +1,8 @@
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 # pylint: disable-msg=W0613
 # pylint-version = 0.7.0
 #
-# Copyright 2004-2005 André Malo or his licensors, as applicable
+# Copyright 2004-2005 AndrÃ© Malo or his licensors, as applicable
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ Each converter class should inherit from it. The `Struct` class is the base
 class for all containers that want to be created by `StructCreator` (basically
 because of its ``__metaclass__``).
 """
-__author__    = "André Malo"
+__author__    = "AndrÃ© Malo"
 __docformat__ = "restructuredtext en"
 __all__       = ['Member', 'MetaClass', 'Struct', 'StructCreator']
 
