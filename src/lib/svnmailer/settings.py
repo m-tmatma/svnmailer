@@ -215,6 +215,7 @@ def generalMembers(space):
         The following members are defined:
             - C{diff_command}: The diff command
             - C{sendmail_command}: The sendmail compatible command
+            - C{ssl_mode}: ssl mode
             - C{smtp_host}: The smtp host (C{host[:port]})
             - C{smtp_user}: The smtp auth. user
             - C{smtp_pass}: The smtp auth. password
@@ -234,6 +235,7 @@ def generalMembers(space):
         'typemap'    : struct_accessors.typemap,
         'the_members': {
             'sendmail_command'  : ('unicommand', {'map': True}),
+            'ssl_mode'          : ('unicode',    {'map': True}),
             'smtp_host'         : ('unicode',    {'map': True}),
             'smtp_user'         : ('quotedstr',  {'map': True}),
             'smtp_pass'         : ('quotedstr',  {'map': True}),

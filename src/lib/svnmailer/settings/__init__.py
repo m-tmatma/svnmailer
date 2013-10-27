@@ -183,6 +183,7 @@ group_members = {
 general_members = {
     'members': {
         'sendmail_command'  : ('unicommand', {'map': True}),
+        'ssl_mode'          : ('unicode',    {'map': True}),
         'smtp_host'         : ('unicode',    {'map': True}),
         'smtp_user'         : ('quotedstr',  {'map': True}),
         'smtp_pass'         : ('quotedstr',  {'map': True}),

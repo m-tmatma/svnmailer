@@ -70,7 +70,14 @@ class SMTPSubmitter(object):
         fp.close()
 
         general = self._settings.general
-        conn = smtplib.SMTP(general.smtp_host)
+        if general.ssl_mode == "ssl":
+            conn = smtplib.SMTP_SSL(general.smtp_host)
+        elif general.ssl_mode == "start_ssl":
+            conn = smtplib.SMTP(general.smtp_host)
+            conn.starttls()
+        else:
+            conn = smtplib.SMTP(general.smtp_host)
+
         if general.smtp_user:
             conn.login(general.smtp_user, general.smtp_pass)
 
